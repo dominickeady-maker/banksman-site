@@ -5,6 +5,8 @@ keyword: "construction site management software small builders UK"
 author: Matt
 category: Choosing software
 pubDate: 2026-10-14
+cover: /assets/blog/construction-site-management-software-small-builders-uk.webp
+coverAlt: "Illustration of a house under construction next to a phone showing progress for each site"
 draft: false
 faq:
   - question: "Is cheaper software worse software?"

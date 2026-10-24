@@ -4,7 +4,9 @@ description: "WhatsApp is fine for a quick message, but it's a poor way to run a
 keyword: "construction site whatsapp alternative"
 author: Matt
 category: Site management
-pubDate: 2026-10-14
+pubDate: 2026-10-06
+cover: /assets/blog/whatsapp-groups-liability-construction-site.webp
+coverAlt: "Illustration of group chat messages next to a warning sign, showing the risk of running a construction site on WhatsApp"
 draft: false
 faq:
   - question: "Is WhatsApp actually bad, or just not ideal?"

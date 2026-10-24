@@ -14,6 +14,10 @@ const blog = defineCollection({
     updatedDate: z.coerce.date().optional(),
     draft: z.boolean().default(false),
     image: z.string().optional(),
+    // Card and header picture (1200×675). Falls back to /assets/blog/<slug>.webp.
+    cover: z.string().optional(),
+    // Describes the picture for screen readers and Google Images. Required whenever a cover is set.
+    coverAlt: z.string().min(10).max(160).optional(),
     imageAlt: z.string().optional(),
     faq: z
       .array(z.object({ question: z.string().min(5), answer: z.string().min(5) }))

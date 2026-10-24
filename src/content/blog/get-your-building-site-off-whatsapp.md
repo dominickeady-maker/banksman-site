@@ -5,6 +5,8 @@ keyword: "building site whatsapp"
 author: Dom Keady
 category: Site management
 pubDate: 2026-09-29
+cover: /assets/blog/get-your-building-site-off-whatsapp.webp
+coverAlt: "Illustration of WhatsApp-style chat messages turning into a tidy task checklist on a phone, for moving a building site off WhatsApp"
 draft: false
 ---
 

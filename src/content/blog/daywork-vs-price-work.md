@@ -4,7 +4,9 @@ description: "The difference between daywork and price work, and how to record e
 keyword: "daywork vs price work construction"
 author: Matt
 category: Site management
-pubDate: 2026-10-14
+pubDate: 2026-10-10
+cover: /assets/blog/daywork-vs-price-work.webp
+coverAlt: "Illustration of a clock for daywork beside a pound sign for price work"
 draft: false
 faq:
   - question: "Can a job be both daywork and price work?"

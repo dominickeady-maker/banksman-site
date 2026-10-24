@@ -1,6 +1,6 @@
 import { SITE } from '../site';
 import type { Post } from './posts';
-import { postUrl, shareImageUrl } from './posts';
+import { postUrl, shareImageUrl, coverUrl } from './posts';
 
 const abs = (path: string) => new URL(path, SITE.url).href;
 
@@ -38,7 +38,7 @@ export function blogPostingSchema(post: Post) {
     headline: title,
     description,
     keywords: keyword,
-    image: abs(shareImageUrl(post)),
+    image: [abs(shareImageUrl(post)), abs(coverUrl(post))],
     datePublished: pubDate.toISOString(),
     dateModified: (updatedDate ?? pubDate).toISOString(),
     author: author === SITE.name ? { '@id': organization['@id'] } : { '@type': 'Person', name: author },

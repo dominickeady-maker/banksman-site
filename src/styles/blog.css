@@ -12,3 +12,7 @@
 /* site.css's `.prose a` outranks `.btn-primary`, which hid the CTA button text on posts. */
 .prose a.btn { text-decoration: none; }
 .prose a.btn-primary { color: var(--accent-ink); }
+
+/* Post header picture */
+.post-cover { margin: 0 0 36px; max-width: 900px; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.post-cover img { display: block; width: 100%; height: auto; }

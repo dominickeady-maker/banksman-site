@@ -5,6 +5,8 @@ keyword: "fieldwire alternative small builders"
 author: Matt
 category: Choosing software
 pubDate: 2026-10-13
+cover: /assets/blog/fieldwire-jobtread-alternatives.webp
+coverAlt: "Illustration of a signpost pointing in different directions, for choosing an alternative to Fieldwire or JobTread"
 draft: true
 faq:
   - question: "Is Banksman trying to be a Fieldwire replacement for large firms?"

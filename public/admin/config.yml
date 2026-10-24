@@ -47,6 +47,8 @@ collections:
       - { name: draft, label: Draft (hidden from the live site), widget: boolean, default: true }
       - { name: image, label: Share image (optional), widget: image, required: false, hint: '1200×630. Leave empty to use the generated share image.' }
       - { name: imageAlt, label: Share image alt text, widget: string, required: false }
+      - { name: cover, label: Cover picture, widget: image, required: false, hint: '1200×675 (16:9). Shows on the blog page and at the top of the post. Leave empty to use /assets/blog/<file-name>.webp.' }
+      - { name: coverAlt, label: Cover picture description (alt text), widget: string, required: false, hint: 'One plain sentence saying what the picture shows, for screen readers and Google Images. 10–160 characters.' }
       - name: faq
         label: FAQ
         widget: list

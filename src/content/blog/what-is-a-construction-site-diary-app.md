@@ -5,6 +5,8 @@ keyword: "construction site diary app"
 author: Matt
 category: Site management
 pubDate: 2026-10-13
+cover: /assets/blog/what-is-a-construction-site-diary-app.webp
+coverAlt: "Illustration of a paper site diary being replaced by a site diary app on a phone"
 draft: true
 faq:
   - question: "Is a site diary app the same as project management software?"

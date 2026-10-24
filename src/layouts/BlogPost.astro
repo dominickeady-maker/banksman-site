@@ -1,7 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import { SITE } from '../site';
-import { type Post, formatDate, readingMinutes, shareImageUrl, postUrl } from '../lib/posts';
+import { type Post, formatDate, readingMinutes, shareImageUrl, postUrl, coverUrl, coverAlt } from '../lib/posts';
 import { blogPostingSchema, breadcrumbSchema, faqSchema } from '../lib/schema';
 
 interface Props {
@@ -38,6 +38,7 @@ const schema = [
       {author} · <time datetime={pubDate.toISOString().slice(0, 10)}>{formatDate(pubDate)}</time>{updatedDate && <> · Updated <time datetime={updatedDate.toISOString().slice(0, 10)}>{formatDate(updatedDate)}</time></>}{` · ${readingMinutes(post.body)} min read`}
     </div>
   </div></section>
+  <div class="wrap"><figure class="post-cover"><img src={coverUrl(post)} alt={coverAlt(post)} width="1200" height="675" fetchpriority="high" /></figure></div>
   <div class="wrap"><article class="prose">
     <slot />
     {faq.length > 0 && (

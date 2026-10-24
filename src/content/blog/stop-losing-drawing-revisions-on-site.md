@@ -5,6 +5,8 @@ keyword: "construction drawing revision control site"
 author: Matt
 category: Site management
 pubDate: 2026-10-13
+cover: /assets/blog/stop-losing-drawing-revisions-on-site.webp
+coverAlt: "Illustration of a stack of building drawings with a version label"
 draft: true
 faq:
   - question: "Is this really worth solving with software, or is it a discipline problem?"

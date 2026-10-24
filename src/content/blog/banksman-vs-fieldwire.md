@@ -5,6 +5,8 @@ keyword: "banksman vs fieldwire"
 author: Matt
 category: Choosing software
 pubDate: 2026-10-13
+cover: /assets/blog/banksman-vs-fieldwire.webp
+coverAlt: "Illustration of two construction software options compared side by side"
 draft: true
 faq:
   - question: "Can I try both before deciding?"

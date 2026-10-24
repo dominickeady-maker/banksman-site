@@ -5,6 +5,8 @@ keyword: "construction management software cost UK"
 author: Matt
 category: Choosing software
 pubDate: 2026-10-13
+cover: /assets/blog/construction-management-software-cost-uk.webp
+coverAlt: "Illustration of a price tag with a pound sign, for the cost of construction management software in the UK"
 draft: true
 faq:
   - question: "Is free construction software worth using?"
