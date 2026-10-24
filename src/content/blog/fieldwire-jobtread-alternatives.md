@@ -1,5 +1,6 @@
 ---
 title: "Fieldwire and JobTread Alternatives for Smaller Building Firms"
+seoTitle: "Fieldwire and JobTread alternatives for small builders"
 description: "Fieldwire and JobTread are solid tools, but not every firm needs their scale or price. Here's what to weigh up if you're looking at alternatives."
 keyword: "fieldwire alternative small builders"
 author: Matt
@@ -33,12 +34,15 @@ Fieldwire is strong on plan markup and field coordination across larger, more co
 
 1. **Try before you commit.** A live demo you can log into yourself beats a sales call every time.
 2. **Flat, published pricing.** If the number isn't on the page, assume it's negotiable — which usually isn't in your favour.
-3. **Coverage of the actual daily pain points**, not the full enterprise feature set: tasks and photo proof, timesheets (including daywork vs price work), materials requests, drawings on every phone, and messaging per site.
+3. **Coverage of the actual daily pain points**, not the full enterprise feature set: tasks and photo proof, timesheets (including [daywork vs price work](/blog/daywork-vs-price-work/)), materials requests, drawings on every phone, messaging per site, and the health and safety paperwork: inductions, RAMS, site sign-in and an accident book.
 4. **Built for firms your size**, ideally by people who've actually run sites like yours — not scaled down from an enterprise product.
 
 ## Where Banksman fits
 
-Banksman was built by a working builder running his own firm, specifically for the small-to-mid-size gap Fieldwire and JobTread aren't really aimed at. Flat £79–£149/month inc. VAT pricing, no sales call, and a live demo with realistic sample data you can log into right now — manager or worker login, no card required.
+For a head-to-head on one of them, see [Banksman vs Fieldwire](/blog/banksman-vs-fieldwire/). If you're still on spreadsheets and group chats, the [comparison with WhatsApp](/compare/) is a better starting point.
+
+
+Banksman was built by a working builder running his own firm, specifically for the small-to-mid-size gap Fieldwire and JobTread aren't really aimed at. Flat pricing from £79/month inc. VAT, every feature on every plan, no sales call, and a live demo with realistic sample data you can log into right now — manager or worker login, no card required.
 
 ---
 

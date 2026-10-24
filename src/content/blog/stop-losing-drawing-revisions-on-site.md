@@ -10,7 +10,7 @@ coverAlt: "Illustration of a stack of building drawings with a version label"
 draft: true
 faq:
   - question: "Is this really worth solving with software, or is it a discipline problem?"
-    answer: "It's partly discipline, but discipline that depends on manually updating printed copies or re-forwarding emails tends to break down under normal site pressure. A system where there's only ever one current version to find removes the reliance on someone remembering to swap it out."
+    answer: "It's partly discipline, but discipline that depends on manually updating printed copies or re-forwarding emails tends to break down under normal site pressure. Having every drawing on every phone, clearly labelled by version, means the team can check what they're working from without someone remembering to swap a printout."
   - question: "Who should be responsible for keeping drawings current on site?"
     answer: "Usually the site manager, but the more useful question is whether the *system* makes it obvious which version is current — rather than relying on one person's diligence every time a revision comes through."
   - question: "Does this apply to smaller jobs too, or just bigger projects?"
@@ -29,7 +29,7 @@ It's rarely carelessness. It's structural:
 
 ## What it costs when it goes wrong
 
-Working from an outdated drawing isn't a paperwork issue — it's rework, wasted materials, and in the worst case, work that has to be undone and redone at your cost, not the client's. It also erodes trust: a client who finds out the site was working from a superseded drawing starts questioning everything else too.
+Working from an outdated drawing isn't a paperwork issue — it's rework, wasted materials, and in the worst case, work that has to be undone and redone at your cost, not the client's. It also erodes trust: a client who finds out the site was working from a superseded drawing starts questioning everything else too. Keep [photos of the work at each stage](/blog/whatsapp-groups-liability-construction-site/) as well, so you can show what was built from which drawing if it's ever queried.
 
 ## What actually fixes it
 

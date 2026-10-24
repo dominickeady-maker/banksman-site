@@ -24,8 +24,8 @@ A construction site diary app is a digital tool for recording what happens on a 
 Before software like this, most sites ran on some mix of:
 
 - A physical site diary or daybook, filled in (or not) at the end of the day
-- A WhatsApp group for updates and photos
-- A spreadsheet somewhere for timesheets, usually reconstructed from memory at the end of the week
+- A [WhatsApp group](/blog/get-your-building-site-off-whatsapp/) for updates and photos
+- A spreadsheet somewhere for timesheets, usually reconstructed from memory at the end of the week (which is where [arguments about daywork and price work](/blog/daywork-vs-price-work/) start)
 
 None of these are wrong exactly — they're just slow to search, easy to lose, and hard to prove anything from later.
 
@@ -36,6 +36,8 @@ None of these are wrong exactly — they're just slow to search, easy to lose, a
 - **Hours** — daywork and price work logged on site rather than reconstructed later
 - **Materials** — what was requested, approved, and delivered
 - **Drawings** — on every phone, labelled by version, rather than printed or emailed around
+- **Who was on site** — signed in and out with a QR code at the gate, with a roll call of who's there now
+- **Safety records** — inductions and RAMS signed on the phone, and accidents or near misses reported while they're fresh
 
 ## Why it matters beyond convenience
 

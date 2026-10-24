@@ -14,8 +14,17 @@
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
 
-# The old static site published /sitemap.xml; keep that URL working for Search Console.
+# Search Console and other tools often ask for /sitemap.xml. Serve the sitemap index there
+# directly (a 200 rewrite, not a redirect): Google often reports a redirected sitemap as
+# "Couldn't fetch".
 [[redirects]]
   from = "/sitemap.xml"
   to = "/sitemap-index.xml"
-  status = 301
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/sitemap*.xml"
+  [headers.values]
+    Content-Type = "application/xml; charset=utf-8"
+    X-Robots-Tag = "noindex"

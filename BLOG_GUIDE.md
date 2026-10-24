@@ -28,7 +28,15 @@ Start from [`BLOG_TEMPLATE.md`](BLOG_TEMPLATE.md), or click **New Blog post** in
 | `pubDate` / `updatedDate` | `YYYY-MM-DD`. Set `pubDate` to the day it goes live. Add `updatedDate` when you change a live post materially. |
 | `draft` | `true` while writing. Set it to `false` to publish. |
 | `faq` | Two to four question/answer pairs. They render at the end of the post and feed Google's FAQ data. Don't also write a `## FAQ` section in the body. |
+| `seoTitle` | Optional. A shorter title for Google, up to 60 characters. Use it when the title runs past about 50 characters, or Google cuts it off. |
+| `cover`, `coverAlt` | The 1200×675 picture on the blog page and at the top of the post, plus one plain sentence describing it (with the topic in it). Keep to the brand look: orange line art on the dark background. |
 | `image`, `imageAlt` | Optional. A custom 1200×630 share image; leave empty to use the generated one. |
+
+**Every post should also:**
+
+- link to two or three other posts, and to a trade page or `/compare/` where it fits;
+- end with `---` and a one-line italic call to action linking `/#demo` (the site turns it into the orange box);
+- only describe features that are live today (see `src/data/features.ts`).
 
 **House rules.** `npm run check` enforces the first five.
 

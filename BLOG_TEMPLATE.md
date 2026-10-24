@@ -1,11 +1,16 @@
 ---
 title: "Question or Statement the Reader Searched For"
+# seoTitle is optional: a shorter title for Google (60 characters max). Use it when the title is over about 50 characters.
+seoTitle: "Shorter Google title, 60 characters max"
 description: "One or two sentences, 50–160 characters, that answer the question and make someone want to click."
 keyword: "the search phrase this post targets"
 author: Matt
 category: Site management
 pubDate: 2026-01-31
 draft: true
+# Cover picture, 1200×675 (16:9), shown on the blog page and at the top of the post. Use the brand look: orange line art on the dark background.
+cover: /assets/blog/your-file-name.webp
+coverAlt: "One plain sentence saying what the picture shows, including the topic"
 faq:
   - question: "A real follow-up question a customer has asked?"
     answer: "A direct answer in two or three plain sentences."
@@ -26,10 +31,12 @@ Short paragraphs. Use **bold lead-ins** for lists of problems or options.
 
 ## Second section heading
 
-Link to related posts with a trailing slash: [daywork vs price work](/blog/daywork-vs-price-work/).
+Link to two or three related posts with a trailing slash, e.g. [daywork vs price work](/blog/daywork-vs-price-work/), and to a trade page or [the comparison](/compare/) where it fits.
 
 Banksman prices include VAT: £79/month inc. VAT. Other prices: £10–£30 per user + VAT.
 
 ---
 
 *One-line Banksman call to action — [try the live demo](/#demo), no card required.*
+
+<!-- Keep the --- line and this last italic line: the site turns it into the orange call-to-action box. -->
