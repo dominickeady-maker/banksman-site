@@ -1,20 +1,31 @@
 ---
-title: "How to Stop Losing Drawing Revisions on Site"
-description: "Out-of-date drawings on site cause rework and disputes. Here's why it keeps happening and how to make sure everyone's working off the current version."
-keyword: "construction drawing revision control site"
+title: How to Stop Losing Drawing Revisions on Site
+seoTitle: Stop Losing Drawing Revisions on Site
+description: Out-of-date drawings on site cause rework and disputes. Here's why
+  it keeps happening and how to make sure everyone's working off the current
+  version.
+keyword: construction drawing revision control site
 author: Matt
 category: Site management
-pubDate: 2026-10-13
+pubDate: 2026-10-26
+draft: false
 cover: /assets/blog/stop-losing-drawing-revisions-on-site.webp
-coverAlt: "Illustration of a stack of building drawings with a version label"
-draft: true
+coverAlt: Illustration of a stack of building drawings with a version label
 faq:
-  - question: "Is this really worth solving with software, or is it a discipline problem?"
-    answer: "It's partly discipline, but discipline that depends on manually updating printed copies or re-forwarding emails tends to break down under normal site pressure. Having every drawing on every phone, clearly labelled by version, means the team can check what they're working from without someone remembering to swap a printout."
-  - question: "Who should be responsible for keeping drawings current on site?"
-    answer: "Usually the site manager, but the more useful question is whether the *system* makes it obvious which version is current — rather than relying on one person's diligence every time a revision comes through."
-  - question: "Does this apply to smaller jobs too, or just bigger projects?"
-    answer: "It applies at any scale where a drawing changes more than once — which is most jobs. The cost of rework from an outdated version doesn't scale down just because the job is smaller."
+  - question: Is this really worth solving with software, or is it a discipline problem?
+    answer: It's partly discipline, but discipline that depends on manually updating
+      printed copies or re-forwarding emails tends to break down under normal
+      site pressure. Having every drawing on every phone, clearly labelled by
+      version, means the team can check what they're working from without
+      someone remembering to swap a printout.
+  - question: Who should be responsible for keeping drawings current on site?
+    answer: Usually the site manager, but the more useful question is whether the
+      *system* makes it obvious which version is current — rather than relying
+      on one person's diligence every time a revision comes through.
+  - question: Does this apply to smaller jobs too, or just bigger projects?
+    answer: It applies at any scale where a drawing changes more than once — which
+      is most jobs. The cost of rework from an outdated version doesn't scale
+      down just because the job is smaller.
 ---
 
 The most reliable way to stop losing drawing revisions on site is to keep a single accessible source for the current version — on every phone, downloadable on site — rather than relying on printed copies or emailed PDFs that get overtaken by later revisions without anyone removing the old ones.
