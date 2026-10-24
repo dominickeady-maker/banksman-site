@@ -109,7 +109,7 @@
     pointer-events:none; z-index:0;
   }
   .hero .wrap{position:relative; z-index:1;}
-  .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:52px; align-items:center;}
+  .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center;}
   @media (max-width:900px){ .hero-grid{grid-template-columns:1fr; gap:40px;} }
   .hero h1{font-size:clamp(38px,6.2vw,70px); line-height:1.0; font-weight:800;}
   .hero h1 span{color:var(--accent);}
@@ -373,26 +373,42 @@ button.linklike{background:none; border:0; padding:0; font:inherit; cursor:point
 
 /* ---------- hero: real app screenshots ---------- */
 .shots{position:relative; padding-bottom:10px;}
-.shots .shot-desk{
-  margin:0; position:relative; z-index:1; width:100%;
-  background:var(--surface); border:1px solid var(--line-strong); border-radius:8px;
-  box-shadow:var(--shadow); overflow:hidden; transform:rotate(-1.2deg);
-}
-.shot-bar{display:flex; align-items:center; gap:6px; padding:8px 12px; background:var(--surface-2); border-bottom:1px solid var(--line);}
-.shot-url{margin-left:10px; font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--muted);}
-.shot-desk img{display:block; width:100%; height:auto;}
+/* Laptop: lid with thin bezel and camera, 16:10-ish display, then the keyboard deck. */
+.shots .shot-desk{margin:0 0 0 1%; position:relative; z-index:1; width:94%; filter:drop-shadow(0 30px 40px rgba(0,0,0,.45));}
+.laptop-lid{position:relative; background:#0a0d17; border:1px solid #2c3452; border-bottom:none; border-radius:14px 14px 0 0; padding:12px 12px 14px;}
+.laptop-cam{position:absolute; top:4px; left:50%; width:5px; height:5px; margin-left:-2.5px; border-radius:50%; background:#2a3150;}
+.laptop-display{background:#0d101f; border-radius:3px; overflow:hidden; aspect-ratio:16/10; display:flex; flex-direction:column;}
+.shot-bar{display:flex; align-items:center; gap:5px; padding:6px 10px; background:#1a2036; border-bottom:1px solid var(--line); flex:none;}
+.shot-bar .dot{width:7px; height:7px;}
+.shot-url{margin-left:8px; font-family:'IBM Plex Mono', monospace; font-size:10px; color:var(--muted); background:#0d101f; border-radius:4px; padding:2px 10px;}
+.laptop-apphead{display:flex; align-items:center; justify-content:space-between; padding:7px 12px; border-bottom:1px solid var(--line); flex:none;}
+.laptop-apphead img{height:12px; width:auto; display:block;}
+.laptop-apphead .phone-icons svg{width:12px; height:12px;}
+.laptop-shot{display:block; width:100%; height:auto; flex:1; object-fit:cover; object-position:top; min-height:0;}
+.laptop-base{position:relative; height:13px; margin:0 -7%; background:linear-gradient(#3a4263, #1c2236 60%, #121627); border-radius:0 0 12px 12px; border:1px solid #2c3452; border-top:1px solid #4a5378;}
+.laptop-base span{position:absolute; top:0; left:50%; width:16%; height:5px; margin-left:-8%; background:#141a2c; border-radius:0 0 6px 6px;}
 .shots .shot-phone{
-  position:relative; z-index:2; width:230px; margin:-70px 4% 0 auto;
-  background:#0d1120; border:8px solid #1b2138; border-radius:30px;
-  box-shadow:var(--shadow); overflow:hidden;
+  position:relative; z-index:2; width:182px; margin:-215px -3% 0 auto; border-width:6px; border-radius:30px;
+  background:#0d101f; border:7px solid #161b2e; border-radius:38px; overflow:hidden;
+  box-shadow:0 0 0 1.5px #2c3452, 0 30px 70px rgba(0,0,0,.55);
 }
-.shot-phone-top{padding:11px 14px 9px; border-bottom:1px solid var(--line); background:#0d1120;}
-.shot-phone-top img{display:block; height:17px; width:auto;}
-.shot-phone > img{display:block; width:100%; height:auto;}
+.phone-island{position:absolute; top:7px; left:50%; transform:translateX(-50%); width:72px; height:20px; border-radius:12px; background:#000; z-index:3;}
+.phone-status{display:flex; justify-content:space-between; align-items:center; height:32px; padding:4px 20px 0 22px; font:600 11px/1 'IBM Plex Sans', system-ui, sans-serif; color:#f5f3ec;}
+.phone-status-icons{display:flex; gap:3px; align-items:flex-end;}
+.phone-status-icons i{display:block; width:3px; background:#f5f3ec; border-radius:1px;}
+.phone-status-icons i:nth-child(1){height:5px;} .phone-status-icons i:nth-child(2){height:7px;} .phone-status-icons i:nth-child(3){height:9px;}
+.shot-phone-top{display:flex; align-items:center; justify-content:space-between; padding:10px 14px 11px; border-bottom:1px solid var(--line); background:#0d101f;}
+.shot-phone-top img{display:block; height:13px; width:auto;}
+.shot-phone-top .phone-icons{gap:9px;} .shot-phone-top .phone-icons svg{width:14px; height:14px;}
+.phone-icons{display:flex; gap:12px; color:#c3c9de;}
+.phone-icons svg{width:16px; height:16px;}
+.shot-phone .phone-screen, .shot-phone .phone-nav{display:block; width:100%; height:auto;}
+.phone-home{height:16px; background:#0d1120; display:flex; justify-content:center;}
+.phone-home::after{content:""; width:76px; height:4px; border-radius:2px; background:#f5f3ec; opacity:.8; margin-top:5px;}
 @media (max-width:900px){ .shots{max-width:600px; width:100%; margin:0 auto;} }
 @media (max-width:520px){
   .shots .shot-desk{display:none;}
-  .shots .shot-phone{margin:0 auto; width:min(270px, 80vw);}
+  .shots .shot-phone{margin:0 auto; width:min(250px, 72vw);}
 }
 
 /* ---------- nav: keep the top bar on one line ---------- */
@@ -443,21 +459,26 @@ button.linklike{background:none; border:0; padding:0; font:inherit; cursor:point
 .wl-price-plus small{font-weight:400; font-size:13.5px; color:var(--ink-soft);}
 
 .wl-visual{position:relative; display:flex; justify-content:center; padding:20px 0;}
-.wl-phone{width:270px; background:#0d1120; border:9px solid #1b2138; border-radius:34px; box-shadow:0 30px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(255,122,46,.25); overflow:hidden; transform:rotate(2deg);}
-.wl-phone-top{display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid var(--line);}
+.wl-phone{position:relative; width:232px; background:#0d1120; border:7px solid #161b2e; border-radius:38px; box-shadow:0 0 0 1.5px #2c3452, 0 30px 80px rgba(0,0,0,.55); overflow:hidden; transform:rotate(2deg);}
+.wl-phone-top{display:flex; align-items:center; justify-content:space-between; padding:8px 14px 10px; border-bottom:1px solid var(--line);}
 .wl-logo-slot{font-family:'IBM Plex Mono', monospace; font-size:11px; font-weight:600; letter-spacing:.12em; color:var(--accent); border:1.5px dashed var(--accent); border-radius:6px; padding:6px 10px;}
 .wl-avatar{width:26px; height:26px; border-radius:50%; background:var(--surface-2); border:1px solid var(--line-strong);}
-.wl-phone-body{padding:14px; display:grid; gap:10px;}
-.wl-greet{font-family:'Big Shoulders Display', sans-serif; font-weight:800; font-size:24px;}
+.wl-phone-body{padding:12px; display:grid; gap:9px;}
+.wl-greet{font-family:'Big Shoulders Display', sans-serif; font-weight:800; font-size:22px;}
 .wl-stat-row{display:grid; grid-template-columns:repeat(3,1fr); gap:6px;}
 .wl-stat-row div{background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:8px;}
 .wl-stat-row b{display:block; font-family:'IBM Plex Mono', monospace; font-size:16px; color:var(--accent);}
-.wl-stat-row span{font-size:10px; color:var(--muted);}
+.wl-stat-row span{font-size:9.5px; color:var(--muted); white-space:nowrap;}
 .wl-card-mini{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:10px; display:grid; gap:8px;}
 .wl-card-mini.exclusive{border-color:var(--accent); background:var(--accent-soft);}
 .wl-tag{justify-self:start; font-family:'IBM Plex Mono', monospace; font-size:9.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; background:var(--accent); color:var(--accent-ink); border-radius:3px; padding:2px 6px;}
 .wl-line{height:7px; border-radius:4px; background:rgba(245,243,236,.35);}
-.wl-line.w70{width:70%;} .wl-line.w50{width:50%;} .wl-line.w60{width:60%;}
+.wl-line.w70{width:70%;} .wl-line.w50{width:50%;} .wl-line.w60{width:60%;} .wl-line.w40{width:40%;} .wl-line.dim{opacity:.5;}
+.wl-section-label{font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-top:2px;}
+.wl-task{display:flex; align-items:center; gap:10px; background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:9px 10px;}
+.wl-task .wl-line{flex:none;}
+.wl-check{width:14px; height:14px; border-radius:4px; border:1.5px solid var(--line-strong); flex:none;}
+.wl-check.on{background:var(--accent); border-color:var(--accent);}
 .wl-bar{height:6px; border-radius:3px; background:var(--surface-2); overflow:hidden;}
 .wl-bar i{display:block; height:100%; background:var(--accent);}
 .wl-phone-nav{display:flex; justify-content:space-around; padding:12px 10px 14px; border-top:1px solid var(--line);}
@@ -472,7 +493,7 @@ button.linklike{background:none; border:0; padding:0; font:inherit; cursor:point
 .wl-swatch.s2{background:#f5f3ec;} .wl-swatch.s3{background:#2b3452;}
 @keyframes wl-bob{0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)}}
 @media (prefers-reduced-motion: reduce){ .wl-float{animation:none;} }
-@media (max-width:520px){ .wl-float-a{left:0; top:50%;} .wl-float-b{right:0; bottom:6%;} .wl-phone{width:240px;} }
+@media (max-width:520px){ .wl-float-a{left:0; top:50%;} .wl-float-b{right:0; bottom:6%;} .wl-phone{width:220px;} }
 
 .wl-how{margin-top:64px;}
 .wl-how-title{font-family:'IBM Plex Mono', monospace; font-size:12px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:16px;}
@@ -499,3 +520,67 @@ button.linklike{background:none; border:0; padding:0; font:inherit; cursor:point
 .dmai-services svg{width:26px; height:26px; color:var(--accent);}
 .dmai-services b{font-size:16px; color:var(--ink);}
 .dmai-services span{font-size:14px; color:var(--ink-soft);}
+
+/* ---------- hero: live notifications + gentle float ---------- */
+/* Desktop: laptop turned slightly towards the text, phone tilted, both drifting gently out of step. */
+.shots{perspective:1600px;}
+.shots .shot-desk{transform-style:preserve-3d; animation:float-laptop 9s ease-in-out infinite;}
+.shots .shot-phone{animation:float-phone 7s ease-in-out infinite;}
+@keyframes float-laptop{
+  0%,100%{transform:rotateY(-16deg) rotateX(7deg) rotateZ(-1.5deg) translateY(0);}
+  50%{transform:rotateY(-12deg) rotateX(5deg) rotateZ(-1deg) translateY(-10px);}
+}
+@keyframes float-phone{
+  0%,100%{transform:rotate(-7deg) translateY(0);}
+  50%{transform:rotate(-4deg) translateY(-14px);}
+}
+.hero-toasts{position:absolute; left:2%; bottom:14%; width:250px; height:62px; z-index:4; pointer-events:none;}
+.toast{position:absolute; inset:0; display:flex; align-items:center; gap:11px; padding:10px 14px; background:rgba(23,28,48,.96); border:1px solid var(--line-strong); border-left:3px solid var(--accent); border-radius:10px; box-shadow:0 18px 40px rgba(0,0,0,.45); opacity:0; transform:translateY(14px) scale(.97); animation:toast-cycle 16s infinite;}
+.toast b{display:block; font-size:13.5px; font-weight:600; color:var(--ink); line-height:1.25;}
+.toast small{display:block; font-size:12px; color:var(--muted); margin-top:2px;}
+.toast-ic{flex:none; width:30px; height:30px; border-radius:8px; display:grid; place-items:center; background:var(--accent-soft); color:var(--accent);}
+.toast-ic.ok{background:rgba(52,199,89,.15); color:#3ccf6e;}
+.toast-ic svg{width:17px; height:17px;}
+.toast.t2{animation-delay:4s;} .toast.t3{animation-delay:8s;} .toast.t4{animation-delay:12s;}
+@keyframes toast-cycle{
+  0%{opacity:0; transform:translateY(14px) scale(.97);}
+  4%,22%{opacity:1; transform:translateY(0) scale(1);}
+  26%,100%{opacity:0; transform:translateY(-10px) scale(.98);}
+}
+.hero h1, .hero .lede, .hero .hero-ctas, .hero .reassure, .hero .eyebrow{animation:hero-in .8s cubic-bezier(.2,.7,.2,1) both;}
+.hero .eyebrow{animation-delay:.05s;} .hero h1{animation-delay:.12s;} .hero .lede{animation-delay:.24s;} .hero .hero-ctas{animation-delay:.34s;} .hero .reassure{animation-delay:.44s;}
+.shots{animation:hero-in 1s cubic-bezier(.2,.7,.2,1) .3s both;}
+@keyframes hero-in{from{opacity:0; transform:translateY(18px);} to{opacity:1; transform:none;}}
+@media (max-width:900px){ .hero-toasts{left:0; bottom:8%;} }
+@media (max-width:520px){ .hero-toasts{left:50%; margin-left:-125px; bottom:-26px;} .shots{padding-bottom:40px;} }
+
+/* ---------- scroll reveal ---------- */
+.js .reveal{opacity:0; transition:opacity .6s ease var(--d,0ms), transform .6s cubic-bezier(.2,.7,.2,1) var(--d,0ms);}
+.js .reveal-up{transform:translateY(14px);}
+.js .reveal-right{transform:translateX(40px);}
+.js .reveal-zoom{transform:scale(.97);}
+.js .reveal.in{opacity:1; transform:none;}
+.quote{transition:transform .25s, box-shadow .25s, border-color .25s;}
+.quote:hover{transform:translateY(-4px); box-shadow:var(--shadow);}
+.dmai-services li{transition:transform .2s, border-color .2s;}
+.dmai-services li:hover{transform:translateY(-3px); border-color:var(--accent);}
+
+@media (prefers-reduced-motion: reduce){
+  .shots .shot-phone, .shots .shot-desk, .hero h1, .hero .lede, .hero .hero-ctas, .hero .reassure, .hero .eyebrow, .shots{animation:none;}
+  .toast{animation:none;} .toast.t1{opacity:1; transform:none;}
+  .js .reveal{opacity:1; transform:none; transition:none;}
+}
+
+/* ---------- hero on phones and tablets: just the phone, tilted and floating ---------- */
+@media (max-width:900px){
+  .shots{padding:10px 0 50px;}
+  .shots .shot-desk{display:none;}
+  .shots .shot-phone{margin:0 auto; width:min(220px, 60vw); border-width:7px; border-radius:34px; animation:float-tilt 6s ease-in-out infinite;}
+  .shot-phone-top img{height:15px;}
+  .hero-toasts{left:50%; margin-left:-125px; bottom:-14px;}
+}
+@keyframes float-tilt{
+  0%,100%{transform:rotate(-5deg) translateY(0);}
+  50%{transform:rotate(-3deg) translateY(-12px);}
+}
+@media (prefers-reduced-motion: reduce){ .shots .shot-phone{transform:rotate(-5deg);} .shots .shot-desk{transform:rotateY(-14deg) rotateX(6deg) rotateZ(-1deg);} }
