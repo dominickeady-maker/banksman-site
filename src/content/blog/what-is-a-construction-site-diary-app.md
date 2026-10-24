@@ -1,20 +1,34 @@
 ---
-title: "What Is a Construction Site Diary App?"
-description: "A construction site diary app records daily site activity — tasks, hours, materials and photos — digitally instead of on paper. Here's how it works."
-keyword: "construction site diary app"
+title: What Is a Construction Site Diary App?
+description: A construction site diary app records daily site activity — tasks,
+  hours, materials and photos — digitally instead of on paper. Here's how it
+  works.
+keyword: construction site diary app
 author: Matt
 category: Site management
-pubDate: 2026-10-13
+pubDate: 2026-10-24
+draft: false
 cover: /assets/blog/what-is-a-construction-site-diary-app.webp
-coverAlt: "Illustration of a paper site diary being replaced by a site diary app on a phone"
-draft: true
+coverAlt: Illustration of a paper site diary being replaced by a site diary app
+  on a phone
 faq:
-  - question: "Is a site diary app the same as project management software?"
-    answer: "Not quite. Project management software (like Fieldwire, JobTread, or similar) often includes site diary functionality as one part of a much larger, more complex system aimed at bigger firms. A site diary app can be a simpler, standalone tool focused specifically on daily site recording — which is often all a smaller or mid-size firm actually needs."
-  - question: "Who uses a site diary app?"
-    answer: "Typically the site manager or foreman logs the day's activity, while office staff or a project manager reviews and approves timesheets, materials requests, and progress remotely."
-  - question: "Does it replace a physical site diary for compliance purposes?"
-    answer: "A digital record is generally accepted, and it's considerably easier to produce if it's ever needed — for a dispute, an insurance claim, or an audit — since it's searchable and timestamped rather than a handwritten book that can go missing. If a contract, client or insurer specifies how site records must be kept, check what they require before retiring the paper diary."
+  - question: Is a site diary app the same as project management software?
+    answer: Not quite. Project management software (like Fieldwire, JobTread, or
+      similar) often includes site diary functionality as one part of a much
+      larger, more complex system aimed at bigger firms. A site diary app can be
+      a simpler, standalone tool focused specifically on daily site recording —
+      which is often all a smaller or mid-size firm actually needs.
+  - question: Who uses a site diary app?
+    answer: Typically the site manager or foreman logs the day's activity, while
+      office staff or a project manager reviews and approves timesheets,
+      materials requests, and progress remotely.
+  - question: Does it replace a physical site diary for compliance purposes?
+    answer: A digital record is generally accepted, and it's considerably easier to
+      produce if it's ever needed — for a dispute, an insurance claim, or an
+      audit — since it's searchable and timestamped rather than a handwritten
+      book that can go missing. If a contract, client or insurer specifies how
+      site records must be kept, check what they require before retiring the
+      paper diary.
 ---
 
 A construction site diary app is a digital tool for recording what happens on a building site each day — tasks completed, hours worked, materials used, and photo evidence — in place of a paper diary or scattered messages. It's used by site managers and workers to keep a running, searchable record of the job.
