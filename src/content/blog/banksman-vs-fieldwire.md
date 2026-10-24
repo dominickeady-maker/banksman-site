@@ -6,8 +6,8 @@ description: A straight comparison of Banksman and Fieldwire for a
 keyword: banksman vs fieldwire
 author: Matt
 category: Choosing software
-pubDate: 2026-10-13
-draft: true
+pubDate: 2026-10-24
+draft: false
 cover: /assets/blog/banksman-vs-fieldwire.webp
 coverAlt: Illustration of two construction software options compared side by side
 faq:
