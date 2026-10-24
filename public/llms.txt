@@ -27,7 +27,7 @@ Banksman keeps a building firm's tasks, timesheets, material requests, drawings,
 
 ## Who it's for
 
-Builders, bricklayers, groundworkers, roofers, electricians, plumbers and subcontractors in the UK.
+Builders, bricklayers, groundworkers, roofers, electricians, plumbers, subcontractors, worktop fabricators and fitters, interior fit-out teams, scaffolders, joiners, steel erectors and window fitters in the UK.
 
 ## Key pages
 
@@ -39,7 +39,7 @@ Builders, bricklayers, groundworkers, roofers, electricians, plumbers and subcon
 - [Blog](https://banksman.app/blog/)
 - [Free CIS calculator](https://banksman.app/tools/cis-calculator/)
 - [Free day rate calculator](https://banksman.app/tools/day-rate-calculator/)
-- [For builders](https://banksman.app/for-builders/), [bricklayers](https://banksman.app/for-bricklayers/), [groundworkers](https://banksman.app/for-groundworkers/), [roofers](https://banksman.app/for-roofers/), [electricians](https://banksman.app/for-electricians/), [plumbers](https://banksman.app/for-plumbers/), [subcontractors](https://banksman.app/for-subcontractors/)
+- [For builders](https://banksman.app/for-builders/), [bricklayers](https://banksman.app/for-bricklayers/), [groundworkers](https://banksman.app/for-groundworkers/), [roofers](https://banksman.app/for-roofers/), [electricians](https://banksman.app/for-electricians/), [plumbers](https://banksman.app/for-plumbers/), [subcontractors](https://banksman.app/for-subcontractors/), [worktop fitters](https://banksman.app/for-worktop-fitters/), [interior fit-out teams](https://banksman.app/for-fit-out-contractors/), [scaffolders](https://banksman.app/for-scaffolders/), [joiners](https://banksman.app/for-joiners/), [steel erectors](https://banksman.app/for-steel-erectors/), [window fitters](https://banksman.app/for-window-fitters/)
 
 ## Common questions
 

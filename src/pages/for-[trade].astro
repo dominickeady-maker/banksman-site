@@ -26,6 +26,12 @@ const ACCENT: Record<string, string> = {
   electricians: 'before the boards go up.',
   plumbers: 'for one fitting.',
   subcontractors: 'and have the proof when they query it.',
+  'worktop-fitters': 'and have a photo of every stage.',
+  'fit-out-contractors': 'with every snag signed off and photographed.',
+  scaffolders: 'with the photos to prove it.',
+  joiners: 'without chasing the timber or the drawings.',
+  'steel-erectors': 'and a photo of every connection.',
+  'window-fitters': 'and prove it was sealed right.',
 };
 const tail = ACCENT[trade.slug] && trade.h1.endsWith(ACCENT[trade.slug]) ? ACCENT[trade.slug] : '';
 const h1Lead = tail ? trade.h1.slice(0, -tail.length).trim() : trade.h1;
@@ -146,7 +152,6 @@ const schema = [
         <div>
           <div class="eyebrow">{trade.name}: questions</div>
           <h2 class="big">Straight answers.</h2>
-          <p class="faq-note">Anything else? Ring Dom on <a href="tel:+447508300353">07508 300353</a> or Matt on <a href="tel:+447964660071">07964 660071</a>.</p>
         </div>
         <div class="faq-list">
           {trade.faq.map(({ q, a }, i) => (

@@ -387,12 +387,13 @@ const schema = [{
   <!-- ================= ABOUT ================= -->
   <section id="about">
     <div class="wrap about">
-      <div class="about-card">
+      <a class="about-card" href="/meet-the-team/" aria-label="Built by Dom Keady. Meet the team">
         <div class="mono">Built by</div>
         <div class="biz">Dom Keady</div>
         <div class="loc">Slaithwaite, Huddersfield · West Yorkshire</div>
         <div class="work">New builds · extensions · renovations · retaining walls · hard landscaping</div>
-      </div>
+        <div class="about-more">Meet the team →</div>
+      </a>
       <div>
         <h2>Built by a builder, not a startup.</h2>
         <p class="lede">I'm Dom — a bricklayer running my own building firm in West Yorkshire. Banksman exists because I got sick of running my own sites on WhatsApp and a biro. No fake client logos, no made-up reviews here — just a live demo you can log into right now and judge for yourself.</p>
@@ -406,7 +407,6 @@ const schema = [{
       <div>
         <div class="eyebrow">Questions</div>
         <h2 class="big">Straight answers.</h2>
-        <p class="faq-note">Anything else? Ring Dom on <a href="tel:+447508300353">07508 300353</a> or Matt on <a href="tel:+447964660071">07964 660071</a>.</p>
       </div>
       <div class="faq-list">
         {FAQ.map(({ q, a }, i) => (
