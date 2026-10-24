@@ -59,6 +59,8 @@ Start from [`BLOG_TEMPLATE.md`](BLOG_TEMPLATE.md), or click **New Blog post** in
 3. Set **Status** to **Ready**. Decap won't publish anything that isn't Ready.
 4. Click **Publish → Publish now**. That merges the post into `main`, and Netlify rebuilds in a minute or two.
 
+**To schedule a post:** set **Publish date** to the day you want it live, then Save → Ready → Publish now as normal. It's merged straight away but stays off the site until that day: the site rebuilds every morning at about 05:00 (06:00 in summer) and picks it up. The rebuild is the Netlify scheduled function `netlify/functions/scheduled-publish.mjs`, and it needs a `SCHEDULED_BUILD_HOOK` environment variable in Netlify (setup steps are at the top of that file).
+
 Netlify deploy previews are switched off to save build credits (see `scripts/netlify-ignore.sh`), so check a post with `npm run dev` if you need to see it first.
 
 **Posts marked DRAFT in the list** were saved before this change: they're on GitHub but hidden from visitors, and Decap still shows them as *Published*. To put one live, open it, set **Publish date** to today, then Save → Ready → Publish now.

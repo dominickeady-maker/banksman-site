@@ -15,6 +15,13 @@ export const SITE = {
   ],
   // Google Calendar appointment schedule for onboarding calls. Paste the booking page link here.
   bookingUrl: 'https://calendar.app.google/dDXv4gbhPwr3VkBw9',
+  // Social profiles. Paste each full profile link; an icon only shows in the footer once its link is filled in.
+  social: {
+    linkedin: 'https://www.linkedin.com/company/banksman-app',
+    facebook: 'https://www.facebook.com/profile.php?id=61594741089239',
+    instagram: 'https://www.instagram.com/banksman.app',
+    tiktok: '',
+  },
   realPeople: 'Speak to Dom or Matt — real people, no bots or call centres.',
   company: 'DM.AI 4U Ltd',
   locale: 'en_GB',

@@ -12,7 +12,7 @@ esac
 # First build, cleared cache or a manual "Trigger deploy": always build
 if [ -z "${CACHED_COMMIT_REF:-}" ] || [ "$CACHED_COMMIT_REF" = "$COMMIT_REF" ]; then exit 1; fi
 # Anything that goes into the site (if git can't compare, it builds)
-if git diff --quiet "$CACHED_COMMIT_REF" "$COMMIT_REF" -- src public astro.config.mjs package.json package-lock.json tsconfig.json netlify.toml; then
+if git diff --quiet "$CACHED_COMMIT_REF" "$COMMIT_REF" -- src public netlify astro.config.mjs package.json package-lock.json tsconfig.json netlify.toml; then
   echo "Nothing on the site changed since the last deploy (${CACHED_COMMIT_REF:0:7}..${COMMIT_REF:0:7}); skipping the build."
   exit 0
 fi

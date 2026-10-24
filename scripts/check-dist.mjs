@@ -26,8 +26,10 @@ function resolve(href) {
 
 // Which posts are drafts, read straight from source.
 const blogDir = join(root, 'src/content/blog');
+// Scheduled posts (publish date still in the future) are held back the same way.
+const isFuture = (text) => { const m = text.match(/^pubDate:\s*['"]?([\d-]+)/m); return m ? new Date(m[1]).getTime() > Date.now() : false; };
 const drafts = walk(blogDir)
-  .filter((p) => p.endsWith('.md') && /^draft:\s*true\s*$/m.test(read(p)))
+  .filter((p) => p.endsWith('.md') && (/^draft:\s*true\s*$/m.test(read(p)) || isFuture(read(p))))
   .map((p) => p.slice(blogDir.length + 1, -3));
 
 for (const file of files.filter(isText)) {

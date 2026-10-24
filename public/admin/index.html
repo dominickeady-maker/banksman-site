@@ -28,6 +28,41 @@
           throw new Error('Unpublish is switched off because it deletes the post. Nothing has been changed.');
         },
       });
+
+      // Preview pane: show the post the way it looks on banksman.app (two-tone headline,
+      // byline, cover picture, body, FAQ) instead of Decap's default list of every field.
+      // SEO fields such as the target keyword are never shown on the live site.
+      var PostPreview = createClass({
+        render: function () {
+          var entry = this.props.entry;
+          var d = function (k) { return entry.getIn(['data', k]); };
+          var title = d('title') || 'Post title';
+          var i = title.indexOf(': ');
+          var lead = i > 0 ? title.slice(0, i + 1) : title;
+          var accent = i > 0 ? title.slice(i + 2) : '';
+          var author = d('author') || '';
+          var initials = author.split(/\s+/).map(function (w) { return w[0] || ''; }).join('').slice(0, 2).toUpperCase();
+          var date = d('pubDate');
+          var dateText = date ? new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
+          var slug = (entry.get('slug') || '').trim();
+          var cover = d('cover') || (slug ? '/assets/blog/' + slug + '.webp' : '');
+          var coverAsset = cover ? this.props.getAsset(cover) : null;
+          var faq = d('faq');
+          var faqItems = faq && faq.size ? faq.toArray().map(function (f, n) {
+            return h('details', { key: n, open: n === 0 }, h('summary', {}, h('h3', {}, f.get('question'))), h('p', {}, f.get('answer')));
+          }) : null;
+          return h('div', { className: 'pv' },
+            h('div', { className: 'pv-crumbs' }, 'Blog / ', h('span', { className: 'pv-cat' }, d('category') || 'Site management')),
+            h('h1', { className: 'pv-title' }, lead, accent ? ' ' : '', accent ? h('span', {}, accent) : null),
+            h('div', { className: 'pv-byline' }, h('span', { className: 'pv-avatar' }, initials), h('span', { className: 'pv-meta' }, author + (dateText ? ' · ' + dateText : ''))),
+            coverAsset ? h('img', { className: 'pv-cover', src: coverAsset.toString(), alt: d('coverAlt') || '' }) : null,
+            h('div', { className: 'pv-body' }, this.props.widgetFor('body')),
+            faqItems ? h('div', { className: 'pv-faq' }, h('div', { className: 'pv-eyebrow' }, 'Questions'), h('h2', {}, 'FAQ'), faqItems) : null,
+            h('p', { className: 'pv-note' }, 'Preview of the post. The target keyword, Google title and descriptions are used by search engines and aren\'t shown on the page.')
+          );
+        },
+      });
+      CMS.registerPreviewTemplate('blog', PostPreview);
     </script>
   </body>
 </html>

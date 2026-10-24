@@ -2,9 +2,13 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 
 export type Post = CollectionEntry<'blog'>;
 
-// Drafts are visible in `npm run dev` and never built for production.
+// A post with a publish date in the future is scheduled: it stays off the live site until that
+// day's build. A daily rebuild (netlify/functions/scheduled-publish.mjs) picks it up.
+export const isScheduled = (post: Post) => post.data.pubDate.getTime() > Date.now();
+
+// Drafts and scheduled posts are visible in `npm run dev` and never built for production.
 export async function getPosts(): Promise<Post[]> {
-  const posts = await getCollection('blog', ({ data }) => import.meta.env.DEV || !data.draft);
+  const posts = await getCollection('blog', ({ data }) => import.meta.env.DEV || (!data.draft && data.pubDate.getTime() <= Date.now()));
   return posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 }
 

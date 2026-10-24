@@ -600,3 +600,11 @@ button.linklike{background:none; border:0; padding:0; font:inherit; cursor:point
 .faq-list details[open] summary::after{transform:rotate(45deg); background:var(--accent); color:var(--accent-ink);}
 .faq-list summary:hover h3{color:var(--accent);}
 .faq-list details p{margin:0 0 18px; color:var(--ink-soft); font-size:16px; max-width:62ch;}
+
+/* ---------- footer social icons ---------- */
+.social{text-align:center; padding:8px 0 30px; margin-bottom:30px; border-bottom:1px solid var(--line);}
+.social-title{font-family:'IBM Plex Mono', monospace; font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--ink); margin:0 0 16px;}
+.social-list{list-style:none; margin:0; padding:0; display:flex; justify-content:center; gap:22px; flex-wrap:wrap;}
+.social-list a{display:grid; place-items:center; width:46px; height:46px; color:var(--accent); transition:transform .2s, color .2s;}
+.social-list svg{width:34px; height:34px; fill:currentColor;}
+.social-list a:hover{transform:translateY(-3px); color:#ff9a5c;}
