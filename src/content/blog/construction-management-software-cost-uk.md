@@ -1,20 +1,29 @@
 ---
-title: "How Much Does Construction Management Software Cost in the UK?"
-description: "UK construction management software pricing ranges from free tools to enterprise platforms costing thousands a month. Here's what actually drives the cost."
-keyword: "construction management software cost UK"
+title: How Much Does Construction Management Software Cost in the UK?
+description: UK construction management software pricing ranges from free tools
+  to enterprise platforms costing thousands a month. Here's what actually drives
+  the cost.
+keyword: construction management software cost UK
 author: Matt
 category: Choosing software
-pubDate: 2026-10-13
+pubDate: 2026-10-24
+draft: false
 cover: /assets/blog/construction-management-software-cost-uk.webp
-coverAlt: "Illustration of a price tag with a pound sign, for the cost of construction management software in the UK"
-draft: true
+coverAlt: Illustration of a price tag with a pound sign, for the cost of
+  construction management software in the UK
 faq:
-  - question: "Is free construction software worth using?"
-    answer: "Free tiers usually cap out fast — limited users, limited storage, or limited features — and are often a funnel toward a paid plan rather than a genuinely sustainable option once you're relying on it daily."
-  - question: "Does cheaper mean fewer features that matter?"
-    answer: "Not always. A lot of enterprise pricing reflects scale and add-on modules a smaller firm doesn't need, rather than better coverage of the core day-to-day tasks."
-  - question: "Should I sign an annual contract to save money?"
-    answer: "Only once you're confident the tool fits how your site actually runs — a small monthly saving isn't worth being locked into something that doesn't get used."
+  - question: Is free construction software worth using?
+    answer: Free tiers usually cap out fast — limited users, limited storage, or
+      limited features — and are often a funnel toward a paid plan rather than a
+      genuinely sustainable option once you're relying on it daily.
+  - question: Does cheaper mean fewer features that matter?
+    answer: Not always. A lot of enterprise pricing reflects scale and add-on
+      modules a smaller firm doesn't need, rather than better coverage of the
+      core day-to-day tasks.
+  - question: Should I sign an annual contract to save money?
+    answer: Only once you're confident the tool fits how your site actually runs — a
+      small monthly saving isn't worth being locked into something that doesn't
+      get used.
 ---
 
 Construction management software in the UK typically costs anywhere from around £70–£150 a month + VAT for a small or mid-size firm using a flat-rate tool, up to several hundred or even thousands of pounds a month for enterprise platforms with per-seat pricing and custom quotes. The right figure depends far more on firm size and pricing model than on which specific product you pick.
