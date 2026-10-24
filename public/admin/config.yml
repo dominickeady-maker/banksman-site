@@ -12,9 +12,9 @@ backend:
     deleteMedia: 'Blog: delete “{{path}}”'
 
 # Each post is saved as a pull request until it is published from the Workflow tab.
-# Note: in Decap, "Published" only means the post has been merged into GitHub (main).
-# Whether it shows on banksman.app is decided by the post's own Draft tick box, which
-# is why every post in the list now says LIVE or DRAFT in front of its title.
+# Publish = live: /admin/index.html clears the post's `draft` flag on every save, so
+# whatever Decap publishes appears on banksman.app. Posts still marked draft from before
+# show as DRAFT in the list; open one, set the publish date, Save, then Publish.
 publish_mode: editorial_workflow
 
 site_url: https://banksman.app
@@ -45,9 +45,10 @@ collections:
       - { name: keyword, label: Target keyword, widget: string, hint: 'The search phrase this post is written for. Use it in the title or first paragraph.' }
       - { name: author, label: Author, widget: string, default: Matt }
       - { name: category, label: Category, widget: string, default: Site management, hint: 'Shown above the title and on the blog card.' }
-      - { name: pubDate, label: Publish date, widget: datetime, format: 'YYYY-MM-DD', date_format: 'DD/MM/YYYY', time_format: false, picker_utc: true, hint: 'Set this to the day the post goes live when you untick Draft.' }
+      - { name: pubDate, label: Publish date, widget: datetime, format: 'YYYY-MM-DD', date_format: 'DD/MM/YYYY', time_format: false, picker_utc: true, hint: 'Set this to the day the post goes live.' }
       - { name: updatedDate, label: Updated date, widget: datetime, format: 'YYYY-MM-DD', date_format: 'DD/MM/YYYY', time_format: false, picker_utc: true, required: false }
-      - { name: draft, label: 'Draft: hide this post from banksman.app', widget: boolean, default: true, hint: 'Ticked = hidden from the live site, even if Decap says Published. Untick it to put the post live.' }
+      # Set automatically: saving in /admin/ clears it, so Publish puts the post live (see /admin/index.html).
+      - { name: draft, label: Draft, widget: hidden, default: false }
       - { name: image, label: Share image (optional), widget: image, required: false, hint: '1200×630. Leave empty to use the generated share image.' }
       - { name: imageAlt, label: Share image alt text, widget: string, required: false }
       - { name: cover, label: Cover picture, widget: image, required: false, hint: '1200×675 (16:9). Shows on the blog page and at the top of the post. Leave empty to use /assets/blog/<file-name>.webp.' }

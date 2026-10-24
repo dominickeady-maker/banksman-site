@@ -44,13 +44,18 @@ Start from [`BLOG_TEMPLATE.md`](BLOG_TEMPLATE.md), or click **New Blog post** in
 
 ## Publishing through /admin/
 
-1. Go to `https://banksman.app/admin/` and log in with GitHub. You need write access to `dominickeady-maker/banksman-site`.
-2. **New Blog post**, or open an existing one. Use **Save** as often as you like. Each post is held as its own pull request on GitHub and doesn't touch the live site.
-3. On the **Workflow** tab, move the card from *Drafts* → *In review* → *Ready*.
-   - Netlify deploy previews are switched off to save build credits (see `scripts/netlify-ignore.sh`), so check the post with `npm run dev` if you need to see it first.
-4. To go live, untick **Draft**, set **Publish date**, save, then click **Publish** on the Workflow tab. That merges the post into `main`, and Netlify rebuilds in a minute or two.
+**In /admin/, Publish means live.** Every save clears the post's `draft` flag, so whatever Decap publishes appears on banksman.app. Until then, the post waits in its own pull request and the live site is untouched.
 
-**"Published" in Decap is not the same as live on the site.** Decap calls a post *Published* once it's merged into `main`. The post only appears on banksman.app when its **Draft** box is unticked. The post list shows **LIVE on the site** or **DRAFT (hidden from the site)** in front of every title, and the filter menu can show just one or the other. A post that is Published in Decap but still says DRAFT is on GitHub but hidden from visitors.
+1. Go to `https://banksman.app/admin/` and log in with GitHub. You need write access to `dominickeady-maker/banksman-site`.
+2. **New Blog post**, or open an existing one, and click **Save**. Save as often as you like; nothing goes live.
+3. Set **Status** to **Ready**. Decap won't publish anything that isn't Ready.
+4. Click **Publish → Publish now**. That merges the post into `main`, and Netlify rebuilds in a minute or two.
+
+Netlify deploy previews are switched off to save build credits (see `scripts/netlify-ignore.sh`), so check a post with `npm run dev` if you need to see it first.
+
+**Posts marked DRAFT in the list** were saved before this change: they're on GitHub but hidden from visitors, and Decap still shows them as *Published*. To put one live, open it, set **Publish date** to today, then Save → Ready → Publish now.
+
+**Unpublish is switched off.** In Decap it deletes the post from GitHub as well as the site. To take a post down, change it in Git (set `draft: true` in its front matter) rather than in /admin/. **Delete published entry** still works and deletes the post for good, so leave it alone unless that's what you want.
 
 Images you upload go into `public/images/blog/` and are served from `/images/blog/`.
 

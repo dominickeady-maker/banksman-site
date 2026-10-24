@@ -11,6 +11,23 @@
     <script src="https://unpkg.com/decap-cms@3.16.3/dist/decap-cms.js"></script>
     <script>
       CMS.registerPreviewStyle('/admin/preview.css');
+
+      // Publish = live. Every save clears the post's `draft` flag, so whatever Decap
+      // publishes (merges into main) shows on banksman.app. Until it's published, the
+      // change sits in its own pull request and the live site is untouched.
+      CMS.registerEventListener({
+        name: 'preSave',
+        handler: ({ entry }) => entry.get('data').set('draft', false),
+      });
+
+      // Decap's "Unpublish" deletes the post from the site AND from GitHub. Block it so a
+      // post can't be lost by accident. To take a post down, ask for it to be removed in Git.
+      CMS.registerEventListener({
+        name: 'preUnpublish',
+        handler: () => {
+          throw new Error('Unpublish is switched off because it deletes the post. Nothing has been changed.');
+        },
+      });
     </script>
   </body>
 </html>
