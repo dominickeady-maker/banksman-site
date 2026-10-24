@@ -48,4 +48,4 @@ If you're running somewhere between 2 and 25 people across a handful of sites, t
 
 ---
 
-*Banksman is site management software built by a working builder for firms this size — £79/month + VAT, no sales call. [Try the live demo](/#demo), no card required.*
+*Banksman is site management software built by a working builder for firms this size — £79/month inc. VAT, no sales call. [Try the live demo](/#demo), no card required.*

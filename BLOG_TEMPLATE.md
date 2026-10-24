@@ -28,7 +28,7 @@ Short paragraphs. Use **bold lead-ins** for lists of problems or options.
 
 Link to related posts with a trailing slash: [daywork vs price work](/blog/daywork-vs-price-work/).
 
-Prices always carry VAT: £79/month + VAT.
+Banksman prices include VAT: £79/month inc. VAT. Other prices: £10–£30 per user + VAT.
 
 ---
 

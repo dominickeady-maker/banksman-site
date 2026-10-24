@@ -44,4 +44,4 @@ Ask: does the price change if we add three more workers next month? If the answe
 
 ---
 
-*Banksman is £79/month + VAT flat for up to 10 users, £149/month + VAT for up to 25 — no per-seat pricing, no sales calls. [Try the live demo](/#demo), no card required.*
+*Banksman is £79/month inc. VAT flat for up to 10 users, £149/month inc. VAT for up to 25 — no per-seat pricing, no sales calls. [Try the live demo](/#demo), no card required.*

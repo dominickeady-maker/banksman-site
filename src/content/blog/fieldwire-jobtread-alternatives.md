@@ -38,7 +38,7 @@ Fieldwire is strong on plan markup and field coordination across larger, more co
 
 ## Where Banksman fits
 
-Banksman was built by a working builder running his own firm, specifically for the small-to-mid-size gap Fieldwire and JobTread aren't really aimed at. Flat £79–£149/month + VAT pricing, no sales call, and a live demo with realistic sample data you can log into right now — manager or worker login, no card required.
+Banksman was built by a working builder running his own firm, specifically for the small-to-mid-size gap Fieldwire and JobTread aren't really aimed at. Flat £79–£149/month inc. VAT pricing, no sales call, and a live demo with realistic sample data you can log into right now — manager or worker login, no card required.
 
 ---
 

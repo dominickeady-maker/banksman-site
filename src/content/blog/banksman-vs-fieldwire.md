@@ -21,7 +21,7 @@ For a 10-person building firm running a handful of sites, Banksman is generally 
 
 ## Pricing
 
-- **Banksman:** flat £79/month + VAT for up to 10 users, £149/month + VAT for up to 25. No per-seat charges, no negotiated quote.
+- **Banksman:** flat £79/month inc. VAT for up to 10 users, £149/month inc. VAT for up to 25. No per-seat charges, no negotiated quote.
 - **Fieldwire:** tiered, per-user pricing with a free tier for very small teams, scaling up through paid tiers as team size and feature needs grow. For a 10-person team wanting full functionality, this typically lands higher than Banksman's flat rate, and the cost grows further as the team does.
 
 ## Setup and onboarding

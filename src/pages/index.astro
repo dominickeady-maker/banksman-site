@@ -20,7 +20,7 @@ const extras = (Object.keys(FEATURES) as FeatureId[]).filter((id) => FEATURES[id
 const comingSoon = (Object.keys(FEATURES) as FeatureId[]).filter((id) => FEATURES[id].status === 'coming-soon');
 
 // Ported from the static banksman.app home page (live-site/index.html).
-const schema = [{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "Banksman", "url": "https://banksman.app", "logo": "https://banksman.app/assets/icon-512.png", "email": "dom@dm4u.ai", "telephone": "+447508300353", "contactPoint": [{"@type": "ContactPoint", "contactType": "sales", "name": "Dom Keady", "telephone": "+447508300353", "email": "dom@dm4u.ai", "areaServed": "GB"}, {"@type": "ContactPoint", "contactType": "sales", "name": "Matt Guille", "telephone": "+447964660071", "email": "matt@dm4u.ai", "areaServed": "GB"}], "parentOrganization": {"@type": "Organization", "name": "DM.AI 4U Ltd"}}, {"@type": "SoftwareApplication", "name": "Banksman", "applicationCategory": "BusinessApplication", "operatingSystem": "Web, iOS, Android", "url": "https://banksman.app", "description": "Construction site management app for UK builders: tasks, timesheets, materials, drawings, site photos and messages.", "offers": [{"@type": "Offer", "name": "Starter", "price": "79", "priceCurrency": "GBP"}, {"@type": "Offer", "name": "Growth", "price": "149", "priceCurrency": "GBP"}]}, {"@type": "WebSite", "name": "Banksman", "url": "https://banksman.app/"}]}];
+const schema = [{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "Banksman", "url": "https://banksman.app", "logo": "https://banksman.app/assets/icon-512.png", "email": "dom@dm4u.ai", "telephone": "+447508300353", "contactPoint": [{"@type": "ContactPoint", "contactType": "sales", "name": "Dom Keady", "telephone": "+447508300353", "email": "dom@dm4u.ai", "areaServed": "GB"}, {"@type": "ContactPoint", "contactType": "sales", "name": "Matt Guille", "telephone": "+447964660071", "email": "matt@dm4u.ai", "areaServed": "GB"}], "parentOrganization": {"@type": "Organization", "name": "DM.AI 4U Ltd"}}, {"@type": "SoftwareApplication", "name": "Banksman", "applicationCategory": "BusinessApplication", "operatingSystem": "Web, iOS, Android", "url": "https://banksman.app", "description": "Construction site management app for UK builders: tasks, timesheets, materials, drawings, site photos and messages.", "offers": [{"@type": "Offer", "name": "Starter", "price": "79", "priceCurrency": "GBP", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "79", "priceCurrency": "GBP", "unitText": "MONTH", "valueAddedTaxIncluded": true}}, {"@type": "Offer", "name": "Growth", "price": "149", "priceCurrency": "GBP", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "149", "priceCurrency": "GBP", "unitText": "MONTH", "valueAddedTaxIncluded": true}}]}, {"@type": "WebSite", "name": "Banksman", "url": "https://banksman.app/"}]}];
 ---
 <BaseLayout
   title={"Banksman — Construction site management software"}
@@ -83,7 +83,7 @@ const schema = [{"@context": "https://schema.org", "@graph": [{"@type": "Organiz
         </div>
         <div class="compare-row">
           <div class="old">Enterprise software priced for a company with an IT department</div>
-          <div class="new">£79 a month, set up by the bloke who built it</div>
+          <div class="new">£79 a month inc. VAT, set up by the bloke who built it</div>
         </div>
       </div>
     </div>
@@ -167,7 +167,7 @@ const schema = [{"@context": "https://schema.org", "@graph": [{"@type": "Organiz
         <div class="quote">
           <div class="quote-head">
             <div class="mono">Starter</div>
-            <div class="price">£79<span>/month</span></div>
+            <div class="price">£79<span>/month inc. VAT</span></div>
             <div class="tier">Up to 10 users</div>
           </div>
           <ul>
@@ -188,7 +188,7 @@ const schema = [{"@context": "https://schema.org", "@graph": [{"@type": "Organiz
         <div class="quote featured">
           <div class="quote-head">
             <div class="mono">Growth</div>
-            <div class="price">£149<span>/month</span></div>
+            <div class="price">£149<span>/month inc. VAT</span></div>
             <div class="tier">Up to 25 users</div>
           </div>
           <ul>
@@ -201,7 +201,7 @@ const schema = [{"@context": "https://schema.org", "@graph": [{"@type": "Organiz
         </div>
       </div>
       <p class="price-note">Not sure which? Ring Dom on <a href="tel:+447508300353">07508 300353</a> or Matt on <a href="tel:+447964660071">07964 660071</a> and we'll tell you straight — it's usually Starter.</p>
-      <p class="small-print">Prices exclude VAT. Cancel any time. Want a proper look before you pay? The live demo above takes four fields and no card.</p>
+      <p class="small-print">All prices include VAT. Cancel any time. Want a proper look before you pay? The live demo above takes four fields and no card.</p>
     </div>
   </section>
 
@@ -212,12 +212,12 @@ const schema = [{"@context": "https://schema.org", "@graph": [{"@type": "Organiz
         <div class="eyebrow">For agencies &amp; larger firms</div>
         <h2 class="big" style="margin-bottom:16px;">Your app. Your branding.</h2>
         <p style="color:var(--ink-soft); font-size:17px; max-width:50ch;">Want your own version to put in front of clients and your workforce? Banksman can be rebuilt in your company's logo and colours, on your own domain — the same app, wearing your name.</p>
-        <p style="color:var(--ink-soft); font-size:15px; max-width:50ch;">Want it bundled with an AI chatbot and automation for your enquiries? That's the full DM.AI 4U package, from around £350/month.</p>
+        <p style="color:var(--ink-soft); font-size:15px; max-width:50ch;">Want it bundled with an AI chatbot and automation for your enquiries? That's the full DM.AI 4U package, from around £350/month inc. VAT.</p>
       </div>
       <div class="wl-card">
         <div class="mono" style="font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft);">White-label setup</div>
-        <div class="price">£500–£1,000 <span>one-off</span></div>
-        <p style="font-size:14.5px; color:var(--ink); margin:12px 0 18px;">Secure your build slot with a £500 deposit, then we scope the branding together. Monthly plan on top, same prices as above.</p>
+        <div class="price">£500–£1,000 <span>one-off inc. VAT</span></div>
+        <p style="font-size:14.5px; color:var(--ink); margin:12px 0 18px;">Secure your build slot with a £500 deposit (inc. VAT), then we scope the branding together. Monthly plan on top, same prices as above.</p>
         <!-- STRIPE: replace with your Payment Link for the one-off white-label deposit -->
         <a class="btn btn-primary btn-block" href="https://buy.stripe.com/14AdR20cs4QbbfO6TB5sA06">Pay £500 deposit</a>
         <p style="font-size:13px; color:var(--ink-soft); margin:12px 0 0; text-align:center;">Rather talk first? Dom: <a href="tel:+447508300353" style="color:var(--accent);">07508 300353</a> · Matt: <a href="tel:+447964660071" style="color:var(--accent);">07964 660071</a></p>

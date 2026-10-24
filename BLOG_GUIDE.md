@@ -33,7 +33,7 @@ Start from [`BLOG_TEMPLATE.md`](BLOG_TEMPLATE.md), or click **New Blog post** in
 **House rules.** `npm run check` enforces the first five.
 
 1. **No `#` heading in the body.** Start with a direct-answer paragraph, then `##` sections.
-2. **Every price says "+ VAT"**, straight after the figure: `£79/month + VAT`, `£10–£30 per user + VAT`.
+2. **Every price says whether VAT is included**, straight after the figure. Banksman's prices include VAT: `£79/month inc. VAT`, `£149/month inc. VAT`. Market figures and other products' prices are quoted without it: `£10–£30 per user + VAT`.
 3. **Link the demo as `/#demo`**, never a bare `#demo`, which only works on the home page. `/#demo` is the four-field form that unlocks the logins. It's set in `src/site.ts`.
 4. **Describe the demo as "realistic sample data"**, not "real (fictional) data".
 5. **Drawings:** Banksman puts drawings on every phone, labelled by version. It does not do revision control, superseding or comparison, so don't claim it does, or imply it ("the current revision on every phone", "there is only one"). This applies to the site pages too.
@@ -47,9 +47,10 @@ Start from [`BLOG_TEMPLATE.md`](BLOG_TEMPLATE.md), or click **New Blog post** in
 1. Go to `https://banksman.app/admin/` and log in with GitHub. You need write access to `dominickeady-maker/banksman-site`.
 2. **New Blog post**, or open an existing one. Use **Save** as often as you like. Each post is held as its own pull request on GitHub and doesn't touch the live site.
 3. On the **Workflow** tab, move the card from *Drafts* → *In review* → *Ready*.
-   - Every saved change gets a Netlify deploy preview on its pull request, so you can see it before it goes live.
-   - Drafts are hidden in previews too. Untick **Draft** to see the finished page there.
+   - Netlify deploy previews are switched off to save build credits (see `scripts/netlify-ignore.sh`), so check the post with `npm run dev` if you need to see it first.
 4. To go live, untick **Draft**, set **Publish date**, save, then click **Publish** on the Workflow tab. That merges the post into `main`, and Netlify rebuilds in a minute or two.
+
+**"Published" in Decap is not the same as live on the site.** Decap calls a post *Published* once it's merged into `main`. The post only appears on banksman.app when its **Draft** box is unticked. The post list shows **LIVE on the site** or **DRAFT (hidden from the site)** in front of every title, and the filter menu can show just one or the other. A post that is Published in Decap but still says DRAFT is on GitHub but hidden from visitors.
 
 Images you upload go into `public/images/blog/` and are served from `/images/blog/`.
 
@@ -70,7 +71,7 @@ Commit to a branch, open a pull request, and check the Netlify preview before me
 1. **`check:content`** checks the source:
    - front matter is complete;
    - no H1 or `## FAQ` in the body;
-   - every price has "+ VAT";
+   - Banksman prices say "inc. VAT" and every other price says "+ VAT";
    - no bare `#demo` link;
    - no "(fictional)", and no revision-control claims in posts or pages;
    - internal blog links point at real posts;
