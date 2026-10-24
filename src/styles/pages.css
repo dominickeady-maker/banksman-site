@@ -114,3 +114,23 @@
 .feat-sub { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 18px; font-weight: 700; margin: 40px 0 14px; }
 .feat-soon { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 22px; }
 .feat-soon .chips { margin: 0; }
+
+/* Feature lists everywhere (home, trade pages, What's new): brand orange ticks, top rule and hover. */
+#features .feat-sub{display:flex; align-items:center; gap:12px; color:var(--accent); font-family:'IBM Plex Mono', monospace; font-size:13px; font-weight:600; letter-spacing:.12em; text-transform:uppercase;}
+#features .feat-sub::before{content:""; width:26px; height:2px; background:var(--accent);}
+.feature-list{border-color:rgba(255,122,46,.35); border-top:2px solid var(--accent);}
+.feature-item{position:relative; transition:background .2s;}
+.feature-item h3{display:flex; align-items:flex-start; gap:10px;}
+.feature-item h3::before{content:"✓"; flex:none; width:20px; height:20px; margin-top:1px; border-radius:50%; background:var(--accent); color:var(--accent-ink); font-size:12px; font-weight:800; display:grid; place-items:center; line-height:1;}
+.feature-item p{padding-left:30px;}
+.feature-item:hover{background:color-mix(in srgb, var(--accent-soft) 60%, var(--surface));}
+.feature-item::after{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--accent); transform:scaleY(0); transform-origin:top; transition:transform .25s;}
+.feature-item:hover::after{transform:scaleY(1);}
+#features .feature-cta{background:var(--accent); box-shadow:1px 0 0 var(--line), 0 1px 0 var(--line);}
+#features .feature-cta a{display:flex; flex-direction:column; justify-content:center; gap:6px; height:100%; min-height:120px; padding:22px 20px; text-decoration:none; color:var(--accent-ink);}
+#features .feature-cta span{font-family:'IBM Plex Mono', monospace; font-size:11.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; opacity:.8;}
+#features .feature-cta b{font-family:'Big Shoulders Display', sans-serif; font-size:30px; font-weight:800; line-height:1;}
+#features .feature-cta:hover{background:color-mix(in srgb, var(--accent) 88%, black);}
+/* Features that aren't live yet get a hollow orange marker instead of a tick. */
+.feature-item.soon h3::before{content:""; background:transparent; border:2px solid var(--accent); box-sizing:border-box;}
+.feature-item h3 .badge-soon{margin-left:auto; flex:none;}
