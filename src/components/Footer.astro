@@ -29,8 +29,12 @@ import { TRADES } from '../data/trades';
         <a href="/blog/">Blog</a>
         <a href="/privacy/">Privacy &amp; cookies</a>
         <button class="linklike" type="button" onclick="openCookieSettings()">Cookie settings</button>
-        <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
-        <a href={`tel:${SITE.phoneIntl}`}>{SITE.phone}</a>
+        {SITE.contacts.map((c) => (
+          <>
+            <a href={`tel:${c.phoneIntl}`}>{c.name}: {c.phone}</a>
+            <a href={`mailto:${c.email}`}>{c.email}</a>
+          </>
+        ))}
       </div>
     </div>
     <div class="legal-line">Banksman is a product of {SITE.company}. © {new Date().getFullYear()}.</div>

@@ -3,65 +3,113 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBand from '../components/CtaBand.astro';
 import '../styles/pages.css';
 
-// ---------------------------------------------------------------------------
-// VIDEO: put the file at public/assets/video/whats-new.mp4 (and a poster image at
-// public/assets/video/whats-new-poster.webp), then set VIDEO_READY to true.
-// ---------------------------------------------------------------------------
-const VIDEO_READY = false;
+// The walkthrough video and its poster live in public/assets/video/.
 const VIDEO_SRC = '/assets/video/whats-new.mp4';
 const VIDEO_POSTER = '/assets/video/whats-new-poster.webp';
 
-// The latest update. Placeholder entries until the video is in. Replace with the real features.
+// Everything shown in the video, grouped as it appears on the page.
 const UPDATE = {
   label: 'Latest update',
   date: 'October 2026',
-  features: [
-    { name: 'Feature name', summary: 'One or two plain sentences on what it does and why it helps on site.' },
-    { name: 'Feature name', summary: 'One or two plain sentences on what it does and why it helps on site.' },
-    { name: 'Feature name', summary: 'One or two plain sentences on what it does and why it helps on site.' },
-    { name: 'Feature name', summary: 'One or two plain sentences on what it does and why it helps on site.' },
-    { name: 'Feature name', summary: 'One or two plain sentences on what it does and why it helps on site.' },
-    { name: 'Feature name', summary: 'One or two plain sentences on what it does and why it helps on site.' },
+  headline: 'Health & safety, built in.',
+  groups: [
+    {
+      title: 'Your day and who’s on site',
+      features: [
+        { name: 'Your day at a glance', summary: 'Who’s on site, hours to approve, and deliveries on the way.' },
+        { name: 'Know who’s on site, live', summary: 'Every site and every sign-in, with a fire roll call in one tap.' },
+        { name: 'Signed in away from site?', summary: 'It gets flagged for you to approve or reject.' },
+        { name: 'A QR poster for the gate', summary: 'Your team scans in and out with their phone camera.' },
+        { name: 'Set the site and the radius', summary: 'Location is checked only at sign-in, never tracked.' },
+      ],
+    },
+    {
+      title: 'Health and safety documents',
+      features: [
+        { name: 'Inductions, RAMS, COSHH', summary: 'Upload once and keep every revision, while your team signs on their phone.' },
+        { name: 'See who’s signed what', summary: 'Chase outstanding sign-offs in one tap, and export to CSV.' },
+        { name: 'No induction, no sign-in', summary: 'If the induction changes, your team reads the new revision first.' },
+        { name: 'Signed with their finger', summary: 'Name, signature, time and revision are all on record.' },
+      ],
+    },
+    {
+      title: 'Accident book',
+      features: [
+        { name: 'Your accident book, sorted', summary: 'Accidents and near misses, each with a status and actions.' },
+        { name: 'The full story, on record', summary: 'What happened, who was involved, and what was done.' },
+        { name: 'RIDDOR? Flag it', summary: 'Root cause, status, and a link to the HSE guidance.' },
+        { name: 'Monthly safety summary', summary: 'Open, investigating and closed cases at a glance.' },
+        { name: 'Safety actions get done', summary: 'Each action has an owner, a due date and a big “Mark done” button.' },
+      ],
+    },
+    {
+      title: 'For your team on their phones',
+      features: [
+        { name: 'Your team signs in with one tap', summary: 'Pick the site, tap sign in, done. They’re on the roll call straight away.' },
+        { name: 'Their documents, on their phone', summary: 'New revisions are flagged for them to sign again.' },
+        { name: 'Report it in seconds', summary: 'An accident, near miss, dangerous occurrence or ill health.' },
+      ],
+    },
+    {
+      title: 'Running the job',
+      features: [
+        { name: 'Get your team off WhatsApp', summary: 'A group chat for every site, tied to the job.' },
+        { name: 'Hours, sorted for Friday', summary: 'Daywork and price work for the week, ready to approve.' },
+        { name: 'Track every delivery', summary: 'Requested, approved, ordered, dispatched and delivered.' },
+        { name: 'The right drawing, on site', summary: 'Every drawing labelled by version.' },
+      ],
+    },
   ],
 };
+
+const schema = [{
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: 'What’s new in Banksman: health & safety, built in',
+  description: 'A walkthrough of the latest Banksman features: site sign-in with QR codes and a fire roll call, health and safety documents with sign-off, an accident book with RIDDOR flags, and more.',
+  thumbnailUrl: `https://banksman.app${VIDEO_POSTER}`,
+  contentUrl: `https://banksman.app${VIDEO_SRC}`,
+  uploadDate: '2026-10-24',
+  duration: 'PT1M16S',
+}];
 ---
 <BaseLayout
-  title="What's new in Banksman | Latest features and updates"
-  description="The latest features and improvements in Banksman, the site management app for UK builders. Watch the walkthrough and see what's changed."
+  title="What's new in Banksman | Health & safety, built in"
+  description="The latest in Banksman: QR site sign-in and a fire roll call, health and safety documents your team signs on their phone, and an accident book with RIDDOR flags. Watch the walkthrough."
   current="whats-new"
-  noindex={!VIDEO_READY}
+  schema={schema}
 >
   <section class="page-head"><div class="wrap">
     <div class="eyebrow">What's new</div>
-    <h1>New in Banksman.</h1>
-    <p>Banksman keeps getting better, and most of it comes from what builders using it ask for. Here's the latest, with a quick walkthrough.</p>
+    <h1>{UPDATE.headline}</h1>
+    <p>Know who's on site, get every document signed and keep a proper accident book, all from the app your team already uses. Here's a quick walkthrough.</p>
   </div></section>
 
   <section class="wn-section">
     <div class="wrap">
       <div class="wn-video">
-        {VIDEO_READY ? (
-          <video controls playsinline preload="metadata" poster={VIDEO_POSTER}>
-            <source src={VIDEO_SRC} type="video/mp4" />
-            Your browser can't play this video.
-          </video>
-        ) : (
-          <div class="wn-video-placeholder">
-            <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l5.5-3.5L10 8.5Z"/></svg>
-            <span>Video coming soon</span>
-          </div>
-        )}
+        <video controls playsinline preload="metadata" poster={VIDEO_POSTER} width="1920" height="1080">
+          <source src={VIDEO_SRC} type="video/mp4" />
+          Your browser can't play this video.
+        </video>
       </div>
 
       <div class="wn-head">
         <div class="eyebrow">{UPDATE.label}</div>
         <div class="mono wn-date">{UPDATE.date}</div>
       </div>
-      <ul class="feature-list">
-        {UPDATE.features.map((f) => (
-          <li class="feature-item"><h3>{f.name}</h3><p>{f.summary}</p></li>
-        ))}
-      </ul>
+
+      {UPDATE.groups.map((group) => (
+        <div class="wn-group">
+          <h2 class="wn-group-title">{group.title}</h2>
+          <ul class="feature-list">
+            {group.features.map((f) => (
+              <li class="feature-item"><h3>{f.name}</h3><p>{f.summary}</p></li>
+            ))}
+          </ul>
+        </div>
+      ))}
+
       <p class="wn-more">Want to see it all for yourself? <a href="/#features">See every feature</a> or try the live demo below.</p>
     </div>
   </section>
@@ -71,13 +119,12 @@ const UPDATE = {
 
 <style>
   .wn-section { padding-top: 10px; }
-  .wn-video { border: 1px solid var(--line-strong); border-radius: 6px; overflow: hidden; background: var(--surface); box-shadow: var(--shadow); max-width: 960px; }
-  .wn-video video { display: block; width: 100%; height: auto; background: #000; }
-  .wn-video-placeholder { aspect-ratio: 16 / 9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: var(--muted); background: repeating-linear-gradient(135deg, var(--surface), var(--surface) 14px, var(--surface-2) 14px, var(--surface-2) 28px); }
-  .wn-video-placeholder svg { color: var(--accent); }
-  .wn-video-placeholder span { font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
-  .wn-head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin: 48px 0 16px; }
+  .wn-video { border: 1px solid var(--line-strong); border-radius: 6px; overflow: hidden; background: #000; box-shadow: var(--shadow); max-width: 960px; margin: 0 auto; }
+  .wn-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #000; }
+  .wn-head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin: 48px 0 6px; }
   .wn-date { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--muted); }
-  .wn-more { margin-top: 22px; color: var(--ink-soft); }
+  .wn-group { margin-top: 26px; }
+  .wn-group-title { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 19px; font-weight: 700; margin: 0 0 12px; }
+  .wn-more { margin-top: 28px; color: var(--ink-soft); }
   .wn-more a { color: var(--accent); }
 </style>

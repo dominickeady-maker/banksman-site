@@ -12,17 +12,23 @@ const TEAM = [
     initials: 'DK',
     role: 'CEO & founder',
     photo: '',
+    phone: '07508 300353',
+    phoneIntl: '+447508300353',
+    email: 'dom@dm4u.ai',
     bio: [
       'Dom is a bricklayer by trade and runs his own building firm in Huddersfield, taking on new builds, extensions, renovations, retaining walls and hard landscaping.',
       'Banksman was his idea. He got sick of running his own sites on WhatsApp groups and a biro, and couldn’t find software that suited a firm his size without the enterprise price tag. So he built the app he wanted: one place for tasks, drawings, timesheets, materials and site photos that the whole team would actually use.',
-      'He still runs his own jobs, so Banksman is shaped by what happens on a real site, not in a boardroom. Ring the number on this site and it’s Dom who answers.',
+      'He still runs his own jobs, so Banksman is shaped by what happens on a real site, not in a boardroom.',
     ],
   },
   {
     name: 'Matt Guille',
     initials: 'MG',
     role: 'CMO',
-    photo: '',
+    photo: '/assets/team/matt.webp',
+    phone: '07964 660071',
+    phoneIntl: '+447964660071',
+    email: 'matt@dm4u.ai',
     bio: [
       'Matt has more than ten years in marketing behind him, most of it helping a software start-up grow, with time in travel and e-commerce along the way.',
       'He’s a true all-rounder. Matt is as comfortable writing code or designing graphics as he is planning a campaign, which means ideas go from a sketch to something live without getting lost between departments.',
@@ -40,7 +46,7 @@ const schema = [{
     '@type': 'Organization',
     name: 'Banksman',
     parentOrganization: { '@type': 'Organization', name: SITE.company },
-    employee: TEAM.map((p) => ({ '@type': 'Person', name: p.name, jobTitle: p.role })),
+    employee: TEAM.map((p) => ({ '@type': 'Person', name: p.name, jobTitle: p.role, telephone: p.phoneIntl, email: p.email })),
   },
 }];
 ---
@@ -53,7 +59,7 @@ const schema = [{
   <section class="page-head"><div class="wrap">
     <div class="eyebrow">Meet the team</div>
     <h1>Small team. Real site experience.</h1>
-    <p>Banksman isn't made by a big software company. It's made by a builder who needed it and a marketer who knows how to get it in front of the people it's for.</p>
+    <p>Banksman isn't made by a big software company. It's made by a builder who needed it and a marketer who knows how to get it in front of the people it's for. Speak to Dom or Matt — real people, no bots or call centres.</p>
   </div></section>
 
   <section class="team-section">
@@ -63,13 +69,17 @@ const schema = [{
           <article class="team-card">
             <div class="team-photo">
               {person.photo
-                ? <img src={person.photo} alt={`${person.name}, ${person.role}`} width="480" height="480" loading="lazy" />
+                ? <img src={person.photo} alt={`${person.name}, ${person.role} at Banksman`} width="960" height="720" loading="lazy" />
                 : <span class="team-initials" aria-hidden="true">{person.initials}</span>}
             </div>
             <div class="team-body">
               <div class="mono team-role">{person.role}</div>
               <h2>{person.name}</h2>
               {person.bio.map((para) => <p>{para}</p>)}
+              <div class="team-contact">
+                <a href={`tel:${person.phoneIntl}`}>{person.phone}</a>
+                <a href={`mailto:${person.email}`}>{person.email}</a>
+              </div>
             </div>
           </article>
         ))}
@@ -92,6 +102,9 @@ const schema = [{
   .team-role { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
   .team-body h2 { font-size: clamp(30px, 4vw, 40px); line-height: 1; margin: 6px 0 14px; }
   .team-body p { color: var(--ink-soft); font-size: 16px; margin: 0 0 12px; }
-  .team-body p:last-child { margin-bottom: 0; }
+  .team-body p:last-of-type { margin-bottom: 0; }
+  .team-contact { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .team-contact a { font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600; color: var(--accent); text-decoration: none; }
+  .team-contact a:hover { text-decoration: underline; }
   @media (max-width: 600px) { .team-body { padding: 20px 18px 22px; } }
 </style>

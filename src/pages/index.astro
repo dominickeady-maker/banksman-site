@@ -20,7 +20,7 @@ const extras = (Object.keys(FEATURES) as FeatureId[]).filter((id) => FEATURES[id
 const comingSoon = (Object.keys(FEATURES) as FeatureId[]).filter((id) => FEATURES[id].status === 'coming-soon');
 
 // Ported from the static banksman.app home page (live-site/index.html).
-const schema = [{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "Banksman", "url": "https://banksman.app", "logo": "https://banksman.app/assets/icon-512.png", "email": "dom@dm4u.ai", "telephone": "+447508300353", "parentOrganization": {"@type": "Organization", "name": "DM.AI 4U Ltd"}}, {"@type": "SoftwareApplication", "name": "Banksman", "applicationCategory": "BusinessApplication", "operatingSystem": "Web, iOS, Android", "url": "https://banksman.app", "description": "Construction site management app for UK builders: tasks, timesheets, materials, drawings, site photos and messages.", "offers": [{"@type": "Offer", "name": "Starter", "price": "79", "priceCurrency": "GBP"}, {"@type": "Offer", "name": "Growth", "price": "149", "priceCurrency": "GBP"}]}, {"@type": "WebSite", "name": "Banksman", "url": "https://banksman.app/"}]}];
+const schema = [{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "Banksman", "url": "https://banksman.app", "logo": "https://banksman.app/assets/icon-512.png", "email": "dom@dm4u.ai", "telephone": "+447508300353", "contactPoint": [{"@type": "ContactPoint", "contactType": "sales", "name": "Dom Keady", "telephone": "+447508300353", "email": "dom@dm4u.ai", "areaServed": "GB"}, {"@type": "ContactPoint", "contactType": "sales", "name": "Matt Guille", "telephone": "+447964660071", "email": "matt@dm4u.ai", "areaServed": "GB"}], "parentOrganization": {"@type": "Organization", "name": "DM.AI 4U Ltd"}}, {"@type": "SoftwareApplication", "name": "Banksman", "applicationCategory": "BusinessApplication", "operatingSystem": "Web, iOS, Android", "url": "https://banksman.app", "description": "Construction site management app for UK builders: tasks, timesheets, materials, drawings, site photos and messages.", "offers": [{"@type": "Offer", "name": "Starter", "price": "79", "priceCurrency": "GBP"}, {"@type": "Offer", "name": "Growth", "price": "149", "priceCurrency": "GBP"}]}, {"@type": "WebSite", "name": "Banksman", "url": "https://banksman.app/"}]}];
 ---
 <BaseLayout
   title={"Banksman — Construction site management software"}
@@ -41,7 +41,7 @@ const schema = [{"@context": "https://schema.org", "@graph": [{"@type": "Organiz
         <ul class="reassure">
           <li>Four fields and you're straight into the real app — no card, ever</li>
           <li>The working app on real site data, not a video tour</li>
-          <li>Ring the number above and you get me, not a call centre</li>
+          <li>Speak to Dom or Matt — real people, no bots or call centres</li>
         </ul>
       </div>
 
@@ -152,7 +152,7 @@ const schema = [{"@context": "https://schema.org", "@graph": [{"@type": "Organiz
           </div>
           <label class="check"><input type="checkbox" name="walkthrough" value="yes"> Ring me as well and walk me through it on my own sites</label>
           <button class="btn btn-primary btn-block" type="submit">Unlock the live demo →</button>
-          <p class="small-print" style="margin-top:14px;">Four fields, no newsletter, no passing your details on — they come to me and nobody else. <a href="/privacy/">How we use your details</a>. Rather just talk? <a href="tel:+447508300353" style="color:var(--accent);">07508 300353</a>.</p>
+          <p class="small-print" style="margin-top:14px;">Four fields, no newsletter, no passing your details on — they come to us and nobody else. <a href="/privacy/">How we use your details</a>. Rather just talk? Ring Dom on <a href="tel:+447508300353" style="color:var(--accent);">07508 300353</a> or Matt on <a href="tel:+447964660071" style="color:var(--accent);">07964 660071</a>.</p>
         </form>
       </div>
     </div>
@@ -194,13 +194,13 @@ const schema = [{"@context": "https://schema.org", "@graph": [{"@type": "Organiz
           <ul>
             <li>Everything in Starter</li>
             <li>For larger teams across more sites</li>
-            <li>Priority support — straight to me</li>
+            <li>Priority support — straight to Dom or Matt</li>
           </ul>
           <!-- STRIPE: replace with your Payment Link for the £149 monthly plan -->
           <div class="foot"><a class="btn btn-primary btn-block" href="https://buy.stripe.com/aFa28k8IYgyT5Vu6TB5sA05">Start Growth — £149/mo</a></div>
         </div>
       </div>
-      <p class="price-note">Not sure which? <a href="tel:+447508300353">Ring me on 07508 300353</a> and I'll tell you straight — it's usually Starter.</p>
+      <p class="price-note">Not sure which? Ring Dom on <a href="tel:+447508300353">07508 300353</a> or Matt on <a href="tel:+447964660071">07964 660071</a> and we'll tell you straight — it's usually Starter.</p>
       <p class="small-print">Prices exclude VAT. Cancel any time. Want a proper look before you pay? The live demo above takes four fields and no card.</p>
     </div>
   </section>
@@ -220,7 +220,7 @@ const schema = [{"@context": "https://schema.org", "@graph": [{"@type": "Organiz
         <p style="font-size:14.5px; color:var(--ink); margin:12px 0 18px;">Secure your build slot with a £500 deposit, then we scope the branding together. Monthly plan on top, same prices as above.</p>
         <!-- STRIPE: replace with your Payment Link for the one-off white-label deposit -->
         <a class="btn btn-primary btn-block" href="https://buy.stripe.com/14AdR20cs4QbbfO6TB5sA06">Pay £500 deposit</a>
-        <p style="font-size:13px; color:var(--ink-soft); margin:12px 0 0; text-align:center;">Rather talk first? <a href="tel:+447508300353" style="color:var(--accent);">07508 300353</a></p>
+        <p style="font-size:13px; color:var(--ink-soft); margin:12px 0 0; text-align:center;">Rather talk first? Dom: <a href="tel:+447508300353" style="color:var(--accent);">07508 300353</a> · Matt: <a href="tel:+447964660071" style="color:var(--accent);">07964 660071</a></p>
       </div>
     </div>
   </section>
@@ -247,12 +247,22 @@ const schema = [{"@context": "https://schema.org", "@graph": [{"@type": "Organiz
       <h2>Get your team off WhatsApp.</h2>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="#demo">Try the live demo →</a>
-        <a class="btn btn-ghost" href="tel:+447508300353">Give me a ring</a>
+        <a class="btn btn-ghost" href="tel:+447508300353">Give us a ring</a>
       </div>
       <div class="contact-panel">
-        <a href="tel:+447508300353">07508 300353</a>
-        <a href="mailto:dom@dm4u.ai">dom@dm4u.ai</a>
-        <p>Ring or email me direct — you'll get me, not a call centre</p>
+        <div class="contact-people">
+          <div class="contact-person">
+            <div class="contact-name">Dom · CEO</div>
+            <a href="tel:+447508300353">07508 300353</a>
+            <a class="contact-email" href="mailto:dom@dm4u.ai">dom@dm4u.ai</a>
+          </div>
+          <div class="contact-person">
+            <div class="contact-name">Matt · CMO</div>
+            <a href="tel:+447964660071">07964 660071</a>
+            <a class="contact-email" href="mailto:matt@dm4u.ai">matt@dm4u.ai</a>
+          </div>
+        </div>
+        <p>Speak to Dom or Matt — real people, no bots or call centres.</p>
       </div>
     </div>
   </section>

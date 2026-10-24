@@ -34,7 +34,7 @@ const blogCurrent = here('blog');
     <a href="/meet-the-team/" {...here('team')}>Meet the team</a>
     <a href="/blog/" {...blogCurrent}>Blog</a>
     <a href={SITE.appUrl}>Log in</a>
-    <a href={`tel:${SITE.phoneIntl}`}>Call {SITE.phone}</a>
+    {SITE.contacts.map((c) => <a href={`tel:${c.phoneIntl}`}>Call {c.name} · {c.phone}</a>)}
     <div class="mm-cta"><a class="btn btn-primary" href={SITE.demoUrl}>Try the live demo →</a></div>
   </div>
 </header>
