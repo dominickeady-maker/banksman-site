@@ -1,0 +1,21 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  # Skip deploy previews, branch deploys, and main pushes that don't change the
+  # site (README, guides, check scripts): see scripts/netlify-ignore.sh
+  ignore = "bash scripts/netlify-ignore.sh"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Keep the CMS out of search results.
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+# The old static site published /sitemap.xml; keep that URL working for Search Console.
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap-index.xml"
+  status = 301
