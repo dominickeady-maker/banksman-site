@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroDevices from '../components/HeroDevices.astro';
 import { FEATURES, type FeatureId } from '../data/features';
 import '../styles/pages.css';
 
@@ -20,18 +21,73 @@ const extras = (Object.keys(FEATURES) as FeatureId[]).filter((id) => FEATURES[id
 const comingSoon = (Object.keys(FEATURES) as FeatureId[]).filter((id) => FEATURES[id].status === 'coming-soon');
 
 // Ported from the static banksman.app home page (live-site/index.html).
-const schema = [{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "Banksman", "url": "https://banksman.app", "logo": "https://banksman.app/assets/icon-512.png", "email": "dom@dm4u.ai", "telephone": "+447508300353", "contactPoint": [{"@type": "ContactPoint", "contactType": "sales", "name": "Dom Keady", "telephone": "+447508300353", "email": "dom@dm4u.ai", "areaServed": "GB"}, {"@type": "ContactPoint", "contactType": "sales", "name": "Matt Guille", "telephone": "+447964660071", "email": "matt@dm4u.ai", "areaServed": "GB"}], "parentOrganization": {"@type": "Organization", "name": "DM.AI 4U Ltd"}}, {"@type": "SoftwareApplication", "name": "Banksman", "applicationCategory": "BusinessApplication", "operatingSystem": "Web, iOS, Android", "url": "https://banksman.app", "description": "Construction site management app for UK builders: tasks, timesheets, materials, drawings, site photos and messages.", "offers": [{"@type": "Offer", "name": "Starter", "price": "79", "priceCurrency": "GBP", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "79", "priceCurrency": "GBP", "unitText": "MONTH", "valueAddedTaxIncluded": true}}, {"@type": "Offer", "name": "Growth", "price": "149", "priceCurrency": "GBP", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "149", "priceCurrency": "GBP", "unitText": "MONTH", "valueAddedTaxIncluded": true}}, {"@type": "Offer", "name": "Enterprise", "price": "299", "priceCurrency": "GBP", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "299", "priceCurrency": "GBP", "unitText": "MONTH", "valueAddedTaxIncluded": true}}, {"@type": "Offer", "name": "White label add-on", "price": "999", "priceCurrency": "GBP", "priceSpecification": {"@type": "PriceSpecification", "price": "999", "priceCurrency": "GBP", "valueAddedTaxIncluded": true}}]}, {"@type": "WebSite", "name": "Banksman", "url": "https://banksman.app/"}]}];
+// Questions answered on the page and sent to search engines and AI assistants as FAQ data.
+const FAQ = [
+  { q: 'What is Banksman?', a: 'Banksman is construction site management software for small and mid-size UK building firms. Tasks with photo proof, timesheets, material requests, drawings, site photos, site group chats, health and safety sign-offs, QR site sign-in and accident reports all live in one app for managers and workers.' },
+  { q: 'How much does Banksman cost?', a: 'Starter is £79 a month for up to 10 users, Growth is £149 a month for up to 25 users and Enterprise is £299 a month for up to 75 users. All prices include VAT, every plan includes every feature, and there is no contract. The white label add-on is a one-off £999 inc. VAT on top of any plan.' },
+  { q: 'Can I try Banksman before I pay?', a: 'Yes. The live demo is the real app on realistic sample data. Fill in four fields and your manager and worker logins appear straight away. There is no card and no sales call.' },
+  { q: 'Do my workers need to download an app?', a: 'No app store is needed. Your team adds Banksman to their phone home screen and it opens like any other app, with push notifications so updates do not sit unread.' },
+  { q: 'Can Banksman replace our WhatsApp groups?', a: 'Yes. Every site gets its own group chat, plus direct messages, kept apart from personal phone chats. Tasks, photos, hours, drawings and deliveries sit against the site too, so nothing gets buried in a group chat.' },
+  { q: 'Who is Banksman for?', a: 'Builders, bricklayers, groundworkers, roofers, electricians, plumbers and subcontractors running one or more sites in the UK. It was built by Dom Keady, a bricklayer who runs his own building firm in Huddersfield.' },
+  { q: 'Does Banksman help with health and safety?', a: 'Yes. Inductions, RAMS and COSHH assessments go on every phone for the team to read and sign with their finger, with a record of who has signed which revision. There is QR site sign-in with a fire roll call, and an accident and near-miss book with RIDDOR flags. Check your own legal duties with your H&S adviser.' },
+  { q: 'Can I get my data out of Banksman?', a: 'Yes. Every table, including timesheets, tasks, materials and drawings, exports straight to CSV for payroll, the accountant or head office. The data your team puts in belongs to your company.' },
+  { q: 'Does Banksman work without phone signal?', a: 'Not yet. Offline mode, which saves work with no signal and syncs when you are back in range, is being built and is marked "Coming soon" until it is live.' },
+  { q: 'What is the difference between my logo and colours and the white label add-on?', a: 'Every plan lets you upload your logo and app icon and pick your colours. The white label add-on (£999 inc. VAT, one-off) goes further: three 1-on-1 calls with Dom and Matt, exclusive features built for your business, and a fully customised app.' },
+  { q: 'Is there a contract or set-up fee?', a: 'No. You pay monthly and can cancel any time. Every plan includes an optional onboarding call: once you sign up, we email you a link to book a time with Dom or Matt.' },
+];
+
+const featureList = ['Tasks with photo proof', 'Daywork and price work timesheets', 'Material requests and delivery tracking', 'Drawings labelled by version', 'Site photo library', 'Site group chats and direct messages', 'Health and safety documents with sign-off', 'QR site sign-in and fire roll call', 'Accident and near-miss reports', 'Manager dashboard', 'Push notifications', 'Your logo and colours'];
+const vat = (price: string, unit?: string) => ({ '@type': unit ? 'UnitPriceSpecification' : 'PriceSpecification', price, priceCurrency: 'GBP', valueAddedTaxIncluded: true, ...(unit ? { unitText: unit } : {}) });
+const offer = (name: string, price: string, desc: string, unit?: string) => ({ '@type': 'Offer', name, description: desc, price, priceCurrency: 'GBP', url: 'https://banksman.app/#pricing', availability: 'https://schema.org/InStock', priceSpecification: vat(price, unit) });
+
+const schema = [{
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization', '@id': 'https://banksman.app/#organization', name: 'Banksman', url: 'https://banksman.app/',
+      logo: 'https://banksman.app/assets/icon-512.png', email: 'dom@dm4u.ai', telephone: '+447508300353',
+      description: 'Construction site management software for small and mid-size UK building firms, built by a working builder.',
+      areaServed: { '@type': 'Country', name: 'United Kingdom' },
+      founder: { '@type': 'Person', name: 'Dom Keady', jobTitle: 'CEO & founder' },
+      employee: [{ '@type': 'Person', name: 'Dom Keady', jobTitle: 'CEO' }, { '@type': 'Person', name: 'Matt Guille', jobTitle: 'CMO' }],
+      contactPoint: [
+        { '@type': 'ContactPoint', contactType: 'sales', name: 'Dom Keady', telephone: '+447508300353', email: 'dom@dm4u.ai', areaServed: 'GB', availableLanguage: 'English' },
+        { '@type': 'ContactPoint', contactType: 'sales', name: 'Matt Guille', telephone: '+447964660071', email: 'matt@dm4u.ai', areaServed: 'GB', availableLanguage: 'English' },
+      ],
+      parentOrganization: { '@type': 'Organization', name: 'DM.AI 4U Ltd' },
+    },
+    {
+      '@type': 'SoftwareApplication', '@id': 'https://banksman.app/#software', name: 'Banksman', url: 'https://banksman.app/',
+      applicationCategory: 'BusinessApplication', applicationSubCategory: 'Construction site management software',
+      operatingSystem: 'Web, iOS, Android', inLanguage: 'en-GB',
+      description: 'Construction site management app for UK builders: tasks with photo proof, timesheets, materials, drawings, site photos, messages, health and safety sign-offs, QR site sign-in and accident reports.',
+      featureList, screenshot: ['https://banksman.app/assets/app/dashboard-desktop.webp', 'https://banksman.app/assets/app/dashboard-phone.webp'],
+      publisher: { '@id': 'https://banksman.app/#organization' },
+      offers: [
+        offer('Starter', '79', 'Up to 10 users. Every feature.', 'MONTH'),
+        offer('Growth', '149', 'Up to 25 users. Every feature, priority support.', 'MONTH'),
+        offer('Enterprise', '299', 'Up to 75 users. Every feature, priority support.', 'MONTH'),
+        offer('White label add-on', '999', 'One-off. Three 1-on-1 calls, exclusive features and a fully customised app, on top of any plan.'),
+      ],
+    },
+    { '@type': 'WebSite', '@id': 'https://banksman.app/#website', name: 'Banksman', url: 'https://banksman.app/', inLanguage: 'en-GB', publisher: { '@id': 'https://banksman.app/#organization' } },
+    {
+      '@type': 'FAQPage', '@id': 'https://banksman.app/#faq',
+      mainEntity: FAQ.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+    },
+  ],
+}];
 ---
 <BaseLayout
   title={"Banksman — Construction site management software"}
-  description={"Banksman is construction site management software built by a working builder. Tasks, drawings, timesheets, materials and site photos in one app your team will actually use. Try the live demo — no sign-up, no card."}
+  description={"Construction site management software built by a working builder. Tasks, timesheets, drawings, materials and site photos in one app. Try the live demo free."}
   schema={schema}
 >
 <!-- ================= HERO ================= -->
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <div class="eyebrow">Site management software</div>
+        <div class="eyebrow">Construction site management software for UK builders</div>
         <h1>KILL THE PAPERWORK.<br><span>AND THE WHATSAPP.</span></h1>
         <p class="lede">Banksman keeps tasks, drawings, timesheets, materials and site photos in one app your whole team will actually use — built by a working builder, not a software company that's never set foot on site.</p>
         <div class="hero-ctas">
@@ -46,38 +102,7 @@ const schema = [{"@context": "https://schema.org", "@graph": [{"@type": "Organiz
       </div>
 
       <!-- Real screenshots from the app (manager dashboard). Files live in public/assets/app/. -->
-      <div class="shots">
-        <figure class="shot-desk">
-          <div class="laptop-lid">
-            <span class="laptop-cam" aria-hidden="true"></span>
-            <div class="laptop-display">
-              <div class="shot-bar" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="shot-url">app.banksman.app</span></div>
-              <div class="laptop-apphead" aria-hidden="true"><img src="/assets/banksman-logo.png" alt="" width="216" height="35"><span class="phone-icons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg></span></div>
-              <img class="laptop-shot" src="/assets/app/dashboard-desktop.webp" width="1400" height="746" alt="The Banksman manager dashboard on a laptop: tabs for tasks, workers, timesheets, materials, sites, drawings, photos, messages and health and safety, above today's numbers for who's on site, hours to approve and deliveries on the way" loading="eager" decoding="async">
-            </div>
-          </div>
-          <div class="laptop-base" aria-hidden="true"><span></span></div>
-        </figure>
-        <figure class="shot-phone">
-          <div class="phone-island" aria-hidden="true"></div>
-          <div class="phone-status" aria-hidden="true"><span>9:41</span><span class="phone-status-icons"><i></i><i></i><i></i></span></div>
-          <div class="shot-phone-top" aria-hidden="true">
-            <img src="/assets/banksman-logo.png" alt="" width="216" height="35">
-            <span class="phone-icons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg></span>
-          </div>
-          <img class="phone-screen" src="/assets/app/dashboard-phone.webp" width="600" height="851" alt="The Banksman dashboard on a phone: who's on site, hours to approve, deliveries on the way, task counts and progress for each site" loading="eager" decoding="async">
-          <img class="phone-nav" src="/assets/app/dashboard-phone-nav.webp" width="600" height="80" alt="" aria-hidden="true">
-          <div class="phone-home" aria-hidden="true"></div>
-        </figure>
-
-        <!-- Live-feel notifications that cycle beside the phone. Decorative. -->
-        <div class="hero-toasts" aria-hidden="true">
-          <div class="toast t1"><span class="toast-ic ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><div><b>Task done · photo attached</b><small>Plot 4, Marsden Road</small></div></div>
-          <div class="toast t2"><span class="toast-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="7.5"/><path d="M12 9v4l2.5 2"/></svg></span><div><b>Hours approved</b><small>Danny H · 8.5 hrs daywork</small></div></div>
-          <div class="toast t3"><span class="toast-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></span><div><b>Delivery on the way</b><small>40 × dense blocks · 10:30</small></div></div>
-          <div class="toast t4"><span class="toast-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2h-2zM18 18h2v2"/></svg></span><div><b>Signed in on site</b><small>Mill Lane Barn, Honley</small></div></div>
-        </div>
-      </div>
+      <HeroDevices />
     </div>
   </section>
 
@@ -369,6 +394,25 @@ const schema = [{"@context": "https://schema.org", "@graph": [{"@type": "Organiz
       <div>
         <h2>Built by a builder, not a startup.</h2>
         <p class="lede">I'm Dom — a bricklayer running my own building firm in West Yorkshire. Banksman exists because I got sick of running my own sites on WhatsApp and a biro. No fake client logos, no made-up reviews here — just a live demo you can log into right now and judge for yourself.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section id="faq" class="home-faq">
+    <div class="wrap faq-wrap">
+      <div>
+        <div class="eyebrow">Questions</div>
+        <h2 class="big">Straight answers.</h2>
+        <p class="faq-note">Anything else? Ring Dom on <a href="tel:+447508300353">07508 300353</a> or Matt on <a href="tel:+447964660071">07964 660071</a>.</p>
+      </div>
+      <div class="faq-list">
+        {FAQ.map(({ q, a }, i) => (
+          <details open={i === 0}>
+            <summary><h3>{q}</h3></summary>
+            <p>{a}</p>
+          </details>
+        ))}
       </div>
     </div>
   </section>

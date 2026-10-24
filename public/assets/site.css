@@ -584,3 +584,19 @@ button.linklike{background:none; border:0; padding:0; font:inherit; cursor:point
   50%{transform:rotate(-3deg) translateY(-12px);}
 }
 @media (prefers-reduced-motion: reduce){ .shots .shot-phone{transform:rotate(-5deg);} .shots .shot-desk{transform:rotateY(-14deg) rotateX(6deg) rotateZ(-1deg);} }
+
+/* ---------- homepage FAQ ---------- */
+.home-faq{border-top:1px solid var(--line);}
+.faq-wrap{display:grid; grid-template-columns:.8fr 1.2fr; gap:48px; align-items:start;}
+@media (max-width:860px){ .faq-wrap{grid-template-columns:1fr; gap:24px;} }
+.faq-note{color:var(--ink-soft); font-size:15.5px; margin:14px 0 0;}
+.faq-note a{color:var(--accent);}
+.faq-list details{border-top:1px solid var(--line); padding:4px 0;}
+.faq-list details:last-child{border-bottom:1px solid var(--line);}
+.faq-list summary{list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 0;}
+.faq-list summary::-webkit-details-marker{display:none;}
+.faq-list summary h3{font-family:'IBM Plex Sans', system-ui, sans-serif; font-size:17.5px; font-weight:700; margin:0; color:var(--ink);}
+.faq-list summary::after{content:"+"; flex:none; width:28px; height:28px; border-radius:50%; border:1px solid var(--accent); color:var(--accent); display:grid; place-items:center; font-size:18px; line-height:1; transition:transform .2s, background .2s;}
+.faq-list details[open] summary::after{transform:rotate(45deg); background:var(--accent); color:var(--accent-ink);}
+.faq-list summary:hover h3{color:var(--accent);}
+.faq-list details p{margin:0 0 18px; color:var(--ink-soft); font-size:16px; max-width:62ch;}

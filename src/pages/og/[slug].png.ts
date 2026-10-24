@@ -10,6 +10,8 @@ const pages = [
   { slug: 'tools-cis-calculator', title: 'CIS deduction calculator', eyebrow: 'Free tool' },
   { slug: 'tools-day-rate-calculator', title: 'Day rate calculator', eyebrow: 'Free tool' },
   { slug: 'compare', title: 'Banksman vs spreadsheets & WhatsApp', eyebrow: 'Compare' },
+  { slug: 'meet-the-team', title: 'Small team. Real site experience.', eyebrow: 'Meet the team' },
+  { slug: 'whats-new', title: 'Health & safety, built in.', eyebrow: 'What\'s new' },
   ...TRADES.map((trade) => ({ slug: `for-${trade.slug}`, title: trade.ogTitle, eyebrow: trade.eyebrow })),
 ];
 

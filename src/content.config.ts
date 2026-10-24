@@ -7,6 +7,8 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string().min(10).max(90),
     description: z.string().min(50).max(170),
+    // Optional shorter title for Google's results (about 60 characters). The H1 still uses `title`.
+    seoTitle: z.string().min(10).max(60).optional(),
     keyword: z.string().min(3),
     author: z.string().default('Banksman'),
     category: z.string().default('Site management'),

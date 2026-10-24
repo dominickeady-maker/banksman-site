@@ -46,15 +46,24 @@ const schema = [{
     '@type': 'Organization',
     name: 'Banksman',
     parentOrganization: { '@type': 'Organization', name: SITE.company },
-    employee: TEAM.map((p) => ({ '@type': 'Person', name: p.name, jobTitle: p.role, telephone: p.phoneIntl, email: p.email })),
+    '@id': `${SITE.url}/#organization`,
+    url: `${SITE.url}/`,
+    employee: TEAM.map((p) => ({
+      '@type': 'Person', name: p.name, jobTitle: p.role, telephone: p.phoneIntl, email: p.email,
+      description: p.bio[0],
+      worksFor: { '@id': `${SITE.url}/#organization` },
+      ...(p.photo ? { image: `${SITE.url}${p.photo}` } : {}),
+    })),
   },
 }];
 ---
 <BaseLayout
-  title="Meet the team | Banksman"
+  title="Meet the team behind Banksman, built by a builder"
   description="The people behind Banksman: a working builder who got fed up of running sites on WhatsApp, and a marketer who's spent a decade growing software start-ups."
   schema={schema}
   current="team"
+  image="/og/meet-the-team.png"
+  imageAlt="Meet the team behind Banksman"
 >
   <section class="page-head"><div class="wrap">
     <div class="eyebrow">Meet the team</div>

@@ -10,6 +10,20 @@ const title = 'Day rate calculator: day, hourly, weekly and yearly | Banksman';
 const description = 'Free day rate calculator for builders and trades. Turn a day rate into hourly, weekly and yearly pay, or work backwards from any of them.';
 const schema = [
   breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Free tools', path: '/tools/' }, { name: 'Day rate calculator', path: '/tools/day-rate-calculator/' }]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'Day rate calculator',
+    url: 'https://banksman.app/tools/day-rate-calculator/',
+    description,
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'Any (runs in the browser)',
+    browserRequirements: 'Requires JavaScript',
+    isAccessibleForFree: true,
+    inLanguage: 'en-GB',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'GBP' },
+    publisher: { '@id': 'https://banksman.app/#organization' },
+  },
 ];
 ---
 <BaseLayout title={title} description={description} image="/og/tools-day-rate-calculator.png" imageAlt="Day rate calculator" schema={schema}>

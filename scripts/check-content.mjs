@@ -9,7 +9,7 @@ const errors = [];
 const warnings = [];
 
 // Slugs used by other routes under /og/ (site pages, tools, compare, and the for-<trade> landing pages).
-const RESERVED = new Set(['default', 'blog', 'tools', 'tools-cis-calculator', 'tools-day-rate-calculator', 'compare']);
+const RESERVED = new Set(['default', 'blog', 'tools', 'tools-cis-calculator', 'tools-day-rate-calculator', 'compare', 'meet-the-team', 'whats-new']);
 const isReserved = (slug) => RESERVED.has(slug) || slug.startsWith('for-');
 
 // Banksman labels drawings by version; it has no revision history or superseding, so pages

@@ -82,12 +82,21 @@ const rows: { job: string; sheet: string; chat: string; us: string; feature: Fea
 ];
 
 const description = 'How Banksman compares with running your sites on spreadsheets and WhatsApp groups: tasks, photos, drawings, hours and materials, side by side.';
-const schema = [breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Compare', path: '/compare/' }])];
+const FAQ = [
+  { q: 'Is WhatsApp good enough to run a building site?', a: 'For one small job with a couple of people, often yes. With more sites, more people and more money riding on who said what, things get buried: task sign-offs, photo evidence, hours and orders. A site management app keeps those against the site so you can find them later.' },
+  { q: 'Why not just use a spreadsheet?', a: 'Spreadsheets live in the office and go out of date by dinner. The work happens on site, on phones. Banksman lets the team log tasks, photos, hours and material requests on site, and the office approves them, with CSV export when you still need a spreadsheet.' },
+  { q: 'Can Banksman replace our WhatsApp groups?', a: 'Yes. Every site gets its own group chat plus direct messages, kept with the job and away from personal chats, alongside the tasks, photos, hours and orders for that site.' },
+  { q: 'How much does it cost to switch from WhatsApp to Banksman?', a: 'From £79 a month inc. VAT for up to 10 users, with every feature, no contract and no set-up fee. You can try the live demo first with no card.' },
+];
+const schema = [
+  breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Compare', path: '/compare/' }]),
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+];
 ---
 <BaseLayout title="Banksman vs spreadsheets & WhatsApp | Banksman" description={description} image="/og/compare.png" imageAlt="Banksman vs spreadsheets and WhatsApp" schema={schema}>
-  <section class="page-head"><div class="wrap">
+  <section class="page-head big-head"><div class="wrap">
     <div class="eyebrow">Compare</div>
-    <h1>Banksman vs spreadsheets &amp; WhatsApp</h1>
+    <h1>Banksman vs <span>spreadsheets &amp; WhatsApp</span></h1>
     <p>Most small firms run their sites on a spreadsheet in the office and a handful of group chats. It's free and everyone knows how to use it. Here's where it starts to cost you.</p>
   </div></section>
 
@@ -116,11 +125,32 @@ const schema = [breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Compare'
   </section>
 
   <section style="padding-top:0">
-    <div class="wrap prose" style="padding-bottom:0">
-      <h2>When a group chat is enough</h2>
+    <div class="wrap">
+     <div class="compare-note">
+      <div class="eyebrow">Being straight with you</div>
+      <h2 class="big">When a group chat is enough</h2>
       <p>If it's you and one lad on one job, a group chat probably does the job. It starts to fall apart with more sites, more people and more money riding on who said what. That's when you want the tasks, hours, orders and photos kept against the site, not against someone's phone.</p>
       <p>Banksman helps you keep records, so when there's a question about the work, the answer's already written down.</p>
       <p>Want to see it for your trade? Have a look at the pages for <a href="/for-builders/">builders</a>, <a href="/for-subcontractors/">subcontractors</a> and <a href="/for-groundworkers/">groundworkers</a>, or <a href={SITE.demoUrl}>try the live demo</a>.</p>
+      <div class="hero-ctas"><a class="btn btn-primary" href={SITE.demoUrl}>Try the live demo →</a><a class="btn btn-ghost" href="/#pricing">See pricing</a></div>
+     </div>
+    </div>
+  </section>
+
+  <section class="home-faq" id="faq">
+    <div class="wrap faq-wrap">
+      <div>
+        <div class="eyebrow">Questions</div>
+        <h2 class="big">Straight answers.</h2>
+      </div>
+      <div class="faq-list">
+        {FAQ.map(({ q, a }, i) => (
+          <details open={i === 0}>
+            <summary><h3>{q}</h3></summary>
+            <p>{a}</p>
+          </details>
+        ))}
+      </div>
     </div>
   </section>
 

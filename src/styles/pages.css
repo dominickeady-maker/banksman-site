@@ -134,3 +134,52 @@
 /* Features that aren't live yet get a hollow orange marker instead of a tick. */
 .feature-item.soon h3::before{content:""; background:transparent; border:2px solid var(--accent); box-sizing:border-box;}
 .feature-item h3 .badge-soon{margin-left:auto; flex:none;}
+
+/* ---------- homepage look on trade, compare and blog pages ---------- */
+/* Two-tone uppercase headlines like the home page. */
+.big-head h1, .trade-hero h1{font-family:'Big Shoulders Display', sans-serif; font-weight:800; text-transform:uppercase; line-height:.98; letter-spacing:.005em;}
+.big-head h1{font-size:clamp(42px,6.4vw,78px); max-width:18ch;}
+.big-head h1 span, .trade-hero h1 span{color:var(--accent);}
+.big-head{position:relative; overflow:hidden;}
+.big-head::before{content:""; position:absolute; top:-240px; right:-160px; width:640px; height:640px; background:radial-gradient(circle, rgba(255,122,46,0.22), rgba(255,122,46,0) 70%); pointer-events:none;}
+.big-head .wrap{position:relative;}
+.big-head .eyebrow, .big-head h1, .big-head p{animation:hero-in .8s cubic-bezier(.2,.7,.2,1) both;}
+.big-head h1{animation-delay:.1s;} .big-head p{animation-delay:.22s;}
+
+.trade-hero h1{font-size:clamp(34px,4.3vw,56px); margin-top:14px;}
+.trade-hero .lede{max-width:50ch;}
+.trade-hero .reassure li:nth-child(2){color:var(--ink-soft);}
+
+/* Problem → fix cards, with more of the brand */
+.pain{transition:transform .25s, box-shadow .25s, border-color .25s;}
+.pain:hover{transform:translateY(-3px); box-shadow:var(--shadow); border-color:rgba(255,122,46,.5);}
+.pain .new{border-left:3px solid var(--accent);}
+.pain .old .label::before{content:"✕ "; color:#e0645a;}
+.pain .new .label::before{content:"✓ "; color:var(--accent);}
+.pain .chips li{border-color:rgba(255,122,46,.45); color:var(--ink);}
+@media (max-width:720px){ .pain .new{border-left:0; border-top:3px solid var(--accent);} }
+
+/* Compare table: crosses for the old way, orange ticks for Banksman */
+.compare-scroll{border-color:rgba(255,122,46,.35); border-top:2px solid var(--accent); box-shadow:var(--shadow);}
+.compare-table td:not(.us)::before{content:"✕"; color:#e0645a; font-weight:700; margin-right:7px;}
+.compare-table td.us::before{content:"✓"; color:var(--accent); font-weight:800; margin-right:7px;}
+.compare-table tbody tr{transition:background .2s;}
+.compare-table tbody tr:hover{background:rgba(255,122,46,.05);}
+.compare-table tbody tr:hover th{color:var(--accent);}
+@media (max-width:720px){
+  .compare-table td:not(.us)::before, .compare-table td.us::before{content:attr(data-label); display:block; margin:0 0 4px; font-family:'IBM Plex Mono', monospace; font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase;}
+  .compare-table td:not(.us)::before{color:var(--muted);}
+  .compare-table td.us::before{color:var(--accent);}
+}
+.compare-note{max-width:820px; margin:0 auto; border:1px solid var(--accent); border-radius:10px; padding:38px 40px; background:radial-gradient(600px 300px at 100% 0%, rgba(255,122,46,.16), rgba(255,122,46,0) 70%), var(--surface); box-shadow:var(--shadow);}
+.compare-note .big{margin:6px 0 14px;}
+.compare-note p{color:var(--ink-soft); font-size:16.5px; margin:0 0 14px;}
+.compare-note a:not(.btn){color:var(--accent);}
+.compare-note .hero-ctas{margin-top:22px;}
+@media (max-width:600px){ .compare-note{padding:26px 20px;} }
+
+/* Trade pages: links to the other trades */
+.other-trades{padding:40px 0;}
+.trade-links{list-style:none; margin:14px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:10px;}
+.trade-links a{display:inline-block; padding:9px 16px; border:1px solid rgba(255,122,46,.45); border-radius:999px; color:var(--ink); text-decoration:none; font-weight:600; font-size:14.5px; transition:background .2s, color .2s;}
+.trade-links a:hover{background:var(--accent); color:var(--accent-ink); border-color:var(--accent);}

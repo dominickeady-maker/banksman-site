@@ -1,0 +1,55 @@
+# Banksman
+
+> Banksman is construction site management software for small and mid-size UK building firms. It was built by Dom Keady, a bricklayer who runs his own building firm in Huddersfield, and is a product of DM.AI 4U Ltd.
+
+Banksman keeps a building firm's tasks, timesheets, material requests, drawings, site photos, messages and health and safety records in one app for managers and workers. It runs in the browser and installs on a phone's home screen like any other app, with no app store needed.
+
+## Features
+
+- Tasks with photo proof: the manager sets tasks per site; workers tick them off and add a photo.
+- Timesheets: daywork or price work per site or plot, approved or queried by the manager, CSV export.
+- Material requests: requested, approved, ordered, dispatched and delivered, with supplier, order reference and a delivery photo.
+- Drawings for every site, on every phone, labelled by version.
+- Photo library: every photo stamped with upload time, site, task and who took it.
+- Site group chats and direct messages, kept apart from personal phone chats.
+- Health and safety documents (inductions, RAMS, COSHH) signed on the phone, with revisions and a record of who signed what.
+- Site sign-in and sign-out with a QR poster, an optional location check at sign-in only, and a fire roll call.
+- Accident and near-miss reports, with RIDDOR flags, actions and a monthly safety summary.
+- Manager dashboard, push notifications, your logo and colours, bigger text option.
+
+## Pricing (all prices include VAT, no contract, cancel any time)
+
+- Starter: £79 a month, up to 10 users.
+- Growth: £149 a month, up to 25 users.
+- Enterprise: £299 a month, up to 75 users.
+- White label add-on: £999 one-off on top of any plan. Includes three 1-on-1 calls with Dom and Matt, exclusive features built for the customer, and a fully customised app.
+- Every plan includes every feature and an optional onboarding call.
+
+## Who it's for
+
+Builders, bricklayers, groundworkers, roofers, electricians, plumbers and subcontractors in the UK.
+
+## Key pages
+
+- [Home, features and pricing](https://banksman.app/)
+- [Live demo (no card, no sales call)](https://banksman.app/#demo)
+- [What's new](https://banksman.app/whats-new/)
+- [Banksman vs spreadsheets and WhatsApp](https://banksman.app/compare/)
+- [Meet the team](https://banksman.app/meet-the-team/)
+- [Blog](https://banksman.app/blog/)
+- [Free CIS calculator](https://banksman.app/tools/cis-calculator/)
+- [Free day rate calculator](https://banksman.app/tools/day-rate-calculator/)
+- [For builders](https://banksman.app/for-builders/), [bricklayers](https://banksman.app/for-bricklayers/), [groundworkers](https://banksman.app/for-groundworkers/), [roofers](https://banksman.app/for-roofers/), [electricians](https://banksman.app/for-electricians/), [plumbers](https://banksman.app/for-plumbers/), [subcontractors](https://banksman.app/for-subcontractors/)
+
+## Common questions
+
+- Does Banksman need an app store download? No. It installs to the phone home screen and opens like an app, with push notifications.
+- Does it work offline? Not yet. Offline mode is being built.
+- Does it produce electrical, gas or CIS certificates or invoices? No. It runs the job on site; CIS worker invoices are being built.
+- Can data be exported? Yes. Every table exports to CSV.
+- Is there a free trial? There is a live demo of the real app on realistic sample data, with no card and no sales call.
+
+## Contact
+
+- Dom Keady, CEO: 07508 300353, dom@dm4u.ai
+- Matt Guille, CMO: 07964 660071, matt@dm4u.ai

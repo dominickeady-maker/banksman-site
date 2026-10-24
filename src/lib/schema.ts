@@ -30,6 +30,20 @@ export function breadcrumbSchema(items: { name: string; path: string }[]) {
   };
 }
 
+// Post authors are written as first names in the CMS; give search engines the full person.
+const AUTHORS: Record<string, { name: string; jobTitle: string }> = {
+  matt: { name: 'Matt Guille', jobTitle: 'CMO' },
+  'matt guille': { name: 'Matt Guille', jobTitle: 'CMO' },
+  dom: { name: 'Dom Keady', jobTitle: 'CEO & founder' },
+  'dom keady': { name: 'Dom Keady', jobTitle: 'CEO & founder' },
+};
+export function authorPerson(author: string) {
+  const known = AUTHORS[author.trim().toLowerCase()];
+  return known
+    ? { '@type': 'Person', name: known.name, jobTitle: known.jobTitle, url: abs('/meet-the-team/'), worksFor: { '@id': organization['@id'] } }
+    : { '@type': 'Person', name: author };
+}
+
 export function blogPostingSchema(post: Post) {
   const { title, description, pubDate, updatedDate, author, keyword } = post.data;
   return {
@@ -41,7 +55,7 @@ export function blogPostingSchema(post: Post) {
     image: [abs(shareImageUrl(post)), abs(coverUrl(post))],
     datePublished: pubDate.toISOString(),
     dateModified: (updatedDate ?? pubDate).toISOString(),
-    author: author === SITE.name ? { '@id': organization['@id'] } : { '@type': 'Person', name: author },
+    author: author === SITE.name ? { '@id': organization['@id'] } : authorPerson(author),
     publisher: organization,
     mainEntityOfPage: { '@type': 'WebPage', '@id': abs(postUrl(post)) },
     inLanguage: 'en-GB',

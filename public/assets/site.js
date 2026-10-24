@@ -20,7 +20,12 @@
     ['.wl-visual','right',false],      // white label: phone slides in
     ['.dmai-card','zoom',false],       // DM.AI 4U: box settles into place
     ['.team-grid','up',true],          // meet the team
-    ['.post-featured','up',false]      // blog: featured post
+    ['.post-featured','up',false],     // blog: featured post
+    ['.post-grid-img','up',true],      // blog: cards
+    ['.related-grid','up',true],       // blog posts: more from the blog
+    ['.pain-list','up',true],          // trade pages: problem → fix cards
+    ['.compare-scroll','up',false],    // compare: the table
+    ['.compare-note','zoom',false]     // compare: closing note
   ];
   var items=[];
   moments.forEach(function(m){

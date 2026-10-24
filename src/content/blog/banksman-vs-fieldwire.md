@@ -1,5 +1,6 @@
 ---
 title: "Banksman vs Fieldwire: Which Is Right for a 10-Person Building Firm?"
+seoTitle: "Banksman vs Fieldwire for a 10-person building firm"
 description: A straight comparison of Banksman and Fieldwire for a
   small-to-mid-size UK building firm, covering pricing, setup and what each is
   actually built for.

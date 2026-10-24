@@ -31,9 +31,9 @@ const schema = [
 ];
 ---
 <BaseLayout title="Blog — site management tips for UK builders | Banksman" description={description} image="/og/blog.png" schema={schema} current="blog">
-  <section class="page-head blog-head"><div class="wrap">
+  <section class="page-head big-head blog-head"><div class="wrap">
     <div class="eyebrow">The Banksman blog</div>
-    <h1>From the site, not the sales team.</h1>
+    <h1>From the site, <span>not the sales team.</span></h1>
     <p>Straight-talking guides on running building sites, crews, timesheets and paperwork — written by a builder who's been there.</p>
   </div></section>
 
@@ -125,4 +125,10 @@ const schema = [
   .pc-body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; }
   .pc-body .draft-flag { align-self: flex-start; margin-top: 8px; }
   .post-grid-img .post-card h2 { font-size: 25px; }
+  .post-grid-img .post-card { position: relative; transition: transform .25s, box-shadow .25s, border-color .25s; }
+  .post-grid-img .post-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .3s; z-index: 2; }
+  .post-grid-img .post-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .post-grid-img .post-card:hover::before { transform: scaleX(1); }
+  .post-grid-img .post-card .tag, .post-featured .tag { display: inline-block; align-self: flex-start; border: 1px solid rgba(255,122,46,.5); border-radius: 999px; padding: 3px 10px; }
+  .post-featured { border-top: 2px solid var(--accent); }
 </style>

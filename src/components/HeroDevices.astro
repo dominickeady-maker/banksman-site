@@ -1,0 +1,36 @@
+---
+// The laptop and phone showing the real Banksman dashboard, with pop-up notifications.
+// Used in the hero on the home page and every trade page. On phones only the tilted phone shows.
+---
+<div class="shots">
+  <figure class="shot-desk">
+    <div class="laptop-lid">
+      <span class="laptop-cam" aria-hidden="true"></span>
+      <div class="laptop-display">
+        <div class="shot-bar" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="shot-url">app.banksman.app</span></div>
+        <div class="laptop-apphead" aria-hidden="true"><img src="/assets/banksman-logo.png" alt="" width="216" height="35"><span class="phone-icons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg></span></div>
+        <img class="laptop-shot" src="/assets/app/dashboard-desktop.webp" width="1400" height="746" fetchpriority="high" alt="The Banksman manager dashboard on a laptop: tabs for tasks, workers, timesheets, materials, sites, drawings, photos, messages and health and safety, above today's numbers for who's on site, hours to approve and deliveries on the way" loading="eager" decoding="async">
+      </div>
+    </div>
+    <div class="laptop-base" aria-hidden="true"><span></span></div>
+  </figure>
+  <figure class="shot-phone">
+    <div class="phone-island" aria-hidden="true"></div>
+    <div class="phone-status" aria-hidden="true"><span>9:41</span><span class="phone-status-icons"><i></i><i></i><i></i></span></div>
+    <div class="shot-phone-top" aria-hidden="true">
+      <img src="/assets/banksman-logo.png" alt="" width="216" height="35">
+      <span class="phone-icons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg></span>
+    </div>
+    <img class="phone-screen" src="/assets/app/dashboard-phone.webp" width="600" height="851" alt="The Banksman dashboard on a phone: who's on site, hours to approve, deliveries on the way, task counts and progress for each site" loading="eager" decoding="async">
+    <img class="phone-nav" src="/assets/app/dashboard-phone-nav.webp" width="600" height="80" alt="" aria-hidden="true">
+    <div class="phone-home" aria-hidden="true"></div>
+  </figure>
+
+  <!-- Live-feel notifications that cycle beside the phone. Decorative. -->
+  <div class="hero-toasts" aria-hidden="true">
+    <div class="toast t1"><span class="toast-ic ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><div><b>Task done · photo attached</b><small>Plot 4, Marsden Road</small></div></div>
+    <div class="toast t2"><span class="toast-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="7.5"/><path d="M12 9v4l2.5 2"/></svg></span><div><b>Hours approved</b><small>Danny H · 8.5 hrs daywork</small></div></div>
+    <div class="toast t3"><span class="toast-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></span><div><b>Delivery on the way</b><small>40 × dense blocks · 10:30</small></div></div>
+    <div class="toast t4"><span class="toast-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2h-2zM18 18h2v2"/></svg></span><div><b>Signed in on site</b><small>Mill Lane Barn, Honley</small></div></div>
+  </div>
+</div>

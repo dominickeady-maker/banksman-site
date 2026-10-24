@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FeatureList from '../components/FeatureList.astro';
 import CtaBand from '../components/CtaBand.astro';
+import HeroDevices from '../components/HeroDevices.astro';
 import { SITE } from '../site';
 import { TRADES, type Trade } from '../data/trades';
 import { FEATURES, type FeatureId } from '../data/features';
@@ -16,24 +17,73 @@ export function getStaticPaths() {
 const { trade } = Astro.props as { trade: Trade };
 const path = `/for-${trade.slug}/`;
 
+// Headline in two tones like the home page: the ending of each headline goes orange.
+const ACCENT: Record<string, string> = {
+  builders: 'what’s happening on all of them.',
+  bricklayers: 'not on the back of a fag packet.',
+  groundworkers: 'before it’s backfilled.',
+  roofers: 'from the ground.',
+  electricians: 'before the boards go up.',
+  plumbers: 'for one fitting.',
+  subcontractors: 'and have the proof when they query it.',
+};
+const tail = ACCENT[trade.slug] && trade.h1.endsWith(ACCENT[trade.slug]) ? ACCENT[trade.slug] : '';
+const h1Lead = tail ? trade.h1.slice(0, -tail.length).trim() : trade.h1;
+const h1Accent = tail;
+
 // Features the fixes use, then the extras. A feature on the "on the way" list joins the main list once it's live.
 const fixIds = trade.pains.flatMap((p) => p.features);
 const soon = trade.onTheWay.filter((id) => FEATURES[id].status === 'coming-soon');
 const nowLive = trade.onTheWay.filter((id) => FEATURES[id].status === 'live');
 const liveIds = [...new Set<FeatureId>([...fixIds, ...trade.alsoUseful, ...nowLive])];
 
-const schema = [breadcrumbSchema([{ name: 'Home', path: '/' }, { name: `For ${trade.name.toLowerCase()}`, path }])];
+const schema = [
+  breadcrumbSchema([{ name: 'Home', path: '/' }, { name: `For ${trade.name.toLowerCase()}`, path }]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${SITE.url}${path}`,
+    url: `${SITE.url}${path}`,
+    name: trade.title,
+    description: trade.description,
+    inLanguage: 'en-GB',
+    isPartOf: { '@id': `${SITE.url}/#website` },
+    about: {
+      '@type': 'SoftwareApplication',
+      '@id': `${SITE.url}/#software`,
+      name: 'Banksman',
+      applicationCategory: 'BusinessApplication',
+      audience: { '@type': 'BusinessAudience', audienceType: trade.name, geographicArea: { '@type': 'Country', name: 'United Kingdom' } },
+      featureList: liveIds.map((id) => FEATURES[id].name),
+    },
+  },
+  ...(trade.faq.length ? [{
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: trade.faq.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+  }] : []),
+];
 ---
 <BaseLayout title={trade.title} description={trade.description} image={`/og/for-${trade.slug}.png`} imageAlt={trade.ogTitle} schema={schema}>
-  <section class="page-head"><div class="wrap">
-    <div class="eyebrow">{trade.eyebrow}</div>
-    <h1>{trade.h1}</h1>
-    <p>{trade.lede}</p>
-    <div class="hero-ctas">
-      <a class="btn btn-primary" href={SITE.demoUrl}>Try the live demo →</a>
-      <a class="btn btn-ghost" href="/compare/">How it compares</a>
+  <section class="hero trade-hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">{trade.eyebrow}</div>
+        <h1>{h1Lead} <span>{h1Accent}</span></h1>
+        <p class="lede">{trade.lede}</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href={SITE.demoUrl}>Try the live demo →</a>
+          <a class="btn btn-ghost" href="/compare/">How it compares</a>
+        </div>
+        <ul class="reassure">
+          <li>Four fields and you're straight into the real app — no card, ever</li>
+          <li>Every plan includes every feature, from £79/month inc. VAT</li>
+          <li>Speak to Dom or Matt — real people, no bots or call centres</li>
+        </ul>
+      </div>
+      <HeroDevices />
     </div>
-  </div></section>
+  </section>
 
   <section>
     <div class="wrap">
@@ -76,6 +126,36 @@ const schema = [breadcrumbSchema([{ name: 'Home', path: '/' }, { name: `For ${tr
         <h2 class="big">Being built now.</h2>
         <p class="section-note">These aren't in the app yet. They're marked "Coming soon" until they are.</p>
         <FeatureList ids={soon} />
+      </div>
+    </section>
+  )}
+
+  <section class="other-trades">
+    <div class="wrap">
+      <div class="eyebrow">Banksman for other trades</div>
+      <ul class="trade-links">
+        {TRADES.filter((t) => t.slug !== trade.slug).map((t) => <li><a href={`/for-${t.slug}/`}>{t.name} →</a></li>)}
+        <li><a href="/compare/">vs spreadsheets &amp; WhatsApp →</a></li>
+      </ul>
+    </div>
+  </section>
+
+  {trade.faq.length > 0 && (
+    <section class="home-faq" id="faq">
+      <div class="wrap faq-wrap">
+        <div>
+          <div class="eyebrow">{trade.name}: questions</div>
+          <h2 class="big">Straight answers.</h2>
+          <p class="faq-note">Anything else? Ring Dom on <a href="tel:+447508300353">07508 300353</a> or Matt on <a href="tel:+447964660071">07964 660071</a>.</p>
+        </div>
+        <div class="faq-list">
+          {trade.faq.map(({ q, a }, i) => (
+            <details open={i === 0}>
+              <summary><h3>{q}</h3></summary>
+              <p>{a}</p>
+            </details>
+          ))}
+        </div>
       </div>
     </section>
   )}

@@ -4,4 +4,19 @@ Disallow: /thanks.html
 Disallow: /purchase-complete/
 Disallow: /admin/
 
+# AI assistants and answer engines are welcome to read the public site.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: PerplexityBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Bingbot
+Allow: /
+Disallow: /thanks.html
+Disallow: /purchase-complete/
+Disallow: /admin/
+
 Sitemap: https://banksman.app/sitemap-index.xml

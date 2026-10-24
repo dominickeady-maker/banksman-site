@@ -15,6 +15,20 @@ const title = 'CIS calculator: work out the 20% or 30% deduction | Banksman';
 const description = 'Free CIS calculator for UK construction. Enter the labour and materials, pick 20%, 30% or gross payment status, and see the deduction and what gets paid.';
 const schema = [
   breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Free tools', path: '/tools/' }, { name: 'CIS calculator', path: '/tools/cis-calculator/' }]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'CIS deduction calculator',
+    url: 'https://banksman.app/tools/cis-calculator/',
+    description,
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'Any (runs in the browser)',
+    browserRequirements: 'Requires JavaScript',
+    isAccessibleForFree: true,
+    inLanguage: 'en-GB',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'GBP' },
+    publisher: { '@id': 'https://banksman.app/#organization' },
+  },
 ];
 ---
 <BaseLayout title={title} description={description} image="/og/tools-cis-calculator.png" imageAlt="CIS deduction calculator" schema={schema}>

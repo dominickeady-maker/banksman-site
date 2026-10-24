@@ -1,5 +1,6 @@
 ---
 title: "How to get your building site off WhatsApp (without losing the lads)"
+seoTitle: "How to get your building site off WhatsApp | Banksman"
 description: "WhatsApp groups work until they don't. A bricklayer's guide to moving your site's tasks, photos, hours and drawings somewhere you can actually find them."
 keyword: "building site whatsapp"
 author: Dom Keady

@@ -1,5 +1,6 @@
 ---
 title: "Construction Site Management Software for Small and Mid-Size UK Builders"
+seoTitle: "Construction site management software for small UK builders"
 description: "Most construction management software is built for firms with an IT department. Here's what to look for if you're a small or mid-size UK builder instead."
 keyword: "construction site management software small builders UK"
 author: Matt

@@ -1,7 +1,9 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import CtaBand from '../components/CtaBand.astro';
+import '../styles/pages.css';
 import { SITE } from '../site';
-import { type Post, formatDate, readingMinutes, shareImageUrl, postUrl, coverUrl, coverAlt } from '../lib/posts';
+import { type Post, getPosts, formatDate, readingMinutes, shareImageUrl, postUrl, coverUrl, coverAlt } from '../lib/posts';
 import { blogPostingSchema, breadcrumbSchema, faqSchema } from '../lib/schema';
 
 interface Props {
@@ -9,7 +11,7 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const { title, description, author, category, pubDate, updatedDate, faq, draft, imageAlt } = post.data;
+const { title, seoTitle, description, author, category, pubDate, updatedDate, faq, draft, imageAlt } = post.data;
 const schema = [
   blogPostingSchema(post),
   breadcrumbSchema([
@@ -19,9 +21,19 @@ const schema = [
   ]),
   ...(faq.length ? [faqSchema(faq)] : []),
 ];
+
+// Two-tone headline like the rest of the site: anything after a colon goes orange.
+const colon = title.indexOf(': ');
+const titleLead = colon > 0 ? title.slice(0, colon + 1) : title;
+const titleAccent = colon > 0 ? title.slice(colon + 2) : '';
+const initials = author.split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase();
+
+// Up to three more posts: same category first, then the newest.
+const others = (await getPosts()).filter((p) => p.id !== post.id && !p.data.draft);
+const related = [...others.filter((p) => p.data.category === category), ...others.filter((p) => p.data.category !== category)].slice(0, 3);
 ---
 <BaseLayout
-  title={`${title} | ${SITE.name}`}
+  title={seoTitle ?? (`${title} | ${SITE.name}`.length > 60 ? title : `${title} | ${SITE.name}`)}
   description={description}
   image={shareImageUrl(post)}
   imageAlt={imageAlt ?? title}
@@ -30,27 +42,54 @@ const schema = [
   schema={schema}
   current="blog"
 >
-  <section class="page-head"><div class="wrap">
-    <div class="crumbs"><a href="/blog/">Blog</a> / {category}</div>
+  <section class="page-head big-head post-head"><div class="wrap">
+    <div class="crumbs"><a href="/blog/">Blog</a> <span>/</span> <span class="post-cat">{category}</span></div>
     {draft && <div class="draft-flag">Draft · not on the live site</div>}
-    <h1>{title}</h1>
-    <div class="meta">
-      {author} · <time datetime={pubDate.toISOString().slice(0, 10)}>{formatDate(pubDate)}</time>{updatedDate && <> · Updated <time datetime={updatedDate.toISOString().slice(0, 10)}>{formatDate(updatedDate)}</time></>}{` · ${readingMinutes(post.body)} min read`}
+    <h1>{titleLead}{titleAccent && <> <span>{titleAccent}</span></>}</h1>
+    <div class="post-byline">
+      <a class="post-avatar" href="/meet-the-team/" aria-hidden="true" tabindex="-1">{initials}</a>
+      <div class="meta">
+        <a class="post-author" href="/meet-the-team/" rel="author">{author}</a> · <time datetime={pubDate.toISOString().slice(0, 10)}>{formatDate(pubDate)}</time>{updatedDate && <> · Updated <time datetime={updatedDate.toISOString().slice(0, 10)}>{formatDate(updatedDate)}</time></>}{` · ${readingMinutes(post.body)} min read`}
+      </div>
     </div>
   </div></section>
   <div class="wrap"><figure class="post-cover"><img src={coverUrl(post)} alt={coverAlt(post)} width="1200" height="675" fetchpriority="high" /></figure></div>
-  <div class="wrap"><article class="prose">
+  <div class="wrap"><article class="prose post-body">
     <slot />
     {faq.length > 0 && (
-      <section class="post-faq" aria-labelledby="faq">
+      <section class="post-faq faq-list" aria-labelledby="faq">
+        <div class="eyebrow">Questions</div>
         <h2 id="faq">FAQ</h2>
-        {faq.map(({ question, answer }) => (
-          <details>
-            <summary>{question}</summary>
+        {faq.map(({ question, answer }, i) => (
+          <details open={i === 0}>
+            <summary><h3>{question}</h3></summary>
             <p>{answer}</p>
           </details>
         ))}
       </section>
     )}
   </article></div>
+
+  {related.length > 0 && (
+    <section class="related">
+      <div class="wrap">
+        <div class="eyebrow">Keep reading</div>
+        <h2 class="big">More from the blog.</h2>
+        <div class="related-grid">
+          {related.map((p) => (
+            <a class="related-card" href={postUrl(p)}>
+              <div class="rc-img"><img src={coverUrl(p)} alt="" width="1200" height="675" loading="lazy" /></div>
+              <div class="rc-body">
+                <span class="tag">{p.data.category}</span>
+                <h3>{p.data.title}</h3>
+                <span class="meta">{formatDate(p.data.pubDate)} · {readingMinutes(p.body)} min read</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <CtaBand heading="See how it works on site." />
 </BaseLayout>

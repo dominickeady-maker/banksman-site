@@ -16,3 +16,54 @@
 /* Post header picture */
 .post-cover { margin: 0 0 36px; max-width: 900px; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
 .post-cover img { display: block; width: 100%; height: auto; }
+.post-author{color:inherit; text-decoration:underline; text-decoration-color:var(--accent); text-underline-offset:3px;}
+.post-author:hover{color:var(--accent);}
+
+/* ---------- blog post pages: match the rest of the site ---------- */
+.post-head h1{font-size:clamp(36px,5.2vw,64px); max-width:20ch; margin-top:16px;}
+.post-head .crumbs{display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
+.post-head .crumbs > span:not(.post-cat){color:var(--muted);}
+.post-cat{font-family:'IBM Plex Mono', monospace; font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); border:1px solid rgba(255,122,46,.5); border-radius:999px; padding:3px 10px;}
+.post-byline{display:flex; align-items:center; gap:12px; margin-top:20px;}
+.post-byline .meta{margin:0;}
+.post-avatar{flex:none; width:38px; height:38px; border-radius:50%; display:grid; place-items:center; background:var(--accent-soft); border:2px solid var(--accent); color:var(--accent); font-family:'Big Shoulders Display', sans-serif; font-weight:800; font-size:16px; text-decoration:none;}
+.post-cover{border:1px solid rgba(255,122,46,.35); border-top:2px solid var(--accent); box-shadow:var(--shadow);}
+
+.post-body h2{position:relative; padding-top:14px;}
+.post-body h2::before{content:""; position:absolute; top:0; left:0; width:34px; height:3px; background:var(--accent);}
+.post-body ul{list-style:none; padding-left:0;}
+.post-body ul li{position:relative; padding-left:26px;}
+.post-body ul li::before{content:""; position:absolute; left:4px; top:.62em; width:8px; height:8px; border-radius:2px; background:var(--accent); transform:rotate(45deg);}
+.post-body ol{list-style:none; padding-left:0; counter-reset:n;}
+.post-body ol li{position:relative; padding-left:38px; counter-increment:n;}
+.post-body ol li::before{content:counter(n); position:absolute; left:0; top:1px; width:26px; height:26px; border-radius:50%; background:var(--accent); color:var(--accent-ink); font:700 13px/26px 'IBM Plex Mono', monospace; text-align:center;}
+.post-body blockquote{background:var(--surface); border-radius:0 8px 8px 0; padding:16px 20px;}
+/* The closing call to action at the end of each post becomes a highlighted box. */
+.post-body hr + p{border:1px solid var(--accent); border-radius:10px; padding:20px 24px; background:radial-gradient(500px 220px at 100% 0%, rgba(255,122,46,.16), rgba(255,122,46,0) 70%), var(--surface); color:var(--ink); font-size:17px;}
+.post-body hr + p em{font-style:normal;}
+.post-body hr + p a{font-weight:700;}
+.post-body hr{border-top-color:transparent; margin:28px 0 10px;}
+
+/* FAQ uses the same open/close style as the home page */
+.post-faq.faq-list{margin-top:56px;}
+.post-faq.faq-list h2{margin-top:6px;}
+.post-faq.faq-list h2::before{display:none;}
+.post-faq.faq-list details{padding:4px 0;}
+.post-faq.faq-list details p{color:var(--ink-soft); margin:0 0 18px;}
+
+/* Related posts */
+.related{border-top:1px solid var(--line);}
+.related .big{margin-bottom:24px;}
+.related-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+@media (max-width:900px){ .related-grid{grid-template-columns:1fr 1fr;} }
+@media (max-width:600px){ .related-grid{grid-template-columns:1fr;} }
+.related-card{position:relative; display:flex; flex-direction:column; background:var(--surface); border:1px solid var(--line); border-radius:6px; overflow:hidden; text-decoration:none; transition:transform .25s, box-shadow .25s;}
+.related-card::before{content:""; position:absolute; left:0; right:0; top:0; height:3px; background:var(--accent); transform:scaleX(0); transform-origin:left; transition:transform .3s; z-index:2;}
+.related-card:hover{transform:translateY(-4px); box-shadow:var(--shadow);}
+.related-card:hover::before{transform:scaleX(1);}
+.rc-img{overflow:hidden; background:#0d1120;}
+.rc-img img{display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover;}
+.rc-body{padding:18px 20px 20px; display:flex; flex-direction:column; gap:10px; flex:1;}
+.rc-body .tag{align-self:flex-start; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); border:1px solid rgba(255,122,46,.5); border-radius:999px; padding:3px 10px;}
+.rc-body h3{font-family:'Big Shoulders Display', sans-serif; font-weight:800; font-size:23px; line-height:1.05; color:var(--ink); margin:0; flex:1;}
+.rc-body .meta{margin:0;}
