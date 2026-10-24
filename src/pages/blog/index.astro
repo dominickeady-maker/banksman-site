@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import { SITE } from '../../site';
-import { getPosts, postUrl, formatDate, readingMinutes, coverUrl } from '../../lib/posts';
+import { getPosts, postUrl, formatDate, readingMinutes, coverUrl, coverAlt } from '../../lib/posts';
 import { breadcrumbSchema } from '../../lib/schema';
 import '../../styles/pages.css';
 
@@ -40,7 +40,7 @@ const schema = [
   <div class="wrap blog-wrap">
     {featured && (
       <a class="post-featured" href={postUrl(featured)}>
-        <div class="pf-img"><img src={coverUrl(featured)} alt="" width="1200" height="675" loading="eager" /></div>
+        <div class="pf-img"><img src={coverUrl(featured)} alt={coverAlt(featured)} width="1200" height="675" loading="eager" /></div>
         <div class="pf-body">
           <div class="pf-top">
             <span class="pf-label">Latest</span>
@@ -65,7 +65,7 @@ const schema = [
     <div class="post-grid post-grid-img">
       {rest.map((post) => (
         <a class="post-card" href={postUrl(post)} data-cat={slugify(post.data.category)}>
-          <div class="pc-img"><img src={coverUrl(post)} alt="" width="1200" height="675" loading="lazy" /></div>
+          <div class="pc-img"><img src={coverUrl(post)} alt={coverAlt(post)} width="1200" height="675" loading="lazy" /></div>
           <div class="pc-body">
             <span class="tag">{post.data.category}</span>
             {post.data.draft && <span class="draft-flag">Draft</span>}

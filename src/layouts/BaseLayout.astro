@@ -51,13 +51,12 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1178352088183069');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" alt="" style="display:none"
-src="https://www.facebook.com/tr?id=1178352088183069&ev=PageView&noscript=1"
-/></noscript>
 <!-- End Meta Pixel Code -->
     <script is:inline src="/assets/consent.js"></script>
   </head>
   <body>
+    <!-- Meta Pixel fallback for browsers without JavaScript (an image can't sit in <head>). -->
+    <noscript><img height="1" width="1" alt="Meta Pixel tracking image" style="display:none" src="https://www.facebook.com/tr?id=1178352088183069&ev=PageView&noscript=1" /></noscript>
     <Header current={current} />
     <main id="top">
       <slot />

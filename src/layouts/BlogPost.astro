@@ -78,7 +78,7 @@ const related = [...others.filter((p) => p.data.category === category), ...other
         <div class="related-grid">
           {related.map((p) => (
             <a class="related-card" href={postUrl(p)}>
-              <div class="rc-img"><img src={coverUrl(p)} alt="" width="1200" height="675" loading="lazy" /></div>
+              <div class="rc-img"><img src={coverUrl(p)} alt={coverAlt(p)} width="1200" height="675" loading="lazy" /></div>
               <div class="rc-body">
                 <span class="tag">{p.data.category}</span>
                 <h3>{p.data.title}</h3>
