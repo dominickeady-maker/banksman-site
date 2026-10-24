@@ -1,20 +1,27 @@
 ---
 title: "Banksman vs Fieldwire: Which Is Right for a 10-Person Building Firm?"
-description: "A straight comparison of Banksman and Fieldwire for a small-to-mid-size UK building firm, covering pricing, setup and what each is actually built for."
-keyword: "banksman vs fieldwire"
+description: A straight comparison of Banksman and Fieldwire for a
+  small-to-mid-size UK building firm, covering pricing, setup and what each is
+  actually built for.
+keyword: banksman vs fieldwire
 author: Matt
 category: Choosing software
 pubDate: 2026-10-13
-cover: /assets/blog/banksman-vs-fieldwire.webp
-coverAlt: "Illustration of two construction software options compared side by side"
 draft: true
+cover: /assets/blog/banksman-vs-fieldwire.webp
+coverAlt: Illustration of two construction software options compared side by side
 faq:
-  - question: "Can I try both before deciding?"
-    answer: "Yes — Banksman's live demo needs no card and takes minutes to access; Fieldwire also offers a way to trial its platform. Trying both on your own data (or close to it) is the fastest way to know which fits."
-  - question: "Does Banksman do plan markup like Fieldwire?"
-    answer: "Banksman focuses on putting drawings on every phone, labelled by version, rather than detailed markup tools — it's built for firms who need their drawings on site, not annotation-heavy coordination."
-  - question: "Is Fieldwire overkill for a small firm?"
-    answer: "Not necessarily overkill, but likely more capability — and cost — than a small firm running straightforward jobs will use day-to-day."
+  - question: Can I try both before deciding?
+    answer: Yes — Banksman's live demo needs no card and takes minutes to access;
+      Fieldwire also offers a way to trial its platform. Trying both on your own
+      data (or close to it) is the fastest way to know which fits.
+  - question: Does Banksman do plan markup like Fieldwire?
+    answer: Banksman focuses on putting drawings on every phone, labelled by
+      version, rather than detailed markup tools — it's built for firms who need
+      their drawings on site, not annotation-heavy coordination.
+  - question: Is Fieldwire overkill for a small firm?
+    answer: Not necessarily overkill, but likely more capability — and cost — than a
+      small firm running straightforward jobs will use day-to-day.
 ---
 
 For a 10-person building firm running a handful of sites, Banksman is generally the better fit on cost and simplicity, while Fieldwire is better suited to larger firms managing complex plan markup and coordination across bigger, more technical projects. Both can technically handle a small firm's day-to-day — the difference is what you're paying for and how much of it you'll actually use.
