@@ -14,7 +14,7 @@ export interface Feature {
 export const FEATURES = {
   tasks: {
     name: 'Tasks with photo proof',
-    summary: 'The manager sets the task for each site. The worker ticks it off and adds the photo to prove it.',
+    summary: 'The manager sets the task for each site, with a trade, priority and due date. The worker ticks it off and adds the photo to prove it. Filter by site, trade, status or priority.',
     status: 'live',
   },
   messages: {
@@ -54,7 +54,7 @@ export const FEATURES = {
   },
   whitelabel: {
     name: 'Your logo and colours',
-    summary: 'The app can wear your company’s logo and colours, so the lads see your name, not ours.',
+    summary: 'Upload your logo and app icon and pick your colours from the settings, with a readability check as you go. The lads see your name, not ours.',
     status: 'live',
   },
   tour: {
@@ -76,6 +76,26 @@ export const FEATURES = {
   accidents: {
     name: 'Accident and near-miss reports',
     summary: 'Report an accident or near miss from the phone, with stamped photos, while it’s fresh. Only the person who reported it and the managers can see it.',
+    status: 'live',
+  },
+  dashboard: {
+    name: 'Manager dashboard',
+    summary: 'Who’s on site now, hours waiting for approval, deliveries on the way and how far along every site is, on one screen.',
+    status: 'live',
+  },
+  workers: {
+    name: 'Workers and invites',
+    summary: 'Invite the team by email and see which sites and tasks each person is on.',
+    status: 'live',
+  },
+  sites: {
+    name: 'Sites',
+    summary: 'Every site in one list, with its workers and active tasks. Export the lot to CSV.',
+    status: 'live',
+  },
+  textSize: {
+    name: 'Bigger text',
+    summary: 'Each person can switch to large or extra-large text, so it’s easy to read on site.',
     status: 'live',
   },
   labourCost: {

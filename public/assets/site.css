@@ -370,3 +370,37 @@ button.linklike{background:none; border:0; padding:0; font:inherit; cursor:point
 .consent-note{font-size:12.5px; color:var(--muted); margin-top:10px; text-align:center;}
 .consent-note a{color:var(--muted);}
 @media (max-width:479px){ .nav-call .num{display:none;} .nav{flex-wrap:nowrap;} .brand img{height:28px;} }
+
+/* ---------- hero: real app screenshots ---------- */
+.shots{position:relative; padding-bottom:10px;}
+.shots .shot-desk{
+  margin:0; position:relative; z-index:1; width:100%;
+  background:var(--surface); border:1px solid var(--line-strong); border-radius:8px;
+  box-shadow:var(--shadow); overflow:hidden; transform:rotate(-1.2deg);
+}
+.shot-bar{display:flex; align-items:center; gap:6px; padding:8px 12px; background:var(--surface-2); border-bottom:1px solid var(--line);}
+.shot-url{margin-left:10px; font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--muted);}
+.shot-desk img{display:block; width:100%; height:auto;}
+.shots .shot-phone{
+  position:relative; z-index:2; width:230px; margin:-70px 4% 0 auto;
+  background:#0d1120; border:8px solid #1b2138; border-radius:30px;
+  box-shadow:var(--shadow); overflow:hidden;
+}
+.shot-phone-top{padding:11px 14px 9px; border-bottom:1px solid var(--line); background:#0d1120;}
+.shot-phone-top img{display:block; height:17px; width:auto;}
+.shot-phone > img{display:block; width:100%; height:auto;}
+@media (max-width:900px){ .shots{max-width:600px; width:100%; margin:0 auto;} }
+@media (max-width:520px){
+  .shots .shot-desk{display:none;}
+  .shots .shot-phone{margin:0 auto; width:min(270px, 80vw);}
+}
+
+/* ---------- nav: keep the top bar on one line ---------- */
+/* Six links need ~1000px, so narrower screens get the menu button. */
+@media (max-width:999px){
+  .navlinks{display:none;}
+  .menu-btn{display:inline-flex;}
+  .nav{flex-wrap:nowrap;}
+  .nav-right{margin-left:auto;}
+}
+@media (max-width:640px){ .nav-call .num{display:none;} }

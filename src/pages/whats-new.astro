@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBand from '../components/CtaBand.astro';
+import '../styles/pages.css';
+
+// ---------------------------------------------------------------------------
+// VIDEO: put the file at public/assets/video/whats-new.mp4 (and a poster image at
+// public/assets/video/whats-new-poster.webp), then set VIDEO_READY to true.
+// ---------------------------------------------------------------------------
+const VIDEO_READY = false;
+const VIDEO_SRC = '/assets/video/whats-new.mp4';
+const VIDEO_POSTER = '/assets/video/whats-new-poster.webp';
+
+// The latest update. Placeholder entries until the video is in. Replace with the real features.
+const UPDATE = {
+  label: 'Latest update',
+  date: 'October 2026',
+  features: [
+    { name: 'Feature name', summary: 'One or two plain sentences on what it does and why it helps on site.' },
+    { name: 'Feature name', summary: 'One or two plain sentences on what it does and why it helps on site.' },
+    { name: 'Feature name', summary: 'One or two plain sentences on what it does and why it helps on site.' },
+    { name: 'Feature name', summary: 'One or two plain sentences on what it does and why it helps on site.' },
+    { name: 'Feature name', summary: 'One or two plain sentences on what it does and why it helps on site.' },
+    { name: 'Feature name', summary: 'One or two plain sentences on what it does and why it helps on site.' },
+  ],
+};
+---
+<BaseLayout
+  title="What's new in Banksman | Latest features and updates"
+  description="The latest features and improvements in Banksman, the site management app for UK builders. Watch the walkthrough and see what's changed."
+  current="whats-new"
+  noindex={!VIDEO_READY}
+>
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">What's new</div>
+    <h1>New in Banksman.</h1>
+    <p>Banksman keeps getting better, and most of it comes from what builders using it ask for. Here's the latest, with a quick walkthrough.</p>
+  </div></section>
+
+  <section class="wn-section">
+    <div class="wrap">
+      <div class="wn-video">
+        {VIDEO_READY ? (
+          <video controls playsinline preload="metadata" poster={VIDEO_POSTER}>
+            <source src={VIDEO_SRC} type="video/mp4" />
+            Your browser can't play this video.
+          </video>
+        ) : (
+          <div class="wn-video-placeholder">
+            <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l5.5-3.5L10 8.5Z"/></svg>
+            <span>Video coming soon</span>
+          </div>
+        )}
+      </div>
+
+      <div class="wn-head">
+        <div class="eyebrow">{UPDATE.label}</div>
+        <div class="mono wn-date">{UPDATE.date}</div>
+      </div>
+      <ul class="feature-list">
+        {UPDATE.features.map((f) => (
+          <li class="feature-item"><h3>{f.name}</h3><p>{f.summary}</p></li>
+        ))}
+      </ul>
+      <p class="wn-more">Want to see it all for yourself? <a href="/#features">See every feature</a> or try the live demo below.</p>
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>
+
+<style>
+  .wn-section { padding-top: 10px; }
+  .wn-video { border: 1px solid var(--line-strong); border-radius: 6px; overflow: hidden; background: var(--surface); box-shadow: var(--shadow); max-width: 960px; }
+  .wn-video video { display: block; width: 100%; height: auto; background: #000; }
+  .wn-video-placeholder { aspect-ratio: 16 / 9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: var(--muted); background: repeating-linear-gradient(135deg, var(--surface), var(--surface) 14px, var(--surface-2) 14px, var(--surface-2) 28px); }
+  .wn-video-placeholder svg { color: var(--accent); }
+  .wn-video-placeholder span { font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
+  .wn-head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin: 48px 0 16px; }
+  .wn-date { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--muted); }
+  .wn-more { margin-top: 22px; color: var(--ink-soft); }
+  .wn-more a { color: var(--accent); }
+</style>

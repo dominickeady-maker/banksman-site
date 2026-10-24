@@ -2,11 +2,12 @@
 import { SITE } from '../site';
 
 interface Props {
-  current?: 'blog';
+  current?: 'blog' | 'whats-new' | 'team';
 }
 
 const { current } = Astro.props;
-const blogCurrent = current === 'blog' ? { 'aria-current': 'page' as const } : {};
+const here = (page: Props['current']) => (current === page ? { 'aria-current': 'page' as const } : {});
+const blogCurrent = here('blog');
 ---
 <header class="site">
   <nav class="nav" aria-label="Main">
@@ -15,6 +16,8 @@ const blogCurrent = current === 'blog' ? { 'aria-current': 'page' as const } : {
       <a href="/#features">Features</a>
       <a href={SITE.demoUrl}>Live demo</a>
       <a href="/#pricing">Pricing</a>
+      <a href="/whats-new/" {...here('whats-new')}>What's new</a>
+      <a href="/meet-the-team/" {...here('team')}>Team</a>
       <a href="/blog/" {...blogCurrent}>Blog</a>
     </div>
     <div class="nav-right">
@@ -27,6 +30,8 @@ const blogCurrent = current === 'blog' ? { 'aria-current': 'page' as const } : {
     <a href="/#features">Features</a>
     <a href={SITE.demoUrl}>Live demo</a>
     <a href="/#pricing">Pricing</a>
+    <a href="/whats-new/" {...here('whats-new')}>What's new</a>
+    <a href="/meet-the-team/" {...here('team')}>Meet the team</a>
     <a href="/blog/" {...blogCurrent}>Blog</a>
     <a href={SITE.appUrl}>Log in</a>
     <a href={`tel:${SITE.phoneIntl}`}>Call {SITE.phone}</a>

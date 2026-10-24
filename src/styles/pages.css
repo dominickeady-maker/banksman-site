@@ -109,3 +109,8 @@
   .compare-table td::before { content: attr(data-label); display: block; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
   .compare-table td.us::before { color: var(--accent); }
 }
+
+/* home page: features */
+.feat-sub { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 18px; font-weight: 700; margin: 40px 0 14px; }
+.feat-soon { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 22px; }
+.feat-soon .chips { margin: 0; }

@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { SITE } from '../site';
+import '../styles/pages.css';
+
+// Team members. To add a real photo, put it in public/assets/team/ and set `photo` to its path,
+// e.g. photo: '/assets/team/dom.webp'. Until then the card shows the person's initials.
+const TEAM = [
+  {
+    name: 'Dom Keady',
+    initials: 'DK',
+    role: 'CEO & founder',
+    photo: '',
+    bio: [
+      'Dom is a bricklayer by trade and runs his own building firm in Huddersfield, taking on new builds, extensions, renovations, retaining walls and hard landscaping.',
+      'Banksman was his idea. He got sick of running his own sites on WhatsApp groups and a biro, and couldn’t find software that suited a firm his size without the enterprise price tag. So he built the app he wanted: one place for tasks, drawings, timesheets, materials and site photos that the whole team would actually use.',
+      'He still runs his own jobs, so Banksman is shaped by what happens on a real site, not in a boardroom. Ring the number on this site and it’s Dom who answers.',
+    ],
+  },
+  {
+    name: 'Matt Guille',
+    initials: 'MG',
+    role: 'CMO',
+    photo: '',
+    bio: [
+      'Matt has more than ten years in marketing behind him, most of it helping a software start-up grow, with time in travel and e-commerce along the way.',
+      'He’s a true all-rounder. Matt is as comfortable writing code or designing graphics as he is planning a campaign, which means ideas go from a sketch to something live without getting lost between departments.',
+      'At Banksman he looks after how the app reaches the builders who need it, from the website and content to getting the word out.',
+    ],
+  },
+];
+
+const schema = [{
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'Meet the team behind Banksman',
+  url: `${SITE.url}/meet-the-team/`,
+  mainEntity: {
+    '@type': 'Organization',
+    name: 'Banksman',
+    parentOrganization: { '@type': 'Organization', name: SITE.company },
+    employee: TEAM.map((p) => ({ '@type': 'Person', name: p.name, jobTitle: p.role })),
+  },
+}];
+---
+<BaseLayout
+  title="Meet the team | Banksman"
+  description="The people behind Banksman: a working builder who got fed up of running sites on WhatsApp, and a marketer who's spent a decade growing software start-ups."
+  schema={schema}
+  current="team"
+>
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Meet the team</div>
+    <h1>Small team. Real site experience.</h1>
+    <p>Banksman isn't made by a big software company. It's made by a builder who needed it and a marketer who knows how to get it in front of the people it's for.</p>
+  </div></section>
+
+  <section class="team-section">
+    <div class="wrap">
+      <div class="team-grid">
+        {TEAM.map((person) => (
+          <article class="team-card">
+            <div class="team-photo">
+              {person.photo
+                ? <img src={person.photo} alt={`${person.name}, ${person.role}`} width="480" height="480" loading="lazy" />
+                : <span class="team-initials" aria-hidden="true">{person.initials}</span>}
+            </div>
+            <div class="team-body">
+              <div class="mono team-role">{person.role}</div>
+              <h2>{person.name}</h2>
+              {person.bio.map((para) => <p>{para}</p>)}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>
+
+<style>
+  .team-section { padding-top: 10px; }
+  .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  @media (max-width: 820px) { .team-grid { grid-template-columns: 1fr; } }
+  .team-card { background: var(--surface); border: 1px solid var(--line-strong); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; }
+  .team-photo { aspect-ratio: 4 / 3; background: linear-gradient(135deg, var(--surface-2), var(--bg)); border-bottom: 1px solid var(--line); display: grid; place-items: center; }
+  .team-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .team-initials { width: 112px; height: 112px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); border: 2px solid var(--accent); color: var(--accent); font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 46px; letter-spacing: .02em; }
+  .team-body { padding: 24px 24px 28px; }
+  .team-role { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+  .team-body h2 { font-size: clamp(30px, 4vw, 40px); line-height: 1; margin: 6px 0 14px; }
+  .team-body p { color: var(--ink-soft); font-size: 16px; margin: 0 0 12px; }
+  .team-body p:last-child { margin-bottom: 0; }
+  @media (max-width: 600px) { .team-body { padding: 20px 18px 22px; } }
+</style>
