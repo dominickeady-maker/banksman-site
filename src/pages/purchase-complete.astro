@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../site';
+
+// Stripe sends customers here after payment. Set each Payment Link's "After payment" option to
+// "Don't show confirmation page" and redirect to:
+//   https://banksman.app/purchase-complete/?plan=starter      (£79/month)
+//   https://banksman.app/purchase-complete/?plan=growth       (£149/month)
+//   https://banksman.app/purchase-complete/?plan=enterprise   (£299/month)
+//   https://banksman.app/purchase-complete/?plan=white-label  (£999 add-on)
+// The Meta Pixel "Purchase" event below reads the plan to send the right value.
+// The page is noindex and blocked in robots.txt, so it never appears in Google.
+---
+<BaseLayout
+  title="Thanks for signing up | Banksman"
+  description="Thanks for signing up to Banksman. Here's what happens next."
+  noindex
+>
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">You're in</div>
+    <h1>Thanks for signing up.</h1>
+    <p id="pc-plan-line">Your payment has gone through. Here's what happens next.</p>
+  </div></section>
+
+  <div class="wrap pc-wrap">
+    <ol class="pc-steps">
+      <li>
+        <div class="pc-num">01</div>
+        <div>
+          <h2>Check your email</h2>
+          <p>Your receipt is on its way, along with a link to book your onboarding call.</p>
+        </div>
+      </li>
+      <li>
+        <div class="pc-num">02</div>
+        <div>
+          <h2>Book your onboarding call (optional)</h2>
+          <p>A free call with Dom or Matt to get your sites, team and drawings set up properly.</p>
+          {SITE.bookingUrl && <a class="btn btn-primary" href={SITE.bookingUrl} target="_blank" rel="noopener">Book your onboarding call →</a>}
+        </div>
+      </li>
+      <li>
+        <div class="pc-num">03</div>
+        <div>
+          <h2>Get going</h2>
+          <p>The app lives at <a href={SITE.appUrl}>app.banksman.app</a>. Bookmark it, or add it to your phone's home screen so it opens like any other app.</p>
+        </div>
+      </li>
+    </ol>
+    <p class="pc-help">{SITE.realPeople} Dom: <a href="tel:+447508300353">07508 300353</a> · Matt: <a href="tel:+447964660071">07964 660071</a></p>
+  </div>
+</BaseLayout>
+
+<!-- Names each plan on the page. -->
+<script is:inline>
+  (function () {
+    var names = { starter: 'Starter', growth: 'Growth', enterprise: 'Enterprise', 'white-label': 'White label' };
+    var plan = new URLSearchParams(location.search).get('plan');
+    if (names[plan]) document.getElementById('pc-plan-line').textContent = 'Welcome to Banksman ' + names[plan] + '. Your payment has gone through. Here’s what happens next.';
+  })();
+</script>
+
+<!-- Meta Pixel Purchase event. Runs only once the visitor has accepted marketing cookies (Cookiebot). -->
+<script is:inline type="text/plain" data-cookieconsent="marketing">
+  (function () {
+    var values = { starter: 79, growth: 149, enterprise: 299, 'white-label': 999 };
+    var plan = new URLSearchParams(location.search).get('plan');
+    if (typeof fbq !== 'function') return;
+    fbq('track', 'Purchase', { value: values[plan] || 0, currency: 'GBP', content_name: plan || 'unknown' });
+  })();
+</script>
+
+<style>
+  .pc-wrap { padding-bottom: 80px; }
+  .pc-steps, .pc-help { max-width: 760px; }
+  .pc-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .pc-steps li { display: grid; grid-template-columns: auto 1fr; gap: 18px; background: var(--surface); border: 1px solid var(--line-strong); border-radius: 6px; padding: 22px 24px; }
+  .pc-num { font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 34px; line-height: 1; color: var(--accent); }
+  .pc-steps h2 { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 18px; font-weight: 700; margin: 2px 0 6px; }
+  .pc-steps p { margin: 0; color: var(--ink-soft); font-size: 15.5px; }
+  .pc-steps p a { color: var(--accent); }
+  .pc-steps .btn { margin-top: 14px; }
+  .pc-help { margin-top: 26px; color: var(--ink-soft); font-size: 15px; }
+  .pc-help a { color: var(--accent); }
+</style>

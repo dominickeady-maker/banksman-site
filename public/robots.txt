@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /thanks.html
+Disallow: /purchase-complete/
 Disallow: /admin/
 
 Sitemap: https://banksman.app/sitemap-index.xml

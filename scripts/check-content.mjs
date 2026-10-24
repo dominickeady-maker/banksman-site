@@ -16,9 +16,9 @@ const isReserved = (slug) => RESERVED.has(slug) || slug.startsWith('for-');
 // and posts must not claim it does. The keyword field may still target the search phrase.
 const DRAWING_CLAIM = /revision control|version control|(?:latest|current) (?:drawing )?revision (?:is )?on every phone|(?:latest|current) drawing on every phone|latest revision on every phone|because there is only one|only one anyone can find/i;
 
-// A price is £ + digits, optionally a range and a unit. Banksman's own prices (£79, £149) include VAT and must be
+// A price is £ + digits, optionally a range and a unit. Banksman's own prices (£79, £149, £299, £999) include VAT and must be
 // followed by "inc. VAT"; any other price (market figures, other vendors) must be followed by "+ VAT".
-const OWN_PRICE = /^£(?:79|149)\b/;
+const OWN_PRICE = /^£(?:79|149|299|999)\b/;
 const PRICE = /£\d[\d,.]*k?(?:\s?[–-]\s?£\d[\d,.]*k?)?(?:\/\w+|\s(?:a|per)\s(?:month|year|user|seat|week|day))?/g;
 
 const posts = walk(blogDir).filter((p) => p.endsWith('.md'));

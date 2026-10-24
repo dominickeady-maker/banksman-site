@@ -13,6 +13,8 @@ export const SITE = {
     { name: 'Dom', role: 'CEO', phone: '07508 300353', phoneIntl: '+447508300353', email: 'dom@dm4u.ai' },
     { name: 'Matt', role: 'CMO', phone: '07964 660071', phoneIntl: '+447964660071', email: 'matt@dm4u.ai' },
   ],
+  // Google Calendar appointment schedule for onboarding calls. Paste the booking page link here.
+  bookingUrl: '',
   realPeople: 'Speak to Dom or Matt — real people, no bots or call centres.',
   company: 'DM.AI 4U Ltd',
   locale: 'en_GB',

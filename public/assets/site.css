@@ -411,3 +411,41 @@ button.linklike{background:none; border:0; padding:0; font:inherit; cursor:point
 .contact-name{font-family:'IBM Plex Mono', monospace; font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:4px;}
 .contact-panel a.contact-email{font-family:'IBM Plex Sans', system-ui, sans-serif; font-weight:600; font-size:16px; margin-top:6px;}
 @media (max-width:560px){ .contact-people{grid-template-columns:1fr;} }
+
+/* ---------- pricing: three plans ---------- */
+.price-grid-3{grid-template-columns:repeat(3,1fr);}
+@media (max-width:900px){ .price-grid-3{grid-template-columns:1fr; max-width:520px; margin:0 auto;} }
+.quote-top{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+.quote-badge{font-family:'IBM Plex Mono', monospace; font-size:10.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; background:var(--accent); color:var(--accent-ink); padding:3px 8px; border-radius:3px;}
+.plan-includes{margin-top:26px; border:1px solid var(--line); border-radius:4px; background:var(--surface); padding:22px 24px;}
+.plan-includes .mono{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);}
+.plan-includes .chips{list-style:none; margin:12px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:8px;}
+.plan-includes .chips li{font-size:13.5px; color:var(--ink); border:1px solid var(--line-strong); border-radius:999px; padding:5px 12px;}
+.plan-includes p{margin:16px 0 0; font-size:14.5px; color:var(--ink-soft);}
+.plan-includes p strong{color:var(--ink);}
+
+/* ---------- white label ---------- */
+.whitelabel{position:relative; overflow:hidden;}
+.whitelabel::before{content:""; position:absolute; left:-200px; bottom:-260px; width:620px; height:620px; background:radial-gradient(circle, rgba(255,122,46,0.16), rgba(255,122,46,0) 70%); pointer-events:none;}
+.whitelabel .wrap{position:relative;}
+.wl-head{max-width:720px; margin-bottom:34px;}
+.wl-head .big{margin-bottom:14px;}
+.wl-lede{color:var(--ink-soft); font-size:17.5px; margin:0;}
+.whitelabel .wl-grid{grid-template-columns:1.15fr .85fr; align-items:start;}
+@media (max-width:900px){ .whitelabel .wl-grid{grid-template-columns:1fr;} }
+.wl-steps{list-style:none; margin:0; padding:0; display:grid; gap:14px;}
+.wl-steps li{display:grid; grid-template-columns:auto 1fr; gap:18px; background:var(--surface); border:1px solid var(--line-strong); border-radius:6px; padding:20px 22px;}
+.wl-num{font-family:'Big Shoulders Display', sans-serif; font-weight:800; font-size:34px; line-height:1; color:var(--accent);}
+.wl-steps h3{font-family:'IBM Plex Sans', system-ui, sans-serif; font-size:17.5px; font-weight:700; margin:2px 0 6px; line-height:1.3;}
+.wl-steps p{margin:0; font-size:15px; color:var(--ink-soft);}
+.whitelabel .wl-card{padding:28px 26px; box-shadow:var(--shadow); position:sticky; top:90px;}
+.wl-card-label{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft);}
+.whitelabel .wl-card .price{font-size:56px; margin-top:8px;}
+.wl-plus{font-size:14.5px; color:var(--ink); margin:14px 0 8px;}
+.wl-plans{list-style:none; margin:0 0 20px; padding:0; border-top:1px solid rgba(255,122,46,.35);}
+.wl-plans li{display:flex; justify-content:space-between; gap:12px; padding:9px 0; border-bottom:1px solid rgba(255,122,46,.35); font-size:14.5px; color:var(--ink-soft);}
+.wl-plans b{color:var(--ink); font-weight:600; white-space:nowrap;}
+.wl-talk{font-size:13px; color:var(--ink-soft); margin:12px 0 0; text-align:center;}
+.wl-talk a{color:var(--accent);}
+.wl-extra{margin:26px 0 0; font-size:14.5px; color:var(--ink-soft);}
+@media (max-width:900px){ .whitelabel .wl-card{position:static;} }

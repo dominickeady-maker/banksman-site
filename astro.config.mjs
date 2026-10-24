@@ -8,8 +8,8 @@ export default defineConfig({
   build: { format: 'directory' },
   integrations: [
     sitemap({
-      // The CMS and share images are not pages.
-      filter: (page) => !page.includes('/admin/') && !page.includes('/og/'),
+      // The CMS and share images are not pages; the purchase page is noindex.
+      filter: (page) => !page.includes('/admin/') && !page.includes('/og/') && !page.includes('/purchase-complete/'),
     }),
   ],
 });
