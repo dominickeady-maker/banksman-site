@@ -44,7 +44,7 @@ Start from [`BLOG_TEMPLATE.md`](BLOG_TEMPLATE.md), or click **New Blog post** in
 
 ## Publishing through /admin/
 
-1. Go to `https://banksman.app/admin/` and log in with GitHub. You need write access to `dominickeady-maker/banksman-website`.
+1. Go to `https://banksman.app/admin/` and log in with GitHub. You need write access to `dominickeady-maker/banksman-site`.
 2. **New Blog post**, or open an existing one. Use **Save** as often as you like. Each post is held as its own pull request on GitHub and doesn't touch the live site.
 3. On the **Workflow** tab, move the card from *Drafts* → *In review* → *Ready*.
    - Every saved change gets a Netlify deploy preview on its pull request, so you can see it before it goes live.

@@ -2,7 +2,7 @@
 # Login uses GitHub via Netlify's OAuth provider (see BLOG_GUIDE.md, "Admin login").
 backend:
   name: github
-  repo: dominickeady-maker/banksman-website
+  repo: dominickeady-maker/banksman-site
   branch: main
   commit_messages:
     create: 'Blog: create “{{slug}}”'

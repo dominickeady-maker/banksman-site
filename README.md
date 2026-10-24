@@ -1,4 +1,4 @@
-# banksman-website
+# banksman-site
 
 The banksman.app marketing site and blog: [Astro](https://astro.build) static site, [Decap CMS](https://decapcms.org) at `/admin/`, deployed on Netlify.
 
