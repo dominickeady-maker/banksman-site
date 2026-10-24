@@ -236,50 +236,97 @@ const schema = [{"@context": "https://schema.org", "@graph": [{"@type": "Organiz
   <!-- ================= WHITE LABEL ================= -->
   <section class="whitelabel" id="white-label">
     <div class="wrap">
-      <div class="wl-head">
-        <div class="eyebrow">White label add-on</div>
-        <h2 class="big">Your app. Built around your business.</h2>
-        <p class="wl-lede">Put Banksman in front of your clients and your workforce under your own name. We don't just swap the logo — we sit down with you, learn how you run your jobs, and shape the app around it.</p>
+      <div class="wl-hero">
+        <div class="wl-copy">
+          <div class="wl-pill">White label add-on</div>
+          <h2 class="wl-title">Your app.<br><span>Your name on it.</span></h2>
+          <p class="wl-lede">Put your own app in front of your clients and your workforce. We don't just swap the logo — we sit down with you, learn how you run your jobs, and build the app around your business.</p>
+          <div class="wl-price-row">
+            <div class="wl-price">£999<span>one-off inc. VAT</span></div>
+            <div class="wl-price-plus">+ your monthly plan<br><small>Starter £79 · Growth £149 · Enterprise £299</small></div>
+          </div>
+          <div class="hero-ctas">
+            <!-- STRIPE: replace with the Payment Link for the £999 white label add-on. After payment, redirect to /purchase-complete/?plan=white-label -->
+            <a class="btn btn-primary" href="mailto:dom@dm4u.ai,matt@dm4u.ai?subject=Banksman%20white%20label">Get your own app →</a>
+            <a class="btn btn-ghost" href="tel:+447508300353">Talk it through first</a>
+          </div>
+        </div>
+
+        <!-- Illustration: the app wearing a customer's brand. Decorative. -->
+        <div class="wl-visual" aria-hidden="true">
+          <div class="wl-phone">
+            <div class="wl-phone-top">
+              <div class="wl-logo-slot">YOUR LOGO</div>
+              <div class="wl-avatar"></div>
+            </div>
+            <div class="wl-phone-body">
+              <div class="wl-greet">Morning, Sam</div>
+              <div class="wl-stat-row"><div><b>4</b><span>On site</span></div><div><b>2</b><span>To approve</span></div><div><b>1</b><span>Delivery</span></div></div>
+              <div class="wl-card-mini"><div class="wl-line w70"></div><div class="wl-bar"><i style="width:72%"></i></div></div>
+              <div class="wl-card-mini"><div class="wl-line w50"></div><div class="wl-bar"><i style="width:38%"></i></div></div>
+              <div class="wl-card-mini exclusive"><span class="wl-tag">Built for you</span><div class="wl-line w60"></div></div>
+            </div>
+            <div class="wl-phone-nav"><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="wl-float wl-float-a"><span class="wl-swatch"></span><span class="wl-swatch s2"></span><span class="wl-swatch s3"></span><em>Your colours</em></div>
+          <div class="wl-float wl-float-b"><b>yourcompany</b>.app</div>
+        </div>
       </div>
-      <div class="wl-grid">
+
+      <div class="wl-how">
+        <div class="wl-how-title mono">What you get</div>
         <ol class="wl-steps">
           <li>
             <div class="wl-num">01</div>
-            <div>
-              <h3>Three 1-on-1 calls with Dom &amp; Matt</h3>
-              <p>Three calls with the people who build Banksman, to get under the skin of your business, your sites and the problems you want solved.</p>
-            </div>
+            <h3>Three 1-on-1 calls with Dom &amp; Matt</h3>
+            <p>Time with the people who build Banksman, to get under the skin of your business, your sites and the problems you want solved.</p>
           </li>
           <li>
             <div class="wl-num">02</div>
-            <div>
-              <h3>Exclusive features, built for you</h3>
-              <p>We design and build features that fix your pain points — yours alone, not a setting everyone else has.</p>
-            </div>
+            <h3>Exclusive features, built for you</h3>
+            <p>We design and build features that fix your pain points — yours alone, not a setting everyone else has.</p>
           </li>
           <li>
             <div class="wl-num">03</div>
-            <div>
-              <h3>A fully customised app</h3>
-              <p>Your logo, your colours, your app icon, your name. We customise the whole thing so it's completely unique to you and your business.</p>
-            </div>
+            <h3>A fully customised app</h3>
+            <p>Your logo, your colours, your app icon, your name. Completely unique to you and your business.</p>
           </li>
         </ol>
-        <div class="wl-card">
-          <div class="mono wl-card-label">White label add-on</div>
-          <div class="price">£999 <span>one-off inc. VAT</span></div>
-          <p class="wl-plus">Plus the monthly plan of your choice:</p>
-          <ul class="wl-plans">
-            <li><span>Starter · up to 10 users</span><b>£79/mo</b></li>
-            <li><span>Growth · up to 25 users</span><b>£149/mo</b></li>
-            <li><span>Enterprise · up to 75 users</span><b>£299/mo</b></li>
-          </ul>
-          <!-- STRIPE: replace with the Payment Link for the £999 white label add-on. After payment, redirect to /purchase-complete/?plan=white-label -->
-          <a class="btn btn-primary btn-block" href="mailto:dom@dm4u.ai,matt@dm4u.ai?subject=Banksman%20white%20label">Get your own app →</a>
-          <p class="wl-talk">Rather talk first? Dom: <a href="tel:+447508300353">07508 300353</a> · Matt: <a href="tel:+447964660071">07964 660071</a></p>
-        </div>
       </div>
-      <p class="wl-extra">Want it bundled with an AI chatbot and automation for your enquiries? That's the full DM.AI 4U package, from around £350/month inc. VAT.</p>
+    </div>
+  </section>
+
+  <!-- ================= DM.AI 4U SERVICES ================= -->
+  <section class="dmai" id="more-from-us">
+    <div class="wrap">
+      <div class="dmai-card">
+        <div class="dmai-copy">
+          <div class="eyebrow">More from the team</div>
+          <h2 class="big">Impressed with Banksman? You should see what else we can do!</h2>
+          <p class="dmai-lede"><strong>Banksman is part of DM.AI 4U.</strong> Speak to us about website development, web hosting, chatbots and automation. It's a bespoke service, from <b>£349/month inc. VAT</b> — mention it on your onboarding call.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="mailto:dom@dm4u.ai,matt@dm4u.ai?subject=DM.AI%204U%20services">Talk to us →</a>
+          </div>
+        </div>
+        <ul class="dmai-services">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8"/></svg>
+            <b>Website development</b><span>Sites that win work, built and looked after for you.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="3" width="16" height="7" rx="1.5"/><rect x="4" y="14" width="16" height="7" rx="1.5"/><path d="M8 6.5h.01M8 17.5h.01"/></svg>
+            <b>Web hosting</b><span>Fast, secure hosting without the hassle.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h16v11H8l-4 4V5Z"/><path d="M9 10h.01M12 10h.01M15 10h.01"/></svg>
+            <b>Chatbots</b><span>Answer enquiries day and night.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M13 3 5 14h6l-1 7 8-11h-6l1-7Z"/></svg>
+            <b>Automation</b><span>Take the repetitive admin off your plate.</span>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 
