@@ -2,7 +2,7 @@
 import { SITE } from '../site';
 
 interface Props {
-  current?: 'blog' | 'whats-new' | 'team';
+  current?: 'blog' | 'whats-new' | 'team' | 'support';
 }
 
 const { current } = Astro.props;
@@ -19,6 +19,7 @@ const blogCurrent = here('blog');
       <a href="/whats-new/" {...here('whats-new')}>What's new</a>
       <a href="/meet-the-team/" {...here('team')}>Team</a>
       <a href="/blog/" {...blogCurrent}>Blog</a>
+      <a href="/support/" {...here('support')}>Support</a>
     </div>
     <div class="nav-right">
       <a class="nav-call" href={`tel:${SITE.phoneIntl}`}>Call<span class="num"> {SITE.phone}</span></a>
@@ -33,7 +34,7 @@ const blogCurrent = here('blog');
     <a href="/whats-new/" {...here('whats-new')}>What's new</a>
     <a href="/meet-the-team/" {...here('team')}>Meet the team</a>
     <a href="/blog/" {...blogCurrent}>Blog</a>
-    <a href="/support/">Support</a>
+    <a href="/support/" {...here('support')}>Support</a>
     <a href={SITE.appUrl}>Log in</a>
     {SITE.contacts.map((c) => <a href={`tel:${c.phoneIntl}`}>Call {c.name} · {c.phone}</a>)}
     <div class="mm-cta"><a class="btn btn-primary" href={SITE.demoUrl}>Try the live demo →</a></div>

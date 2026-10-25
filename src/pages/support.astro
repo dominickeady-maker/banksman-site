@@ -38,7 +38,7 @@ const schema = [
   breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Support', path: '/support/' }]),
 ];
 ---
-<BaseLayout title="Banksman support: report a bug, get help or suggest a feature" description={description} schema={schema}>
+<BaseLayout title="Banksman support: report a bug, get help or suggest a feature" description={description} schema={schema} current="support">
   <section class="page-head big-head"><div class="wrap">
     <div class="eyebrow">Support</div>
     <h1>Something not right? <span>Tell us.</span></h1>
@@ -53,36 +53,36 @@ const schema = [
           <SpamGuard />
           <div class="lead-grid">
             <div class="field">
-              <label for="first_name">First name</label>
-              <input id="first_name" name="first_name" type="text" autocomplete="given-name" required>
+              <label for="first_name">First name <span class="req" aria-hidden="true">*</span></label>
+              <input id="first_name" name="first_name" type="text" autocomplete="given-name" required aria-required="true" minlength="1" maxlength="120">
             </div>
             <div class="field">
-              <label for="last_name">Last name</label>
-              <input id="last_name" name="last_name" type="text" autocomplete="family-name" required>
+              <label for="last_name">Last name <span class="req" aria-hidden="true">*</span></label>
+              <input id="last_name" name="last_name" type="text" autocomplete="family-name" required aria-required="true" maxlength="120">
             </div>
             <div class="field">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" autocomplete="email" required>
+              <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+              <input id="email" name="email" type="email" autocomplete="email" required aria-required="true" maxlength="254">
             </div>
             <div class="field">
-              <label for="account_number">Account number</label>
+              <label for="account_number">Account number <span class="opt">(optional)</span></label>
               <input id="account_number" name="account_number" type="text" inputmode="text" autocomplete="off" aria-describedby="acc-help">
               <small id="acc-help" class="field-help">On every invoice and every email from us. Not a customer yet? Leave it blank.</small>
             </div>
           </div>
           <div class="field">
-            <label for="reason">What's it about?</label>
+            <label for="reason">What's it about? <span class="req" aria-hidden="true">*</span></label>
             <select id="reason" name="reason" required>
               <option value="" disabled selected>Choose one</option>
               {REASONS.map((r) => <option value={r.value}>{r.label}</option>)}
             </select>
           </div>
           <div class="field">
-            <label for="message">Tell us more</label>
-            <textarea id="message" name="message" rows="6" required placeholder="What happened, which screen you were on, and what you expected. A screenshot description helps too."></textarea>
+            <label for="message">Tell us more <span class="req" aria-hidden="true">*</span></label>
+            <textarea id="message" name="message" rows="6" required aria-required="true" minlength="10" maxlength="5000" placeholder="What happened, which screen you were on, and what you expected. A screenshot description helps too."></textarea>
           </div>
           <button class="btn btn-primary btn-block" type="submit">Send to Dom and Matt →</button>
-          <p class="small-print">We only use these details to answer you. <a href="/privacy/">How we use your details</a>.</p>
+          <p class="small-print"><span class="req">*</span> Required. We only use these details to answer you. <a href="/privacy/">How we use your details</a>.</p>
         </form>
       </div>
 

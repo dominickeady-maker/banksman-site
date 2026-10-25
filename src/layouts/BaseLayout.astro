@@ -12,7 +12,7 @@ interface Props {
   type?: 'website' | 'article';
   noindex?: boolean;
   schema?: Record<string, unknown>[];
-  current?: 'blog' | 'whats-new' | 'team';
+  current?: 'blog' | 'whats-new' | 'team' | 'support';
 }
 
 const { current, ...seo } = Astro.props;

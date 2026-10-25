@@ -21,6 +21,9 @@ const TOPIC_COLOURS: Record<string, string> = {
 };
 const SPARE = ['#3ccf6e', '#ffd23f', '#c6f432', '#a78bfa'];
 const colour = (c: string) => TOPIC_COLOURS[c] ?? SPARE[Math.max(0, categories.indexOf(c)) % SPARE.length];
+// Post labels alternate sky blue and orange down the page, whatever the topic.
+const ALTERNATE = ['var(--sky)', 'var(--accent)'];
+const tone = (i: number) => ALTERNATE[i % 2];
 
 const description = 'Practical articles for UK builders and contractors on running sites, managing crews, timesheets, materials and site paperwork.';
 const schema = [
@@ -66,7 +69,7 @@ const schema = [
 
   <div class="wrap bl-wrap">
     {featured && (
-      <a class="bl-feat" href={postUrl(featured)} style={`--c:${colour(featured.data.category)}`}>
+      <a class="bl-feat" href={postUrl(featured)} style={`--c:${tone(0)}`}>
         <div class="bl-feat-img"><img src={coverUrl(featured)} alt={coverAlt(featured)} width="1200" height="675" loading="eager" fetchpriority="high"></div>
         <div class="bl-feat-body">
           <div class="bl-feat-top"><span class="bl-tag">{featured.data.category}</span>{featured.data.draft && <span class="draft-flag">Draft</span>}</div>
@@ -79,8 +82,8 @@ const schema = [
     )}
 
     <div class="bl-grid">
-      {rest.map((p) => (
-        <a class="bl-card" href={postUrl(p)} data-cat={slugify(p.data.category)} style={`--c:${colour(p.data.category)}`}>
+      {rest.map((p, i) => (
+        <a class="bl-card" href={postUrl(p)} data-cat={slugify(p.data.category)} style={`--c:${tone(i + 1)}`}>
           <div class="bl-card-img"><img src={coverUrl(p)} alt={coverAlt(p)} width="1200" height="675" loading="lazy"><span class="bl-tag">{p.data.category}</span></div>
           <div class="bl-card-body">
             {p.data.draft && <span class="draft-flag">Draft</span>}

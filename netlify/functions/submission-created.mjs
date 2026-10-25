@@ -57,6 +57,15 @@ export const handler = async (event) => {
   }
   if (payload.form_name !== 'support') return reply(200, 'Ignored');
 
+  // The form requires name, email and a message. Anything arriving without them didn't come
+  // through the page (browsers enforce required fields), so treat it as spam.
+  const f = payload.data || {};
+  const filled = (v) => typeof v === 'string' && v.trim().length > 0;
+  if (!filled(f.first_name) || !filled(f.last_name) || !filled(f.email) || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.trim()) || !filled(f.message)) {
+    await binSpam(payload.id);
+    return reply(200, 'Incomplete, removed');
+  }
+
   const { SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY } = process.env;
   if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
     console.error('Support form: SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY is not set, so this message was only emailed.');

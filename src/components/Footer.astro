@@ -11,7 +11,7 @@ import Social from './Social.astro';
         <img src="/assets/banksman-logo.png" alt="Banksman.app" width="173" height="28">
         <p>Site management software built by a working builder, for UK construction. Directing every job, every day.</p>
       </div>
-      <div>
+      <div class="fg-product">
         <h3 class="foot-h">Product</h3>
         <a href="/#features">Features</a>
         <a href={SITE.demoUrl}>Live demo</a>
@@ -21,11 +21,11 @@ import Social from './Social.astro';
         <a href="/tools/">Free tools</a>
         <a href={SITE.appUrl}>Log in</a>
       </div>
-      <div>
+      <div class="fg-trades">
         <h3 class="foot-h">Who it's for</h3>
-        {TRADES.map((trade) => <a href={`/for-${trade.slug}/`}>{trade.name}</a>)}
+        <div class="fg-trade-links">{TRADES.map((trade) => <a href={`/for-${trade.slug}/`}>{trade.name}</a>)}</div>
       </div>
-      <div>
+      <div class="fg-company">
         <h3 class="foot-h">Company</h3>
         <a href="/meet-the-team/">Meet the team</a>
         <a href="/whats-new/">What's new</a>
@@ -33,11 +33,15 @@ import Social from './Social.astro';
         <a href="/support/">Support</a>
         <a href="/privacy/">Privacy &amp; cookies</a>
         <button class="linklike" type="button" onclick="openCookieSettings()">Cookie settings</button>
+      </div>
+      <div class="fg-contact">
+        <h3 class="foot-h">Contact</h3>
         {SITE.contacts.map((c) => (
-          <>
-            <a href={`tel:${c.phoneIntl}`}>{c.name}: {c.phone}</a>
+          <div class="fg-person">
+            <span class="fg-name">{c.name}</span>
+            <a href={`tel:${c.phoneIntl}`}>{c.phone}</a>
             <a href={`mailto:${c.email}`}>{c.email}</a>
-          </>
+          </div>
         ))}
       </div>
     </div>
