@@ -397,3 +397,42 @@
 @media (max-width:520px){
   .radius-phone-wrap{zoom:.6; margin:4px auto -10px;}
 }
+/* Sub-section labels match the sky section labels */
+#features .feat-sub{color:var(--sky);}
+#features .feat-sub::before{background:var(--sky);}
+.plan-includes > .mono{color:var(--sky);}
+.plan-includes > .mono::before{background:var(--sky);}
+
+/* "What's inside" motion (driven by site.js). Only hidden when JS is running, so nothing is lost without it. */
+.js #features .feat-grid{opacity:0; transform:translateY(18px) scale(.985); transition:opacity .8s ease, transform 1s cubic-bezier(.22,1,.36,1);}
+.js #features .feat-grid.feat-on{opacity:1; transform:none;}
+.js #features .feat:not(.feat-cta) svg *{stroke-dasharray:120; stroke-dashoffset:120; transition:stroke-dashoffset 1.1s cubic-bezier(.65,0,.35,1) var(--d,0ms);}
+.js #features .feat:not(.feat-cta) h3{opacity:0; transform:translateX(-8px); transition:opacity .6s ease calc(var(--d,0ms) + .15s), transform .6s cubic-bezier(.22,1,.36,1) calc(var(--d,0ms) + .15s);}
+.js #features .feat.drawn svg *{stroke-dashoffset:0;}
+.js #features .feat.drawn h3{opacity:1; transform:none;}
+#features .feat{position:relative; overflow:hidden;}
+#features .feat:not(.feat-cta)::after{content:""; position:absolute; inset:0; background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%), rgba(255,122,46,.10), transparent 60%); opacity:0; transition:opacity .3s; pointer-events:none;}
+#features .feat:not(.feat-cta):hover::after{opacity:1;}
+@media (prefers-reduced-motion: reduce){
+  .js #features .feat-grid, .js #features .feat svg *, .js #features .feat h3{opacity:1!important; transform:none!important; stroke-dashoffset:0!important; transition:none!important;}
+}
+
+/* Trade pages: floating notifications beside "What you get." */
+.section-top{display:flex; align-items:flex-end; justify-content:space-between; gap:32px;}
+.section-top h2.big{margin-bottom:30px;}
+.site-toasts{list-style:none; margin:0 0 26px; padding:0; display:grid; gap:12px; flex:none; width:300px;}
+.stt{display:flex; align-items:center; gap:11px; padding:11px 14px; background:rgba(23,28,48,.96); border:1px solid var(--line-strong); border-left:3px solid var(--sky); border-radius:10px; box-shadow:0 18px 40px rgba(0,0,0,.4); animation:sttBob 6s ease-in-out infinite;}
+.stt b{display:block; font-size:13.5px; font-weight:600; color:var(--ink); line-height:1.25;}
+.stt small{display:block; font-size:12px; color:var(--muted); margin-top:2px;}
+.stt1{margin-left:40px;} .stt2{margin-right:30px; animation-delay:-2s;} .stt3{margin-left:16px; animation-delay:-4s;}
+@keyframes sttBob{0%,100%{translate:0 0;} 50%{translate:0 -7px;}}
+@media (max-width:860px){
+  .section-top{flex-direction:column; align-items:stretch; gap:0;}
+  .site-toasts{width:auto; max-width:340px; margin:-10px 0 26px;}
+  .stt3{display:none;}
+}
+@media (prefers-reduced-motion: reduce){ .stt{animation:none;} }
+.section-top{align-items:center;}
+.site-toasts{gap:10px; margin-bottom:20px;}
+/* Trade pages have fewer questions, so the phones there are a little smaller */
+@media (min-width:861px){ .trade-faq .radius-phone-wrap{zoom:.8; margin-top:30px;} }

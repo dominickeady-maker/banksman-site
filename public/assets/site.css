@@ -626,3 +626,7 @@ button.linklike{background:none; border:0; padding:0; font:inherit; cursor:point
 .toast-ic, .toast-ic.ok{background:var(--sky-soft); color:var(--sky);}
 .shots{position:relative;}
 .shots::before{content:""; position:absolute; right:-6%; top:-12%; width:70%; height:75%; background:radial-gradient(closest-side, rgba(76,195,255,.2), transparent); pointer-events:none; z-index:0;}
+/* Section labels everywhere ("— WHAT'S INSIDE", "— PRICING", "— WHAT YOU GET" …) use the sky accent. */
+.eyebrow{color:var(--sky);}
+.eyebrow::before{background:var(--sky);}
+.wl-how-title{color:var(--sky);}

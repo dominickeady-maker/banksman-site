@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import FeatureList from '../components/FeatureList.astro';
 import CtaBand from '../components/CtaBand.astro';
 import HeroDevices from '../components/HeroDevices.astro';
+import FaqPhones from '../components/FaqPhones.astro';
+import SiteToasts from '../components/SiteToasts.astro';
 import { SITE } from '../site';
 import { TRADES, type Trade } from '../data/trades';
 import { FEATURES, type FeatureId } from '../data/features';
@@ -118,8 +120,13 @@ const schema = [
 
   <section>
     <div class="wrap">
-      <div class="eyebrow">In the app today</div>
-      <h2 class="big">What you get.</h2>
+      <div class="section-top">
+        <div>
+          <div class="eyebrow">In the app today</div>
+          <h2 class="big">What you get.</h2>
+        </div>
+        <SiteToasts />
+      </div>
       <FeatureList ids={liveIds} />
       {trade.tool && <p class="tool-link"><a href={trade.tool.href}>{trade.tool.text}</a></p>}
     </div>
@@ -147,11 +154,12 @@ const schema = [
   </section>
 
   {trade.faq.length > 0 && (
-    <section class="home-faq" id="faq">
+    <section class="home-faq trade-faq" id="faq">
       <div class="wrap faq-wrap">
-        <div>
+        <div class="faq-side">
           <div class="eyebrow">{trade.name}: questions</div>
           <h2 class="big">Straight answers.</h2>
+          <FaqPhones />
         </div>
         <div class="faq-list">
           {trade.faq.map(({ q, a }, i) => (
