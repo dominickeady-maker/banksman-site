@@ -26,7 +26,7 @@ export const SITE = {
   // The "Ask about Banksman" chat (src/components/SalesChat.astro). While `live` is false it only
   // shows on a page opened with ?chat=1 (for testing on the live site); set it to true to launch.
   salesChat: {
-    live: false,
+    live: true,
     endpoint: 'https://jpujykkjrskihqskbovu.supabase.co/functions/v1/sales-chat',
   },
   company: 'DM.AI 4U Ltd',
