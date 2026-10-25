@@ -33,20 +33,20 @@ const SUGGESTIONS = ['How much is it?', 'Which plan do I need?', 'Can I try it f
       {SUGGESTIONS.map((s) => <button type="button" class="bmc-chip">{s}</button>)}
     </div>
 
-    <form class="bmc-lead" name="chat-lead" method="POST" data-netlify="true" netlify-honeypot="company_website" data-bmc-lead hidden>
+    <form class="bmc-lead" name="chat-lead" method="POST" data-netlify="true" netlify-honeypot="company_website" data-bmc-lead novalidate hidden>
       <input type="hidden" name="form-name" value="chat-lead">
       <input type="hidden" name="transcript" value="">
       <input type="hidden" name="page" value="">
       <SpamGuard />
+      <button type="button" class="bmc-link bmc-back" data-bmc-lead-cancel>← Back to chat</button>
       <p class="bmc-lead-title">Pass your details to Dom and Matt</p>
-      <label>Your name <input name="name" autocomplete="name" required maxlength="120"></label>
-      <label>Business name <input name="business" autocomplete="organization" maxlength="160"></label>
-      <label>Email <input name="email" type="email" autocomplete="email" required maxlength="254"></label>
-      <label>Phone <input name="phone" type="tel" autocomplete="tel" maxlength="40"></label>
+      <div class="bmc-field"><label for="bmc-name">Your name</label><input id="bmc-name" name="name" autocomplete="name" required maxlength="120" aria-describedby="bmc-name-err"><p class="bmc-field-error" id="bmc-name-err" hidden></p></div>
+      <div class="bmc-field"><label for="bmc-business">Business name</label><input id="bmc-business" name="business" autocomplete="organization" maxlength="160"></div>
+      <div class="bmc-field"><label for="bmc-email">Email</label><input id="bmc-email" name="email" type="email" inputmode="email" autocomplete="email" required maxlength="254" aria-describedby="bmc-email-err"><p class="bmc-field-error" id="bmc-email-err" hidden></p></div>
+      <div class="bmc-field"><label for="bmc-phone">Phone</label><input id="bmc-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" aria-describedby="bmc-phone-err"><p class="bmc-field-error" id="bmc-phone-err" hidden></p></div>
       <p class="bmc-small">They'll get these details and this chat, and reply themselves. <a href="/privacy/">Privacy</a></p>
       <div class="bmc-lead-actions">
         <button type="submit" class="btn btn-primary">Send to Dom and Matt</button>
-        <button type="button" class="bmc-link" data-bmc-lead-cancel>Not now</button>
       </div>
       <p class="bmc-error" data-bmc-lead-error role="alert" hidden></p>
     </form>
@@ -58,7 +58,7 @@ const SUGGESTIONS = ['How much is it?', 'Which plan do I need?', 'Can I try it f
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
       </button>
     </form>
-    <p class="bmc-foot">Don't share passwords or bank details. Rather talk to a person? <button type="button" class="bmc-link" data-bmc-person>Pass your details on</button> or ring Dom on <a href={`tel:${SITE.phoneIntl}`}>{SITE.phone}</a>.</p>
+    <p class="bmc-foot" data-bmc-foot>Don't share passwords or bank details. Rather talk to a person? <button type="button" class="bmc-link" data-bmc-person>Pass your details on</button> or ring Dom on <a href={`tel:${SITE.phoneIntl}`}>{SITE.phone}</a>.</p>
   </div>
 </div>
 
@@ -98,10 +98,15 @@ const SUGGESTIONS = ['How much is it?', 'Which plan do I need?', 'Can I try it f
   .bmc-foot{margin:0; padding:0 14px 12px; font-size:12px; line-height:1.45; color:var(--muted, #8890a8);}
   .bmc-foot a, .bmc-small a{color:var(--ink-soft);}
   .bmc-link{border:0; background:none; padding:0; color:var(--sky, #4cc3ff); font:inherit; text-decoration:underline; cursor:pointer;}
-  .bmc-lead{margin:0 14px 10px; padding:12px; border:1px solid var(--line-strong); border-radius:8px; display:grid; gap:8px; max-height:60%; overflow-y:auto;}
+  /* The details form takes the message list's place: one scroll area, never stacked under the chat */
+  .bmc-lead{flex:1; min-height:0; overflow-y:auto; overscroll-behavior:contain; margin:0; padding:12px 14px 16px; display:grid; align-content:start; gap:10px;}
+  .bmc-back{justify-self:start; min-height:44px; font-size:14px;}
   .bmc-lead-title{margin:0; font-weight:700; font-size:14.5px;}
-  .bmc-lead label{display:grid; gap:3px; font-size:13px; color:var(--ink-soft);}
+  .bmc-field{display:grid; gap:3px;}
+  .bmc-field label{font-size:13px; color:var(--ink-soft);}
+  .bmc-field-error{margin:2px 0 0; color:#ff9a9a; font-size:13px; line-height:1.4;}
   .bmc-lead input:not([type=hidden]){min-height:44px; padding:9px 10px; border-radius:6px; border:1px solid var(--line-strong); background:var(--bg); color:var(--ink); font:15px 'IBM Plex Sans', system-ui, sans-serif;}
+  .bmc-lead input[aria-invalid=true]{border-color:#ff6b6b; outline:1px solid #ff6b6b;}
   .bmc-lead .hp{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;}
   .bmc-small{margin:0; font-size:12px; color:var(--muted);}
   .bmc-lead-actions{display:flex; flex-wrap:wrap; gap:12px; align-items:center;}
@@ -140,6 +145,7 @@ const SUGGESTIONS = ['How much is it?', 'Which plan do I need?', 'Can I try it f
     const text = root.querySelector<HTMLTextAreaElement>('[data-bmc-text]')!;
     const send = form.querySelector<HTMLButtonElement>('.bmc-send')!;
     const lead = root.querySelector<HTMLFormElement>('[data-bmc-lead]')!;
+    const foot = root.querySelector<HTMLElement>('[data-bmc-foot]')!;
     const leadError = root.querySelector<HTMLElement>('[data-bmc-lead-error]')!;
     let history: Msg[] = [];
     let busy = false;
@@ -175,15 +181,26 @@ const SUGGESTIONS = ['How much is it?', 'Which plan do I need?', 'Can I try it f
       panel.hidden = !open;
       root.classList.toggle('is-open', open);
       openBtn.setAttribute('aria-expanded', String(open));
-      if (open) { text.focus(); log.scrollTop = log.scrollHeight; } else openBtn.focus();
+      if (open) { (lead.hidden ? text : lead.querySelector<HTMLInputElement>('input[name=name]')!).focus(); log.scrollTop = log.scrollHeight; } else openBtn.focus();
     };
     openBtn.addEventListener('click', () => setOpen(true));
     root.querySelector('[data-bmc-close]')!.addEventListener('click', () => setOpen(false));
     panel.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
 
-    const showLead = () => { lead.hidden = false; lead.querySelector<HTMLInputElement>('input[name=name]')!.focus(); };
+    // Two views in the same space: the chat (messages, suggestions, question box) or the details form.
+    const showLead = () => {
+      log.hidden = true; chips.hidden = true; form.hidden = true; foot.hidden = true;
+      lead.hidden = false; lead.scrollTop = 0;
+      lead.querySelector<HTMLInputElement>('input[name=name]')!.focus();
+    };
+    const showChat = () => {
+      lead.hidden = true;
+      log.hidden = false; foot.hidden = false; form.hidden = closed; chips.hidden = history.length > 0;
+      log.scrollTop = log.scrollHeight;
+      if (!closed) text.focus();
+    };
     root.querySelector('[data-bmc-person]')!.addEventListener('click', showLead);
-    root.querySelector('[data-bmc-lead-cancel]')!.addEventListener('click', () => { lead.hidden = true; text.focus(); });
+    root.querySelector('[data-bmc-lead-cancel]')!.addEventListener('click', showChat);
 
     const ask = async (question: string) => {
       if (busy || closed) return;
@@ -245,9 +262,43 @@ const SUGGESTIONS = ['How much is it?', 'Which plan do I need?', 'Can I try it f
     text.addEventListener('input', () => { text.style.height = ''; text.style.height = Math.min(text.scrollHeight, 120) + 'px'; });
     chips.querySelectorAll<HTMLButtonElement>('.bmc-chip').forEach((b) => b.addEventListener('click', () => ask(b.textContent || '')));
 
+    // Our own messages under each field, instead of the browser's popups.
+    const TYPO_DOMAINS = /^(gmial|gmai|gamil|gmaill|gnail|gmail\.co|gmail\.con|hotmial|hotmai|hotnail|outlok|outloo|yaho|yahoo\.con|iclod|icould|btinternt)(\.|$)/i;
+    const fieldProblem = (name: string, value: string): string | null => {
+      const v = value.trim();
+      if (name === 'name') return v ? null : 'Please add your name.';
+      if (name === 'email') {
+        if (!v) return 'Please add your email address, so Dom or Matt can reply.';
+        const domain = v.split('@')[1] || '';
+        if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v) || TYPO_DOMAINS.test(domain) || /\.(con|cmo|c0m|co\.k|couk)$/i.test(domain) || /\.\./.test(v))
+          return 'Check your email address. It looks like it has a typo.';
+        return null;
+      }
+      if (name === 'phone') return !v || v.replace(/\D/g, '').length >= 10 ? null : 'Check your phone number. It looks too short (or leave it blank).';
+      return null;
+    };
+    const showProblem = (input: HTMLInputElement, problem: string | null) => {
+      const box = document.getElementById(input.id + '-err');
+      if (!box) return;
+      box.textContent = problem ?? '';
+      box.hidden = !problem;
+      if (problem) input.setAttribute('aria-invalid', 'true'); else input.removeAttribute('aria-invalid');
+    };
+    lead.querySelectorAll<HTMLInputElement>('input[aria-describedby]').forEach((input) => {
+      input.addEventListener('input', () => { if (input.getAttribute('aria-invalid')) showProblem(input, fieldProblem(input.name, input.value)); });
+      input.addEventListener('blur', () => { if (input.value.trim()) showProblem(input, fieldProblem(input.name, input.value)); });
+    });
+
     lead.addEventListener('submit', async (e) => {
       e.preventDefault();
       leadError.hidden = true;
+      let firstBad: HTMLInputElement | null = null;
+      lead.querySelectorAll<HTMLInputElement>('input[aria-describedby]').forEach((input) => {
+        const problem = fieldProblem(input.name, input.value);
+        showProblem(input, problem);
+        if (problem && !firstBad) firstBad = input;
+      });
+      if (firstBad) { (firstBad as HTMLInputElement).focus(); return; }
       (lead.elements.namedItem('transcript') as HTMLInputElement).value = history
         .map((m) => `${m.role === 'user' ? 'Visitor' : 'Assistant'}: ${clean(m.content)}`).join('\n\n').slice(0, 20000);
       (lead.elements.namedItem('page') as HTMLInputElement).value = location.pathname;
@@ -257,7 +308,7 @@ const SUGGESTIONS = ['How much is it?', 'Which plan do I need?', 'Can I try it f
         const body = new URLSearchParams(new FormData(lead) as unknown as Record<string, string>).toString();
         const res = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
         if (!res.ok) throw new Error(`Your details weren't sent (error ${res.status}). Please try again, or ring Dom on 07508 300353.`);
-        lead.hidden = true;
+        showChat();
         bubble('assistant', "Thanks, that's gone to Dom and Matt. One of them will be in touch.");
       } catch (err) {
         leadError.textContent = (err as Error).message;
