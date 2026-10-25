@@ -112,7 +112,7 @@ export const FEATURES = {
   labourCost: {
     name: 'Labour cost per job',
     summary: 'Approved hours times each worker’s rate, so you can see what a job is costing in labour.',
-    status: 'coming-soon',
+    status: 'live',
   },
   cisInvoices: {
     name: 'CIS worker invoices',
