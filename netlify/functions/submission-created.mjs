@@ -4,6 +4,8 @@
 // 2. The Support form: each genuine message is filed in Supabase (the DM4U-CRM project).
 //   Feature suggestions → feature_suggestions table (the ideas list for app updates)
 //   Everything else      → support_tickets table (status: new / in_progress / done)
+// 3. The sales chat's "Pass your details on" form (chat-lead): filed in the sales_leads table
+//    (DM4U-CRM) with the chat transcript. See supabase/SALES_CHAT_SETUP.md.
 // Email notifications to Dom and Matt are sent by Netlify Forms itself (set up in the Netlify UI).
 //
 // Environment variables in Netlify (Site configuration → Environment variables, scope: Functions):
@@ -43,6 +45,49 @@ async function binSpam(id) {
   console.log(`Spam submission ${id} ${del && del.ok ? 'deleted' : 'could not be deleted'}.`);
 }
 
+const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Insert one row into a DM4U-CRM table with the service role. Returns an error message, or null.
+async function insertRow(table, row) {
+  const { SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY } = process.env;
+  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) return 'SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY is not set';
+  const res = await fetch(`${SUPABASE_URL.replace(/\/$/, '')}/rest/v1/${table}?on_conflict=netlify_submission_id`, {
+    method: 'POST',
+    headers: {
+      apikey: SUPABASE_SERVICE_ROLE_KEY,
+      Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+      'Content-Type': 'application/json',
+      Prefer: 'return=minimal,resolution=ignore-duplicates',
+    },
+    body: JSON.stringify(row),
+  });
+  return res.ok ? null : `insert into ${table} failed: ${res.status} ${await res.text()}`;
+}
+
+// A lead from the sales chat: name and a valid email are required (the form asks for both).
+async function saveChatLead(payload) {
+  const d = payload.data || {};
+  if (!clean(d.name) || !clean(d.email) || !EMAIL.test(d.email.trim())) {
+    await binSpam(payload.id);
+    return reply(200, 'Incomplete, removed');
+  }
+  const failed = await insertRow('sales_leads', {
+    netlify_submission_id: payload.id || null,
+    name: clean(d.name, 120),
+    business: clean(d.business, 160),
+    email: clean(d.email, 254),
+    phone: clean(d.phone, 40),
+    transcript: clean(d.transcript, 20000),
+    page: clean(d.page, 300),
+    source: 'banksman.app/chat',
+  });
+  if (failed) {
+    console.error(`Chat lead: ${failed}. It was only emailed.`);
+    return reply(200, 'Saved by email only');
+  }
+  return reply(200, 'Saved');
+}
+
 export const handler = async (event) => {
   let payload;
   try {
@@ -55,6 +100,7 @@ export const handler = async (event) => {
     await binSpam(payload.id);
     return reply(200, 'Spam removed');
   }
+  if (payload.form_name === 'chat-lead') return saveChatLead(payload);
   if (payload.form_name !== 'support') return reply(200, 'Ignored');
 
   // The form requires name, email and a message. Anything arriving without them didn't come
