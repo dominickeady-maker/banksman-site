@@ -95,6 +95,16 @@ for (const file of walk(join(root, 'src/pages')).filter((p) => p.endsWith('.astr
   if (claim) errors.push(`${relative(root, file)}: "${claim[0]}" claims revision control; say "drawings on every phone, labelled by version"`);
 }
 
+// The sales chat's plans (src/data/plans.ts) must match the home page pricing: same prices and checkout links.
+{
+  const plans = readFileSync(join(root, 'src/data/plans.ts'), 'utf8');
+  const home = readFileSync(join(root, 'src/pages/index.astro'), 'utf8');
+  for (const [, name, price, link] of plans.matchAll(/name: '([^']+)', price: (\d+),[^]*?checkout: '([^']+)'/g)) {
+    if (!home.includes(`£${price}`)) errors.push(`src/data/plans.ts: ${name} is £${price}, but the home page doesn't show that price`);
+    if (!home.includes(link)) errors.push(`src/data/plans.ts: ${name}'s checkout link isn't on the home page`);
+  }
+}
+
 if (!existsSync(join(root, 'public/admin/config.yml'))) errors.push('public/admin/config.yml is missing');
 
 report(`Content (${posts.length} posts)`, errors, warnings);
