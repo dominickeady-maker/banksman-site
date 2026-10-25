@@ -25,7 +25,7 @@ const colour = (c: string) => TOPIC_COLOURS[c] ?? SPARE[Math.max(0, categories.i
 const ALTERNATE = ['var(--sky)', 'var(--accent)'];
 const tone = (i: number) => ALTERNATE[i % 2];
 
-const description = 'Practical articles for UK builders and contractors on running sites, managing crews, timesheets, materials and site paperwork.';
+const description = 'Practical articles for UK builders and contractors on running sites, managing teams, timesheets, materials and site paperwork.';
 const schema = [
   {
     '@context': 'https://schema.org',
@@ -49,7 +49,7 @@ const schema = [
     <div>
       <div class="eyebrow">The Banksman blog</div>
       <h1>From the site, <span>not the sales team.</span></h1>
-      <p>Straight-talking guides on running building sites, crews, timesheets and paperwork, written by a builder who's been there.</p>
+      <p>Straight-talking guides on running building sites, teams, timesheets and paperwork, written by a builder who's been there.</p>
       {categories.length > 1 && (
         <div class="bl-topics" role="group" aria-label="Filter by topic">
           <button type="button" class="bl-topic on" data-filter="all" aria-pressed="true" style="--c:#4cc3ff">All</button>
