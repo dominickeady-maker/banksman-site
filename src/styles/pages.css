@@ -183,3 +183,29 @@
 .trade-links{list-style:none; margin:14px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:10px;}
 .trade-links a{display:inline-block; padding:9px 16px; border:1px solid rgba(255,122,46,.45); border-radius:999px; color:var(--ink); text-decoration:none; font-weight:600; font-size:14.5px; transition:background .2s, color .2s;}
 .trade-links a:hover{background:var(--accent); color:var(--accent-ink); border-color:var(--accent);}
+
+/* Homepage: demo tile at the end of "What's inside" */
+#features .feat-cta{display:flex; flex-direction:column; justify-content:center; gap:8px; background:var(--accent); color:var(--accent-ink); text-decoration:none; transition:background .2s;}
+#features .feat-cta span{font-family:'IBM Plex Mono', monospace; font-size:11.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; opacity:.8;}
+#features .feat-cta b{font-family:'Big Shoulders Display', sans-serif; font-size:34px; font-weight:800; line-height:1;}
+#features .feat-cta:hover{background:color-mix(in srgb, var(--accent) 88%, black);}
+
+/* Homepage: "Coming soon" uses the same list as "The personal touch", in a quieter tone */
+.soon-list{border-color:var(--line-strong); border-top:2px dashed rgba(255,122,46,.6);}
+.soon-list .feature-item{background:var(--surface-2);}
+.soon-list .feature-item h3{color:var(--ink-soft);}
+
+/* Pricing: "Every plan includes" as icon tiles, matching "What's inside" */
+.plan-includes{border-color:rgba(255,122,46,.35); border-top:2px solid var(--accent);}
+.inc-grid{list-style:none; margin:14px 0 0; padding:0; display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:3px; overflow:hidden;}
+@media (max-width:960px){ .inc-grid{grid-template-columns:repeat(3,1fr);} }
+@media (max-width:700px){ .inc-grid{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:420px){ .inc-grid{grid-template-columns:1fr;} }
+.inc-grid li{display:flex; align-items:center; gap:12px; background:var(--surface-2); padding:16px 16px; font-size:14.5px; font-weight:600; color:var(--ink); line-height:1.3; transition:background .2s;}
+.inc-grid li svg{flex:none; color:var(--accent);}
+.inc-grid li:hover{background:color-mix(in srgb, var(--accent-soft) 60%, var(--surface));}
+#features .feature-list > li:last-child:nth-child(3n+2){grid-column:span 2;}
+@media (max-width:560px){ #features .feature-list > li:last-child:nth-child(3n+2){grid-column:auto;} }
+.plan-includes > .mono{display:flex; align-items:center; gap:12px; color:var(--accent); font-weight:600; font-size:13px; letter-spacing:.12em;}
+.plan-includes > .mono::before{content:""; width:26px; height:2px; background:var(--accent);}
+.final h2{line-height:1.05;}

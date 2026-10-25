@@ -6,19 +6,45 @@ import { FEATURES, type FeatureId } from '../data/features';
 import '../styles/pages.css';
 
 // Features section: names and descriptions come from src/data/features.ts, so edit them there.
-const ICONS: Partial<Record<FeatureId, string>> = {
+const ICONS: Record<string, string> = {
   dashboard: '<rect x="3" y="3" width="7" height="8" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="15" width="7" height="6" rx="1"/>',
   tasks: '<rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 3v2a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V3"/><path d="M8 11h8M8 15h5"/>',
   timesheets: '<circle cx="12" cy="13" r="7.5"/><path d="M12 9v4l2.5 2M9 2h6"/>',
-  materials: '<path d="M3 7l9-4 9 4-9 4-9-4Z"/><path d="M3 7v10l9 4 9-4V7M12 11v10"/>',
+  materials: '<path d="M14 17H9.5M4.5 17H2.5V6h11.5v11"/><path d="M14 9h4l3.5 4v4h-1.5"/><circle cx="7" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/>',
+  workerDashboard: '<rect x="6" y="2.5" width="12" height="19" rx="2"/><path d="M9 8l1.3 1.3L12.5 7M14 8h1.5M9 12.5l1.3 1.3 2.2-2.3M14 12.5h1.5M11 18.5h2"/>',
+  accidents: '<path d="M12 3.5 21.5 20h-19L12 3.5Z"/><path d="M12 10v4.5M12 17.2h.01"/>',
+  csv: '<path d="M6 3h9l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M15 3v4h4M12 10v7M9 14l3 3 3-3"/>',
+  programme: '<path d="M3 5h18M3 19h18"/><rect x="4" y="8" width="7" height="3" rx="1"/><rect x="9" y="13" width="9" height="3" rx="1"/>',
   drawings: '<path d="M6 3h9l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M15 3v4h4M8 12h8M8 16h5"/>',
   photos: '<rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2.5h5L16 6"/>',
   messages: '<path d="M4 5h16v11H8l-4 4V5Z"/><path d="M8 9h8M8 12.5h5"/>',
   hsDocs: '<path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6l8-3Z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>',
   signIn: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM18 18h3v3M21 14v1"/>',
 };
-const headline: FeatureId[] = ['dashboard', 'tasks', 'timesheets', 'materials', 'drawings', 'photos', 'messages', 'hsDocs', 'signIn'];
-const extras = (Object.keys(FEATURES) as FeatureId[]).filter((id) => FEATURES[id].status === 'live' && !headline.includes(id));
+const headline: FeatureId[] = ['dashboard', 'workerDashboard', 'timesheets', 'materials', 'drawings', 'photos', 'messages', 'hsDocs', 'signIn', 'accidents', 'csv'];
+// Live features left out of "The personal touch" list (covered above, or not worth a tile on the homepage).
+const notInExtras: FeatureId[] = ['tasks', 'workers', 'pwa'];
+const extras = (Object.keys(FEATURES) as FeatureId[]).filter((id) => FEATURES[id].status === 'live' && !headline.includes(id) && !notInExtras.includes(id));
+// Homepage-only wording for site sign-in (the shared text in features.ts is used on the trade pages).
+const homeText: Partial<Record<FeatureId, { name: string; summary: string }>> = {
+  signIn: { name: 'Site sign-in with a location radius', summary: 'Scan the QR poster to sign in and out. Set a radius for each site and sign-ins from further away get flagged, so no latecomers pulling the wool over your eyes. Location is checked at sign-in only, never tracked.' },
+};
+const featText = (id: FeatureId) => homeText[id] ?? FEATURES[id];
+// "Every plan includes" tiles, in the same style as "What's inside".
+const included: { icon: string; name: string }[] = [
+  { icon: 'dashboard', name: 'Manager & worker dashboards' },
+  { icon: 'tasks', name: 'Tasks with photo proof' },
+  { icon: 'timesheets', name: 'Timesheets — daywork & price work' },
+  { icon: 'materials', name: 'Material requests' },
+  { icon: 'drawings', name: 'Drawings & documents' },
+  { icon: 'photos', name: 'Site photos' },
+  { icon: 'messages', name: 'Messages per site' },
+  { icon: 'programme', name: 'Build programme per site' },
+  { icon: 'hsDocs', name: 'Health & safety sign-offs' },
+  { icon: 'signIn', name: 'QR site sign-in & fire roll call' },
+  { icon: 'accidents', name: 'Accident & near-miss reports' },
+  { icon: 'csv', name: 'CSV exports' },
+];
 const comingSoon = (Object.keys(FEATURES) as FeatureId[]).filter((id) => FEATURES[id].status === 'coming-soon');
 
 // Ported from the static banksman.app home page (live-site/index.html).
@@ -132,7 +158,7 @@ const schema = [{
         </div>
         <div class="compare-row">
           <div class="old">Enterprise software priced for a company with an IT department</div>
-          <div class="new">£79 a month inc. VAT, set up by the bloke who built it</div>
+          <div class="new">From £79 a month inc. VAT</div>
         </div>
       </div>
     </div>
@@ -144,29 +170,31 @@ const schema = [{
       <div class="eyebrow">What's inside</div>
       <h2 class="big">Everything the site needs. One app.</h2>
       <div class="feat-grid">
-        {headline.map((id, i) => (
+        {headline.map((id) => (
           <div class="feat">
-            <div class="form-no">FORM {String(i + 1).padStart(2, '0')}</div>
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" set:html={ICONS[id]} />
-            <h3>{FEATURES[id].name}</h3>
-            <p>{FEATURES[id].summary}</p>
+            <h3>{featText(id).name}</h3>
+            <p>{featText(id).summary}</p>
           </div>
         ))}
+        <a class="feat feat-cta" href="#demo"><span>See it all for yourself</span><b>Try the live demo →</b></a>
       </div>
-      <h3 class="feat-sub">Also in the app</h3>
+      <h3 class="feat-sub">The personal touch</h3>
       <ul class="feature-list">
         {extras.map((id) => (
           <li class="feature-item"><h3>{FEATURES[id].name}</h3><p>{FEATURES[id].summary}</p></li>
         ))}
-        <li class="feature-cta"><a href="#demo"><span>See it all for yourself</span><b>Try the live demo →</b></a></li>
       </ul>
       {comingSoon.length > 0 && (
-        <div class="feat-soon">
-          <span class="badge-soon">Coming soon</span>
-          <ul class="chips">{comingSoon.map((id) => <li>{FEATURES[id].name}</li>)}</ul>
-        </div>
+        <>
+          <h3 class="feat-sub">Coming soon</h3>
+          <ul class="feature-list soon-list">
+            {comingSoon.map((id) => (
+              <li class="feature-item soon"><h3>{FEATURES[id].name}</h3><p>{FEATURES[id].summary}</p></li>
+            ))}
+          </ul>
+        </>
       )}
-      <p style="margin-top:20px; font-family:'IBM Plex Mono'; font-size:13px; color:var(--muted);">↳ Every table — timesheets, tasks, materials, drawings — exports straight to CSV for payroll, the accountant, or head office.</p>
     </div>
   </section>
 
@@ -200,9 +228,9 @@ const schema = [{
               <input id="phone" name="phone" type="tel" autocomplete="tel" required>
             </div>
           </div>
-          <label class="check"><input type="checkbox" name="walkthrough" value="yes"> Ring me as well and walk me through it on my own sites</label>
+          <label class="check"><input type="checkbox" name="marketing_opt_in" value="yes"> Send me occasional Banksman news, tips and offers by email. Unsubscribe any time.</label>
           <button class="btn btn-primary btn-block" type="submit">Unlock the live demo →</button>
-          <p class="small-print" style="margin-top:14px;">Four fields, no newsletter, no passing your details on — they come to us and nobody else. <a href="/privacy/">How we use your details</a>. Rather just talk? Ring Dom on <a href="tel:+447508300353" style="color:var(--accent);">07508 300353</a> or Matt on <a href="tel:+447964660071" style="color:var(--accent);">07964 660071</a>.</p>
+          <p class="small-print" style="margin-top:14px;">Four fields. We only send marketing emails if you tick the box, and we never pass your details on — they come to us and nobody else. <a href="/privacy/">How we use your details</a>. Rather just talk? Ring Dom on <a href="tel:+447508300353" style="color:var(--accent);">07508 300353</a> or Matt on <a href="tel:+447964660071" style="color:var(--accent);">07964 660071</a>.</p>
         </form>
       </div>
     </div>
@@ -253,6 +281,7 @@ const schema = [{
           <ul>
             <li>Everything in Growth</li>
             <li>For bigger firms running lots of sites</li>
+            <li>Promote workers to run their own sites</li>
             <li>Optional onboarding call with us</li>
             <li>Priority support — straight to Dom or Matt</li>
           </ul>
@@ -263,17 +292,10 @@ const schema = [{
 
       <div class="plan-includes">
         <div class="mono">Every plan includes</div>
-        <ul class="chips">
-          <li>Tasks &amp; photo proof</li>
-          <li>Timesheets — daywork &amp; price work</li>
-          <li>Materials requests</li>
-          <li>Drawings &amp; documents</li>
-          <li>Site photos</li>
-          <li>Messages per site</li>
-          <li>Build programme per site</li>
-          <li>Health &amp; safety sign-offs</li>
-          <li>QR site sign-in &amp; fire roll call</li>
-          <li>Accident &amp; near-miss reports</li>
+        <ul class="inc-grid">
+          {included.map((f) => (
+            <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" set:html={ICONS[f.icon] ?? ''} /><span>{f.name}</span></li>
+          ))}
         </ul>
         <p><strong>Onboarding call:</strong> once you've signed up, we'll email you a link to book a call with us at a time that suits you. It's optional, and it's free on every plan.</p>
       </div>
@@ -357,9 +379,10 @@ const schema = [{
         <div class="dmai-copy">
           <div class="eyebrow">More from the team</div>
           <h2 class="big">Impressed with Banksman? You should see what else we can do!</h2>
-          <p class="dmai-lede"><strong>Banksman is part of DM.AI 4U.</strong> Speak to us about website development, web hosting, chatbots and automation. It's a bespoke service, from <b>£349/month inc. VAT</b> — mention it on your onboarding call.</p>
+          <p class="dmai-lede"><strong>Banksman is part of <a href="https://dm4u.ai/" target="_blank" rel="noopener">DM.AI 4U</a>.</strong> Speak to us about website development, web hosting, chatbots and automation. It's a bespoke service, from <b>£349/month inc. VAT</b> — mention it on your onboarding call.</p>
           <div class="hero-ctas">
             <a class="btn btn-primary" href="mailto:dom@dm4u.ai,matt@dm4u.ai?subject=DM.AI%204U%20services">Talk to us →</a>
+            <a class="btn btn-ghost" href="https://dm4u.ai/" target="_blank" rel="noopener">Visit dm4u.ai</a>
           </div>
         </div>
         <ul class="dmai-services">
@@ -422,7 +445,7 @@ const schema = [{
   <!-- ================= FINAL ================= -->
   <section class="final">
     <div class="wrap">
-      <h2>Get your team off WhatsApp.</h2>
+      <h2>You've made it this far, so you may as well try the demo.</h2>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="#demo">Try the live demo →</a>
         <a class="btn btn-ghost" href="tel:+447508300353">Give us a ring</a>

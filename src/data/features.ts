@@ -63,6 +63,17 @@ export const FEATURES = {
     status: 'live',
   },
 
+  workerDashboard: {
+    name: 'Worker dashboard',
+    summary: 'Each worker sees their own tasks and deadlines, ticks them off with a photo, and keeps the manager up to date without a phone call.',
+    status: 'live',
+  },
+  csv: {
+    name: 'Pull CSV files',
+    summary: 'Timesheets, tasks, materials, drawings and sites export straight to CSV for payroll, the accountant or head office.',
+    status: 'live',
+  },
+
   hsDocs: {
     name: 'Health and safety documents with sign-off',
     summary: 'Inductions, RAMS and safety procedures on every phone. Each worker reads and signs with their finger, a new revision asks everyone to sign again, and you see who has signed what.',
