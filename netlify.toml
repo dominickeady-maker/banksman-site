@@ -8,6 +8,17 @@
 [build.environment]
   NODE_VERSION = "22"
 
+# Security headers on every page (audit 25/10/2026, L4). No Content-Security-Policy here: the site
+# loads Cookiebot, the Meta pixel and the CMS from other domains, so a policy needs its own testing.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+    Strict-Transport-Security = "max-age=31536000"
+
 # Keep the CMS out of search results.
 [[headers]]
   for = "/admin/*"
