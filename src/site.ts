@@ -22,7 +22,7 @@ export const SITE = {
     instagram: 'https://www.instagram.com/banksman.app',
     tiktok: '',
   },
-  realPeople: 'Speak to Dom or Matt: real people, no bots or call centres.',
+  realPeople: 'Speak to Dom or Matt: real people, no call centres.',
   // The "Ask about Banksman" chat (src/components/SalesChat.astro). While `live` is false it only
   // shows on a page opened with ?chat=1 (for testing on the live site); set it to true to launch.
   salesChat: {
