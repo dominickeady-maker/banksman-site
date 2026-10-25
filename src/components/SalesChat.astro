@@ -33,17 +33,17 @@ const SUGGESTIONS = ['How much is it?', 'Which plan do I need?', 'Can I try it f
       {SUGGESTIONS.map((s) => <button type="button" class="bmc-chip">{s}</button>)}
     </div>
 
-    <form class="bmc-lead" name="chat-lead" method="POST" data-netlify="true" netlify-honeypot="company_website" data-bmc-lead hidden>
+    <form class="bmc-lead" name="chat-lead" method="POST" data-netlify="true" netlify-honeypot="company_website" data-bmc-lead novalidate hidden>
       <input type="hidden" name="form-name" value="chat-lead">
       <input type="hidden" name="transcript" value="">
       <input type="hidden" name="page" value="">
       <SpamGuard />
       <button type="button" class="bmc-link bmc-back" data-bmc-lead-cancel>← Back to chat</button>
       <p class="bmc-lead-title">Pass your details to Dom and Matt</p>
-      <label>Your name <input name="name" autocomplete="name" required maxlength="120"></label>
-      <label>Business name <input name="business" autocomplete="organization" maxlength="160"></label>
-      <label>Email <input name="email" type="email" autocomplete="email" required maxlength="254"></label>
-      <label>Phone <input name="phone" type="tel" autocomplete="tel" maxlength="40"></label>
+      <div class="bmc-field"><label for="bmc-name">Your name</label><input id="bmc-name" name="name" autocomplete="name" required maxlength="120" aria-describedby="bmc-name-err"><p class="bmc-field-error" id="bmc-name-err" hidden></p></div>
+      <div class="bmc-field"><label for="bmc-business">Business name</label><input id="bmc-business" name="business" autocomplete="organization" maxlength="160"></div>
+      <div class="bmc-field"><label for="bmc-email">Email</label><input id="bmc-email" name="email" type="email" inputmode="email" autocomplete="email" required maxlength="254" aria-describedby="bmc-email-err"><p class="bmc-field-error" id="bmc-email-err" hidden></p></div>
+      <div class="bmc-field"><label for="bmc-phone">Phone</label><input id="bmc-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" aria-describedby="bmc-phone-err"><p class="bmc-field-error" id="bmc-phone-err" hidden></p></div>
       <p class="bmc-small">They'll get these details and this chat, and reply themselves. <a href="/privacy/">Privacy</a></p>
       <div class="bmc-lead-actions">
         <button type="submit" class="btn btn-primary">Send to Dom and Matt</button>
@@ -102,8 +102,11 @@ const SUGGESTIONS = ['How much is it?', 'Which plan do I need?', 'Can I try it f
   .bmc-lead{flex:1; min-height:0; overflow-y:auto; overscroll-behavior:contain; margin:0; padding:12px 14px 16px; display:grid; align-content:start; gap:10px;}
   .bmc-back{justify-self:start; min-height:44px; font-size:14px;}
   .bmc-lead-title{margin:0; font-weight:700; font-size:14.5px;}
-  .bmc-lead label{display:grid; gap:3px; font-size:13px; color:var(--ink-soft);}
+  .bmc-field{display:grid; gap:3px;}
+  .bmc-field label{font-size:13px; color:var(--ink-soft);}
+  .bmc-field-error{margin:2px 0 0; color:#ff9a9a; font-size:13px; line-height:1.4;}
   .bmc-lead input:not([type=hidden]){min-height:44px; padding:9px 10px; border-radius:6px; border:1px solid var(--line-strong); background:var(--bg); color:var(--ink); font:15px 'IBM Plex Sans', system-ui, sans-serif;}
+  .bmc-lead input[aria-invalid=true]{border-color:#ff6b6b; outline:1px solid #ff6b6b;}
   .bmc-lead .hp{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;}
   .bmc-small{margin:0; font-size:12px; color:var(--muted);}
   .bmc-lead-actions{display:flex; flex-wrap:wrap; gap:12px; align-items:center;}
@@ -259,9 +262,43 @@ const SUGGESTIONS = ['How much is it?', 'Which plan do I need?', 'Can I try it f
     text.addEventListener('input', () => { text.style.height = ''; text.style.height = Math.min(text.scrollHeight, 120) + 'px'; });
     chips.querySelectorAll<HTMLButtonElement>('.bmc-chip').forEach((b) => b.addEventListener('click', () => ask(b.textContent || '')));
 
+    // Our own messages under each field, instead of the browser's popups.
+    const TYPO_DOMAINS = /^(gmial|gmai|gamil|gmaill|gnail|gmail\.co|gmail\.con|hotmial|hotmai|hotnail|outlok|outloo|yaho|yahoo\.con|iclod|icould|btinternt)(\.|$)/i;
+    const fieldProblem = (name: string, value: string): string | null => {
+      const v = value.trim();
+      if (name === 'name') return v ? null : 'Please add your name.';
+      if (name === 'email') {
+        if (!v) return 'Please add your email address, so Dom or Matt can reply.';
+        const domain = v.split('@')[1] || '';
+        if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v) || TYPO_DOMAINS.test(domain) || /\.(con|cmo|c0m|co\.k|couk)$/i.test(domain) || /\.\./.test(v))
+          return 'Check your email address. It looks like it has a typo.';
+        return null;
+      }
+      if (name === 'phone') return !v || v.replace(/\D/g, '').length >= 10 ? null : 'Check your phone number. It looks too short (or leave it blank).';
+      return null;
+    };
+    const showProblem = (input: HTMLInputElement, problem: string | null) => {
+      const box = document.getElementById(input.id + '-err');
+      if (!box) return;
+      box.textContent = problem ?? '';
+      box.hidden = !problem;
+      if (problem) input.setAttribute('aria-invalid', 'true'); else input.removeAttribute('aria-invalid');
+    };
+    lead.querySelectorAll<HTMLInputElement>('input[aria-describedby]').forEach((input) => {
+      input.addEventListener('input', () => { if (input.getAttribute('aria-invalid')) showProblem(input, fieldProblem(input.name, input.value)); });
+      input.addEventListener('blur', () => { if (input.value.trim()) showProblem(input, fieldProblem(input.name, input.value)); });
+    });
+
     lead.addEventListener('submit', async (e) => {
       e.preventDefault();
       leadError.hidden = true;
+      let firstBad: HTMLInputElement | null = null;
+      lead.querySelectorAll<HTMLInputElement>('input[aria-describedby]').forEach((input) => {
+        const problem = fieldProblem(input.name, input.value);
+        showProblem(input, problem);
+        if (problem && !firstBad) firstBad = input;
+      });
+      if (firstBad) { (firstBad as HTMLInputElement).focus(); return; }
       (lead.elements.namedItem('transcript') as HTMLInputElement).value = history
         .map((m) => `${m.role === 'user' ? 'Visitor' : 'Assistant'}: ${clean(m.content)}`).join('\n\n').slice(0, 20000);
       (lead.elements.namedItem('page') as HTMLInputElement).value = location.pathname;
