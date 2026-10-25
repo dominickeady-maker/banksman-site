@@ -50,6 +50,9 @@ Almost never from the choice of daywork vs price work itself. They come from:
 - Reviewed and approved from the office before it goes anywhere near an invoice
 - Exportable: straight to payroll, the accountant, or the client, without re-typing anything
 
+
+Pricing your own labour? The free [day rate calculator](/tools/day-rate-calculator/) works out a fair rate, and the [CIS calculator](/tools/cis-calculator/) shows what comes off a payment. Price work and daywork come up most for [bricklayers](/for-bricklayers/), [groundworkers](/for-groundworkers/), [joiners](/for-joiners/) and [scaffolders](/for-scaffolders/), so each of those pages shows how Banksman handles both on one timesheet. If hours still live in a group chat, see [why WhatsApp groups are a liability on site](/blog/whatsapp-groups-liability-construction-site/).
+
 ---
 
 *Banksman logs daywork and price work on site in seconds, reviewed and approved from the office, [try the live demo](/#demo), no card required.*

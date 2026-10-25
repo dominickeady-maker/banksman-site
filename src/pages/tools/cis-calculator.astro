@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaBand from '../../components/CtaBand.astro';
+import ExploreLinks from '../../components/ExploreLinks.astro';
 import ComingSoon from '../../components/ComingSoon.astro';
 import { FEATURES } from '../../data/features';
 import { breadcrumbSchema } from '../../lib/schema';
@@ -97,6 +98,7 @@ const schema = [
     </div>
   </div>
 
+  <ExploreLinks title="Keep reading." posts={['daywork-vs-price-work', 'banksman-vs-fieldwire', 'what-is-a-construction-site-diary-app']} trades={['subcontractors', 'scaffolders', 'steel-erectors', 'groundworkers', 'bricklayers']} tools={['/tools/day-rate-calculator/']} />
   <CtaBand heading="Get the hours right first." text="Banksman keeps your timesheets, approvals and site records in one app. Have a look round the live demo on realistic sample data. Four fields, no card." />
 
   <script is:inline>

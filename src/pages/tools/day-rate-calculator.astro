@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaBand from '../../components/CtaBand.astro';
+import ExploreLinks from '../../components/ExploreLinks.astro';
 import ComingSoon from '../../components/ComingSoon.astro';
 import { FEATURES } from '../../data/features';
 import { breadcrumbSchema } from '../../lib/schema';
@@ -96,6 +97,7 @@ const schema = [
     </div>
   </div>
 
+  <ExploreLinks title="Keep reading." posts={['daywork-vs-price-work', 'construction-site-management-software-small-builders-uk', 'get-your-building-site-off-whatsapp']} trades={['bricklayers', 'joiners', 'scaffolders', 'groundworkers', 'plumbers', 'electricians']} tools={['/tools/cis-calculator/']} />
   <CtaBand heading="Log the days, get paid for them." text="See how hours and price work are logged and approved in the live demo, on realistic sample data. Four fields, no card." />
 
   <script is:inline>

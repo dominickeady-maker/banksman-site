@@ -53,6 +53,8 @@ If your firm's problem is "we're running sites on WhatsApp and a biro, and we ne
 
 If your projects are plan-heavy and you need detailed markup and coordination tools, Fieldwire's extra depth may be the better fit.
 
+If you're weighing up options more generally, see [what to look for in site management software as a small UK builder](/blog/construction-site-management-software-small-builders-uk/). Banksman also has pages for [builders](/for-builders/), [subcontractors](/for-subcontractors/) and [fit-out teams](/for-fit-out-contractors/).
+
 ---
 
 *See the difference for yourself: [try Banksman's live demo](/#demo), no card required.*

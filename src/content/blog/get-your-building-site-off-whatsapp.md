@@ -67,6 +67,8 @@ I’m a bricklayer, and I run my own sites. I built Banksman because every “co
 
 If you want to see what that looks like, there’s a live demo running on realistic sample data. You can log in as the manager or as a worker and click about. No card and no sales call. If you’d rather talk it through, speak to Dom or Matt: real people, no bots or call centres.
 
+Want the case for making the switch? Read [why WhatsApp groups are a liability on a construction site](/blog/whatsapp-groups-liability-construction-site/). Logging hours is usually the first win, and [daywork vs price work](/blog/daywork-vs-price-work/) covers how to record both. There are also pages showing how it works for [builders](/for-builders/), [roofers](/for-roofers/), [electricians](/for-electricians/) and [plumbers](/for-plumbers/).
+
 <div class="post-cta">
   <h3>See it running on realistic sample data</h3>
   <p>Log in to the live Banksman demo as a manager or a worker. No card, no sales call.</p>

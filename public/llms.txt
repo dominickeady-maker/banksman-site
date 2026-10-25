@@ -42,6 +42,15 @@ Builders, bricklayers, groundworkers, roofers, electricians, plumbers, subcontra
 - [Free day rate calculator](https://banksman.app/tools/day-rate-calculator/)
 - [For builders](https://banksman.app/for-builders/), [bricklayers](https://banksman.app/for-bricklayers/), [groundworkers](https://banksman.app/for-groundworkers/), [roofers](https://banksman.app/for-roofers/), [electricians](https://banksman.app/for-electricians/), [plumbers](https://banksman.app/for-plumbers/), [subcontractors](https://banksman.app/for-subcontractors/), [worktop fitters](https://banksman.app/for-worktop-fitters/), [interior fit-out teams](https://banksman.app/for-fit-out-contractors/), [scaffolders](https://banksman.app/for-scaffolders/), [joiners](https://banksman.app/for-joiners/), [steel erectors](https://banksman.app/for-steel-erectors/), [window fitters](https://banksman.app/for-window-fitters/)
 
+## Guides
+
+- [Banksman vs Fieldwire for a 10-person building firm](https://banksman.app/blog/banksman-vs-fieldwire/)
+- [What is a construction site diary app?](https://banksman.app/blog/what-is-a-construction-site-diary-app/)
+- [Construction site management software for small and mid-size UK builders](https://banksman.app/blog/construction-site-management-software-small-builders-uk/)
+- [Daywork vs price work: how to log hours without an argument](https://banksman.app/blog/daywork-vs-price-work/)
+- [Why WhatsApp groups are a liability on a construction site](https://banksman.app/blog/whatsapp-groups-liability-construction-site/)
+- [How to get your building site off WhatsApp](https://banksman.app/blog/get-your-building-site-off-whatsapp/)
+
 ## Common questions
 
 - Does Banksman need an app store download? No. It installs to the phone home screen and opens like an app, with push notifications.

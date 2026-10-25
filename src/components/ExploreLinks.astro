@@ -1,0 +1,75 @@
+---
+// "Keep exploring" block: related guides, trade pages and free tools. Used on trade pages, blog posts,
+// tools, What's new and the compare page so every page links to its most relevant neighbours.
+import { getPosts, postUrl, readingMinutes } from '../lib/posts';
+import { TRADES } from '../data/trades';
+import { TOOLS } from '../data/links';
+
+interface Props {
+  title?: string;
+  eyebrow?: string;
+  /** Post slugs to feature, most relevant first. Missing, draft or scheduled posts are skipped. */
+  posts?: string[];
+  /** Fill up to this many posts with the newest ones. */
+  postCount?: number;
+  /** Trade slugs to link. */
+  trades?: string[];
+  /** Tool hrefs to link (defaults to none). */
+  tools?: string[];
+  /** Hide the current page from the lists. */
+  exclude?: string;
+  /** Extra links, e.g. the compare page. */
+  extra?: { href: string; text: string }[];
+}
+
+const { title = 'Keep reading.', eyebrow = 'Keep exploring', posts: wanted = [], postCount = 3, trades = [], tools = [], exclude = '', extra = [] } = Astro.props;
+const live = await getPosts();
+const bySlug = new Map(live.filter((p) => !p.data.draft).map((p) => [p.id, p]));
+const picked = wanted.map((s) => bySlug.get(s)).filter((p) => p && postUrl(p) !== exclude);
+for (const p of bySlug.values()) {
+  if (picked.length >= postCount) break;
+  if (!picked.includes(p) && postUrl(p) !== exclude) picked.push(p);
+}
+const posts = picked.slice(0, postCount) as NonNullable<(typeof picked)[number]>[];
+const tradeLinks = trades.map((s) => TRADES.find((t) => t.slug === s)).filter((t) => t && `/for-${t.slug}/` !== exclude) as typeof TRADES;
+const toolLinks = TOOLS.filter((t) => tools.includes(t.href) && t.href !== exclude);
+---
+{(posts.length > 0 || tradeLinks.length > 0 || toolLinks.length > 0) && (
+  <section class="explore">
+    <div class="wrap">
+      <div class="eyebrow">{eyebrow}</div>
+      <h2 class="big">{title}</h2>
+      {posts.length > 0 && (
+        <ul class="ex-posts">
+          {posts.map((p, i) => (
+            <li><a href={postUrl(p)} style={`--c:${i % 2 ? 'var(--accent)' : 'var(--sky)'}`}>
+              <span class="ex-cat">{p.data.category} · {readingMinutes(p.body)} min read</span>
+              <b>{p.data.title}</b>
+              <span class="ex-desc">{p.data.description}</span>
+              <span class="ex-go">Read the guide →</span>
+            </a></li>
+          ))}
+        </ul>
+      )}
+      {(tradeLinks.length > 0 || toolLinks.length > 0 || extra.length > 0) && (
+        <div class="ex-row">
+          {tradeLinks.length > 0 && (
+            <div class="ex-group">
+              <h3>Banksman for your trade</h3>
+              <ul class="ex-chips">{tradeLinks.map((t) => <li><a href={`/for-${t.slug}/`}>{t.name}</a></li>)}</ul>
+            </div>
+          )}
+          {(toolLinks.length > 0 || extra.length > 0) && (
+            <div class="ex-group">
+              <h3>Free tools and comparisons</h3>
+              <ul class="ex-chips sky">
+                {toolLinks.map((t) => <li><a href={t.href} title={t.blurb}>{t.name}</a></li>)}
+                {extra.map((x) => <li><a href={x.href}>{x.text}</a></li>)}
+              </ul>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  </section>
+)}

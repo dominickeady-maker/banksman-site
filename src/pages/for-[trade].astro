@@ -5,6 +5,8 @@ import CtaBand from '../components/CtaBand.astro';
 import HeroDevices from '../components/HeroDevices.astro';
 import FaqPhones from '../components/FaqPhones.astro';
 import SiteToasts from '../components/SiteToasts.astro';
+import ExploreLinks from '../components/ExploreLinks.astro';
+import { tradePosts } from '../data/links';
 import { SITE } from '../site';
 import { TRADES, type Trade } from '../data/trades';
 import { FEATURES, type FeatureId } from '../data/features';
@@ -142,6 +144,14 @@ const schema = [
       </div>
     </section>
   )}
+
+  <ExploreLinks
+    eyebrow={`Guides for ${trade.name.toLowerCase()}`}
+    title="Worth a read."
+    posts={tradePosts(trade.slug)}
+    tools={['/tools/day-rate-calculator/', '/tools/cis-calculator/']}
+    extra={[{ href: '/compare/', text: 'Banksman vs spreadsheets & WhatsApp' }, { href: '/whats-new/', text: "What's new in the app" }]}
+  />
 
   <section class="other-trades">
     <div class="wrap">

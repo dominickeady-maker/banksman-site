@@ -48,6 +48,9 @@ If you're running somewhere between 2 and 25 people across a handful of sites, t
 - **Does it export your data cleanly?** Timesheets and materials records need to get to payroll, your accountant, or head office without manual re-entry.
 - **Does it reflect how your sites really run?** Software shaped by people who've run sites tends to match the way the work actually happens.
 
+
+To see how this plays out for your trade, start with the pages for [builders](/for-builders/), [bricklayers](/for-bricklayers/), [joiners](/for-joiners/) or [roofers](/for-roofers/). For a closer look at one option, read [Banksman vs Fieldwire](/blog/banksman-vs-fieldwire/), and for the basics of daily records, [what a construction site diary app is](/blog/what-is-a-construction-site-diary-app/).
+
 ---
 
 *Banksman is site management software built by a working builder for firms this size, £79/month inc. VAT, no sales call. [Try the live demo](/#demo), no card required.*

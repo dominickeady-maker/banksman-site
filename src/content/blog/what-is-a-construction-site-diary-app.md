@@ -55,6 +55,8 @@ None of these are wrong exactly, they're just slow to search, easy to lose, and 
 
 The main value isn't just "less paperwork," though that's real. It's what happens when something is questioned later, a client disputes whether work was completed to spec, a subcontractor disagrees about hours, or head office needs to see progress across several sites without ringing each one. A site diary app gives you a timestamped record tied to the actual job, rather than a memory or a buried message.
 
+Records like these help most where several trades share a job: see how Banksman works for [builders](/for-builders/), [groundworkers](/for-groundworkers/), [steel erectors](/for-steel-erectors/) and [fit-out teams](/for-fit-out-contractors/). If your site diary is a group chat today, [here's how to get your site off WhatsApp](/blog/get-your-building-site-off-whatsapp/).
+
 ---
 
 *Banksman is a site diary and management app built by a working builder, [try the live demo](/#demo), no card required.*

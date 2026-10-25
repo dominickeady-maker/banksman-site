@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaBand from '../../components/CtaBand.astro';
+import ExploreLinks from '../../components/ExploreLinks.astro';
 import { breadcrumbSchema } from '../../lib/schema';
 import '../../styles/pages.css';
 
@@ -41,5 +42,6 @@ const schema = [breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Free too
     </div>
   </div>
 
+  <ExploreLinks title="Keep reading." posts={['daywork-vs-price-work']} trades={['subcontractors', 'bricklayers', 'joiners', 'scaffolders', 'steel-erectors']} tools={[]} />
   <CtaBand heading="Done the sums? Sort the sites." text="Banksman keeps tasks, hours, orders, drawings and photos for every site in one app. Try the live demo on realistic sample data. Four fields, no card." />
 </BaseLayout>

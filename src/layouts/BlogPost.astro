@@ -6,6 +6,8 @@ import { SITE } from '../site';
 import { type Post, getPosts, formatDate, readingMinutes, shareImageUrl, postUrl, coverUrl, coverAlt } from '../lib/posts';
 import { blogPostingSchema, breadcrumbSchema, faqSchema } from '../lib/schema';
 import { competitorsIn, toolsIn, listNames } from '../data/competitors';
+import ExploreLinks from '../components/ExploreLinks.astro';
+import { POST_TRADES, POST_TOOLS } from '../data/links';
 
 interface Props {
   post: Post;
@@ -85,6 +87,15 @@ const related = [...others.filter((p) => p.data.category === category), ...other
       </aside>
     )}
   </article></div>
+
+  <ExploreLinks
+    eyebrow="Put it into practice"
+    title="Banksman for your trade."
+    postCount={0}
+    trades={POST_TRADES[post.id] ?? ['builders', 'subcontractors', 'bricklayers', 'groundworkers']}
+    tools={POST_TOOLS[post.id] ?? ['/tools/day-rate-calculator/', '/tools/cis-calculator/']}
+    extra={[{ href: '/compare/', text: 'Banksman vs spreadsheets & WhatsApp' }]}
+  />
 
   {related.length > 0 && (
     <section class="related">

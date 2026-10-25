@@ -44,6 +44,9 @@ Not a big enterprise system with a six-week rollout, just a place where:
 
 That's a smaller ask than it sounds. It's the difference between a chat app and a system that happens to include messaging.
 
+
+If you're ready to move, here's [how to get your building site off WhatsApp without losing the lads](/blog/get-your-building-site-off-whatsapp/), and a side-by-side of [Banksman vs spreadsheets and WhatsApp](/compare/). Photo records matter most where work gets covered up, which is why [groundworkers](/for-groundworkers/), [electricians](/for-electricians/) and [window fitters](/for-window-fitters/) lean on them.
+
 ---
 
 *Banksman keeps tasks, photos, drawings and messages per site in one app, [try the live demo](/#demo), no card required.*

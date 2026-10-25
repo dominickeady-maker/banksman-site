@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBand from '../components/CtaBand.astro';
+import ExploreLinks from '../components/ExploreLinks.astro';
 import '../styles/pages.css';
 
 // The walkthrough video and its poster live in public/assets/video/.
@@ -116,6 +117,7 @@ const schema = [{
     </div>
   </section>
 
+  <ExploreLinks title="Keep reading." posts={['what-is-a-construction-site-diary-app', 'get-your-building-site-off-whatsapp']} trades={['builders', 'groundworkers', 'scaffolders', 'steel-erectors', 'fit-out-contractors', 'roofers']} tools={['/tools/day-rate-calculator/', '/tools/cis-calculator/']} />
   <CtaBand />
 </BaseLayout>
 

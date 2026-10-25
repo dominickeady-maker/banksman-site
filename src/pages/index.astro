@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SpamGuard from '../components/SpamGuard.astro';
 import HeroDevices from '../components/HeroDevices.astro';
 import FaqPhones from '../components/FaqPhones.astro';
+import ExploreLinks from '../components/ExploreLinks.astro';
 import { SITE } from '../site';
 import { FEATURES, type FeatureId } from '../data/features';
 import '../styles/pages.css';
@@ -465,6 +466,8 @@ const schema = [{
       </div>
     </div>
   </section>
+
+  <ExploreLinks eyebrow="From the blog" title="Guides from the site." trades={['builders', 'bricklayers', 'groundworkers', 'roofers', 'electricians', 'plumbers', 'subcontractors', 'scaffolders', 'joiners']} tools={['/tools/day-rate-calculator/', '/tools/cis-calculator/']} extra={[{ href: '/compare/', text: 'Banksman vs spreadsheets & WhatsApp' }, { href: '/blog/', text: 'All guides' }]} />
 
   <!-- ================= FAQ ================= -->
   <section id="faq" class="home-faq">
