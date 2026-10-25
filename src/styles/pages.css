@@ -155,14 +155,14 @@
 .pain:hover{transform:translateY(-3px); box-shadow:var(--shadow); border-color:rgba(255,122,46,.5);}
 .pain .new{border-left:3px solid var(--accent);}
 .pain .old .label::before{content:"✕ "; color:#e0645a;}
-.pain .new .label::before{content:"✓ "; color:var(--accent);}
+.pain .new .label::before{content:"✓ "; color:var(--sky);}
 .pain .chips li{border-color:rgba(255,122,46,.45); color:var(--ink);}
 @media (max-width:720px){ .pain .new{border-left:0; border-top:3px solid var(--accent);} }
 
 /* Compare table: crosses for the old way, orange ticks for Banksman */
 .compare-scroll{border-color:rgba(255,122,46,.35); border-top:2px solid var(--accent); box-shadow:var(--shadow);}
 .compare-table td:not(.us)::before{content:"✕"; color:#e0645a; font-weight:700; margin-right:7px;}
-.compare-table td.us::before{content:"✓"; color:var(--accent); font-weight:800; margin-right:7px;}
+.compare-table td.us::before{content:"✓"; color:var(--sky); font-weight:800; margin-right:7px;}
 .compare-table tbody tr{transition:background .2s;}
 .compare-table tbody tr:hover{background:rgba(255,122,46,.05);}
 .compare-table tbody tr:hover th{color:var(--accent);}
@@ -209,3 +209,191 @@
 .plan-includes > .mono{display:flex; align-items:center; gap:12px; color:var(--accent); font-weight:600; font-size:13px; letter-spacing:.12em;}
 .plan-includes > .mono::before{content:""; width:26px; height:2px; background:var(--accent);}
 .final h2{line-height:1.05;}
+
+/* Homepage: live demo section — copy and form on the left, a picture of the demo on the right */
+.demo-layout{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); grid-template-areas:"copy visual" "form visual"; column-gap:56px; align-items:start;}
+.demo-copy{grid-area:copy;}
+.demo-visual{grid-area:visual; align-self:center; position:relative; padding:34px 0 30px;}
+.demo-form{grid-area:form; margin-top:28px;}
+.demo-lede{color:var(--ink-soft); font-size:16px; max-width:58ch; margin:0 0 10px;}
+@media (max-width:960px){
+  .demo-layout{grid-template-columns:1fr; grid-template-areas:"copy" "visual" "form";}
+  .demo-visual{padding:22px 0 8px; max-width:520px;}
+  .demo-form{margin-top:22px;}
+}
+
+.dv-stats{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:14px;}
+.dv-stat{background:var(--surface); border:1px solid var(--line-strong); border-top:2px solid var(--accent); border-radius:4px; padding:12px 14px; display:flex; align-items:baseline; gap:8px;}
+.dv-stat b{font-family:'Big Shoulders Display', sans-serif; font-size:34px; font-weight:800; line-height:1; color:var(--accent);}
+.dv-stat span{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft);}
+@media (max-width:420px){ .dv-stat{flex-direction:column; gap:4px; padding:10px 12px;} .dv-stat b{font-size:30px;} }
+
+.dv-card{background:var(--surface); border:1px solid var(--line-strong); border-radius:10px; padding:18px 18px 20px; box-shadow:var(--shadow); animation:dvFloat 7s ease-in-out infinite;}
+.dv-top{display:flex; align-items:center; justify-content:space-between; padding-bottom:14px; border-bottom:1px solid var(--line);}
+.dv-top img{height:20px; width:auto;}
+.dv-live{display:inline-flex; align-items:center; gap:7px; font-family:'IBM Plex Mono', monospace; font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); background:var(--accent-soft); border:1px solid rgba(255,122,46,.5); border-radius:999px; padding:4px 10px;}
+.dv-live i{width:7px; height:7px; border-radius:50%; background:var(--accent); animation:dvPulse 2.4s ease-in-out infinite;}
+.dv-label{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin:16px 0 10px;}
+.dv-roles{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+.dv-role{border:1px solid var(--line-strong); border-radius:6px; padding:12px; display:grid; gap:3px; background:var(--surface-2);}
+.dv-role svg{width:22px; height:22px; color:var(--accent); margin-bottom:6px;}
+.dv-role b{font-size:15px; color:var(--ink);}
+.dv-role small{font-size:12.5px; color:var(--ink-soft); line-height:1.35;}
+.dv-role.on{border-color:var(--accent); background:color-mix(in srgb, var(--accent-soft) 70%, var(--surface));}
+.dv-sites{list-style:none; margin:0; padding:0; display:grid; gap:8px;}
+.dv-sites li{display:grid; grid-template-columns:1fr auto; align-items:center; gap:4px 10px; background:var(--surface-2); border:1px solid var(--line); border-radius:6px; padding:10px 12px;}
+.dv-sites b{display:block; font-size:13.5px; color:var(--ink);}
+.dv-sites small{font-size:12px; color:var(--muted);}
+.dv-sites em{font-style:normal; font-family:'IBM Plex Mono', monospace; font-size:12px; font-weight:600; color:var(--accent);}
+.dv-bar{grid-column:1 / -1; height:5px; border-radius:3px; background:var(--bg); overflow:hidden;}
+.dv-bar i{display:block; height:100%; background:var(--accent); border-radius:3px;}
+.dv-tag{position:absolute; right:-14px; bottom:4px; display:inline-flex; align-items:center; gap:8px; background:var(--accent); color:var(--accent-ink); font-weight:700; font-size:13.5px; padding:9px 14px; border-radius:6px; box-shadow:var(--shadow); transform:rotate(-3deg); animation:dvFloat 7s ease-in-out -3.5s infinite;}
+.dv-tag svg{width:16px; height:16px;}
+@media (max-width:960px){ .dv-tag{position:static; margin-top:14px; transform:none; animation:none;} }
+
+@keyframes dvFloat{0%,100%{translate:0 0;} 50%{translate:0 -6px;}}
+@keyframes dvPulse{0%,100%{opacity:1;} 50%{opacity:.35;}}
+@media (prefers-reduced-motion: reduce){ .dv-card, .dv-tag, .dv-live i{animation:none;} }
+@media (max-width:960px){
+  .dv-sites li:nth-child(n+2){display:none;}
+  .dv-card{animation:none;}
+  .dv-tag{position:relative; margin:-16px 0 0 auto; display:flex; width:max-content; transform:rotate(-2deg); right:-6px;}
+}
+@media (min-width:381px) and (max-width:640px){ #demo .lead-grid{grid-template-columns:1fr 1fr; gap:12px;} }
+
+/* Homepage FAQ: phone showing the site sign-in radius (desktop only) */
+.faq-side{position:sticky; top:110px;}
+.radius-phone-wrap{position:relative; width:330px; height:740px; margin:80px 0 20px 10px;}
+.radius-phone{position:relative; z-index:2; width:230px; background:#0d101f; border:7px solid #161b2e; border-radius:38px; overflow:hidden; box-shadow:0 0 0 1.5px #2c3452, 0 30px 70px rgba(0,0,0,.55); transform:rotate(-4deg); animation:rpFloat 7s ease-in-out infinite;}
+.rp-body{padding:12px 12px 14px;}
+.rp-title{font-family:'Big Shoulders Display', sans-serif; font-size:22px; font-weight:800; color:var(--ink); line-height:1;}
+.rp-site{font-size:11.5px; color:var(--muted); margin:3px 0 10px;}
+.rp-map{display:block; width:100%; height:auto; border-radius:8px; border:1px solid var(--line);}
+.rp-pulse{transform-origin:124px 98px; animation:rpPulse 3.2s ease-out infinite;}
+.rp-row{display:flex; justify-content:space-between; margin-top:10px; font-size:11.5px; color:var(--ink-soft);}
+.rp-row b{font-family:'IBM Plex Mono', monospace; color:var(--accent);}
+.rp-slider{position:relative; height:4px; border-radius:2px; background:var(--surface-2); margin:7px 0 12px;}
+.rp-slider::before{content:""; position:absolute; left:0; top:0; bottom:0; width:42%; background:var(--accent); border-radius:2px;}
+.rp-slider i{position:absolute; left:42%; top:50%; width:12px; height:12px; margin:-6px 0 0 -6px; border-radius:50%; background:#f5f3ec; box-shadow:0 0 0 3px var(--accent);}
+.rp-btn{background:var(--accent); color:var(--accent-ink); font-weight:700; font-size:13px; text-align:center; border-radius:6px; padding:9px;}
+.rp-ok{display:flex; align-items:center; justify-content:center; gap:6px; margin-top:8px; font-size:11.5px; font-weight:600; color:var(--sky);}
+.rp-ok svg{width:13px; height:13px;}
+@keyframes rpFloat{0%,100%{translate:0 0;} 50%{translate:0 -8px;}}
+@keyframes rpPulse{0%{transform:scale(.6); opacity:.9;} 100%{transform:scale(1.25); opacity:0;}}
+@media (max-width:860px){ .faq-side{position:static;} }
+@media (prefers-reduced-motion: reduce){ .radius-phone, .photo-phone, .rp-pulse{animation:none;} }
+
+/* Demo section: illustrated worker beside the stats */
+.dv-head{display:grid; grid-template-columns:auto 1fr; align-items:center; gap:18px; margin-bottom:14px;}
+.dv-person{width:190px; height:190px; display:block; filter:drop-shadow(0 18px 30px rgba(0,0,0,.45)); animation:dvFloat 7s ease-in-out -2s infinite;}
+.dv-head .dv-stats{grid-template-columns:1fr; margin:0; gap:8px;}
+.dv-head .dv-stat{padding:9px 14px;}
+.dv-head .dv-stat b{font-size:30px;}
+@media (max-width:960px){ .dv-person{width:150px; height:150px;} }
+@media (max-width:420px){ .dv-person{width:128px; height:128px;} .dv-head{gap:12px;} .dv-head .dv-stat{flex-direction:row; align-items:baseline; gap:8px; padding:8px 12px;} .dv-head .dv-stat b{font-size:26px;} }
+@media (prefers-reduced-motion: reduce){ .dv-person{animation:none;} }
+@media (min-width:961px){ .demo-layout{grid-template-rows:auto 1fr;} }
+
+/* FAQ: second, smaller phone tucked behind showing the photo library */
+.photo-phone{position:absolute; z-index:1; left:145px; top:420px; width:185px; background:#0d101f; border:6px solid #161b2e; border-radius:32px; overflow:hidden; box-shadow:0 0 0 1.5px #2c3452, 0 30px 60px rgba(0,0,0,.5); transform:rotate(7deg); animation:rpFloat 8s ease-in-out -4s infinite;}
+.photo-phone .phone-island{width:58px; height:17px;}
+.photo-phone .phone-status{height:28px; font-size:10px;}
+.pp-body{padding:10px 10px 12px;}
+.photo-phone .rp-title{font-size:19px;}
+.photo-phone .rp-site{font-size:10px; margin-bottom:8px;}
+.pp-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:4px;}
+.pp-grid figure{position:relative; margin:0; border-radius:4px; overflow:hidden; aspect-ratio:1;}
+.pp-grid figure:first-child{outline:2px solid var(--accent); outline-offset:-2px;}
+.pp-grid svg{display:block; width:100%; height:100%;}
+.pp-grid figcaption{position:absolute; left:2px; bottom:2px; font:600 7.5px/1 'IBM Plex Mono', monospace; color:#fff; background:rgba(13,16,31,.75); padding:2px 3px; border-radius:2px;}
+.pp-meta{margin-top:8px; background:var(--surface-2); border:1px solid var(--line); border-radius:6px; padding:7px 8px;}
+.pp-meta b{display:block; font-size:11px; color:var(--ink);}
+.pp-meta span{font-size:9.5px; color:var(--muted);}
+
+/* FAQ second phone: site group chat */
+.photo-phone{width:212px; left:118px; top:330px;}
+.pp-body.chat{padding:0; display:flex; flex-direction:column;}
+.ch-head{display:flex; align-items:center; gap:8px; padding:9px 10px; border-bottom:1px solid var(--line);}
+.ch-head b{display:block; font-size:11.5px; color:var(--ink); line-height:1.2;}
+.ch-head small{font-size:9.5px; color:var(--muted);}
+.ch-stack{display:flex; flex:none;}
+.ch-stack span{width:22px; height:22px; border-radius:50%; border:2px solid #0d101f; margin-left:-8px; overflow:hidden;}
+.ch-stack span:first-child{margin-left:0;}
+.ch-stack svg, .ch-av svg{display:block; width:100%; height:100%;}
+.ch-msgs{display:grid; gap:7px; padding:10px 9px 8px;}
+.ch-msg{display:flex; align-items:flex-end; gap:6px;}
+.ch-av{flex:none; width:22px; height:22px; border-radius:50%; overflow:hidden;}
+.ch-bub{max-width:78%; background:var(--surface-2); border:1px solid var(--line); border-radius:10px 10px 10px 3px; padding:6px 8px; font-size:10.5px; line-height:1.35; color:var(--ink);}
+.ch-bub em{display:block; font-style:normal; font-size:9px; font-weight:700; color:var(--accent); margin-bottom:1px;}
+.ch-msg.me{justify-content:flex-end;}
+.ch-msg.me .ch-bub{background:var(--accent); border-color:var(--accent); color:var(--accent-ink); border-radius:10px 10px 3px 10px; font-weight:500;}
+.ch-photo{padding:3px; width:72%;}
+.ch-photo svg{display:block; width:100%; height:auto; aspect-ratio:3/2; border-radius:7px;}
+.ch-photo small{display:block; font:600 8.5px/1 'IBM Plex Mono', monospace; color:var(--muted); padding:4px 3px 2px;}
+.ch-input{display:flex; align-items:center; justify-content:space-between; margin:2px 9px 10px; background:var(--surface-2); border:1px solid var(--line-strong); border-radius:999px; padding:5px 5px 5px 11px; font-size:10px; color:var(--muted);}
+.ch-input i{width:22px; height:22px; border-radius:50%; background:var(--accent); color:var(--accent-ink); display:grid; place-items:center;}
+.ch-input svg{width:12px; height:12px;}
+
+/* White label: the real branding settings screen */
+.wl-real{width:236px; transform:none; rotate:2deg; animation:wlPhoneFloat 7s ease-in-out infinite;}
+.wl-real .shot-phone-top{padding:9px 14px 10px;}
+.wl-real .hb-logo{height:15px; width:auto; display:block;}
+.st-body{padding:12px 13px 14px; background:#0d1120;}
+.st-crumb{display:flex; align-items:center; gap:4px; font-size:11px; color:var(--muted);}
+.st-crumb svg{width:13px; height:13px;}
+.st-title{font-family:'Big Shoulders Display', sans-serif; font-size:22px; font-weight:800; color:var(--ink); line-height:1; margin:4px 0 4px;}
+.st-label{font-family:'IBM Plex Mono', monospace; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin:11px 0 6px;}
+.st-upload{display:flex; align-items:center; justify-content:space-between; border:1.5px dashed var(--line-strong); border-radius:8px; padding:9px 10px; background:var(--surface);}
+.st-upload .hb-logo{height:14px; width:auto;}
+.st-upload span{font-size:10.5px; font-weight:600; color:#7aa7f0;}
+.st-icons{display:flex; align-items:center; gap:10px;}
+.st-icon{width:38px; height:38px; border-radius:9px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,.4);}
+.st-icon svg{display:block; width:100%; height:100%;}
+.st-icons b{display:block; font-size:11.5px; color:var(--ink);}
+.st-icons small{font-size:10px; color:var(--muted);}
+.st-swatches{display:flex; gap:8px;}
+.st-swatches i{width:22px; height:22px; border-radius:50%; box-shadow:inset 0 0 0 1px rgba(255,255,255,.15);}
+.st-swatches i.on{box-shadow:0 0 0 2px #0d1120, 0 0 0 4px #f5f3ec;}
+.st-hex{display:flex; align-items:center; justify-content:space-between; margin-top:9px; background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:7px 9px; font:600 10.5px/1 'IBM Plex Mono', monospace; color:var(--ink);}
+.st-hex em{display:flex; align-items:center; gap:4px; font:600 10px/1 'IBM Plex Sans', sans-serif; color:var(--sky); font-style:normal;}
+.st-hex svg{width:11px; height:11px;}
+.st-save{margin-top:12px; background:#2f6fdb; color:#fff; font-weight:700; font-size:12px; text-align:center; border-radius:7px; padding:9px;}
+@keyframes wlPhoneFloat{0%,100%{translate:0 0;} 50%{translate:0 -8px;}}
+@media (max-width:520px){ .wl-real{width:224px;} }
+@media (prefers-reduced-motion: reduce){ .wl-real{animation:none;} }
+.radius-phone-wrap{height:860px;}
+.wl-visual .wl-float-a{top:5%; left:2%;}
+.wl-visual .wl-float-b{bottom:3%; right:2%;}
+@media (max-width:520px){ .wl-visual .wl-float-a{top:2%; left:0;} .wl-visual .wl-float-b{bottom:0; right:0;} }
+.radius-phone-wrap{height:800px; margin-top:44px;}
+.photo-phone{top:310px;}
+.ch-av{width:27px; height:27px;}
+.ch-stack span{width:25px; height:25px;}
+
+/* FAQ: both phones the same size, gently bobbing */
+.photo-phone{width:230px; height:444px; border-width:7px; border-radius:38px; left:120px; top:300px; display:flex; flex-direction:column; animation:rpBob2 6.5s ease-in-out -2s infinite;}
+.photo-phone .phone-island{width:72px; height:20px;}
+.photo-phone .phone-status{height:32px; font-size:11px;}
+.photo-phone .pp-body.chat{flex:1; min-height:0; overflow:hidden;}
+.photo-phone .phone-home{flex:none;}
+.ch-msgs{flex:1; min-height:0; overflow:hidden; align-content:end;}
+.ch-photo{width:62%;}
+.radius-phone{animation:rpBob 6s ease-in-out infinite;}
+.radius-phone-wrap{height:780px;}
+@keyframes rpBob{0%,100%{translate:0 0; rotate:0deg;} 50%{translate:0 -14px; rotate:1.2deg;}}
+@keyframes rpBob2{0%,100%{translate:0 0; rotate:0deg;} 50%{translate:0 -12px; rotate:-1.4deg;}}
+@media (prefers-reduced-motion: reduce){ .radius-phone, .photo-phone{animation:none;} }
+.photo-phone{left:150px; top:290px;}
+.ch-msgs{align-content:start; gap:6px; padding-top:8px;}
+.ch-bub{font-size:10px; padding:5px 7px;}
+.ch-photo{width:52%;}
+.ch-photo small{padding-top:3px;}
+.radius-phone-wrap{width:390px;}
+
+/* FAQ phones on tablets and phones: same pair, scaled down and centred under the heading */
+@media (max-width:860px){
+  .radius-phone-wrap{zoom:.7; margin:10px auto 0; height:770px;}
+}
+@media (max-width:520px){
+  .radius-phone-wrap{zoom:.6; margin:4px auto -10px;}
+}

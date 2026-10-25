@@ -20,6 +20,8 @@
     --ink-soft:#c3c9de;
     --muted:#8890a8;
     --accent:#ff7a2e;
+    --sky:#4cc3ff;
+    --sky-soft:rgba(76,195,255,.15);
     --accent-ink:#180d04;
     --accent-soft:#3d2410;
     --line:rgba(245,243,236,0.10);
@@ -329,7 +331,7 @@
 .prose h3{font-family:'IBM Plex Sans',system-ui,sans-serif; font-size:19px; font-weight:700; color:var(--ink); margin:30px 0 8px;}
 .prose p, .prose ul, .prose ol{margin:0 0 18px;}
 .prose li{margin-bottom:8px;}
-.prose a{color:var(--accent);}
+.prose a{color:var(--sky);}
 .prose strong{color:var(--ink);}
 .prose blockquote{margin:24px 0; padding:4px 0 4px 20px; border-left:3px solid var(--accent); color:var(--ink);}
 .prose table{width:100%; border-collapse:collapse; margin:0 0 22px; font-size:15px; display:block; overflow-x:auto;}
@@ -611,3 +613,16 @@ button.linklike{background:none; border:0; padding:0; font:inherit; cursor:point
 .social-list a{display:grid; place-items:center; width:46px; height:46px; color:var(--accent); transition:transform .2s, color .2s;}
 .social-list svg{width:34px; height:34px; fill:currentColor;}
 .social-list a:hover{transform:translateY(-3px); color:#ff9a5c;}
+
+/* ---- Sky blue accent: supporting colour only. Orange stays the brand colour and every button.
+   Sky is used sparingly for detail and "good news" moments: page-top labels, ticks, pop-ups and links in articles. ---- */
+.hero .eyebrow, .page-head .eyebrow{color:var(--sky);}
+.hero .eyebrow::before, .page-head .eyebrow::before{background:var(--sky);}
+.hero .eyebrow{margin-bottom:22px;}
+@media (max-width:720px){ .hero .eyebrow{margin-bottom:16px;} }
+.reassure li::before{color:var(--sky);}
+.hl-sky{color:var(--sky); font-weight:600;}
+.toast{border-left-color:var(--sky);}
+.toast-ic, .toast-ic.ok{background:var(--sky-soft); color:var(--sky);}
+.shots{position:relative;}
+.shots::before{content:""; position:absolute; right:-6%; top:-12%; width:70%; height:75%; background:radial-gradient(closest-side, rgba(76,195,255,.2), transparent); pointer-events:none; z-index:0;}
