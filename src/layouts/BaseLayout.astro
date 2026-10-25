@@ -28,6 +28,7 @@ const { current, ...seo } = Astro.props;
     <link rel="icon" href="/assets/banksman-icon.svg" type="image/svg+xml" />
     <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" />
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <link rel="preload" href="/assets/banksman-logo.png" as="image" type="image/png" fetchpriority="high" />
     <link rel="preload" href="/assets/fonts/big-shoulders-display-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/assets/site.css" />
@@ -52,7 +53,7 @@ fbq('init', '1178352088183069');
 fbq('track', 'PageView');
 </script>
 <!-- End Meta Pixel Code -->
-    <script is:inline src="/assets/consent.js"></script>
+    <script is:inline src="/assets/consent.js" defer></script>
   </head>
   <body>
     <!-- Meta Pixel fallback for browsers without JavaScript (an image can't sit in <head>). -->

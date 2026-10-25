@@ -12,7 +12,7 @@ import Social from './Social.astro';
         <p>Site management software built by a working builder, for UK construction. Directing every job, every day.</p>
       </div>
       <div>
-        <h4>Product</h4>
+        <h3 class="foot-h">Product</h3>
         <a href="/#features">Features</a>
         <a href={SITE.demoUrl}>Live demo</a>
         <a href="/#pricing">Pricing</a>
@@ -22,14 +22,15 @@ import Social from './Social.astro';
         <a href={SITE.appUrl}>Log in</a>
       </div>
       <div>
-        <h4>Who it's for</h4>
+        <h3 class="foot-h">Who it's for</h3>
         {TRADES.map((trade) => <a href={`/for-${trade.slug}/`}>{trade.name}</a>)}
       </div>
       <div>
-        <h4>Company</h4>
+        <h3 class="foot-h">Company</h3>
         <a href="/meet-the-team/">Meet the team</a>
         <a href="/whats-new/">What's new</a>
         <a href="/blog/">Blog</a>
+        <a href="/support/">Support</a>
         <a href="/privacy/">Privacy &amp; cookies</a>
         <button class="linklike" type="button" onclick="openCookieSettings()">Cookie settings</button>
         {SITE.contacts.map((c) => (

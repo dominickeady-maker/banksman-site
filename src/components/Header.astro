@@ -11,7 +11,7 @@ const blogCurrent = here('blog');
 ---
 <header class="site">
   <nav class="nav" aria-label="Main">
-    <a class="brand" href="/"><img src="/assets/banksman-logo.png" alt="Banksman.app" width="216" height="35"></a>
+    <a class="brand" href="/"><img src="/assets/banksman-logo.png" alt="Banksman.app" width="216" height="35" fetchpriority="high" decoding="async"></a>
     <div class="navlinks">
       <a href="/#features">Features</a>
       <a href={SITE.demoUrl}>Live demo</a>
@@ -33,6 +33,7 @@ const blogCurrent = here('blog');
     <a href="/whats-new/" {...here('whats-new')}>What's new</a>
     <a href="/meet-the-team/" {...here('team')}>Meet the team</a>
     <a href="/blog/" {...blogCurrent}>Blog</a>
+    <a href="/support/">Support</a>
     <a href={SITE.appUrl}>Log in</a>
     {SITE.contacts.map((c) => <a href={`tel:${c.phoneIntl}`}>Call {c.name} · {c.phone}</a>)}
     <div class="mm-cta"><a class="btn btn-primary" href={SITE.demoUrl}>Try the live demo →</a></div>

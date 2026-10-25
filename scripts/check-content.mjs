@@ -19,7 +19,7 @@ const DRAWING_CLAIM = /revision control|version control|(?:latest|current) (?:dr
 // A price is £ + digits, optionally a range and a unit. Banksman's own prices (£79, £149, £299, £999) include VAT and must be
 // followed by "inc. VAT"; any other price (market figures, other vendors) must be followed by "+ VAT".
 const OWN_PRICE = /^£(?:79|149|299|999)\b/;
-const PRICE = /£\d[\d,.]*k?(?:\s?[–-]\s?£\d[\d,.]*k?)?(?:\/\w+|\s(?:a|per)\s(?:month|year|user|seat|week|day))?/g;
+const PRICE = /£\d[\d,.]*k?(?:(?:\s?[–-]\s?| to )£\d[\d,.]*k?)?(?:\/\w+|\s(?:a|per)\s(?:month|year|user|seat|week|day))?/g;
 
 const posts = walk(blogDir).filter((p) => p.endsWith('.md'));
 const slugs = new Set(posts.map((p) => basename(p, '.md')));
@@ -59,6 +59,9 @@ for (const file of posts) {
   if (/\(fictional\)/i.test(text)) errors.push(`${rel}: say "realistic sample data", not "(fictional)"`);
   const claim = prose.match(DRAWING_CLAIM) ?? fm.match(/^(?:title|description):.*?(revision control|version control)/im);
   if (claim) errors.push(`${rel}: "${claim[0].trim()}" claims revision control; say "drawings on every phone, labelled by version"`);
+
+  // House style: no em or en dashes. Use a comma, full stop or colon (the build also tidies post bodies).
+  if (/[\u2013\u2014]/.test(text)) errors.push(`${rel}: contains a dash (— or –); use a comma, full stop or colon instead`);
 
   for (const line of text.split('\n')) {
     for (const match of line.matchAll(PRICE)) {

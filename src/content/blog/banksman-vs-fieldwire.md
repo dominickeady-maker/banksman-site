@@ -1,54 +1,58 @@
 ---
 title: "Banksman vs Fieldwire: Which Is Right for a 10-Person Building Firm?"
 seoTitle: "Banksman vs Fieldwire for a 10-person building firm"
-description: A straight comparison of Banksman and Fieldwire for a
-  small-to-mid-size UK building firm, covering pricing, setup and what each is
-  actually built for.
+description: A balanced comparison of Banksman and Fieldwire for a small UK
+  building firm, covering setup, features and the kind of team each one is
+  built around.
 keyword: banksman vs fieldwire
 author: Matt
 category: Choosing software
 pubDate: 2026-10-24
+updatedDate: 2026-10-25
 draft: false
 cover: /assets/blog/banksman-vs-fieldwire.webp
 coverAlt: Illustration of two construction software options compared side by side
 faq:
   - question: Can I try both before deciding?
-    answer: Yes — Banksman's live demo needs no card and takes minutes to access;
-      Fieldwire also offers a way to trial its platform. Trying both on your own
-      data (or close to it) is the fastest way to know which fits.
+    answer: Yes. Banksman has a live demo that needs no card, and Fieldwire offers
+      its own way to try the platform. Trying both with your own jobs in mind is
+      the quickest way to see which suits your team.
   - question: Does Banksman do plan markup like Fieldwire?
-    answer: Banksman focuses on putting drawings on every phone, labelled by
-      version, rather than detailed markup tools — it's built for firms who need
-      their drawings on site, not annotation-heavy coordination.
-  - question: Is Fieldwire overkill for a small firm?
-    answer: Not necessarily overkill, but likely more capability — and cost — than a
-      small firm running straightforward jobs will use day-to-day.
+    answer: No. Banksman puts drawings on every phone, labelled by version, so
+      the team can check they have the right one on site. Fieldwire offers more
+      detailed plan markup and coordination tools, which suit teams that need
+      that level of detail.
+  - question: Is Fieldwire a good fit for a small firm?
+    answer: It can be. Fieldwire is a capable platform used by firms of many
+      sizes. A small firm running straightforward jobs may find that a simpler,
+      more focused tool covers what they need day to day, so it is worth trying
+      both.
 ---
 
-For a 10-person building firm running a handful of sites, Banksman is generally the better fit on cost and simplicity, while Fieldwire is better suited to larger firms managing complex plan markup and coordination across bigger, more technical projects. Both can technically handle a small firm's day-to-day — the difference is what you're paying for and how much of it you'll actually use.
+Banksman and Fieldwire are both capable tools for running work on site. For a 10-person building firm running a handful of sites, Banksman is designed around the day-to-day of a smaller team: tasks, hours, materials, drawings and site safety in one simple app. Fieldwire offers a broader feature set, including detailed plan markup and field coordination, which suits larger or more technical projects. The right choice depends on how much of that capability your team will use.
 
 ## Pricing
 
-- **Banksman:** flat £79/month inc. VAT for up to 10 users, £149/month inc. VAT for up to 25. No per-seat charges, no negotiated quote.
-- **Fieldwire:** tiered, per-user pricing with a free tier for very small teams, scaling up through paid tiers as team size and feature needs grow. For a 10-person team wanting full functionality, this typically lands higher than Banksman's flat rate, and the cost grows further as the team does.
+- **Banksman:** £79/month inc. VAT for up to 10 users, £149/month inc. VAT for up to 25 and £299/month inc. VAT for up to 75. Every plan includes every feature.
+- **Fieldwire:** has its own range of plans. For their current options, see Fieldwire's website.
 
 ## Setup and onboarding
 
-- **Banksman:** live demo with realistic sample data, no card, no sales call — you can be logged in and looking around within minutes.
-- **Fieldwire:** self-serve sign-up is available, but getting full value out of its more extensive feature set (especially plan markup and larger-scale coordination tools) typically involves more setup time.
+- **Banksman:** a live demo running on realistic sample data, with no card and no sales call, so you can be looking around within minutes. There is also an optional onboarding call on every plan.
+- **Fieldwire:** offers self-serve sign-up. Because it covers more ground, including plan markup and coordination tools, there is more to explore when you first set it up.
 
-## What each is actually built for
+## What each is built for
 
-**Banksman** covers six core areas — tasks with photo proof, timesheets (daywork and price work), materials requests, drawings, site photos, and messaging per site — aimed squarely at firms who want their site off WhatsApp and paper without taking on more software than they need.
+**Banksman** covers tasks with photo proof, timesheets for daywork and price work, material requests, drawings on every phone, site photos, site group chats, health and safety sign-offs, QR site sign-in and accident reports. It is aimed at firms that want their sites off WhatsApp and paper with one straightforward app the whole team will use.
 
-**Fieldwire** is built for more complex field coordination: detailed plan markup, task management across larger crews, and features aimed at firms juggling bigger or more technically demanding projects. If your firm is scaling toward that complexity, Fieldwire's depth is a genuine advantage.
+**Fieldwire** is built for field coordination across a wide range of projects, with detailed plan viewing and markup, task management and reporting. For firms working on larger or more technically demanding jobs, that depth is a real strength.
 
-## The honest trade-off
+## Which to choose
 
-If your firm's problem is "we're running sites on WhatsApp and a biro, and we need tasks, timesheets, materials and drawings sorted properly" — Banksman covers that directly, at a flat and lower monthly cost, with no sales process in the way.
+If your firm's problem is "we're running sites on WhatsApp and a biro, and we need tasks, timesheets, materials and drawings sorted properly", Banksman is designed for exactly that, with simple published pricing and no sales process in the way.
 
-If your firm is managing complex, plan-heavy projects and needs deep markup and coordination tools regardless of price, Fieldwire's extra depth may justify the extra cost and setup.
+If your projects are plan-heavy and you need detailed markup and coordination tools, Fieldwire's extra depth may be the better fit.
 
 ---
 
-*See the difference for yourself — [try Banksman's live demo](/#demo), no card required.*
+*See the difference for yourself: [try Banksman's live demo](/#demo), no card required.*

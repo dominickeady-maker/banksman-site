@@ -36,6 +36,7 @@ Builders, bricklayers, groundworkers, roofers, electricians, plumbers, subcontra
 - [What's new](https://banksman.app/whats-new/)
 - [Banksman vs spreadsheets and WhatsApp](https://banksman.app/compare/)
 - [Meet the team](https://banksman.app/meet-the-team/)
+- [Support](https://banksman.app/support/): report a bug, ask for help or suggest a feature; answered by Dom or Matt
 - [Blog](https://banksman.app/blog/)
 - [Free CIS calculator](https://banksman.app/tools/cis-calculator/)
 - [Free day rate calculator](https://banksman.app/tools/day-rate-calculator/)

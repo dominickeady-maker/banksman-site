@@ -20,8 +20,8 @@ Start from [`BLOG_TEMPLATE.md`](BLOG_TEMPLATE.md), or click **New Blog post** in
 
 | Field | Rule |
 |---|---|
-| `title` | 10–90 characters. It becomes the page's only H1, so don't repeat it as a `#` heading in the body. |
-| `description` | 50–160 characters. Shown in Google results and link previews. |
+| `title` | 10 to 90 characters. It becomes the page's only H1, so don't repeat it as a `#` heading in the body. |
+| `description` | 50 to 160 characters. Shown in Google results and link previews. |
 | `keyword` | The search phrase the post targets. Use it in the title or the first paragraph. |
 | `author` | The writer's name, e.g. `Matt`. |
 | `category` | Shown above the title and on the blog card. Defaults to `Site management`. |
@@ -36,12 +36,14 @@ Start from [`BLOG_TEMPLATE.md`](BLOG_TEMPLATE.md), or click **New Blog post** in
 
 - link to two or three other posts, and to a trade page or `/compare/` where it fits;
 - end with `---` and a one-line italic call to action linking `/#demo` (the site turns it into the orange box);
-- only describe features that are live today (see `src/data/features.ts`).
+- only describe features that are live today (see `src/data/features.ts`);
+- if you mention another product (Fieldwire, JobTread and so on): keep it factual, fair and balanced, say what it does well, never quote its prices, and never claim anything you can't check on its own website. A disclaimer is added to the bottom of the post automatically when the name is listed in `src/data/competitors.ts` (add any new names there);
+- never use dashes (— or –). Use a comma, a full stop or a colon instead. Dashes read as AI-written. The build turns any that slip into a post body into commas, and `npm run check` flags them.
 
 **House rules.** `npm run check` enforces the first five.
 
 1. **No `#` heading in the body.** Start with a direct-answer paragraph, then `##` sections.
-2. **Every price says whether VAT is included**, straight after the figure. Banksman's prices include VAT: `£79/month inc. VAT`, `£149/month inc. VAT`. Market figures and other products' prices are quoted without it: `£10–£30 per user + VAT`.
+2. **Every price says whether VAT is included**, straight after the figure. Banksman's prices include VAT: `£79/month inc. VAT`, `£149/month inc. VAT`. Market figures and other products' prices are quoted without it: `£10 to £30 per user + VAT`.
 3. **Link the demo as `/#demo`**, never a bare `#demo`, which only works on the home page. `/#demo` is the four-field form that unlocks the logins. It's set in `src/site.ts`.
 4. **Describe the demo as "realistic sample data"**, not "real (fictional) data".
 5. **Drawings:** Banksman puts drawings on every phone, labelled by version. It does not do revision control, superseding or comparison, so don't claim it does, or imply it ("the current revision on every phone", "there is only one"). This applies to the site pages too.

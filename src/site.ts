@@ -22,7 +22,7 @@ export const SITE = {
     instagram: 'https://www.instagram.com/banksman.app',
     tiktok: '',
   },
-  realPeople: 'Speak to Dom or Matt — real people, no bots or call centres.',
+  realPeople: 'Speak to Dom or Matt: real people, no bots or call centres.',
   company: 'DM.AI 4U Ltd',
   locale: 'en_GB',
 };

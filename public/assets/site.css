@@ -357,7 +357,7 @@
 
 /* footer (multi-column) */
 .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:30px; padding-bottom:26px; border-bottom:1px solid var(--line); margin-bottom:22px;}
-.foot-grid h4{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink); margin:0 0 12px;}
+.foot-grid h4, .foot-grid .foot-h{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink); margin:0 0 12px;}
 .foot-grid a, .foot-grid button.linklike{display:block; color:var(--muted); text-decoration:none; font-size:14px; margin-bottom:8px;}
 .foot-grid a:hover, .foot-grid button.linklike:hover{color:var(--accent);}
 .foot-grid p{color:var(--muted); font-size:14px; margin:10px 0 0; max-width:34ch;}
@@ -630,3 +630,12 @@ button.linklike{background:none; border:0; padding:0; font:inherit; cursor:point
 .eyebrow{color:var(--sky);}
 .eyebrow::before{background:var(--sky);}
 .wl-how-title{color:var(--sky);}
+/* Sky accents: menu, call link, social icons, white label badge, Built by label */
+.nav-call{color:var(--sky);}
+.navlinks a[aria-current="page"], .navlinks a.is-active, .mobile-menu a[aria-current="page"]{color:var(--sky);}
+.navlinks a{transition:color .25s;}
+.social-list a{color:var(--sky);}
+.social-list a:hover{color:#9be0ff;}
+.wl-pill{background:var(--sky); color:#062233;}
+.wl-title{margin-top:28px;}
+.about-card .about-eyebrow{font-size:12px; color:var(--sky); letter-spacing:.14em;}

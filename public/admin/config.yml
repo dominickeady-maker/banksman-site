@@ -1,4 +1,4 @@
-# Decap CMS — https://decapcms.org/docs/configuration-options/
+# Decap CMS: https://decapcms.org/docs/configuration-options/
 # Login uses GitHub via Netlify's OAuth provider (see BLOG_GUIDE.md, "Admin login").
 backend:
   name: github
@@ -34,15 +34,15 @@ collections:
     format: frontmatter
     slug: '{{slug}}'
     preview_path: 'blog/{{slug}}/'
-    summary: "{{fields.draft | ternary('DRAFT (hidden from the site)', 'LIVE on the site')}} · {{title}} — {{author}} · {{pubDate | date('D MMM YYYY')}}"
+    summary: "{{fields.draft | ternary('DRAFT (hidden from the site)', 'LIVE on the site')}} · {{title}} {{author}} · {{pubDate | date('D MMM YYYY')}}"
     sortable_fields: ['pubDate', 'title', 'author']
     view_filters:
       - { label: 'Draft (hidden from the site)', field: draft, pattern: true }
       - { label: 'Live on the site', field: draft, pattern: false }
     fields:
-      - { name: title, label: Title, widget: string, hint: 'Shown as the page H1. 10–90 characters. Do not repeat it in the body.' }
+      - { name: title, label: Title, widget: string, hint: 'Shown as the page H1. 10 to 90 characters. Do not repeat it in the body.' }
       - { name: seoTitle, label: Google title, widget: string, required: false, hint: 'Shorter title for Google results, up to 60 characters. Leave empty to use the title.' }
-      - { name: description, label: Meta description, widget: text, hint: '50–170 characters. Shown in Google and when the link is shared.' }
+      - { name: description, label: Meta description, widget: text, hint: '50 to 170 characters. Shown in Google and when the link is shared.' }
       - { name: keyword, label: Target keyword, widget: string, hint: 'The search phrase this post is written for. Use it in the title or first paragraph.' }
       - { name: author, label: Author, widget: string, default: Matt }
       - { name: category, label: Category, widget: string, default: Site management, hint: 'Shown above the title and on the blog card.' }
@@ -53,7 +53,7 @@ collections:
       - { name: image, label: Share image, widget: image, required: false, hint: '1200×630. Leave empty to use the generated share image.' }
       - { name: imageAlt, label: Share image alt text, widget: string, required: false }
       - { name: cover, label: Cover picture, widget: image, required: false, hint: '1200×675 (16:9). Shows on the blog page and at the top of the post. Leave empty to use /assets/blog/<file-name>.webp.' }
-      - { name: coverAlt, label: Cover picture description (alt text), widget: string, required: false, hint: 'One plain sentence saying what the picture shows, for screen readers and Google Images. 10–160 characters.' }
+      - { name: coverAlt, label: Cover picture description (alt text), widget: string, required: false, hint: 'One plain sentence saying what the picture shows, for screen readers and Google Images. 10 to 160 characters.' }
       - name: faq
         label: FAQ
         widget: list

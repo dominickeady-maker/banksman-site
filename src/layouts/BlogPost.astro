@@ -5,6 +5,7 @@ import '../styles/pages.css';
 import { SITE } from '../site';
 import { type Post, getPosts, formatDate, readingMinutes, shareImageUrl, postUrl, coverUrl, coverAlt } from '../lib/posts';
 import { blogPostingSchema, breadcrumbSchema, faqSchema } from '../lib/schema';
+import { competitorsIn, toolsIn, listNames } from '../data/competitors';
 
 interface Props {
   post: Post;
@@ -27,6 +28,11 @@ const colon = title.indexOf(': ');
 const titleLead = colon > 0 ? title.slice(0, colon + 1) : title;
 const titleAccent = colon > 0 ? title.slice(colon + 2) : '';
 const initials = author.split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase();
+
+// Comparison posts get a disclaimer at the bottom, so it's always fair and clearly our own view.
+const allText = `${title} ${description} ${post.body ?? ''} ${faq.map((f) => `${f.question} ${f.answer}`).join(' ')}`;
+const rivals = competitorsIn(allText);
+const tools = toolsIn(allText);
 
 // Up to three more posts: same category first, then the newest.
 const others = (await getPosts()).filter((p) => p.id !== post.id && !p.data.draft);
@@ -67,6 +73,16 @@ const related = [...others.filter((p) => p.data.category === category), ...other
           </details>
         ))}
       </section>
+    )}
+    {(rivals.length > 0 || tools.length > 0) && (
+      <aside class="post-disclaimer" aria-label="Disclaimer">
+        {rivals.length > 0 && (
+          <p><strong>About this comparison:</strong> {listNames(rivals)} {rivals.length > 1 ? 'are trademarks of their respective owners' : 'is a trademark of its owner'}. Banksman is not affiliated with, endorsed by or sponsored by {rivals.length > 1 ? 'them' : 'it'}. This article is our own opinion of which tools suit smaller UK building firms, based on publicly available information at the time of writing. Products and features change, so check each provider's website for their latest details. If you spot anything out of date or inaccurate, email <a href="mailto:matt@dm4u.ai">matt@dm4u.ai</a> and we'll correct it.</p>
+        )}
+        {tools.length > 0 && (
+          <p>{listNames(tools)} {tools.length > 1 ? 'are trademarks of their respective owners' : 'is a trademark of its owner'}. Banksman is not affiliated with or endorsed by {tools.length > 1 ? 'them' : 'it'}. Any comments are about how these tools are commonly used on building sites, not about the products themselves.</p>
+        )}
+      </aside>
     )}
   </article></div>
 

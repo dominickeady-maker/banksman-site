@@ -1,0 +1,14 @@
+---
+// Bot traps for Netlify forms. Put this inside any <form data-netlify="true" netlify-honeypot="company_website">.
+// 1. company_website: a hidden field people never see. Bots fill it in, so Netlify marks the submission as spam.
+// 2. form_started: when the form appeared. Real people take more than a couple of seconds; bots don't.
+// netlify/functions/submission-created.mjs checks both, marks anything suspicious as spam and deletes it,
+// and netlify/functions/purge-spam.mjs clears out the spam list every day.
+---
+<div class="hp" aria-hidden="true">
+  <label>Company website (leave this empty) <input name="company_website" type="text" tabindex="-1" autocomplete="off"></label>
+</div>
+<input type="hidden" name="form_started" value="" data-form-started>
+<script is:inline>
+  document.querySelectorAll('[data-form-started]').forEach(function (i) { if (!i.value) i.value = String(Date.now()); });
+</script>

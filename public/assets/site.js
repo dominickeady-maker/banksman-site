@@ -21,6 +21,7 @@
     ['.team-grid','up',true],          // meet the team
     ['.post-featured','up',false],     // blog: featured post
     ['.post-grid-img','up',true],      // blog: cards
+    ['.bl-grid','up',true],            // blog: cards (magazine layout)
     ['.related-grid','up',true],       // blog posts: more from the blog
     ['.pain-list','up',true],          // trade pages: problem → fix cards
     ['.feature-list','up',true],       // feature lists: items arrive row by row
@@ -62,3 +63,17 @@
     g.addEventListener('mousemove',function(e){ var c=e.target.closest('.feat'); if(!c) return; var r=c.getBoundingClientRect(); c.style.setProperty('--mx',(e.clientX-r.left)+'px'); c.style.setProperty('--my',(e.clientY-r.top)+'px'); });
   }
 })();
+
+
+// Homepage: the menu link for the section you're looking at turns sky blue.
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  var links={};
+  document.querySelectorAll('.navlinks a[href^="/#"]').forEach(function(a){ links[a.getAttribute('href').slice(2)]=a; });
+  var ids=Object.keys(links).filter(function(id){ return document.getElementById(id); });
+  if(!ids.length) return;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ var a=links[e.target.id]; if(a) a.classList.toggle('is-active', e.isIntersecting); });
+  },{rootMargin:'-40% 0px -55% 0px'});
+  ids.forEach(function(id){ io.observe(document.getElementById(id)); });
+})();
