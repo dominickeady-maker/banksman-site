@@ -1,14 +1,14 @@
 # Sales chat setup (for Dom)
 
-The "Ask about Banksman" chat answers visitors' questions with Claude (Opus 5.5).
+The "Ask about Banksman" chat answers visitors' questions with Claude (Sonnet 5.5).
 
 ## How it works
 1. **The chat box** (`src/components/SalesChat.astro`) is on every page. It sends the chat to the `sales-chat` function in the Banksman production Supabase (buildflow-demo repo). The Anthropic key lives there, never in the website.
 2. **What it knows** comes from `/chat-knowledge.json`. That file is built from the site's own data: features, plans, FAQ and links. When a feature goes live in `src/data/features.ts`, the chat knows within 10 minutes of the deploy.
-3. **When someone wants a person**, the chat shows a short form (name, business, email, phone). It goes to Netlify Forms as `chat-lead`. `submission-created` then files it, with the chat so far, in the **`sales_leads`** table in DM4U-CRM.
+3. **When someone wants a person**, the chat shows a short form (name, business, email, phone). It goes to Netlify Forms as `chat-lead`, which emails it to Dom and Matt (step 2 below). `submission-created` also files it, with the chat so far, in the **`sales_leads`** table in DM4U-CRM.
 
 ## Limits
-- **Spending cap:** £10 a month (Supabase secret `SALES_CHAT_CAP_GBP`, default 10). Once it's reached, the chat says "email or ring Dom" until the 1st of next month.
+- **Spending cap:** £25 a month (Supabase secret `SALES_CHAT_CAP_GBP`, default 25). Once it's reached, the chat says "email or ring Dom" until the 1st of next month.
 - **Per visitor:** 20 messages an hour. Each message can be up to 1,500 characters, and each chat up to 24 turns.
 - **Where it works:** only on banksman.app pages.
 
