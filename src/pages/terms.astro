@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { breadcrumbSchema } from '../lib/schema';
+import { SITE } from '../site';
+const schema = [breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Subscription terms', path: '/terms/' }])];
+
+// DRAFT for Dom and Matt (and a solicitor) to read. Fill in every [placeholder] before this goes live.
+---
+<BaseLayout schema={schema} title={"Subscription terms | Banksman"} description={"The terms for subscribing to Banksman: plans, billing, failed payments, cancelling, your data and our responsibilities, in plain English."}>
+<section class="page-head"><div class="wrap">
+  <div class="eyebrow">Legal</div>
+  <h1>Subscription terms</h1>
+  <p>The deal between your business and us when you subscribe to Banksman. We've kept it in plain English. If anything's unclear, ring or email us before you buy.</p>
+  <div class="meta">Last updated [date]</div>
+</div></section>
+
+<div class="wrap"><div class="prose">
+
+<h2>1. Who we are</h2>
+<p>Banksman is provided by <strong>{SITE.company}</strong> ("we", "us"), a company registered in England and Wales, company number [company number], registered office [registered address].</p>
+<ul>
+  <li>Email: <a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+  <li>Phone: {SITE.phone}</li>
+</ul>
+<p>"You" means the business that subscribes. The person who buys must have authority to agree to these terms for that business.</p>
+
+<h2>2. Who Banksman is for</h2>
+<p>Banksman is for businesses, such as building firms, contractors and trades. By subscribing, you confirm you're buying for your business, not as a consumer.</p>
+
+<h2>3. Plans</h2>
+<table>
+  <thead><tr><th>Plan</th><th>Price</th><th>Billed</th><th>People</th></tr></thead>
+  <tbody>
+    <tr><td>Starter</td><td>[price] [inc/ex VAT TBC]</td><td>Monthly</td><td>Up to 10</td></tr>
+    <tr><td>Growth</td><td>[price] [inc/ex VAT TBC]</td><td>Monthly</td><td>Up to 25</td></tr>
+    <tr><td>Enterprise</td><td>[price] [inc/ex VAT TBC]</td><td>Monthly</td><td>Up to 75</td></tr>
+    <tr><td>White Label</td><td>[price] [inc/ex VAT TBC]</td><td>One-off</td><td>An add-on to a monthly plan</td></tr>
+  </tbody>
+</table>
+<ul>
+  <li><strong>People</strong> means everyone with a login in your company: managers and workers.</li>
+  <li><strong>What's in each plan</strong> is set out on our <a href="/#pricing">pricing section</a> at the time you buy. Features marked "Coming soon" aren't part of a plan until they're released.</li>
+  <li><strong>White Label</strong> puts your own branding on the app for your team and includes three 1-on-1 onboarding calls with us. It's paid once and needs an active monthly plan.</li>
+</ul>
+
+<h2>4. Billing</h2>
+<ul>
+  <li>Monthly plans are billed <strong>monthly in advance</strong>, from the day you subscribe. Payments are taken by <strong>Stripe</strong>. We never see or store your full card details.</li>
+  <li><strong>Upgrading</strong> takes effect straight away. You pay a part-month (prorated) charge for the rest of the current month on the bigger plan.</li>
+  <li><strong>Downgrading</strong> also takes effect straight away. Any unused part of the bigger plan is credited against your next bill. If you have more people than the smaller plan allows, nobody is removed, but you can't add anyone until you're under the limit.</li>
+  <li>You can change plan, update your card and see your invoices any time from <strong>More → Plan &amp; billing</strong> in the app.</li>
+  <li>Prices are shown [inc/ex VAT TBC]. Your invoices come from Stripe by email.</li>
+  <li>We may change our prices by giving you at least 30 days' notice by email. The new price applies from your next billing date after the notice ends.</li>
+</ul>
+
+<h2>5. If a payment fails</h2>
+<ol>
+  <li>We'll email your company's managers straight away, with the date by which to fix it.</li>
+  <li>You have <strong>7 days' grace</strong>. Everything keeps working as normal.</li>
+  <li>After 7 days, if it's still unpaid, <strong>adding new people and new sites is paused</strong> until you pay. Everyone keeps their login and can carry on using the app, and <strong>nothing is deleted</strong>.</li>
+  <li>When the payment goes through, everything is back to normal straight away.</li>
+</ol>
+<p>Stripe retries the payment automatically. If it's still unpaid after Stripe's last retry, your subscription ends, as if you'd cancelled (see section 6).</p>
+
+<h2>6. Cancelling</h2>
+<ul>
+  <li>Cancel any time from <strong>More → Plan &amp; billing</strong> in the app. There's no minimum term and no cancellation fee.</li>
+  <li>Your plan runs to the <strong>end of the month you've paid for</strong>, then stops. You won't be charged again.</li>
+  <li>We <strong>don't refund part months</strong>. The White Label add-on isn't refundable once your onboarding calls have started.</li>
+  <li>After your plan ends, your team can still sign in and see and export your records. Adding new people and sites is paused.</li>
+</ul>
+<p>We can end your subscription if you seriously break these terms (for example section 8), or don't pay. Where the problem can be put right, we'll give you notice first so you can fix it.</p>
+
+<h2>7. Your data</h2>
+<ul>
+  <li><strong>Your data is yours.</strong> Everything your team puts into Banksman (sites, tasks, timesheets, photos, materials, messages, health and safety records and so on) belongs to your business. We only use it to run the service for you.</li>
+  <li><strong>Exporting:</strong> managers can export sites, tasks, timesheets, materials, photo lists, sign-offs, attendance and accident and near-miss reports to CSV from the app. If you'd like a full copy of your company's data, ask us and we'll send it.</li>
+  <li><strong>After you cancel:</strong> we keep your company's data for <strong>[90 days]</strong> after your plan ends, so you can come back or take a copy. After that we delete it, except anything the law says we must keep (such as invoices and payment records, which HMRC requires us to keep for 6 years). Deleted data can stay in our backups for up to [35 days] before it's gone for good. If you want your data deleted sooner, ask us.</li>
+  <li><strong>Data protection:</strong> for the personal data your team adds (for example workers' names, emails and timesheets), you're the controller and we're your processor. We process it only on your instructions, to provide Banksman. We keep it secure and confidential, and use only the service providers listed in our <a href="/privacy/">privacy policy</a>. We'll help you with any request from your workers about their data, and tell you without delay if there's ever a breach affecting it. Our full <a href="/privacy/">privacy policy</a> explains how we handle personal data.</li>
+</ul>
+
+<h2>8. Using Banksman fairly</h2>
+<p>You and your team must not:</p>
+<ul>
+  <li>use Banksman for anything unlawful, or upload anything you don't have the right to use;</li>
+  <li>share logins: each person gets their own;</li>
+  <li>try to get into another company's data, test or get round our security, or overload the service;</li>
+  <li>copy, resell or rent out Banksman, or use it to build a competing product;</li>
+  <li>upload viruses or anything harmful.</li>
+</ul>
+<p>You're responsible for who you invite and what your team does in your account. Banksman helps you keep records. It isn't legal, tax, CIS, HMRC, employment or health and safety advice, and your business stays responsible for running safe sites and meeting its legal duties.</p>
+
+<h2>9. Availability</h2>
+<p>We work hard to keep Banksman running and your data safe, but <strong>we can't promise it will always be available or free from faults</strong>. It relies on the internet, your devices and our service providers. Sometimes we'll need to take it down for maintenance. Where we can, we'll do that out of working hours and tell you first. If something goes wrong, tell us and we'll fix it as quickly as we reasonably can.</p>
+<p>We keep improving Banksman, so features may change. We won't take away a main feature of your plan without telling you first.</p>
+
+<h2>10. Our liability</h2>
+<ul>
+  <li>Our total liability to you, for everything to do with Banksman in any 12 months, is limited to <strong>the amount you paid us in the 12 months before the claim</strong>.</li>
+  <li>We're not liable for indirect or consequential loss, or for lost profits, revenue, contracts, business or data, where the data could have been recovered from your exports or our backups.</li>
+  <li>Nothing in these terms limits liability for death or personal injury caused by negligence, for fraud, or for anything else the law doesn't allow us to limit.</li>
+</ul>
+
+<h2>11. Changes to these terms</h2>
+<p>We may update these terms. If a change affects you, we'll email your company's managers at least <strong>30 days</strong> before it applies and update the date at the top of this page. If you don't agree with a change, you can cancel before it applies (see section 6).</p>
+
+<h2>12. The legal bits</h2>
+<ul>
+  <li>These terms, the plan you buy and our <a href="/privacy/">privacy policy</a> are the whole agreement between us about Banksman.</li>
+  <li>If any part of these terms can't be enforced, the rest still applies.</li>
+  <li>These terms are governed by <strong>the law of England and Wales</strong>, and the courts of England and Wales deal with any dispute. If something goes wrong, please talk to us first: most things can be sorted with a phone call.</li>
+</ul>
+
+</div></div>
+</BaseLayout>
