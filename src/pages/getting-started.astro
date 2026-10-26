@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Content } from '../data/getting-started.md';
+// The first-week guide for new customers. Not in search results or the sitemap until the welcome
+// emails link to it: then remove noindex here and the sitemap filter in astro.config.mjs.
+---
+<BaseLayout noindex title="Getting started | Banksman" description="Your first week with Banksman: what managers and workers do first.">
+<section class="page-head"><div class="wrap">
+  <div class="eyebrow">Getting started</div>
+  <h1>Your first week with Banksman</h1>
+  <p>Banksman runs on any phone or computer: open your company's Banksman address and sign in. Tap the <strong>?</strong> in the app any time to ask how to do something.</p>
+</div></section>
+<div class="wrap"><div class="prose">
+  <Content />
+</div></div>
+</BaseLayout>

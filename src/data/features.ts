@@ -134,6 +134,11 @@ export const FEATURES = {
     summary: 'Saves your work when there’s no signal and syncs when you’re back in range.',
     status: 'coming-soon',
   },
+  siteLeads: {
+    name: 'Promote workers to run their own sites',
+    summary: 'Enterprise: give a trusted worker the running of their own sites, without making them a manager of the whole company.',
+    status: 'coming-soon',
+  },
   materialUrgency: {
     name: 'Urgency on material requests',
     summary: 'Mark a material request as urgent so the office knows what to chase first.',
