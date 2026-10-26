@@ -88,6 +88,20 @@ async function saveChatLead(payload) {
   return reply(200, 'Saved');
 }
 
+// The submission as Netlify holds it (audit 25/10/2026, L6): act on Netlify's own copy, never on
+// what the request says, so a forged call can't put junk in the CRM or get a real submission
+// deleted as spam. Returns null when Netlify has no such submission.
+async function verifiedSubmission(id) {
+  const token = process.env.NETLIFY_API_TOKEN;
+  if (!token) return undefined; // can't check without the token (see SUPPORT_SETUP.md)
+  if (typeof id !== 'string' || !/^[A-Za-z0-9_-]{8,64}$/.test(id)) return null;
+  const res = await fetch(`${NETLIFY_API}/submissions/${id}`, { headers: { Authorization: `Bearer ${token}` } }).catch(() => null);
+  if (!res) throw new Error('Netlify API unreachable');
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(`Netlify API returned ${res.status}`);
+  return res.json();
+}
+
 export const handler = async (event) => {
   let payload;
   try {
@@ -96,6 +110,18 @@ export const handler = async (event) => {
     return reply(400, 'Bad request');
   }
   if (!payload) return reply(200, 'Ignored');
+  try {
+    const real = await verifiedSubmission(payload.id);
+    if (real === null) {
+      console.warn('submission-created: no such submission at Netlify, ignored', String(payload.id).slice(0, 40));
+      return reply(200, 'Ignored: not a real submission');
+    }
+    if (real) payload = { ...payload, form_name: real.form_name ?? payload.form_name, data: real.data ?? {}, created_at: real.created_at ?? payload.created_at };
+    else console.warn('submission-created: NETLIFY_API_TOKEN is not set, so the submission could not be checked with Netlify.');
+  } catch (err) {
+    console.error('submission-created: could not check the submission with Netlify:', err.message);
+    return reply(500, 'Could not verify');
+  }
   if (looksLikeSpam(payload.data, payload.created_at)) {
     await binSpam(payload.id);
     return reply(200, 'Spam removed');
