@@ -40,20 +40,21 @@ collections:
       - { label: 'Draft (hidden from the site)', field: draft, pattern: true }
       - { label: 'Live on the site', field: draft, pattern: false }
     fields:
-      - { name: title, label: Title, widget: string, hint: 'Shown as the page H1. 10 to 90 characters. Do not repeat it in the body.' }
-      - { name: seoTitle, label: Google title, widget: string, required: false, hint: 'Shorter title for Google results, up to 60 characters. Leave empty to use the title.' }
-      - { name: description, label: Meta description, widget: text, hint: '50 to 170 characters. Shown in Google and when the link is shared.' }
-      - { name: keyword, label: Target keyword, widget: string, hint: 'The search phrase this post is written for. Use it in the title or first paragraph.' }
+      # Lengths here match the site's rules (src/content.config.ts). A post outside them would stop the site building.
+      - { name: title, label: Title, widget: string, pattern: ['^[\s\S]{10,90}$', 'Keep the title between 10 and 90 characters.'], hint: 'Shown as the page H1. 10 to 90 characters. Do not repeat it in the body.' }
+      - { name: seoTitle, label: Google title, widget: string, required: false, pattern: ['^[\s\S]{10,60}$', 'Keep the Google title between 10 and 60 characters, or leave it empty.'], hint: 'Shorter title for Google results, 10 to 60 characters. Leave empty to use the title.' }
+      - { name: description, label: Meta description, widget: text, pattern: ['^[\s\S]{50,170}$', 'Keep the description between 50 and 170 characters (about two short sentences).'], hint: '50 to 170 characters. Shown in Google and when the link is shared.' }
+      - { name: keyword, label: Target keyword, widget: string, pattern: ['^[\s\S]{3,}$', 'Add a search phrase of at least 3 characters.'], hint: 'The search phrase this post is written for. Use it in the title or first paragraph.' }
       - { name: author, label: Author, widget: string, default: Matt }
       - { name: category, label: Category, widget: string, default: Site management, hint: 'Shown above the title and on the blog card.' }
-      - { name: pubDate, label: Publish date, widget: datetime, format: 'YYYY-MM-DD', date_format: 'DD/MM/YYYY', time_format: false, picker_utc: true, hint: 'The day the post goes live. Pick today to publish straight away, or a future date to schedule it: publish as normal and it appears on the site early that morning.' }
+      - { name: pubDate, label: Publish date, widget: datetime, default: '{{now}}', format: 'YYYY-MM-DD', date_format: 'DD/MM/YYYY', time_format: false, picker_utc: true, hint: 'The day the post goes live. Pick today to publish straight away, or a future date to schedule it: publish as normal and it appears on the site early that morning.' }
       - { name: updatedDate, label: Updated date, widget: datetime, format: 'YYYY-MM-DD', date_format: 'DD/MM/YYYY', time_format: false, picker_utc: true, required: false }
       # Set automatically: saving in /admin/ clears it, so Publish puts the post live (see /admin/index.html).
       - { name: draft, label: Draft, widget: hidden, default: false }
-      - { name: image, label: Share image, widget: image, required: false, hint: '1200×630. Leave empty to use the generated share image.' }
+      - { name: image, label: Share image, widget: image, required: false, choose_url: false, media_library: { config: { max_file_size: 2000000 } }, hint: '1200×630, JPG, PNG or WebP. Leave empty to use the generated share image.' }
       - { name: imageAlt, label: Share image alt text, widget: string, required: false }
-      - { name: cover, label: Cover picture, widget: image, required: false, hint: '1200×675 (16:9). Shows on the blog page and at the top of the post. Leave empty to use /assets/blog/<file-name>.webp.' }
-      - { name: coverAlt, label: Cover picture description (alt text), widget: string, required: false, hint: 'One plain sentence saying what the picture shows, for screen readers and Google Images. 10 to 160 characters.' }
+      - { name: cover, label: Cover picture, widget: image, required: false, choose_url: false, media_library: { config: { max_file_size: 2000000 } }, hint: '1200×675 (16:9), JPG, PNG or WebP, under 2 MB. Click "Choose an image" here to upload it, so you never leave the post. Leave empty to use /assets/blog/<file-name>.webp.' }
+      - { name: coverAlt, label: Cover picture description (alt text), widget: string, required: false, pattern: ['^[\s\S]{10,160}$', 'Describe the picture in 10 to 160 characters.'], hint: 'One plain sentence saying what the picture shows, for screen readers and Google Images. 10 to 160 characters.' }
       - name: faq
         label: FAQ
         widget: list
@@ -61,6 +62,6 @@ collections:
         summary: '{{fields.question}}'
         hint: 'Shown at the end of the post and sent to Google as FAQ structured data.'
         fields:
-          - { name: question, label: Question, widget: string }
-          - { name: answer, label: Answer, widget: text }
+          - { name: question, label: Question, widget: string, pattern: ['^[\s\S]{5,}$', 'Write a question of at least 5 characters.'] }
+          - { name: answer, label: Answer, widget: text, pattern: ['^[\s\S]{5,}$', 'Write an answer of at least 5 characters.'] }
       - { name: body, label: Body, widget: markdown, hint: 'Start with a direct answer paragraph, then ## sections. No # heading.' }

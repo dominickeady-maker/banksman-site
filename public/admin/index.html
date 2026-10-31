@@ -15,9 +15,58 @@
       // Publish = live. Every save clears the post's `draft` flag, so whatever Decap
       // publishes (merges into main) shows on banksman.app. Until it's published, the
       // change sits in its own pull request and the live site is untouched.
+      // House style: no em or en dashes. Swap them for commas (or "to" between numbers) on save.
+      function tidyDashes(t) {
+        if (typeof t !== 'string') return t;
+        return t
+          .replace(/(\d)\s?[\u2013\u2014]\s?(£?\d)/g, '$1 to $2')
+          .replace(/\s[\u2013\u2014]\s([^\u2013\u2014.!?\n]{1,70}?)\s[\u2013\u2014]\s/g, ', $1, ')
+          .replace(/\s?[\u2013\u2014]\s?/g, ', ');
+      }
+      var PICTURE = /\.(jpe?g|png|webp|avif|gif)$/i;
+
       CMS.registerEventListener({
         name: 'preSave',
-        handler: ({ entry }) => entry.get('data').set('draft', false),
+        handler: function ({ entry }) {
+          var data = entry.get('data');
+          // Pictures must be a normal web format, or they won't show on the site.
+          ['cover', 'image'].forEach(function (k) {
+            var v = data.get(k);
+            if (v && !PICTURE.test(v)) {
+              throw new Error('The ' + (k === 'cover' ? 'cover picture' : 'share image') + ' must be a JPG, PNG or WebP file. "' + v.split('/').pop() + '" won\'t show on the site. Choose a different picture, then save again.');
+            }
+          });
+          ['title', 'seoTitle', 'description', 'coverAlt', 'imageAlt', 'body'].forEach(function (k) {
+            if (typeof data.get(k) === 'string') data = data.set(k, tidyDashes(data.get(k)));
+          });
+          var faq = data.get('faq');
+          if (faq && faq.map) {
+            data = data.set('faq', faq.map(function (f) {
+              return f && f.set ? f.set('question', tidyDashes(f.get('question'))).set('answer', tidyDashes(f.get('answer'))) : f;
+            }));
+          }
+          return data.set('draft', false);
+        },
+      });
+
+      // When a save is blocked by a missing or too-long field, jump to the first problem so it's obvious.
+      document.addEventListener('click', function (e) {
+        var btn = e.target.closest && e.target.closest('button');
+        if (!btn || !/^\s*(save|publish)/i.test(btn.textContent || '')) return;
+        setTimeout(function () {
+          var err = document.querySelector('[class*="ControlErrorsList"]');
+          if (err) {
+            var box = err.closest('[class*="ControlContainer"]') || err.parentElement;
+            box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            box.style.outline = '3px solid #ff7a2e'; box.style.outlineOffset = '4px';
+            setTimeout(function () { box.style.outline = ''; }, 4000);
+          }
+        }, 400);
+      }, true);
+
+      // Warn before closing or reloading the tab with unsaved work.
+      window.addEventListener('beforeunload', function (e) {
+        if (/UNSAVED CHANGES/i.test(document.body.innerText.slice(0, 4000))) { e.preventDefault(); e.returnValue = ''; }
       });
 
       // Decap's "Unpublish" deletes the post from the site AND from GitHub. Block it so a

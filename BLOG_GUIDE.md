@@ -71,6 +71,14 @@ Netlify deploy previews are switched off to save build credits (see `scripts/net
 
 Images you upload go into `public/images/blog/` and are served from `/images/blog/`.
 
+**Things that trip people up:**
+
+- **Where's my post?** Until it's published, a new post only shows in the **Workflow** tab, not in the Blog posts list. Open it from there.
+- **Save won't work?** A red message means a field needs fixing; the editor jumps to it. Title 10 to 90 characters, Google title 10 to 60 (or empty), description 50 to 170, target keyword filled in. The publish date fills in as today.
+- **Status won't change?** You can only change status after the post has saved without errors.
+- **Add pictures from inside the post.** Click **Choose an image** on the Cover picture field, then **Upload**, then **Choose selected**. Don't go to the Media tab in the middle of writing: leaving the editor before saving loses your changes.
+- **Pictures must be JPG, PNG or WebP**, under 2 MB, ideally 1200×675. Files saved as `.jfif` (common when downloading from Google or Gemini on Windows) don't show up in the picker: rename the file to `.jpg` before uploading.
+
 ## Publishing through Git
 
 ```bash
