@@ -1,17 +1,24 @@
 ---
 title: "The Growing Pains of a UK Construction Firm: Why Success Gets Harder
   Before It Gets Easy"
-seoTitle: "The Growing Pains of a UK Construction Firm: Why Success Gets Harder
-  Before It Gets Easy"
-description: Growing your building firm from one site to five is when things get
-  complicated. If you're maxing out single-site tools or drowning in paperwork
+seoTitle: Why Success Gets Harder Before It Gets Easy
+description: "If you're maxing out single-site tools or drowning in paperwork
   across multiple jobs, here’s how to structure multi-site operations and scale
-  cleanly. Written by builders, for builders. No fluff, just structure.
+  cleanly. "
 keyword: Banksman Growth
 author: Matt
 category: Site management
 pubDate: 2026-10-29
 draft: false
+image: /images/blog/growing-pains-of-a-uk-construction-firm.webp
+imageAlt: Minimalist line illustration against a dark navy grid background
+  featuring a single floor plan layout on the left, an orange arrow pointing to
+  the right, and an interconnected network of multi-story building icons
+  representing multi-site growth.
+cover: /images/blog/growing-pains-of-a-uk-construction-firm.webp
+coverAlt: Minimalist line illustration against a dark navy grid background
+  featuring a single floor plan layout on the left, an orange arrow pointing to
+  the right
 ---
 When you start out running one or two jobs, keeping things in your head works.
 
@@ -34,7 +41,7 @@ What used to take five minutes now takes all day:
 * **Disputed Valuations:** The main contractor or client queries a variation or progress percentage. You *know* the work was done three weeks ago, but the photo is somewhere in an old group chat with no date stamp or site tag.
 * **The Material Black Hole:** Subbies text you on Thursday afternoon asking where the ballast or lintels are for Friday morning. You spent two grand on an order on Tuesday, but no one on site knows if the wagon actually dropped it.
 
-You end up working 70-hour weeks—not building, but chasing phone calls, updating spreadsheets, and putting out fires that shouldn't have started in the first place.
+You end up working 70-hour weeks, not building, but chasing phone calls, updating spreadsheets, and putting out fires that shouldn't have started in the first place.
 
 ## Growth Shouldn't Mean Double the Paperwork
 
@@ -44,7 +51,7 @@ You don't need a corporate software suite designed for accountants in suits. You
 
 That's why we built **Banksman Growth**.
 
-It’s designed specifically for contractors scaling past that initial setup—giving you multi-site visibility without the corporate bloat or per-user penalties that punish you for hiring more lads.
+It’s designed specifically for contractors scaling past that initial setup, giving you multi-site visibility without the corporate bloat or per-user penalties that punish you for hiring more lads.
 
 ## How Banksman Growth Keeps Your Sites Sorted as You Scale
 
@@ -56,7 +63,7 @@ Upload your latest PDF drawings once from the office or van. Every site manager,
 
 ### 2. Multi-Site Overview Without the Ring-Round
 
-See live progress across all your jobs from one dashboard. Tasks are ticked off on site with mandatory photo proof, stamped with the exact time, location, and worker details. When a client asks where the job is at, you don't call the foreman—you just look at your screen.
+See live progress across all your jobs from one dashboard. Tasks are ticked off on site with mandatory photo proof, stamped with the exact time, location, and worker details. When a client asks where the job is at, you don't call the foreman, you just look at your screen.
 
 ### 3. Material Requests Tracked to the Drop
 
