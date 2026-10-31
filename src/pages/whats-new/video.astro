@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { SITE } from '../../site';
+import { breadcrumbSchema } from '../../lib/schema';
+import '../../styles/pages.css';
+
+// The watch page for the walkthrough video. The video is the main thing on this page,
+// which is what Google needs before it will show it in video results.
+// Same files as the What's new page: public/assets/video/.
+const VIDEO_SRC = '/assets/video/whats-new.mp4';
+const VIDEO_POSTER = '/assets/video/whats-new-poster.webp';
+const PAGE = '/whats-new/video/';
+
+const IN_THIS_VIDEO = [
+  { colour: 'var(--accent)', title: 'Who’s on site', text: 'QR sign-in at the gate, a set radius and a live fire roll call.' },
+  { colour: 'var(--sky)', title: 'Health and safety documents', text: 'Inductions, RAMS and COSHH signed on the phone, with every revision kept.' },
+  { colour: '#3ccf6e', title: 'Accident book', text: 'Accidents and near misses on record, with RIDDOR flags and safety actions.' },
+  { colour: '#ffd23f', title: 'Running the job', text: 'Site chats, hours for Friday, deliveries and the right drawing on site.' },
+];
+
+const description = 'Watch what’s new in Banksman: QR site sign-in with a fire roll call, health and safety documents signed on the phone, and an accident book with RIDDOR flags.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: 'What’s new in Banksman',
+    description,
+    thumbnailUrl: [`${SITE.url}${VIDEO_POSTER}`],
+    contentUrl: `${SITE.url}${VIDEO_SRC}`,
+    embedUrl: `${SITE.url}${PAGE}`,
+    url: `${SITE.url}${PAGE}`,
+    uploadDate: '2026-10-24T09:00:00+01:00',
+    duration: 'PT1M16S',
+    inLanguage: 'en-GB',
+    publisher: { '@type': 'Organization', name: 'Banksman', logo: { '@type': 'ImageObject', url: `${SITE.url}/assets/icon-512.png` } },
+  },
+  breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'What’s new', path: '/whats-new/' }, { name: 'What’s new in Banksman', path: PAGE }]),
+];
+---
+<BaseLayout
+  title="What's new in Banksman | Watch the walkthrough"
+  description="Watch what's new in Banksman: QR site sign-in with a fire roll call, H&S documents signed on the phone, and an accident book with RIDDOR flags."
+  image={VIDEO_POSTER}
+  imageAlt="What's new in Banksman: the walkthrough video"
+  schema={schema}
+>
+  <section class="wv-head"><div class="wrap">
+    <div class="eyebrow">Video · 1 min 16 sec</div>
+    <h1>What's new in <span>Banksman</span></h1>
+  </div></section>
+
+  <section class="wv-main"><div class="wrap">
+    <div class="wv-video">
+      <video controls playsinline preload="metadata" poster={VIDEO_POSTER} width="1920" height="1080">
+        <source src={VIDEO_SRC} type="video/mp4" />
+        Your browser can't play this video.
+      </video>
+    </div>
+
+    <div class="wv-below">
+      <div>
+        <p class="wv-lede">A quick walkthrough of the latest update: health and safety, built in. Know who's on site, get every document signed and keep a proper accident book, all from the app your team already uses.</p>
+        <div class="wv-ctas">
+          <a class="btn btn-primary" href={SITE.demoUrl}>Try the live demo</a>
+          <a class="btn btn-ghost" href="/whats-new/">See the full list of updates</a>
+        </div>
+      </div>
+      <div class="wv-list">
+        <h2 class="wv-list-h">In this video</h2>
+        <ul>
+          {IN_THIS_VIDEO.map((item) => (
+            <li style={`--c:${item.colour}`}><i></i><div><b>{item.title}</b><span>{item.text}</span></div></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
+  <CtaBand heading="See it on your own sites." />
+</BaseLayout>
+
+<style>
+  .wv-head { padding: 56px 0 22px; }
+  .wv-head h1 { font-size: clamp(38px, 6vw, 66px); line-height: 1; font-weight: 800; margin-top: 14px; }
+  .wv-head h1 span { color: var(--accent); }
+  .wv-head .eyebrow { color: var(--sky); }
+  .wv-head .eyebrow::before { background: var(--sky); }
+  .wv-main { padding-top: 0; }
+  .wv-video { border: 1px solid var(--line-strong); border-radius: 10px; overflow: hidden; background: #000; box-shadow: var(--shadow), 0 0 60px rgba(255,122,46,.14); }
+  .wv-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #000; }
+  .wv-below { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; margin-top: 34px; align-items: start; }
+  .wv-lede { color: var(--ink-soft); font-size: 18px; margin: 0; max-width: 58ch; }
+  .wv-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+  .wv-list { background: var(--surface); border: 1px solid var(--line-strong); border-radius: 10px; padding: 20px 22px; }
+  .wv-list-h { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+  .wv-list ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .wv-list li { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; }
+  .wv-list i { width: 10px; height: 10px; border-radius: 50%; background: var(--c); margin-top: 6px; box-shadow: 0 0 10px var(--c); }
+  .wv-list b { display: block; font-size: 15px; }
+  .wv-list span { display: block; font-size: 14px; color: var(--ink-soft); }
+  @media (max-width: 820px) { .wv-below { grid-template-columns: 1fr; gap: 24px; } .wv-ctas .btn { flex: 1 1 100%; justify-content: center; } }
+</style>

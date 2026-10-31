@@ -63,16 +63,8 @@ const UPDATE = {
   ],
 };
 
-const schema = [{
-  '@context': 'https://schema.org',
-  '@type': 'VideoObject',
-  name: 'What’s new in Banksman: health & safety, built in',
-  description: 'A walkthrough of the latest Banksman features: site sign-in with QR codes and a fire roll call, health and safety documents with sign-off, an accident book with RIDDOR flags, and more.',
-  thumbnailUrl: `https://banksman.app${VIDEO_POSTER}`,
-  contentUrl: `https://banksman.app${VIDEO_SRC}`,
-  uploadDate: '2026-10-24',
-  duration: 'PT1M16S',
-}];
+// The video's structured data lives on its watch page (/whats-new/video/), so Google treats that page as the video's home.
+
 ---
 <BaseLayout
   title="What's new in Banksman | Health & safety, built in"
@@ -80,7 +72,6 @@ const schema = [{
   current="whats-new"
   image="/og/whats-new.png"
   imageAlt="What's new in Banksman: health and safety, built in"
-  schema={schema}
 >
   <section class="page-head"><div class="wrap">
     <div class="eyebrow">What's new</div>
