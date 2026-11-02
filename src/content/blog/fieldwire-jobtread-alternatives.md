@@ -42,7 +42,7 @@ Fieldwire is known for plan viewing and markup and for field coordination across
 
 For a closer look at one of them, see [Banksman vs Fieldwire](/blog/banksman-vs-fieldwire/). If you're still on spreadsheets and group chats, the [comparison with WhatsApp](/compare/) is a better starting point.
 
-Banksman was built by a working builder running his own firm, specifically for small and mid-size UK building firms. It's from £79/month inc. VAT, every feature is on every plan, there's no sales call, and the live demo runs on realistic sample data you can log into right now, as a manager or a worker, with no card required.
+Banksman was built by a working builder running his own firm, specifically for small and mid-size UK building firms. It's from £79/month, every feature is on every plan, there's no sales call, and the live demo runs on realistic sample data you can log into right now, as a manager or a worker, with no card required.
 
 ---
 
