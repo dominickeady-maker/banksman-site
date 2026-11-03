@@ -9,8 +9,8 @@ author: Matt
 category: Site management
 pubDate: 2026-11-03
 draft: false
-coverAlt: "Snag photos tagged with locations: a chipped skirting board, a
-  sticking door and a missing socket cover"
+cover: /images/blog/snagging-cover.webp
+coverAlt: Illustration of a floor plan with a snag pin and a phone showing the snag fixed
 faq:
   - question: What's the difference between snagging and defects?
     answer: In everyday use, snags are minor items found around completion, like
