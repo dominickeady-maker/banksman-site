@@ -56,7 +56,7 @@ A good daily log is short enough to fill in every day and detailed enough to set
 
 ## Download the free template
 
-[Download the daily site log template (PDF)](/images/blog/banksman-daily-site-log-template.pdf). It's a one-page sheet with every section above. Print a pad of them for the van.
+<a href="/images/blog/banksman-daily-site-log-template.pdf" target="_blank" rel="noopener">Download the daily site log template (PDF)</a>. It's a one-page sheet with every section above. Print a pad of them for the van.
 
 ## How to fill it in so it actually holds up
 
