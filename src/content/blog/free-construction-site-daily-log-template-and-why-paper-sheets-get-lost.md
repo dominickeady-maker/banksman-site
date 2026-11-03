@@ -9,6 +9,8 @@ author: Matt
 category: Site management
 pubDate: 2026-11-03
 draft: false
+image: /images/blog/post-09-daily-log-2-template-preview.webp
+cover: /images/blog/post-09-daily-log-1-lost-sheet.webp
 coverAlt: Paper daily log sheet on a clipboard with most fields left blank
 faq:
   - question: Is a site diary a legal requirement in the UK?
