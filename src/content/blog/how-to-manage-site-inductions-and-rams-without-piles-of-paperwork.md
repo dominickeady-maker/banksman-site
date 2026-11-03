@@ -9,7 +9,8 @@ author: Matt
 category: Site management
 pubDate: 2026-11-03
 draft: false
-coverAlt: A site cabin desk stacked with folders of RAMS and induction forms
+cover: /images/blog/site-inductions-rams-cover.webp
+coverAlt: Illustration of a hard hat next to a RAMS checklist with ticked items
 faq:
   - question: Do I need RAMS for a small domestic job?
     answer: You need a risk assessment for any work, and must record it in writing
