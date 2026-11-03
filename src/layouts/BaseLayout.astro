@@ -40,6 +40,15 @@ const { current, ...seo } = Astro.props;
     data-blockingmode="auto"
     type="text/javascript"
   ></script>
+<!-- Google tag (gtag.js): Google Analytics G-G6YFPEDDKM. Waits for "statistics" cookie consent (Cookiebot). -->
+<script is:inline type="text/plain" data-cookieconsent="statistics" async src="https://www.googletagmanager.com/gtag/js?id=G-G6YFPEDDKM"></script>
+<script is:inline type="text/plain" data-cookieconsent="statistics">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-G6YFPEDDKM');
+</script>
+<!-- End Google tag -->
 <!-- Meta Pixel Code -->
 <script is:inline type="text/plain" data-cookieconsent="marketing">
 !function(f,b,e,v,n,t,s)
