@@ -9,8 +9,8 @@ author: Matt
 category: Site management
 pubDate: 2026-11-03
 draft: false
-coverAlt: Two different accounts of how many days a subcontractor was on site,
-  with no record to settle it
+cover: /images/blog/payment-disputes-cover.webp
+coverAlt: Illustration of a signed daywork sheet leading to a pound sign
 faq:
   - question: Can a main contractor refuse to pay because they're unhappy with the work?
     answer: They can dispute the amount, but under the Construction Act they
