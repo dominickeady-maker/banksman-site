@@ -10,8 +10,9 @@ category: Site management
 pubDate: 2026-11-03
 draft: false
 image: /images/blog/post-09-daily-log-2-template-preview.webp
-cover: /images/blog/post-09-daily-log-1-lost-sheet.webp
-coverAlt: Paper daily log sheet on a clipboard with most fields left blank
+cover: /images/blog/daily-log-template-cover.webp
+coverAlt: Illustration of a paper daily log clipboard next to a phone showing
+  the same site log
 faq:
   - question: Is a site diary a legal requirement in the UK?
     answer: There's no general law that says every job must keep a daily log. Many
