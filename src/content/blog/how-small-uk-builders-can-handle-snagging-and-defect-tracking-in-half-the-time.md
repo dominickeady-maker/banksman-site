@@ -7,9 +7,10 @@ description: Snagging lists on paper and WhatsApp drag handover out for weeks.
 keyword: construction snagging app for small builders
 author: Matt
 category: Site management
-pubDate: 2026-11-03
+pubDate: 2026-11-04
 draft: false
-cover: /images/blog/snagging-cover.webp
+image: /images/blog/post-12-snagging-2-snag-lifecycle.webp
+cover: /images/blog/post-12-snagging-1-snag-photos.webp
 coverAlt: Illustration of a floor plan with a snag pin and a phone showing the snag fixed
 faq:
   - question: What's the difference between snagging and defects?
