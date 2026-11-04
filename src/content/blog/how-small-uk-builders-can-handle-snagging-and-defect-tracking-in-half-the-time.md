@@ -10,7 +10,7 @@ category: Site management
 pubDate: 2026-11-04
 draft: false
 image: /images/blog/post-12-snagging-2-snag-lifecycle.webp
-cover: /images/blog/post-12-snagging-1-snag-photos.webp
+cover: /images/blog/snagging-cover.webp
 coverAlt: Illustration of a floor plan with a snag pin and a phone showing the snag fixed
 faq:
   - question: What's the difference between snagging and defects?
