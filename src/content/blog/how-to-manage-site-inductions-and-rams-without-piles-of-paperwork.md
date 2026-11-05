@@ -7,8 +7,9 @@ description: Site inductions and RAMS eat hours of admin for UK builders. Here's
 keyword: construction RAMS app
 author: Matt
 category: Site management
-pubDate: 2026-11-03
+pubDate: 2026-11-05
 draft: false
+image: /images/blog/post-11-rams-2-induction-record.webp
 cover: /images/blog/site-inductions-rams-cover.webp
 coverAlt: Illustration of a hard hat next to a RAMS checklist with ticked items
 faq:
