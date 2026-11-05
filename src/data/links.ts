@@ -12,6 +12,7 @@ export const POST_TRADES: Record<string, string[]> = {
   'whatsapp-groups-liability-construction-site': ['groundworkers', 'electricians', 'window-fitters', 'worktop-fitters'],
   'construction-management-software-cost-uk': ['builders', 'subcontractors', 'fit-out-contractors'],
   'fieldwire-jobtread-alternatives': ['builders', 'subcontractors', 'steel-erectors'],
+  'how-to-price-a-building-job': ['builders', 'bricklayers', 'groundworkers', 'subcontractors'],
   'stop-losing-drawing-revisions-on-site': ['electricians', 'joiners', 'worktop-fitters', 'window-fitters', 'plumbers'],
 };
 
@@ -20,6 +21,7 @@ export const POST_TOOLS: Record<string, string[]> = {
   'daywork-vs-price-work': ['/tools/day-rate-calculator/', '/tools/cis-calculator/'],
   'construction-management-software-cost-uk': ['/tools/day-rate-calculator/'],
   'banksman-vs-fieldwire': [],
+  'how-to-price-a-building-job': ['/tools/day-rate-calculator/', '/tools/cis-calculator/'],
 };
 
 export const TOOLS = [
