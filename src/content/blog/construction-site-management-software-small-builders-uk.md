@@ -53,4 +53,4 @@ To see how this plays out for your trade, start with the pages for [builders](/f
 
 ---
 
-*Banksman is site management software built by a working builder for firms this size, £79/month inc. VAT, no sales call. [Try the live demo](/#demo), no card required.*
+*Banksman is site management software built by a working builder for firms this size, £79/month, no sales call. [Try the live demo](/#demo), no card required.*

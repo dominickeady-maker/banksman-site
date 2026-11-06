@@ -2,7 +2,7 @@
 // (src/pages/chat-knowledge.json.ts); scripts/check-content.mjs checks the home page still matches.
 export interface Plan {
   name: string;
-  /** £, including VAT */
+  /** £ */
   price: number;
   per: 'month' | 'one-off';
   users?: number;

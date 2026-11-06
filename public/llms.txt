@@ -17,7 +17,7 @@ Banksman keeps a building firm's tasks, timesheets, material requests, drawings,
 - Accident and near-miss reports, with RIDDOR flags, actions and a monthly safety summary.
 - Manager dashboard, push notifications, your logo and colours, bigger text option.
 
-## Pricing (all prices include VAT, no contract, cancel any time)
+## Pricing (no contract, cancel any time)
 
 - Starter: £79 a month, up to 10 users.
 - Growth: £149 a month, up to 25 users.

@@ -23,7 +23,7 @@ export const knowledgeText = () => [
   `## Coming soon (not in the app yet, no dates)`,
   ...ids.filter((id) => FEATURES[id].status === 'coming-soon').map(line),
   ``,
-  `## Plans (all prices include VAT, no contract, cancel any time, every plan has every feature)`,
+  `## Plans (no contract, cancel any time, every plan has every feature)`,
   ...PLANS.map((p) => `- ${p.name}: £${p.price} ${p.per === 'month' ? 'a month' : 'one-off'}${p.users ? `, up to ${p.users} users` : ''}. ${p.points.join('. ')}. Buy: ${p.checkout}`),
   `- Not sure which? It's usually Starter. Plans and details: ${SITE.url}/#pricing`,
   ``,
