@@ -7,8 +7,9 @@ description: Most subcontractor payment disputes in the UK come down to missing
 keyword: subcontractor payment dispute uk
 author: Matt
 category: Site management
-pubDate: 2026-11-03
+pubDate: 2026-11-06
 draft: false
+image: /images/blog/post-10-payment-disputes-3-proof-checklist.webp
 cover: /images/blog/payment-disputes-cover.webp
 coverAlt: Illustration of a signed daywork sheet leading to a pound sign
 faq:
