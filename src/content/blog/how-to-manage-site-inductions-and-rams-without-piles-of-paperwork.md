@@ -1,9 +1,7 @@
 ---
 title: How to Manage Site Inductions and RAMS Without Piles of Paperwork
 seoTitle: Site Inductions and RAMS Without the Paperwork
-description: Site inductions and RAMS eat hours of admin for UK builders. Here's
-  what the law actually requires, and how to keep them current without a cabin
-  full of paper.
+description: "Site inductions and RAMS eat hours of admin. Here's what the law actually requires, and how to keep them current without a cabin full of paper."
 keyword: construction RAMS app
 author: Matt
 category: Site management

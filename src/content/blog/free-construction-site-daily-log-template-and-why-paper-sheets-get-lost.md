@@ -1,9 +1,7 @@
 ---
 title: Free Construction Site Daily Log Template (And Why Paper Sheets Get Lost)
 seoTitle: Free Construction Site Daily Log Template
-description: A free construction site daily log template for UK builders. See
-  what a daily record sheet should include, and why paper logs go missing when
-  you need them.
+description: "A free construction site daily log template for UK builders. See what a daily record sheet should include, and why paper logs go missing."
 keyword: site manager daily log template
 author: Matt
 category: Site management

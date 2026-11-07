@@ -1,7 +1,7 @@
 ---
 title: "How to Price a Building Job: A Simple Method for UK Builders"
 seoTitle: "How to Price a Building Job: A Simple UK Method"
-description: "A step by step way to price a building job: labour, materials, plant, subbies, overheads, contingency and profit, with a worked example and free calculators."
+description: "A step by step way to price a building job: labour, materials, plant, subbies, overheads and profit, with a worked example and free calculators."
 keyword: "how to price a building job"
 author: Matt
 category: Money and hours

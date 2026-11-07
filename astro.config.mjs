@@ -61,12 +61,45 @@ const minifySiteCss = {
   },
 };
 
+
+// Pictures dropped into posts (often through the CMS) get their width and height filled in from the file
+// after the build, so the page doesn't jump as they load (a Core Web Vitals check). Sharp ships with Astro.
+/** @type {import('astro').AstroIntegration} */
+const sizePostImages = {
+  name: 'size-post-images',
+  hooks: {
+    'astro:build:done': async ({ dir }) => {
+      let sharp;
+      try { sharp = (await import('sharp')).default; } catch { return; }
+      const blog = new URL('blog/', dir);
+      for (const slug of readdirSync(blog, { withFileTypes: true })) {
+        if (!slug.isDirectory()) continue;
+        const file = new URL(`${slug.name}/index.html`, blog);
+        let html;
+        try { html = readFileSync(file, 'utf8'); } catch { continue; }
+        const tags = [...html.matchAll(/<img\b[^>]*>/g)].map((m) => m[0]).filter((t) => !/\swidth=/.test(t) && /\ssrc="\//.test(t));
+        let out = html;
+        for (const tag of tags) {
+          const src = (tag.match(/\ssrc="([^"]+)"/)?.[1] ?? "").split('?')[0];
+          try {
+            const { width, height } = await sharp(new URL(`.${decodeURI(src)}`, dir).pathname).metadata();
+            const lazy = /\sloading=/.test(tag) ? '' : ' loading="lazy" decoding="async"';
+            out = out.replace(tag, tag.replace(/^<img/, `<img width="${width}" height="${height}"${lazy}`));
+          } catch {}
+        }
+        if (out !== html) writeFileSync(file, out);
+      }
+    },
+  },
+};
+
 export default defineConfig({
   site: 'https://banksman.app',
   trailingSlash: 'always',
   build: { format: 'directory' },
   integrations: [
     noDashesInPosts,
+    sizePostImages,
     minifySiteCss,
     sitemap({
       // The CMS and share images are not pages; the purchase page is noindex.
