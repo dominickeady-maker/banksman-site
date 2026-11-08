@@ -362,7 +362,7 @@
 .foot-grid a:hover, .foot-grid button.linklike:hover{color:var(--accent);}
 .foot-grid p{color:var(--muted); font-size:14px; margin:10px 0 0; max-width:34ch;}
 .foot-grid img{height:28px; width:auto;}
-.foot-grid a.fg-badge{display:inline-block; margin:18px 0 0; opacity:.9; transition:opacity .2s;} .foot-grid a.fg-badge:hover{opacity:1;}
+.foot-grid a.fg-badge{display:inline-block; margin:26px 0 0; opacity:.9; transition:opacity .2s;} .foot-grid a.fg-badge:hover{opacity:1;}
 .foot-grid .fg-badge img{height:auto; width:212px; max-width:100%; display:block;}
 button.linklike{background:none; border:0; padding:0; font:inherit; cursor:pointer; text-align:left;}
 .legal-line{font-size:12.5px; color:var(--muted);}

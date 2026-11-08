@@ -4,6 +4,9 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SalesChat from '../components/SalesChat.astro';
 import '../styles/blog.css';
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { join } from 'node:path';
 
 interface Props {
   title: string;
@@ -17,6 +20,9 @@ interface Props {
 }
 
 const { current, ...seo } = Astro.props;
+// Version tag on the stylesheet: changes whenever site.css changes, so browsers fetch the new copy
+// straight away instead of using the one they cached for up to a week.
+const cssVersion = createHash('md5').update(readFileSync(join(process.cwd(), 'public/assets/site.css'))).digest('hex').slice(0, 8);
 ---
 <!doctype html>
 <html lang="en-GB">
@@ -32,7 +38,7 @@ const { current, ...seo } = Astro.props;
     <link rel="preload" href="/assets/banksman-logo.png" as="image" type="image/png" fetchpriority="high" />
     <link rel="preload" href="/assets/fonts/big-shoulders-display-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/site.css" />
+    <link rel="stylesheet" href={`/assets/site.css?v=${cssVersion}`} />
 <script
     id="Cookiebot"
     src="https://consent.cookiebot.com/uc.js"
