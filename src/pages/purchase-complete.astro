@@ -4,7 +4,7 @@ import { SITE } from '../site';
 
 // Stripe sends customers here after payment. Set each Payment Link's "After payment" option to
 // "Don't show confirmation page" and redirect to:
-//   https://banksman.app/purchase-complete/?plan=starter      (£79/month)
+//   https://banksman.app/purchase-complete/?plan=starter      (£89/month)
 //   https://banksman.app/purchase-complete/?plan=growth       (£149/month)
 //   https://banksman.app/purchase-complete/?plan=enterprise   (£299/month)
 //   https://banksman.app/purchase-complete/?plan=white-label  (£999 add-on)
@@ -63,7 +63,7 @@ import { SITE } from '../site';
 <!-- Meta Pixel Purchase event. Runs only once the visitor has accepted marketing cookies (Cookiebot). -->
 <script is:inline type="text/plain" data-cookieconsent="marketing">
   (function () {
-    var values = { starter: 79, growth: 149, enterprise: 299, 'white-label': 999 };
+    var values = { starter: 89, growth: 149, enterprise: 299, 'white-label': 999 };
     var plan = new URLSearchParams(location.search).get('plan');
     if (typeof fbq !== 'function') return;
     fbq('track', 'Purchase', { value: values[plan] || 0, currency: 'GBP', content_name: plan || 'unknown' });
