@@ -1,0 +1,64 @@
+---
+import { CASE_STUDIES, casePath } from '../data/case-studies';
+
+// Homepage quote banner: customer quotes scroll slowly across the page, each linking to its case study.
+// Quotes come from src/data/case-studies.ts. The featured quote leads. The track is printed twice so
+// the loop is seamless; the second copy is hidden from screen readers and the keyboard.
+const quotes = CASE_STUDIES.flatMap((c) =>
+  Object.values(c.quotes)
+    .sort((a, b) => Number(!!b.featured) - Number(!!a.featured))
+    .map((q) => ({ text: q.text, featured: !!q.featured, who: c.person.name, firm: c.shortName, href: casePath(c) })),
+);
+---
+<section class="cq" aria-labelledby="cq-title">
+  <div class="wrap">
+    <div class="eyebrow">Customers</div>
+    <h2 id="cq-title" class="cq-title">Don't just take our word for it, <span>see what our customers think.</span></h2>
+  </div>
+  <div class="cq-viewport">
+    <div class="cq-track">
+      {[0, 1].map((copy) => (
+        <ul class="cq-set" aria-hidden={copy === 1 ? 'true' : undefined}>
+          {quotes.map((q) => (
+            <li>
+              <a class:list={['cq-card', { 'cq-featured': q.featured }]} href={q.href} tabindex={copy === 1 ? -1 : undefined}>
+                <svg class="cq-mark" viewBox="0 0 32 24" aria-hidden="true"><path d="M0 24V14C0 6 4 1 12 0l1 4c-4 1-6 4-6 8h5v12H0Zm19 0V14c0-8 4-13 12-14l1 4c-4 1-6 4-6 8h5v12H19Z" fill="currentColor"/></svg>
+                <blockquote>{q.text}</blockquote>
+                <span class="cq-who"><b>{q.who}</b>{q.firm}</span>
+                <span class="cq-more">Read the case study →</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .cq{padding:70px 0 60px; overflow:hidden;}
+  .cq-title{font-size:clamp(32px,4.6vw,54px); line-height:1.02; margin:12px 0 28px; max-width:30ch;}
+  .cq-title span{color:var(--accent);}
+  .cq-viewport{position:relative; overflow:hidden; -webkit-mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);}
+  .cq-track{display:flex; width:max-content; animation:cqScroll 70s linear infinite;}
+  .cq-viewport:hover .cq-track, .cq-viewport:focus-within .cq-track{animation-play-state:paused;}
+  .cq-set{list-style:none; margin:0; padding:6px 0 18px; display:flex; gap:20px; padding-right:20px;}
+  .cq-card{display:flex; flex-direction:column; width:380px; height:100%; padding:24px 24px 20px; background:var(--surface); border:1px solid var(--line-strong); border-top:3px solid var(--sky); border-radius:10px; box-shadow:var(--shadow); color:inherit; text-decoration:none; transition:transform .25s, border-color .25s;}
+  .cq-card:hover, .cq-card:focus-visible{transform:translateY(-3px); border-color:var(--accent);}
+  .cq-featured{width:460px; border-top-color:var(--accent); background:radial-gradient(420px 200px at 100% 0%, rgba(255,122,46,.16), transparent 70%), var(--surface);}
+  .cq-mark{width:30px; height:22px; color:var(--sky); opacity:.8;}
+  .cq-featured .cq-mark{color:var(--accent);}
+  .cq-card blockquote{margin:14px 0 18px; font:700 23px/1.22 'Big Shoulders Display',sans-serif; color:var(--ink); flex:1;}
+  .cq-featured blockquote{font-size:28px;}
+  .cq-who{font-size:13.5px; color:var(--muted);}
+  .cq-who b{display:block; color:var(--ink); font-size:15px;}
+  .cq-more{margin-top:12px; color:var(--accent); font-weight:600; font-size:14.5px;}
+  @keyframes cqScroll{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+  @media (max-width:600px){ .cq-card{width:290px;} .cq-featured{width:320px;} .cq-featured blockquote{font-size:24px;} .cq-card blockquote{font-size:21px;} }
+  @media (prefers-reduced-motion: reduce){
+    .cq-track{animation:none; width:auto;}
+    .cq-viewport{overflow-x:auto; -webkit-mask-image:none; mask-image:none;}
+    .cq-set[aria-hidden]{display:none;}
+    .cq-set{padding-left:16px;}
+  }
+</style>

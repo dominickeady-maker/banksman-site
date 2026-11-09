@@ -1,4 +1,5 @@
 ---
+import CustomerQuotes from '../components/CustomerQuotes.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SpamGuard from '../components/SpamGuard.astro';
 import HeroDevices from '../components/HeroDevices.astro';
@@ -332,6 +333,9 @@ const schema = [{
     </div>
   </section>
 
+  <!-- ================= CUSTOMER QUOTES ================= -->
+  <CustomerQuotes />
+
   <!-- ================= WHITE LABEL ================= -->
   <section class="whitelabel" id="white-label">
     <div class="wrap">
@@ -450,6 +454,7 @@ const schema = [{
       <div>
         <h2>Built by a builder, not a startup.</h2>
         <p class="lede">I'm Dom, a bricklayer running my own building firm in West Yorkshire. Banksman exists because I got sick of running my own sites on WhatsApp and a biro. No fake client logos, no made-up reviews here. Just a live demo you can log into right now and judge for yourself.</p>
+        <p class="about-cs"><a href="/case-studies/cornerstone-developments/">How I run my own firm, Cornerstone Developments, on Banksman →</a></p>
       </div>
     </div>
   </section>

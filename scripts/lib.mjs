@@ -1,8 +1,9 @@
 import { readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
-// Built from parts so this file never matches its own search.
-export const BANNED = [['Corner', 'stone'].join('')];
+// Names that must never appear in the site's source or build. Empty for now: Cornerstone Developments
+// (Dom's own firm) was blocked here until Dom agreed to it being named in the case study (Nov 2026).
+export const BANNED = [];
 
 export function walk(dir, skip = new Set()) {
   const out = [];

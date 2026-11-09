@@ -7,6 +7,7 @@ import { FAQ } from '../data/faq';
 import { PLANS } from '../data/plans';
 import { TRADES } from '../data/trades';
 import { SITE } from '../site';
+import { CASE_STUDIES, casePath } from '../data/case-studies';
 
 export const prerender = true;
 
@@ -29,6 +30,10 @@ export const knowledgeText = () => [
   ``,
   `## Questions people ask`,
   ...FAQ.map(({ q, a }) => `Q: ${q}\nA: ${a}`),
+  ``,
+  `## Case studies (real customers, in their own words)`,
+  ...CASE_STUDIES.flatMap((c) => [`- ${c.shortName} (${c.place}): ${c.summary} Read it: ${SITE.url}${casePath(c)}`, ...Object.values(c.quotes).map((q) => `  Quote from ${c.person.name}: "${q.text}"`)]),
+  `- All case studies: ${SITE.url}/case-studies/`,
   ``,
   `## Links`,
   `- Live demo (the real app on realistic sample data, four fields, no card, no sales call): ${SITE.url}/#demo`,
