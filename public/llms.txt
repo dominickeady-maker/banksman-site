@@ -19,8 +19,8 @@ Banksman keeps a building firm's tasks, timesheets, material requests, drawings,
 
 ## Pricing (all prices include VAT, no contract, cancel any time)
 
-- Starter: £79 a month, up to 10 users.
-- Growth: £149 a month, up to 25 users.
+- Starter: £89 a month, up to 6 users.
+- Growth: £149 a month, up to 15 users.
 - Enterprise: £299 a month, up to 75 users.
 - White label add-on: £999 one-off on top of any plan. Includes three 1-on-1 calls with Dom and Matt, exclusive features built for the customer, and a fully customised app.
 - Every plan includes every feature and an optional onboarding call.
@@ -60,7 +60,7 @@ Builders, bricklayers, groundworkers, roofers, electricians, plumbers, subcontra
 - Does it work offline? Not yet. Offline mode is being built.
 - Does it produce electrical, gas or CIS certificates or invoices? No. It runs the job on site; CIS worker invoices are being built.
 - Can data be exported? Yes. Every table exports to CSV.
-- Is there a free trial? There is a live demo of the real app on realistic sample data, with no card and no sales call.
+- Is there a free trial? Yes. Starter, Growth and Enterprise start with a 14-day free trial (card added at sign-up, nothing taken until the trial ends; cancel before then and you pay nothing). There is also a live demo of the real app on realistic sample data, with no card and no sales call.
 
 ## Contact
 
