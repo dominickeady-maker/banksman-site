@@ -19,8 +19,8 @@ const {
     <p class="cta-text">{text}</p>
     <div class="hero-ctas">
       <a class="btn btn-primary" href={SITE.demoUrl}>Try the live demo →</a>
-      <a class="btn btn-ghost" href={`tel:${SITE.phoneIntl}`}>Give us a ring</a>
+      <a class="btn btn-ghost" href={SITE.contactUrl}>Request a call</a>
     </div>
-    <p class="small-print">{SITE.realPeople}<br>{SITE.contacts.map((c, i) => <>{i > 0 && ' · '}{c.name}: <a href={`tel:${c.phoneIntl}`}>{c.phone}</a></>)}</p>
+    <p class="small-print">{SITE.realPeople}</p>
   </div>
 </section>

@@ -642,13 +642,18 @@ button.linklike{background:none; border:0; padding:0; font:inherit; cursor:point
 .wl-pill{background:var(--sky); color:#062233;}
 .wl-title{margin-top:28px;}
 .about-card .about-eyebrow{font-size:12px; color:var(--sky); letter-spacing:.14em;}
-/* Desktop menu: no call link (the numbers are in the footer, contact panel and Support page) */
+/* Desktop menu: no Request a call link in the bar (it's in the footer, contact panel and Support page) */
 @media (min-width:1000px){ .nav-call{display:none;} }
+/* Eight links: tighten them up until there's room */
+@media (min-width:1000px) and (max-width:1159px){ .navlinks{gap:15px; font-size:13.5px;} .nav{gap:16px;} }
 .req{color:var(--accent); font-weight:700;}
 .opt{font-weight:400; color:var(--muted);}
 /* Footer: five columns on desktop; on phones a tidy three-column layout with the trades underneath */
 .foot-grid{grid-template-columns:1.3fr 1fr 1fr 1fr 1fr;}
 .fg-person{margin-bottom:12px;}
+.foot-grid a.fg-call{display:inline-flex; color:var(--accent-ink); margin:4px 0 0; font-size:14px;} .foot-grid a.fg-call:hover{color:var(--accent-ink);}
+.contact-panel a.btn{display:inline-flex; width:auto; margin:18px auto 0; font:600 15px/1 'IBM Plex Sans', system-ui, sans-serif; color:var(--accent-ink); padding:13px 22px;} .contact-panel a.btn:hover{text-decoration:none;}
+.lead-grid .field-wide{grid-column:1 / -1;}
 .fg-name{display:block; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:4px;}
 .fg-person a{margin-bottom:4px;}
 @media (max-width:999px) and (min-width:761px){

@@ -28,7 +28,7 @@ const schema = [
         '@type': 'ContactPoint',
         contactType: 'customer support',
         name: c.name,
-        telephone: c.phoneIntl,
+        url: `${SITE.url}${SITE.contactUrl}`,
         email: c.email,
         areaServed: 'GB',
         availableLanguage: 'English',
@@ -118,9 +118,10 @@ const schema = [
           <h2>Rather talk?</h2>
           <ul class="support-contacts">
             {SITE.contacts.map((c) => (
-              <li><b>{c.name}</b><a href={`tel:${c.phoneIntl}`}>{c.phone}</a><a href={`mailto:${c.email}`}>{c.email}</a></li>
+              <li><b>{c.name}</b><a href={`mailto:${c.email}`}>{c.email}</a></li>
             ))}
           </ul>
+          <a class="btn btn-primary" href={SITE.contactUrl}>Request a call</a>
           <h3>Where's my account number?</h3>
           <p>It's printed on every invoice and at the bottom of every email we send you. It helps us find your account straight away.</p>
           <h3>Got an idea for the app?</h3>

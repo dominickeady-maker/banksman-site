@@ -58,7 +58,7 @@ const SUGGESTIONS = ['How much is it?', 'Which plan do I need?', 'Can I try it f
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
       </button>
     </form>
-    <p class="bmc-foot" data-bmc-foot>Don't share passwords or bank details. Rather talk to a person? <button type="button" class="bmc-link" data-bmc-person>Pass your details on</button> or ring Dom on <a href={`tel:${SITE.phoneIntl}`}>{SITE.phone}</a>.</p>
+    <p class="bmc-foot" data-bmc-foot>Don't share passwords or bank details. Rather talk to a person? <button type="button" class="bmc-link" data-bmc-person>Pass your details on</button> or <a href={SITE.contactUrl}>request a call</a>.</p>
   </div>
 </div>
 
@@ -307,7 +307,7 @@ const SUGGESTIONS = ['How much is it?', 'Which plan do I need?', 'Can I try it f
       try {
         const body = new URLSearchParams(new FormData(lead) as unknown as Record<string, string>).toString();
         const res = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
-        if (!res.ok) throw new Error(`Your details weren't sent (error ${res.status}). Please try again, or ring Dom on 07508 300353.`);
+        if (!res.ok) throw new Error(`Your details weren't sent (error ${res.status}). Please try again, or request a call at banksman.app/contact/.`);
         showChat();
         bubble('assistant', "Thanks, that's gone to Dom and Matt. One of them will be in touch.");
       } catch (err) {

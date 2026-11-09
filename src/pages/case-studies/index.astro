@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaBand from '../../components/CtaBand.astro';
+import ExploreLinks from '../../components/ExploreLinks.astro';
 import { SITE } from '../../site';
 import { CASE_STUDIES, casePath } from '../../data/case-studies';
 import '../../styles/pages.css';
@@ -39,6 +40,7 @@ const schema = [
   title="Banksman case studies: UK builders in their own words"
   description="How UK building firms run their sites on Banksman: timesheets, material orders and site progress, told by the people who use it every day."
   schema={schema}
+  current="case-studies"
   image="/og/case-studies.png"
   imageAlt="Banksman case studies"
 >
@@ -67,6 +69,13 @@ const schema = [
       ))}
     </ul>
   </div></section>
+
+  <ExploreLinks
+    eyebrow="From the blog"
+    title="Guides from the site."
+    posts={['get-your-building-site-off-whatsapp', 'how-to-price-a-building-job', 'how-to-avoid-subcontractor-payment-disputes-a-guide-to-proof-of-work-on-site']}
+    extra={[{ href: '/blog/', text: 'All guides on the blog' }]}
+  />
 
   <CtaBand />
 </BaseLayout>

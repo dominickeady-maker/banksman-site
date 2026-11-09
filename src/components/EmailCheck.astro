@@ -1,0 +1,79 @@
+---
+// Put this once on a page, and add data-email-check to any <form> with an email field.
+// Before the form sends, it asks /.netlify/functions/check-email whether the address is real
+// enough to reply to (no throwaway inboxes, made up addresses or domains that can't get email).
+// If not, it shows why under the email field and keeps the form open. If the check itself can't
+// be reached, the form sends anyway: submission-created.mjs runs the same check on the server.
+---
+<script>
+  const ENDPOINT = '/.netlify/functions/check-email';
+
+  function showError(input: HTMLInputElement, text: string, suggestion?: string) {
+    const field = input.closest('.field') ?? input.parentElement!;
+    let box = field.querySelector<HTMLElement>('.email-error');
+    if (!box) {
+      box = document.createElement('p');
+      box.className = 'email-error';
+      box.id = `${input.id || 'email'}-error`;
+      box.setAttribute('role', 'alert');
+      field.appendChild(box);
+    }
+    box.textContent = text + ' ';
+    if (suggestion) {
+      const fix = document.createElement('button');
+      fix.type = 'button';
+      fix.className = 'email-fix';
+      fix.textContent = `Use ${suggestion}`;
+      fix.addEventListener('click', () => { input.value = suggestion; clearError(input); input.focus(); });
+      box.appendChild(fix);
+    }
+    input.setAttribute('aria-invalid', 'true');
+    input.setAttribute('aria-describedby', box.id);
+  }
+
+  function clearError(input: HTMLInputElement) {
+    input.closest('.field')?.querySelector('.email-error')?.remove();
+    input.removeAttribute('aria-invalid');
+  }
+
+  document.querySelectorAll<HTMLFormElement>('form[data-email-check]').forEach((form) => {
+    const input = form.querySelector<HTMLInputElement>('input[type="email"]');
+    if (!input) return;
+    let passed = '';
+    input.addEventListener('input', () => { passed = ''; clearError(input); });
+
+    form.addEventListener('submit', async (event) => {
+      const email = input.value.trim();
+      if (passed && passed === email) return; // already checked: let it send
+      event.preventDefault();
+      const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      const label = button?.textContent;
+      if (button) { button.disabled = true; button.textContent = 'Checking…'; }
+      let result: { ok: boolean; message?: string; suggestion?: string } = { ok: true };
+      try {
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 6000);
+        const res = await fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }), signal: controller.signal });
+        clearTimeout(timer);
+        if (res.ok) result = await res.json();
+      } catch {
+        result = { ok: true }; // the check is down: the server checks again
+      }
+      if (button) { button.disabled = false; button.textContent = label ?? ''; }
+      if (!result.ok) {
+        showError(input, result.message || 'Please check your email address.', result.suggestion);
+        input.focus();
+        return;
+      }
+      passed = email;
+      clearError(input);
+      if (typeof form.requestSubmit === 'function') form.requestSubmit(button ?? undefined);
+      else form.submit();
+    });
+  });
+</script>
+
+<style is:global>
+  .email-error{margin:6px 0 0; font-size:13.5px; color:#ff9b8a;}
+  .email-fix{margin-left:4px; background:none; border:0; padding:0; font:inherit; font-weight:600; color:var(--accent); text-decoration:underline; cursor:pointer;}
+</style>

@@ -87,7 +87,4 @@ If you’re running multiple sites and feeling the strain of the "WhatsApp and s
 
 [Try the live Banksman demo now with realistic site data →](https://banksman.app/)
 
-Or if you'd rather talk to someone who’s actually run a site, give Dom or Matt a bell:
-
-* **Dom (CEO):** 07508 300353
-* **Matt (CMO):** 07964 660071
+Or if you'd rather talk to someone who’s actually run a site, [request a call](/contact/) and Dom or Matt will ring you back.

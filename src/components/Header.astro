@@ -2,7 +2,7 @@
 import { SITE } from '../site';
 
 interface Props {
-  current?: 'blog' | 'whats-new' | 'team' | 'support';
+  current?: 'blog' | 'whats-new' | 'team' | 'support' | 'case-studies';
 }
 
 const { current } = Astro.props;
@@ -18,11 +18,12 @@ const blogCurrent = here('blog');
       <a href="/#pricing">Pricing</a>
       <a href="/whats-new/" {...here('whats-new')}>What's new</a>
       <a href="/meet-the-team/" {...here('team')}>Team</a>
+      <a href="/case-studies/" {...here('case-studies')}>Case studies</a>
       <a href="/blog/" {...blogCurrent}>Blog</a>
       <a href="/support/" {...here('support')}>Support</a>
     </div>
     <div class="nav-right">
-      <a class="nav-call" href={`tel:${SITE.phoneIntl}`}>Call<span class="num"> {SITE.phone}</span></a>
+      <a class="nav-call" href={SITE.contactUrl}>Request a call</a>
       <a class="btn btn-primary btn-sm nav-demo" href={SITE.demoUrl}>Try the demo</a>
       <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
     </div>
@@ -33,10 +34,11 @@ const blogCurrent = here('blog');
     <a href="/#pricing">Pricing</a>
     <a href="/whats-new/" {...here('whats-new')}>What's new</a>
     <a href="/meet-the-team/" {...here('team')}>Meet the team</a>
+    <a href="/case-studies/" {...here('case-studies')}>Case studies</a>
     <a href="/blog/" {...blogCurrent}>Blog</a>
     <a href="/support/" {...here('support')}>Support</a>
     <a href={SITE.appUrl}>Log in</a>
-    {SITE.contacts.map((c) => <a href={`tel:${c.phoneIntl}`}>Call {c.name} · {c.phone}</a>)}
+    <a href={SITE.contactUrl}>Request a call</a>
     <div class="mm-cta"><a class="btn btn-primary" href={SITE.demoUrl}>Try the live demo →</a></div>
   </div>
 </header>

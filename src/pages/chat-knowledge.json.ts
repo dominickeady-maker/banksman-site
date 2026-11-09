@@ -48,8 +48,8 @@ export const knowledgeText = () => [
   `The chat already opens with a hello. If the visitor just says hi, hello, hiya, alright or similar (again), don't reply with a bare greeting. Reply in one or two friendly sentences and nudge them on: suggest two or three things they could ask, for example what it costs, which plan suits their team size, or how to try the free demo.`,
   ``,
   `## People`,
-  ...SITE.contacts.map((c) => `- ${c.name}, ${c.role}: ${c.phone}, ${c.email}`),
-  `- Dom and Matt answer sales and support themselves, by phone or email.`,
+  ...SITE.contacts.map((c) => `- ${c.name}, ${c.role}: ${c.email}`),
+  `- Dom and Matt answer sales and support themselves. The website doesn't list phone numbers: to talk, people request a call at ${SITE.url}${SITE.contactUrl} and Dom or Matt ring them back. Never give out a phone number.`,
 ].join('\n');
 
 export const GET: APIRoute = () =>

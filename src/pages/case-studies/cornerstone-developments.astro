@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaBand from '../../components/CtaBand.astro';
+import ExploreLinks from '../../components/ExploreLinks.astro';
 import { SITE } from '../../site';
 import { CORNERSTONE as CS, casePath } from '../../data/case-studies';
 import '../../styles/pages.css';
@@ -187,6 +188,7 @@ const schema = [
   title={title}
   description={description}
   schema={schema}
+  current="case-studies"
   type="article"
   image="/og/case-studies-cornerstone-developments.png"
   imageAlt="Case study: Cornerstone Developments on Banksman"
@@ -279,6 +281,15 @@ const schema = [
     </ul>
     <p class="cs-more"><a href="/#features">See every feature →</a> · <a href="/meet-the-team/">Meet Dom and Matt →</a> · <a href="/compare/">Banksman vs spreadsheets and WhatsApp →</a></p>
   </div></section>
+
+  <ExploreLinks
+    eyebrow="From the blog"
+    title="Guides behind what Cornerstone does."
+    posts={['how-to-price-a-building-job', 'get-your-building-site-off-whatsapp', 'how-to-avoid-subcontractor-payment-disputes-a-guide-to-proof-of-work-on-site']}
+    postCount={3}
+    trades={['builders', 'bricklayers', 'groundworkers', 'subcontractors']}
+    extra={[{ href: '/blog/', text: 'All guides on the blog' }, { href: '/compare/', text: 'Banksman vs spreadsheets & WhatsApp' }]}
+  />
 
   <CtaBand heading="Run your sites like Cornerstone." text="Have a look round the same app Dom uses every day, on realistic sample data. Four fields and your logins are on the next page. No card." />
 </BaseLayout>

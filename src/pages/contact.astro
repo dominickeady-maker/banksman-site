@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SpamGuard from '../components/SpamGuard.astro';
+import EmailCheck from '../components/EmailCheck.astro';
+import { SITE } from '../site';
+import { breadcrumbSchema } from '../lib/schema';
+import '../styles/pages.css';
+
+// "Request a call": the site no longer lists phone numbers, so this is how people ask Dom or Matt
+// to ring them. Netlify Forms (form name "contact-request") emails Dom and Matt, and
+// netlify/functions/submission-created.mjs files each one in the sales_leads table (DM4U-CRM).
+// Bot traps: the SpamGuard honeypot and timer, plus the email check (EmailCheck + the server).
+const description = 'Request a call from Banksman. Leave your details and Dom or Matt will ring you back: real people, no bots or call centres.';
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Request a call from Banksman',
+    url: `${SITE.url}${SITE.contactUrl}`,
+    description,
+    inLanguage: 'en-GB',
+    mainEntity: {
+      '@id': `${SITE.url}/#organization`,
+      contactPoint: SITE.contacts.map((c) => ({
+        '@type': 'ContactPoint',
+        contactType: 'sales',
+        name: c.name,
+        email: c.email,
+        url: `${SITE.url}${SITE.contactUrl}`,
+        areaServed: 'GB',
+        availableLanguage: 'English',
+      })),
+    },
+  },
+  breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Request a call', path: SITE.contactUrl }]),
+];
+---
+<BaseLayout title="Request a call | Banksman" description={description} schema={schema}>
+  <section class="page-head big-head"><div class="wrap">
+    <div class="eyebrow">Request a call</div>
+    <h1>Rather talk it through? <span>We'll ring you.</span></h1>
+    <p>Leave your details and Dom or Matt will give you a call back, usually the same working day. Real people, no bots or call centres.</p>
+  </div></section>
+
+  <section class="support-section">
+    <div class="wrap support-layout">
+      <div class="lead support-form">
+        <form name="contact-request" method="POST" data-netlify="true" netlify-honeypot="company_website" action="/contact/sent/" data-email-check>
+          <input type="hidden" name="form-name" value="contact-request">
+          <input type="hidden" name="page" value="" data-came-from>
+          <SpamGuard />
+          <div class="lead-grid">
+            <div class="field">
+              <label for="cr-name">Name <span class="req" aria-hidden="true">*</span></label>
+              <input id="cr-name" name="name" type="text" autocomplete="name" required aria-required="true" maxlength="120">
+            </div>
+            <div class="field">
+              <label for="cr-company">Company <span class="req" aria-hidden="true">*</span></label>
+              <input id="cr-company" name="company" type="text" autocomplete="organization" required aria-required="true" maxlength="160">
+            </div>
+            <div class="field field-wide">
+              <label for="cr-url">Company website <span class="opt">(optional)</span></label>
+              <input id="cr-url" name="company_url" type="text" inputmode="url" autocomplete="url" maxlength="300" placeholder="yourfirm.co.uk">
+            </div>
+            <div class="field">
+              <label for="cr-email">Email <span class="req" aria-hidden="true">*</span></label>
+              <input id="cr-email" name="email" type="email" autocomplete="email" required aria-required="true" maxlength="254">
+            </div>
+            <div class="field">
+              <label for="cr-phone">Phone number <span class="req" aria-hidden="true">*</span></label>
+              <input id="cr-phone" name="phone" type="tel" autocomplete="tel" required aria-required="true" maxlength="25" pattern="[+0-9 \(\)\-]{10,25}" title="A phone number we can ring, for example 07123 456789">
+            </div>
+          </div>
+          <fieldset class="field cr-pref">
+            <legend>Do you want us to call you, or would you prefer an email? <span class="req" aria-hidden="true">*</span></legend>
+            <label class="cr-tick"><input type="radio" name="contact_preference" value="call" required checked> <span>Call me</span></label>
+            <label class="cr-tick"><input type="radio" name="contact_preference" value="email"> <span>Email me</span></label>
+          </fieldset>
+          <div class="field">
+            <label for="cr-message">Message <span class="opt">(optional)</span></label>
+            <textarea id="cr-message" name="message" rows="5" maxlength="5000" placeholder="What would you like to talk about? If you want a call, a good time to ring helps too."></textarea>
+          </div>
+          <button class="btn btn-primary btn-block" type="submit">Request a call →</button>
+          <p class="small-print"><span class="req">*</span> Required. We only use these details to ring you back, and we never pass them on. <a href="/privacy/">How we use your details</a>.</p>
+        </form>
+      </div>
+
+      <aside class="support-side">
+        <div class="support-help">
+          <h2>What happens next</h2>
+          <ol class="cr-steps">
+            <li><b>We get your details straight away.</b> They come to Dom and Matt, nobody else.</li>
+            <li><b>One of us rings you back.</b> Usually the same working day.</li>
+            <li><b>No hard sell.</b> We'll answer your questions and show you round if you want.</li>
+          </ol>
+          <h3>Want to look first?</h3>
+          <p>The <a href={SITE.demoUrl}>live demo</a> is the real app on realistic sample data. Four fields, no card.</p>
+          <h3>Already a customer?</h3>
+          <p>For a bug or a hand with the app, use <a href="/support/">support</a> so it's logged and tracked.</p>
+          <h3>Prefer email?</h3>
+          <ul class="support-contacts">
+            {SITE.contacts.map((c) => <li><b>{c.name}</b><a href={`mailto:${c.email}`}>{c.email}</a></li>)}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+  <EmailCheck />
+</BaseLayout>
+
+<script is:inline>
+  document.querySelectorAll('[data-came-from]').forEach(function (i) {
+    try { var r = document.referrer && new URL(document.referrer); i.value = r && r.host === location.host ? r.pathname : ''; } catch (e) {}
+  });
+</script>
+
+<style>
+  .cr-steps{margin:0 0 22px; padding-left:20px; color:var(--ink-soft);}
+  .cr-steps li{margin-bottom:10px;}
+  .cr-steps b{color:var(--ink);}
+  .cr-pref{border:0; padding:0; margin:16px 0 4px; display:flex; flex-wrap:wrap; gap:10px 14px;}
+  .cr-pref legend{width:100%; padding:0; margin-bottom:10px; font-size:14px; font-weight:600; color:var(--ink);}
+  .cr-tick{display:inline-flex; align-items:center; gap:10px; padding:11px 16px; background:var(--bg); border:1px solid var(--line-strong); border-radius:6px; cursor:pointer; font-size:15px; color:var(--ink-soft); transition:border-color .2s, background .2s;}
+  .cr-tick:hover{border-color:var(--accent);}
+  /* Looks like a tick box, works like a choice of one */
+  .cr-tick input{appearance:none; -webkit-appearance:none; width:20px; height:20px; margin:0; border:1.5px solid var(--line-strong); border-radius:4px; background:var(--surface); display:grid; place-items:center; flex:none; cursor:pointer;}
+  .cr-tick input::after{content:""; width:10px; height:6px; border-left:2.5px solid var(--accent-ink); border-bottom:2.5px solid var(--accent-ink); transform:translateY(-1px) rotate(-45deg); opacity:0;}
+  .cr-tick input:checked{background:var(--accent); border-color:var(--accent);}
+  .cr-tick input:checked::after{opacity:1;}
+  .cr-tick input:focus-visible{outline:2px solid var(--sky); outline-offset:2px;}
+  .cr-tick:has(input:checked){border-color:var(--accent); background:var(--accent-soft); color:var(--ink);}
+</style>

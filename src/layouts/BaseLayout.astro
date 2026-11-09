@@ -16,7 +16,7 @@ interface Props {
   type?: 'website' | 'article';
   noindex?: boolean;
   schema?: Record<string, unknown>[];
-  current?: 'blog' | 'whats-new' | 'team' | 'support';
+  current?: 'blog' | 'whats-new' | 'team' | 'support' | 'case-studies';
 }
 
 const { current, ...seo } = Astro.props;

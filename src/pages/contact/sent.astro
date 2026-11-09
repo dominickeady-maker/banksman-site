@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE } from '../../site';
+import '../../styles/pages.css';
+// Shown after "Request a call" is sent. Not useful in search, so it's noindex and left out of the sitemap.
+---
+<BaseLayout title="Thanks, we'll be in touch | Banksman" description="Thanks for getting in touch with Banksman." noindex>
+  <section class="page-head big-head"><div class="wrap">
+    <div class="eyebrow">Details received</div>
+    <h1>Thanks for submitting your details. <span>We'll be in touch as soon as possible.</span></h1>
+    <p>Your details have gone straight to Dom and Matt, and one of us will get back to you the way you asked, by phone or email. In the meantime, have a look round the live demo.</p>
+    <div class="hero-ctas"><a class="btn btn-primary" href={SITE.demoUrl}>Try the live demo →</a><a class="btn btn-ghost" href="/case-studies/">See how builders use it</a></div>
+  </div></section>
+</BaseLayout>

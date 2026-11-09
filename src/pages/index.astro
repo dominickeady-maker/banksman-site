@@ -1,5 +1,6 @@
 ---
 import CustomerQuotes from '../components/CustomerQuotes.astro';
+import EmailCheck from '../components/EmailCheck.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SpamGuard from '../components/SpamGuard.astro';
 import HeroDevices from '../components/HeroDevices.astro';
@@ -63,14 +64,14 @@ const schema = [{
   '@graph': [
     {
       '@type': 'Organization', '@id': 'https://banksman.app/#organization', name: 'Banksman', url: 'https://banksman.app/',
-      logo: 'https://banksman.app/assets/icon-512.png', email: 'dom@dm4u.ai', telephone: '+447508300353',
+      logo: 'https://banksman.app/assets/icon-512.png', email: 'dom@dm4u.ai',
       description: 'Construction site management software for small and mid-size UK building firms, built by a working builder.',
       areaServed: { '@type': 'Country', name: 'United Kingdom' },
       founder: { '@type': 'Person', name: 'Dom Keady', jobTitle: 'CEO & founder' },
       employee: [{ '@type': 'Person', name: 'Dom Keady', jobTitle: 'CEO' }, { '@type': 'Person', name: 'Matt Guille', jobTitle: 'CMO' }],
       contactPoint: [
-        { '@type': 'ContactPoint', contactType: 'sales', name: 'Dom Keady', telephone: '+447508300353', email: 'dom@dm4u.ai', areaServed: 'GB', availableLanguage: 'English' },
-        { '@type': 'ContactPoint', contactType: 'sales', name: 'Matt Guille', telephone: '+447964660071', email: 'matt@dm4u.ai', areaServed: 'GB', availableLanguage: 'English' },
+        { '@type': 'ContactPoint', contactType: 'sales', name: 'Dom Keady', email: 'dom@dm4u.ai', url: 'https://banksman.app/contact/', areaServed: 'GB', availableLanguage: 'English' },
+        { '@type': 'ContactPoint', contactType: 'sales', name: 'Matt Guille', email: 'matt@dm4u.ai', url: 'https://banksman.app/contact/', areaServed: 'GB', availableLanguage: 'English' },
       ],
       parentOrganization: { '@type': 'Organization', name: 'DM.AI 4U Ltd' },
       sameAs: Object.values(SITE.social).filter(Boolean),
@@ -234,7 +235,7 @@ const schema = [{
 
       <div class="demo-form">
         <div class="lead" id="lead">
-          <form name="demo-access" method="POST" data-netlify="true" netlify-honeypot="company_website" action="/thanks.html">
+          <form name="demo-access" method="POST" data-netlify="true" netlify-honeypot="company_website" action="/thanks.html" data-email-check>
             <input type="hidden" name="form-name" value="demo-access">
             <SpamGuard />
             <div class="lead-grid">
@@ -257,12 +258,14 @@ const schema = [{
             </div>
             <label class="check"><input type="checkbox" name="marketing_opt_in" value="yes"> Send me occasional Banksman news, tips and offers by email. Unsubscribe any time.</label>
             <button class="btn btn-primary btn-block" type="submit">Unlock the live demo →</button>
-            <p class="small-print" style="margin-top:14px;">Four fields. We only send marketing emails if you tick the box, and we never pass your details on, they come to us and nobody else. <a href="/privacy/">How we use your details</a>. Rather just talk? Ring Dom on <a href="tel:+447508300353" style="color:var(--accent);">07508 300353</a> or Matt on <a href="tel:+447964660071" style="color:var(--accent);">07964 660071</a>.</p>
+            <p class="small-print" style="margin-top:14px;">Four fields. We only send marketing emails if you tick the box, and we never pass your details on, they come to us and nobody else. <a href="/privacy/">How we use your details</a>. Rather just talk? <a href="/contact/" style="color:var(--accent);">Request a call</a> and Dom or Matt will ring you back.</p>
           </form>
         </div>
       </div>
     </div>
   </section>
+
+  <EmailCheck />
 
   <!-- ================= PRICING ================= -->
   <section id="pricing">
@@ -328,7 +331,7 @@ const schema = [{
         <p><strong>Onboarding call:</strong> once you've signed up, we'll email you a link to book a call with us at a time that suits you. It's optional, and it's free on every plan.</p>
       </div>
 
-      <p class="price-note">Not sure which? Ring Dom on <a href="tel:+447508300353">07508 300353</a> or Matt on <a href="tel:+447964660071">07964 660071</a> and we'll tell you straight. It's usually Starter.</p>
+      <p class="price-note">Not sure which? <a href="/contact/">Request a call</a> and we'll tell you straight. It's usually Starter.</p>
       <p class="small-print">All prices include VAT. Cancel any time. Want a proper look before you pay? The live demo above takes four fields and no card.</p>
     </div>
   </section>
@@ -351,7 +354,7 @@ const schema = [{
           <div class="hero-ctas">
             <!-- Stripe Payment Link (£999 one-off). After payment it should redirect to /purchase-complete/?plan=white-label -->
             <a class="btn btn-primary" href="https://buy.stripe.com/7sY7sE4sIbez4Rq2Dl5sA08">Get your own app →</a>
-            <a class="btn btn-ghost" href="tel:+447508300353">Talk it through first</a>
+            <a class="btn btn-ghost" href="/contact/">Request a call</a>
           </div>
         </div>
 
@@ -486,18 +489,16 @@ const schema = [{
       <h2>Interest piqued but still unsure? Try it now.</h2>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="#demo">Try the live demo →</a>
-        <a class="btn btn-ghost" href="tel:+447508300353">Give us a ring</a>
+        <a class="btn btn-ghost" href="/contact/">Request a call</a>
       </div>
       <div class="contact-panel">
         <div class="contact-people">
           <div class="contact-person">
             <div class="contact-name">Dom · CEO</div>
-            <a href="tel:+447508300353">07508 300353</a>
             <a class="contact-email" href="mailto:dom@dm4u.ai">dom@dm4u.ai</a>
           </div>
           <div class="contact-person">
             <div class="contact-name">Matt · CMO</div>
-            <a href="tel:+447964660071">07964 660071</a>
             <a class="contact-email" href="mailto:matt@dm4u.ai">matt@dm4u.ai</a>
           </div>
         </div>

@@ -5,13 +5,13 @@ export const SITE = {
   // The demo is unlocked by the four-field form on the home page, which leads to /thanks.html.
   demoUrl: '/#demo',
   appUrl: 'https://app.banksman.app/',
-  phone: '07508 300353',
-  phoneIntl: '+447508300353',
+  // No phone numbers on the site: people ask for a call back on the Request a call form instead.
+  contactUrl: '/contact/',
   email: 'dom@dm4u.ai',
-  // The people visitors can speak to. The main phone and email above are Dom's.
+  // The people visitors can speak to. The main email above is Dom's.
   contacts: [
-    { name: 'Dom', role: 'CEO', phone: '07508 300353', phoneIntl: '+447508300353', email: 'dom@dm4u.ai' },
-    { name: 'Matt', role: 'CMO', phone: '07964 660071', phoneIntl: '+447964660071', email: 'matt@dm4u.ai' },
+    { name: 'Dom', role: 'CEO', email: 'dom@dm4u.ai' },
+    { name: 'Matt', role: 'CMO', email: 'matt@dm4u.ai' },
   ],
   // Google Calendar appointment schedule for onboarding calls. Paste the booking page link here.
   bookingUrl: 'https://calendar.app.google/dDXv4gbhPwr3VkBw9',

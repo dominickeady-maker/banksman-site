@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaBand from '../../components/CtaBand.astro';
+import CaseStudyCallout from '../../components/CaseStudyCallout.astro';
 import { SITE } from '../../site';
 import { getPosts, postUrl, formatDate, readingMinutes, coverUrl, coverAlt } from '../../lib/posts';
 import { breadcrumbSchema } from '../../lib/schema';
@@ -95,6 +96,8 @@ const schema = [
       ))}
     </div>
   </div>
+
+  <CaseStudyCallout />
 
   <CtaBand heading="See how it works on site." />
 </BaseLayout>

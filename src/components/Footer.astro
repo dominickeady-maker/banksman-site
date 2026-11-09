@@ -46,10 +46,10 @@ import Social from './Social.astro';
         {SITE.contacts.map((c) => (
           <div class="fg-person">
             <span class="fg-name">{c.name}</span>
-            <a href={`tel:${c.phoneIntl}`}>{c.phone}</a>
             <a href={`mailto:${c.email}`}>{c.email}</a>
           </div>
         ))}
+        <a class="btn btn-primary btn-sm fg-call" href={SITE.contactUrl}>Request a call</a>
       </div>
     </div>
     <div class="legal-line">Banksman is a product of {SITE.company}. © {new Date().getFullYear()}.</div>

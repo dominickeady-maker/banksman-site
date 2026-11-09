@@ -1,0 +1,39 @@
+---
+// A slim "see it on a real site" card linking to a case study. Used on the blog list and every
+// blog post, so readers can go from a guide to a real firm using Banksman.
+import { CASE_STUDIES, casePath } from '../data/case-studies';
+
+interface Props {
+  /** Which case study to show. Defaults to the newest. */
+  slug?: string;
+}
+const { slug } = Astro.props;
+const study = CASE_STUDIES.find((c) => c.slug === slug) ?? CASE_STUDIES[CASE_STUDIES.length - 1];
+const quote = study && (Object.values(study.quotes).find((q) => q.featured) ?? Object.values(study.quotes)[0]);
+---
+{study && quote && (
+  <section class="csc"><div class="wrap">
+    <a class="csc-card" href={casePath(study)}>
+      <img src={study.cover} alt={study.coverAlt} width="1000" height="750" loading="lazy" decoding="async">
+      <div class="csc-body">
+        <span class="csc-eyebrow">Case study · {study.shortName}</span>
+        <blockquote>“{quote.text}”</blockquote>
+        <span class="csc-who">{study.person.name}, {study.place}</span>
+        <span class="csc-go">See how they run every site on Banksman →</span>
+      </div>
+    </a>
+  </div></section>
+)}
+
+<style>
+  .csc{padding:34px 0;}
+  .csc-card{display:grid; grid-template-columns:260px 1fr; align-items:stretch; background:var(--surface); border:1px solid var(--line-strong); border-left:3px solid var(--accent); border-radius:10px; overflow:hidden; color:inherit; text-decoration:none; box-shadow:var(--shadow); transition:transform .25s, border-color .25s;}
+  .csc-card:hover{transform:translateY(-2px); border-color:var(--accent);}
+  .csc-card img{display:block; width:100%; height:100%; object-fit:cover;}
+  .csc-body{padding:22px 26px; display:grid; gap:8px; align-content:center;}
+  .csc-eyebrow{font:600 11px/1.4 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:var(--sky);}
+  .csc-body blockquote{margin:0; font:700 clamp(21px,2.4vw,27px)/1.2 'Big Shoulders Display',sans-serif; color:var(--ink);}
+  .csc-who{font-size:14px; color:var(--muted);}
+  .csc-go{color:var(--accent); font-weight:600; font-size:15px;}
+  @media (max-width:700px){ .csc-card{grid-template-columns:1fr;} .csc-card img{aspect-ratio:16/9; height:auto;} }
+</style>

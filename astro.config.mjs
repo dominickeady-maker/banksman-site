@@ -103,7 +103,7 @@ export default defineConfig({
     minifySiteCss,
     sitemap({
       // The CMS and share images are not pages; the purchase page is noindex.
-      filter: (page) => !page.includes('/admin/') && !page.includes('/og/') && !page.includes('/purchase-complete/') && !page.includes('/support/sent/') && !page.includes('/getting-started/'),
+      filter: (page) => !page.includes('/admin/') && !page.includes('/og/') && !page.includes('/purchase-complete/') && !page.includes('/support/sent/') && !page.includes('/contact/sent/') && !page.includes('/getting-started/'),
       serialize(item) {
         const path = new URL(item.url).pathname;
         if (postDates[path]) item.lastmod = new Date(postDates[path]).toISOString();

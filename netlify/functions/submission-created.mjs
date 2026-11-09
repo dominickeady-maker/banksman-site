@@ -6,6 +6,10 @@
 //   Everything else      → support_tickets table (status: new / in_progress / done)
 // 3. The sales chat's "Pass your details on" form (chat-lead): filed in the sales_leads table
 //    (DM4U-CRM) with the chat transcript. See supabase/SALES_CHAT_SETUP.md.
+// 4. The "Request a call" form (contact-request, /contact/): filed in sales_leads with the message.
+// 5. The demo form (demo-access) and the Request a call form: the email address is checked
+//    (netlify/lib/email-check.mjs: throwaway inboxes, made up addresses, domains that can't receive
+//    mail). The pages check it before sending; this catches anything sent without the page's script.
 // Email notifications to Dom and Matt are sent by Netlify Forms itself (set up in the Netlify UI).
 //
 // Environment variables in Netlify (Site configuration → Environment variables, scope: Functions):
@@ -13,6 +17,10 @@
 //   SUPABASE_SERVICE_ROLE_KEY  the service role key (server-side only, never in the website code)
 //   NETLIFY_API_TOKEN          a Netlify personal access token, used to mark spam and delete it
 // See supabase/SUPPORT_SETUP.md.
+
+import { checkEmail } from '../lib/email-check.mjs';
+
+const EMAIL_CHECKED_FORMS = new Set(['demo-access', 'contact-request']);
 
 const REASONS = new Set(['bug_report', 'help_request', 'feature_suggestion', 'other']);
 const clean = (v, max = 5000) => (typeof v === 'string' ? v.trim().slice(0, max) : null) || null;
@@ -88,6 +96,37 @@ async function saveChatLead(payload) {
   return reply(200, 'Saved');
 }
 
+// A "Request a call" from /contact/: name, company, email and phone are required by the form.
+async function saveCallRequest(payload) {
+  const d = payload.data || {};
+  const filled = (v) => typeof v === 'string' && v.trim().length > 0;
+  if (!filled(d.name) || !filled(d.company) || !filled(d.email) || !filled(d.phone) || !EMAIL.test(d.email.trim())) {
+    await binSpam(payload.id);
+    return reply(200, 'Incomplete, removed');
+  }
+  const website = clean(d.company_url, 300);
+  const message = clean(d.message, 5000);
+  const failed = await insertRow('sales_leads', {
+    netlify_submission_id: payload.id || null,
+    name: clean(d.name, 120),
+    business: clean(d.company, 160),
+    email: clean(d.email, 254),
+    phone: clean(d.phone, 40),
+    transcript: [
+      d.contact_preference === 'email' ? 'Contact request from the website: prefers an EMAIL.' : 'Contact request from the website: prefers a CALL.',
+      website && `Company website: ${website}`,
+      message && `Message: ${message}`,
+    ].filter(Boolean).join('\n'),
+    page: clean(d.page, 300),
+    source: 'banksman.app/contact',
+  });
+  if (failed) {
+    console.error(`Call request: ${failed}. It was only emailed.`);
+    return reply(200, 'Saved by email only');
+  }
+  return reply(200, 'Saved');
+}
+
 // The submission as Netlify holds it (audit 25/10/2026, L6): act on Netlify's own copy, never on
 // what the request says, so a forged call can't put junk in the CRM or get a real submission
 // deleted as spam. Returns null when Netlify has no such submission.
@@ -126,7 +165,16 @@ export const handler = async (event) => {
     await binSpam(payload.id);
     return reply(200, 'Spam removed');
   }
+  if (EMAIL_CHECKED_FORMS.has(payload.form_name)) {
+    const check = await checkEmail(payload.data?.email).catch(() => ({ ok: true }));
+    if (!check.ok) {
+      console.log(`${payload.form_name}: email failed the check (${check.reason}), removed.`);
+      await binSpam(payload.id);
+      return reply(200, 'Email not real, removed');
+    }
+  }
   if (payload.form_name === 'chat-lead') return saveChatLead(payload);
+  if (payload.form_name === 'contact-request') return saveCallRequest(payload);
   if (payload.form_name !== 'support') return reply(200, 'Ignored');
 
   // The form requires name, email and a message. Anything arriving without them didn't come
