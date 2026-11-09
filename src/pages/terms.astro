@@ -31,8 +31,8 @@ const schema = [breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Subscrip
 <table>
   <thead><tr><th>Plan</th><th>Price</th><th>Billed</th><th>People</th></tr></thead>
   <tbody>
-    <tr><td>Starter</td><td>£79 a month</td><td>Monthly</td><td>Up to 10</td></tr>
-    <tr><td>Growth</td><td>£149 a month</td><td>Monthly</td><td>Up to 25</td></tr>
+    <tr><td>Starter</td><td>£89 a month</td><td>Monthly</td><td>Up to 6</td></tr>
+    <tr><td>Growth</td><td>£149 a month</td><td>Monthly</td><td>Up to 15</td></tr>
     <tr><td>Enterprise</td><td>£299 a month</td><td>Monthly</td><td>Up to 75</td></tr>
     <tr><td>White Label</td><td>£999</td><td>One-off</td><td>An add-on to a monthly plan</td></tr>
   </tbody>
@@ -45,7 +45,8 @@ const schema = [breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Subscrip
 
 <h2>4. Billing</h2>
 <ul>
-  <li>Monthly plans are billed <strong>monthly in advance</strong>, from the day you subscribe. Payments are taken by <strong>Stripe</strong>. We never see or store your full card details.</li>
+  <li><strong>Free trial:</strong> Starter, Growth and Enterprise start with a <strong>14-day free trial</strong>. You add a card when you subscribe, but nothing is taken until the trial ends, and Stripe emails you a reminder before it does. Cancel before the trial ends and you pay nothing. If you don't, your first monthly payment is taken on the day the trial ends, and you're then billed monthly from that day.</li>
+  <li>Monthly plans are billed <strong>monthly in advance</strong>, from the day you subscribe (or the day your free trial ends). Payments are taken by <strong>Stripe</strong>. We never see or store your full card details.</li>
   <li><strong>Upgrading</strong> takes effect straight away. You pay a part-month (prorated) charge for the rest of the current month on the bigger plan.</li>
   <li><strong>Downgrading</strong> also takes effect straight away. Any unused part of the bigger plan is credited against your next bill. If you have more people than the smaller plan allows, nobody is removed, but you can't add anyone until you're under the limit.</li>
   <li>You can change plan, update your card and see your invoices any time from <strong>More → Plan &amp; billing</strong> in the app.</li>
