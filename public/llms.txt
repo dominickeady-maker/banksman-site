@@ -19,7 +19,7 @@ Banksman keeps a building firm's tasks, timesheets, material requests, drawings,
 
 ## Pricing (all prices include VAT, no contract, cancel any time)
 
-- Starter: £79 a month, up to 10 users.
+- Starter: £89 a month, up to 10 users.
 - Growth: £149 a month, up to 25 users.
 - Enterprise: £299 a month, up to 75 users.
 - White label add-on: £999 one-off on top of any plan. Includes three 1-on-1 calls with Dom and Matt, exclusive features built for the customer, and a fully customised app.
@@ -38,6 +38,7 @@ Builders, bricklayers, groundworkers, roofers, electricians, plumbers, subcontra
 - [Meet the team](https://banksman.app/meet-the-team/)
 - [Case studies](https://banksman.app/case-studies/): UK building firms on Banksman, in their own words
 - [Case study: Cornerstone Developments](https://banksman.app/case-studies/cornerstone-developments/): how Dom runs his own Huddersfield building firm on Banksman
+- [Case study: SB Homes](https://banksman.app/case-studies/sb-homes/): how a Colne Valley housebuilder keeps a big team and several developments organised
 - [Support](https://banksman.app/support/): report a bug, ask for help or suggest a feature; answered by Dom or Matt
 - [Blog](https://banksman.app/blog/)
 - [Free CIS calculator](https://banksman.app/tools/cis-calculator/)

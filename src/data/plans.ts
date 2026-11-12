@@ -11,7 +11,9 @@ export interface Plan {
 }
 
 export const PLANS: Plan[] = [
-  { name: 'Starter', price: 79, per: 'month', users: 10, checkout: 'https://buy.stripe.com/aFadR28IYdmH1Fea5N5sA07',
+  // Starter went up to £89 in November 2026. TODO: replace this checkout link with the new £89 Stripe
+  // Payment Link (the link below is the old £79 one) here and in src/pages/index.astro.
+  { name: 'Starter', price: 89, per: 'month', users: 10, checkout: 'https://buy.stripe.com/aFadR28IYdmH1Fea5N5sA07',
     points: ['Every feature in the app', 'Manager and worker logins', 'Optional onboarding call with us', 'Support from Dom or Matt'] },
   { name: 'Growth', price: 149, per: 'month', users: 25, checkout: 'https://buy.stripe.com/aFa28k8IYgyT5Vu6TB5sA05',
     points: ['Everything in Starter', 'For larger teams across more sites', 'Priority support, straight to Dom or Matt'] },

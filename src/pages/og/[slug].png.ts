@@ -12,6 +12,7 @@ const pages = [
   { slug: 'compare', title: 'Banksman vs spreadsheets & WhatsApp', eyebrow: 'Compare' },
   { slug: 'case-studies', title: 'Proof from the site, not the brochure.', eyebrow: 'Case studies' },
   { slug: 'case-studies-cornerstone-developments', title: 'Money saved. Every site tracked.', eyebrow: 'Case study: Cornerstone Developments' },
+  { slug: 'case-studies-sb-homes', title: 'A big team, lots of sites, money saved.', eyebrow: 'Case study: SB Homes' },
   { slug: 'meet-the-team', title: 'Small team. Real site experience.', eyebrow: 'Meet the team' },
   { slug: 'whats-new', title: 'Health & safety, built in.', eyebrow: 'What\'s new' },
   ...TRADES.map((trade) => ({ slug: `for-${trade.slug}`, title: trade.ogTitle, eyebrow: trade.eyebrow })),

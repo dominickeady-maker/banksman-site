@@ -33,7 +33,7 @@ Banksman and Fieldwire are both capable tools for running work on site. For a 10
 
 ## Pricing
 
-- **Banksman:** £79/month inc. VAT for up to 10 users, £149/month inc. VAT for up to 25 and £299/month inc. VAT for up to 75. Every plan includes every feature.
+- **Banksman:** £89/month inc. VAT for up to 10 users, £149/month inc. VAT for up to 25 and £299/month inc. VAT for up to 75. Every plan includes every feature.
 - **Fieldwire:** has its own range of plans. For their current options, see Fieldwire's website.
 
 ## Setup and onboarding
