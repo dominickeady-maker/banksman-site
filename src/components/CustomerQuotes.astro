@@ -4,11 +4,14 @@ import { CASE_STUDIES, casePath } from '../data/case-studies';
 // Homepage quote banner: customer quotes scroll slowly across the page, each linking to its case study.
 // Quotes come from src/data/case-studies.ts. The featured quote leads. The track is printed twice so
 // the loop is seamless; the second copy is hidden from screen readers and the keyboard.
-const quotes = CASE_STUDIES.flatMap((c) =>
+// Each case study's quotes, featured first, then dealt out in turn (one from each firm, then the
+// next from each) so every customer shows up near the start of the loop, not just the first one.
+const perStudy = CASE_STUDIES.map((c) =>
   Object.values(c.quotes)
     .sort((a, b) => Number(!!b.featured) - Number(!!a.featured))
     .map((q) => ({ text: q.text, featured: !!q.featured, who: c.person.name, firm: c.shortName, href: casePath(c) })),
 );
+const quotes = Array.from({ length: Math.max(0, ...perStudy.map((l) => l.length)) }, (_, i) => perStudy.map((l) => l[i])).flat().filter(Boolean);
 ---
 <section class="cq" aria-labelledby="cq-title">
   <div class="wrap">
