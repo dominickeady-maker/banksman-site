@@ -670,3 +670,32 @@ button.linklike{background:none; border:0; padding:0; font:inherit; cursor:point
   .foot-grid .foot-h{font-size:11px; letter-spacing:.12em;}
   .fg-person a{font-size:12.5px;}
 }
+
+/* ---------- one corner radius for every box (Nov 2026) ----------
+   Cards, panels, pricing boxes and forms all share the soft corner of the app preview card. */
+:root{--radius:10px;}
+body .compare,
+body .feat-grid,
+body .wl-card,
+body .quote,
+body .pass,
+body .lead,
+body .about-card,
+body .contact-panel,
+body .plan-includes,
+body .inc-grid,
+body .feature-list,
+body .compare-scroll,
+body .wl-price-row,
+body .post-card,
+body .post-cta,
+body .support-help,
+body .post-disclaimer,
+body .dv-stat,
+body .dmai-card,
+body .dmai-services li,
+body .ex-posts a,
+body .compare-note,
+body .pain{border-radius:var(--radius);}
+body .feat-grid, body .inc-grid, body .compare, body .feature-list{overflow:hidden;}
+/* (prefixed with body so it wins over the page stylesheets, which load after this file) */

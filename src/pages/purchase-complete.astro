@@ -8,6 +8,8 @@ import { SITE } from '../site';
 //   https://banksman.app/purchase-complete/?plan=growth       (£149/month)
 //   https://banksman.app/purchase-complete/?plan=enterprise   (£299/month)
 //   https://banksman.app/purchase-complete/?plan=white-label  (£999 add-on)
+// Links with the 14-day free trial add &trial=1 (e.g. ?plan=starter&trial=1): nothing has been
+// charged, so the page says the trial has started instead of "your payment has gone through".
 // The Meta Pixel "Purchase" event below reads the plan to send the right value.
 // The page is noindex and blocked in robots.txt, so it never appears in Google.
 ---
@@ -28,7 +30,7 @@ import { SITE } from '../site';
         <div class="pc-num">01</div>
         <div>
           <h2>Check your email</h2>
-          <p>Your receipt from Stripe is on its way.</p>
+          <p id="pc-email-line">Your receipt from Stripe is on its way.</p>
         </div>
       </li>
       <li>
@@ -55,8 +57,17 @@ import { SITE } from '../site';
 <script is:inline>
   (function () {
     var names = { starter: 'Starter', growth: 'Growth', enterprise: 'Enterprise', 'white-label': 'White label' };
-    var plan = new URLSearchParams(location.search).get('plan');
-    if (names[plan]) document.getElementById('pc-plan-line').textContent = 'Welcome to Banksman ' + names[plan] + '. Your payment has gone through. Here’s what happens next.';
+    var q = new URLSearchParams(location.search);
+    var plan = q.get('plan');
+    var welcome = names[plan] ? 'Welcome to Banksman ' + names[plan] + '. ' : '';
+    if (q.get('trial') === '1') {
+      // Stripe takes the first payment 14 days after sign-up
+      var ends = new Date(Date.now() + 14 * 86400000).toLocaleDateString('en-GB', { day: 'numeric', month: 'long' });
+      document.getElementById('pc-plan-line').textContent = welcome + 'Your 14-day free trial has started — no payment until ' + ends + '. Here’s what happens next.';
+      document.getElementById('pc-email-line').textContent = 'Your welcome email is on its way, with a link to set your password. Nothing has been charged: Stripe emails you a reminder before the trial ends, and you can cancel any time before ' + ends + ' in the app (More → Plan & billing).';
+    } else if (welcome) {
+      document.getElementById('pc-plan-line').textContent = welcome + 'Your payment has gone through. Here’s what happens next.';
+    }
   })();
 </script>
 
@@ -64,9 +75,12 @@ import { SITE } from '../site';
 <script is:inline type="text/plain" data-cookieconsent="marketing">
   (function () {
     var values = { starter: 89, growth: 149, enterprise: 299, 'white-label': 999 };
-    var plan = new URLSearchParams(location.search).get('plan');
+    var q = new URLSearchParams(location.search);
+    var plan = q.get('plan');
     if (typeof fbq !== 'function') return;
-    fbq('track', 'Purchase', { value: values[plan] || 0, currency: 'GBP', content_name: plan || 'unknown' });
+    // A free trial hasn't been paid for yet: Meta's StartTrial event, with the monthly price as the predicted value
+    if (q.get('trial') === '1') fbq('track', 'StartTrial', { value: values[plan] || 0, currency: 'GBP', predicted_ltv: values[plan] || 0, content_name: plan || 'unknown' });
+    else fbq('track', 'Purchase', { value: values[plan] || 0, currency: 'GBP', content_name: plan || 'unknown' });
   })();
 </script>
 

@@ -4,15 +4,17 @@ import { CASE_STUDIES, casePath } from '../data/case-studies';
 // Homepage quote banner: customer quotes scroll slowly across the page, each linking to its case study.
 // Quotes come from src/data/case-studies.ts. The featured quote leads. The track is printed twice so
 // the loop is seamless; the second copy is hidden from screen readers and the keyboard.
-const quotes = CASE_STUDIES.flatMap((c) =>
+// Each case study's quotes, featured first, then dealt out in turn (one from each firm, then the
+// next from each) so every customer shows up near the start of the loop, not just the first one.
+const perStudy = CASE_STUDIES.map((c) =>
   Object.values(c.quotes)
     .sort((a, b) => Number(!!b.featured) - Number(!!a.featured))
     .map((q) => ({ text: q.text, featured: !!q.featured, who: c.person.name, firm: c.shortName, href: casePath(c) })),
 );
+const quotes = Array.from({ length: Math.max(0, ...perStudy.map((l) => l.length)) }, (_, i) => perStudy.map((l) => l[i])).flat().filter(Boolean);
 ---
 <section class="cq" aria-labelledby="cq-title">
   <div class="wrap">
-    <div class="eyebrow">Customers</div>
     <h2 id="cq-title" class="cq-title">Don't just take our word for it, <span>see what our customers think.</span></h2>
   </div>
   <div class="cq-viewport">
@@ -37,7 +39,7 @@ const quotes = CASE_STUDIES.flatMap((c) =>
 
 <style>
   .cq{padding:70px 0 60px; overflow:hidden;}
-  .cq-title{font-size:clamp(32px,4.6vw,54px); line-height:1.02; margin:12px 0 28px; max-width:30ch;}
+  .cq-title{font-size:clamp(32px,4.6vw,54px); line-height:1.02; margin:0 0 28px; max-width:30ch;}
   .cq-title span{color:var(--accent);}
   .cq-viewport{position:relative; overflow:hidden; -webkit-mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);}
   .cq-track{display:flex; width:max-content; animation:cqScroll 70s linear infinite;}

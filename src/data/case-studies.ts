@@ -69,6 +69,50 @@ export const CORNERSTONE: CaseStudy = {
   ],
 };
 
-export const CASE_STUDIES: CaseStudy[] = [CORNERSTONE];
+// DRAFT: Jamie's answers below were written from Matt's brief. Jamie and SB Homes must approve
+// every quote (and the use of their photos) before this goes live.
+export const SB_HOMES: CaseStudy = {
+  slug: 'sb-homes',
+  client: 'SB Homes Ltd',
+  shortName: 'SB Homes',
+  website: 'https://sbhomes.co.uk/',
+  cover: '/assets/case-studies/sb-homes/stone-new-build.webp',
+  coverAlt: 'Finished stone new build home with a landscaped garden, built by SB Homes in the Colne Valley',
+  place: 'Colne Valley, Huddersfield',
+  work: 'Family housebuilder: characterful, energy efficient new homes and the renovation of old mills and buildings',
+  years: 'Building since 1997',
+  person: { name: 'Jamie', role: 'Site manager, SB Homes' },
+  published: '2026-11-09',
+  updated: '2026-11-09',
+  headline: 'SB Homes: how a Colne Valley housebuilder keeps a big team and several developments organised on Banksman',
+  summary:
+    'SB Homes is a family housebuilder in the Colne Valley, Huddersfield, building since 1997 with more than 500 homes completed and a team of over 35 people. Site manager Jamie runs its developments on Banksman. The biggest changes are money saved, from fewer wasted orders and hours that can be checked against each site, and a big team that is organised across several developments at once: who is on which site, what they are doing and what has been ordered, all on one screen.',
+  quotes: {
+    expensive: { text: 'When you’ve got a big team across a few sites, small mistakes get expensive fast. Banksman catches them before they cost us.', featured: true },
+    whoswhere: { text: 'I can see who’s on which site and what they’re doing without picking up the phone.' },
+    onescreen: { text: 'Every development is on one screen. I know where we’re up to before I’ve even left the house.' },
+    subbies: { text: 'The subbies sign in, sign the RAMS and submit their price work on their phones. It’s all there when I need it.' },
+  },
+  quickAnswers: [
+    {
+      q: 'Who are SB Homes?',
+      a: 'SB Homes Ltd is a family housebuilder based in the Colne Valley, Huddersfield, and part of the Byram Property Group. It has been building since 1997, has completed more than 500 homes and employs a team of over 35 people.',
+    },
+    {
+      q: 'Does SB Homes use Banksman?',
+      a: 'Yes. SB Homes runs its developments on Banksman, managed day to day by site manager Jamie.',
+    },
+    {
+      q: 'How has Banksman saved SB Homes money?',
+      a: 'By cutting the small, repeated costs of a big team: materials ordered twice or not at all, hours that couldn’t be checked against a site, and time spent ringing round and driving between developments to find out where things were.',
+    },
+    {
+      q: 'How does SB Homes organise a big team across several sites?',
+      a: 'Everyone signs in on site with a QR code, so Jamie can see who is on which development. Tasks are set per site, material orders are approved before they are placed, and subcontractors sign RAMS and submit price work on their phones.',
+    },
+  ],
+};
+
+export const CASE_STUDIES: CaseStudy[] = [CORNERSTONE, SB_HOMES];
 
 export const casePath = (c: CaseStudy) => `/case-studies/${c.slug}/`;

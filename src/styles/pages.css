@@ -511,3 +511,10 @@
 .ex-chips.sky a{color:var(--sky); border-color:rgba(76,195,255,.45);}
 .ex-chips.sky a:hover{background:var(--sky-soft);}
 @media (max-width:900px){ .ex-posts{grid-template-columns:1fr;} .ex-row{grid-template-columns:1fr;} }
+
+/* ---------- Nov 2026: no small uppercase labels on the homepage ----------
+   Sub-sections get proper headings in the headline font instead of mono labels with a dash. */
+#features .feat-sub{display:block; color:var(--ink); font-family:'Big Shoulders Display','Arial Narrow',sans-serif; font-size:clamp(24px,2.8vw,32px); font-weight:800; letter-spacing:0; text-transform:none; line-height:1.1; margin:52px 0 16px;}
+#features .feat-sub::before{content:none;}
+.plan-includes .mono, .wl-how-title.mono{font-family:'Big Shoulders Display','Arial Narrow',sans-serif; font-size:clamp(22px,2.4vw,28px); font-weight:800; letter-spacing:0; text-transform:none; color:var(--ink); line-height:1.1;}
+.plan-includes .mono::before{content:none; display:none;} .plan-includes .mono{display:block;}

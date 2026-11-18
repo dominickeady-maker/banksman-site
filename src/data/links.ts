@@ -14,6 +14,9 @@ export const POST_TRADES: Record<string, string[]> = {
   'fieldwire-jobtread-alternatives': ['builders', 'subcontractors', 'steel-erectors'],
   'how-to-price-a-building-job': ['builders', 'bricklayers', 'groundworkers', 'subcontractors'],
   'stop-losing-drawing-revisions-on-site': ['electricians', 'joiners', 'worktop-fitters', 'window-fitters', 'plumbers'],
+  'construction-material-tracking-small-builders': ['builders', 'bricklayers', 'groundworkers', 'fit-out-contractors'],
+  'construction-site-sign-in-app-uk': ['builders', 'subcontractors', 'scaffolders', 'groundworkers'],
+  'track-labour-costs-per-job-construction': ['builders', 'subcontractors', 'bricklayers', 'joiners'],
 };
 
 /** Blog post slug → free tools worth pointing to from it. */
@@ -22,6 +25,9 @@ export const POST_TOOLS: Record<string, string[]> = {
   'construction-management-software-cost-uk': ['/tools/day-rate-calculator/'],
   'banksman-vs-fieldwire': [],
   'how-to-price-a-building-job': ['/tools/day-rate-calculator/', '/tools/cis-calculator/'],
+  'track-labour-costs-per-job-construction': ['/tools/day-rate-calculator/', '/tools/cis-calculator/'],
+  'construction-material-tracking-small-builders': [],
+  'construction-site-sign-in-app-uk': [],
 };
 
 export const TOOLS = [

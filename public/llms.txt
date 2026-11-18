@@ -38,6 +38,7 @@ Builders, bricklayers, groundworkers, roofers, electricians, plumbers, subcontra
 - [Meet the team](https://banksman.app/meet-the-team/)
 - [Case studies](https://banksman.app/case-studies/): UK building firms on Banksman, in their own words
 - [Case study: Cornerstone Developments](https://banksman.app/case-studies/cornerstone-developments/): how Dom runs his own Huddersfield building firm on Banksman
+- [Case study: SB Homes](https://banksman.app/case-studies/sb-homes/): how a Colne Valley housebuilder keeps a big team and several developments organised
 - [Support](https://banksman.app/support/): report a bug, ask for help or suggest a feature; answered by Dom or Matt
 - [Blog](https://banksman.app/blog/)
 - [Free CIS calculator](https://banksman.app/tools/cis-calculator/)
@@ -53,6 +54,7 @@ Builders, bricklayers, groundworkers, roofers, electricians, plumbers, subcontra
 - [Why WhatsApp groups are a liability on a construction site](https://banksman.app/blog/whatsapp-groups-liability-construction-site/)
 - [How to get your building site off WhatsApp](https://banksman.app/blog/get-your-building-site-off-whatsapp/)
 - [How to price a building job: a simple method for UK builders](https://banksman.app/blog/how-to-price-a-building-job/)
+- [How to stop duplicate material orders and missing deliveries](https://banksman.app/blog/construction-material-tracking-small-builders/)
 
 ## Common questions
 
