@@ -37,7 +37,7 @@ const toolLinks = TOOLS.filter((t) => tools.includes(t.href) && t.href !== exclu
 {(posts.length > 0 || tradeLinks.length > 0 || toolLinks.length > 0) && (
   <section class="explore">
     <div class="wrap">
-      <div class="eyebrow">{eyebrow}</div>
+      {eyebrow && <div class="eyebrow">{eyebrow}</div>}
       <h2 class="big">{title}</h2>
       {posts.length > 0 && (
         <ul class="ex-posts">
