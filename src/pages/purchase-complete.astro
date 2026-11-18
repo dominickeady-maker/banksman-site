@@ -88,12 +88,12 @@ import { SITE } from '../site';
   .pc-wrap { padding-bottom: 80px; }
   .pc-steps, .pc-help { max-width: 760px; }
   .pc-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-  .pc-steps li { display: grid; grid-template-columns: auto 1fr; gap: 18px; background: var(--surface); border: 1px solid var(--line-strong); border-radius: 6px; padding: 22px 24px; }
+  .pc-steps li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; background: var(--surface); border: 1px solid var(--line-strong); border-radius: 6px; padding: 22px 24px; }
   .pc-num { font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 34px; line-height: 1; color: var(--accent); }
   .pc-steps h2 { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 18px; font-weight: 700; margin: 2px 0 6px; }
   .pc-steps p { margin: 0; color: var(--ink-soft); font-size: 15.5px; }
   .pc-steps p a { color: var(--accent); }
-  .pc-steps .btn { margin-top: 14px; }
+  .pc-steps .btn { margin-top: 14px; max-width: 100%; white-space: normal; text-align: center; }
   .pc-help { margin-top: 26px; color: var(--ink-soft); font-size: 15px; }
   .pc-help a { color: var(--accent); }
 </style>
