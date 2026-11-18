@@ -84,8 +84,8 @@ const schema = [{
       featureList, screenshot: ['https://banksman.app/assets/app/dashboard-desktop.webp', 'https://banksman.app/assets/app/dashboard-phone.webp'],
       publisher: { '@id': 'https://banksman.app/#organization' },
       offers: [
-        offer('Starter', '89', 'Up to 10 users. Every feature.', 'MONTH'),
-        offer('Growth', '149', 'Up to 25 users. Every feature, priority support.', 'MONTH'),
+        offer('Starter', '89', 'Up to 6 users. Every feature.', 'MONTH'),
+        offer('Growth', '149', 'Up to 15 users. Every feature, priority support.', 'MONTH'),
         offer('Enterprise', '299', 'Up to 75 users. Every feature, priority support.', 'MONTH'),
         offer('White label add-on', '999', 'One-off. Three 1-on-1 calls, exclusive features and a fully customised app, on top of any plan.'),
       ],
@@ -272,30 +272,32 @@ const schema = [{
           <div class="quote-head">
             <div class="mono">Starter</div>
             <div class="price">£89<span>/month inc. VAT</span></div>
-            <div class="tier">Up to 10 users</div>
+            <div class="tier">Up to 6 users</div>
           </div>
           <ul>
+            <li>14-day free trial</li>
             <li>Every feature in the app</li>
             <li>Manager and worker logins</li>
             <li>Optional onboarding call with us</li>
             <li>Support from Dom or Matt</li>
           </ul>
-          <!-- STRIPE: Payment Link for the £89 monthly plan. TODO: this is still the old £79 link, swap in the new £89 one. After payment, redirect to /purchase-complete/?plan=starter -->
-          <div class="foot"><a class="btn btn-ghost btn-block" href="https://buy.stripe.com/aFadR28IYdmH1Fea5N5sA07">Start Starter: £89/mo</a></div>
+          <!-- STRIPE: Payment Link for the £89 monthly plan (14-day free trial). After payment, redirect to /purchase-complete/?plan=starter&trial=1 -->
+          <div class="foot"><a class="btn btn-ghost btn-block" href="https://buy.stripe.com/fZu5kw3oE2I3fw4a5N5sA0b">Start Starter: £89/mo</a></div>
         </div>
         <div class="quote featured">
           <div class="quote-head">
             <div class="quote-top"><div class="mono">Growth</div><span class="quote-badge">Most popular</span></div>
             <div class="price">£149<span>/month inc. VAT</span></div>
-            <div class="tier">Up to 25 users</div>
+            <div class="tier">Up to 15 users</div>
           </div>
           <ul>
+            <li>14-day free trial</li>
             <li>Everything in Starter</li>
             <li>For larger teams across more sites</li>
             <li>Optional onboarding call with us</li>
             <li>Priority support, straight to Dom or Matt</li>
           </ul>
-          <!-- STRIPE: Payment Link for the £149 monthly plan. After payment, redirect to /purchase-complete/?plan=growth -->
+          <!-- STRIPE: Payment Link for the £149 monthly plan. After payment, redirect to /purchase-complete/?plan=growth&trial=1 -->
           <div class="foot"><a class="btn btn-primary btn-block" href="https://buy.stripe.com/aFa28k8IYgyT5Vu6TB5sA05">Start Growth: £149/mo</a></div>
         </div>
         <div class="quote">
@@ -305,13 +307,14 @@ const schema = [{
             <div class="tier">Up to 75 users</div>
           </div>
           <ul>
+            <li>14-day free trial</li>
             <li>Everything in Growth</li>
             <li>For bigger firms running lots of sites</li>
             <li>Promote workers to run their own sites <ComingSoon feature="siteLeads" /></li>
             <li>Optional onboarding call with us</li>
             <li>Priority support, straight to Dom or Matt</li>
           </ul>
-          <!-- Stripe Payment Link (£299 monthly). After payment it should redirect to /purchase-complete/?plan=enterprise -->
+          <!-- Stripe Payment Link (£299 monthly). After payment it should redirect to /purchase-complete/?plan=enterprise&trial=1 -->
           <div class="foot"><a class="btn btn-ghost btn-block" href="https://buy.stripe.com/eVqdR2cZedmH2Ji91J5sA09">Start Enterprise: £299/mo</a></div>
         </div>
       </div>
