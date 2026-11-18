@@ -2,7 +2,7 @@
 import { SITE } from '../site';
 
 interface Props {
-  current?: 'blog' | 'whats-new' | 'team' | 'support' | 'case-studies';
+  current?: 'blog' | 'whats-new' | 'coming-soon' | 'team' | 'support' | 'case-studies';
 }
 
 const { current } = Astro.props;
@@ -17,6 +17,7 @@ const blogCurrent = here('blog');
       <a href={SITE.demoUrl}>Live demo</a>
       <a href="/#pricing">Pricing</a>
       <a href="/whats-new/" {...here('whats-new')}>What's new</a>
+      <a href="/coming-soon/" {...here('coming-soon')}>Coming soon</a>
       <a href="/meet-the-team/" {...here('team')}>Team</a>
       <a href="/case-studies/" {...here('case-studies')}>Case studies</a>
       <a href="/blog/" {...blogCurrent}>Blog</a>
@@ -33,6 +34,7 @@ const blogCurrent = here('blog');
     <a href={SITE.demoUrl}>Live demo</a>
     <a href="/#pricing">Pricing</a>
     <a href="/whats-new/" {...here('whats-new')}>What's new</a>
+      <a href="/coming-soon/" {...here('coming-soon')}>Coming soon</a>
     <a href="/meet-the-team/" {...here('team')}>Meet the team</a>
     <a href="/case-studies/" {...here('case-studies')}>Case studies</a>
     <a href="/blog/" {...blogCurrent}>Blog</a>

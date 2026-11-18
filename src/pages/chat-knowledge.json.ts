@@ -8,6 +8,7 @@ import { PLANS } from '../data/plans';
 import { TRADES } from '../data/trades';
 import { SITE } from '../site';
 import { CASE_STUDIES, casePath } from '../data/case-studies';
+import { COMING_SOON, COMING_SOON_NOTE } from '../data/coming-soon';
 
 export const prerender = true;
 
@@ -22,6 +23,8 @@ export const knowledgeText = () => [
   ...ids.filter((id) => FEATURES[id].status === 'live').map(line),
   ``,
   `## Coming soon (not in the app yet, no dates)`,
+  `Everything in this section is coming soon: never say it's available, never give a date. Most new features come at no extra cost on the customer's plan. ${COMING_SOON_NOTE} Full list: ${SITE.url}/coming-soon/. Feature ideas or votes: email ${SITE.email}.`,
+  ...COMING_SOON.map((g) => `- ${g.title}: ${g.points.join('; ')}.`),
   ...ids.filter((id) => FEATURES[id].status === 'coming-soon').map(line),
   ``,
   `## Plans (all prices include VAT, no contract, cancel any time, every plan has every feature)`,
@@ -41,6 +44,7 @@ export const knowledgeText = () => [
   `- Support for existing customers (bug, help, feature idea): ${SITE.url}/support/`,
   `- Compare with spreadsheets and WhatsApp: ${SITE.url}/compare/`,
   `- What's new: ${SITE.url}/whats-new/`,
+  `- What's coming (coming soon, no dates): ${SITE.url}/coming-soon/`,
   `- Free tools: ${SITE.url}/tools/cis-calculator/ and ${SITE.url}/tools/day-rate-calculator/`,
   `- Pages for each trade: ${TRADES.map((t) => `${t.name} ${SITE.url}/for-${t.slug}/`).join(', ')}`,
   ``,

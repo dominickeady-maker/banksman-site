@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ComingSoonSection from '../components/ComingSoonSection.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { FEATURES } from '../data/features';
+import { ALSO_ON_THE_WAY } from '../data/coming-soon';
+import '../styles/pages.css';
+
+// Only features that are still coming soon (one that ships drops off this list by itself).
+const also = ALSO_ON_THE_WAY.filter((id) => FEATURES[id].status === 'coming-soon');
+---
+<BaseLayout
+  title="Coming soon to Banksman | What we're building next"
+  description="What's coming to Banksman: quotes and invoices, Xero and QuickBooks sync, AI materials pricing, Gantt programmes, client portal and more. All coming soon."
+  current="coming-soon"
+>
+  <ComingSoonSection page />
+
+  {also.length > 0 && (
+    <section class="cs-also-section">
+      <div class="wrap">
+        <div class="cs-also">
+          <h2>Also on the way</h2>
+          <ul class="feature-list soon-list">
+            {also.map((id) => (
+              <li class="feature-item soon"><h3>{FEATURES[id].name} <span class="badge-soon">Coming soon</span></h3><p>{FEATURES[id].summary}</p></li>
+            ))}
+          </ul>
+          <p class="cs-more">Want to see what's in the app today? <a href="/#features">See every feature</a> or <a href="/whats-new/">what's new</a>.</p>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <CtaBand heading="See what's there today." text="The live demo is the actual app on realistic sample data. Four fields and your logins are on the next page. No card." />
+</BaseLayout>

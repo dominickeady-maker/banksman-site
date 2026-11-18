@@ -1,0 +1,53 @@
+---
+// "What's coming to Banksman": the four groups from src/data/coming-soon.ts, every card labelled
+// Coming soon. On the home page it links to /coming-soon/; on that page it adds the vote buttons.
+import { COMING_SOON, COMING_SOON_INTRO, COMING_SOON_NOTE, FEATURE_IDEA_MAILTO, voteMailto } from '../data/coming-soon';
+import { PLANS } from '../data/plans';
+
+interface Props {
+  /** h1 on /coming-soon/, h2 on the home page */
+  page?: boolean;
+}
+const { page = false } = Astro.props;
+const starter = PLANS.find((p) => p.name === 'Starter')!;
+const Heading = page ? 'h1' : 'h2';
+---
+<section id="coming-soon" class={`cs-section${page ? ' cs-page' : ''}`}>
+  <div class="wrap">
+    <div class="eyebrow">Coming soon</div>
+    <Heading class="big cs-title">What's coming to Banksman</Heading>
+    <p class="cs-intro">{COMING_SOON_INTRO}</p>
+
+    <div class="cs-grid">
+      {COMING_SOON.map((g) => (
+        <article class="cs-card" id={`soon-${g.id}`}>
+          <div class="cs-card-head">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={g.icon} />
+            <h3>{g.title}</h3>
+            <span class="badge-soon">Coming soon</span>
+          </div>
+          <ul>
+            {g.points.map((p) => <li>{p}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+    <p class="cs-note">{COMING_SOON_NOTE}</p>
+
+    {page && (
+      <div class="cs-vote" id="vote">
+        <h2>Vote for what's next</h2>
+        <p>Tap the one you want most. It opens an email to Dom, so add a line on why if you like.</p>
+        <div class="cs-vote-btns">
+          {COMING_SOON.map((g) => <a class="btn btn-ghost btn-sm" href={voteMailto(g.title)}>{g.title}</a>)}
+        </div>
+      </div>
+    )}
+
+    <div class="cs-ctas">
+      <a class="btn btn-primary" href={starter.checkout}>Start your 14-day free trial</a>
+      <a class="btn btn-ghost" href={FEATURE_IDEA_MAILTO}>Got a feature idea? Tell us</a>
+    </div>
+    {!page && <p class="cs-more"><a href="/coming-soon/">See everything that's coming, and vote for what's next →</a></p>}
+  </div>
+</section>
