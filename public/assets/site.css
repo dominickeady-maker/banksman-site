@@ -669,6 +669,8 @@ button.linklike{background:none; border:0; padding:0; font:inherit; cursor:point
   .foot-grid a, .foot-grid button.linklike{font-size:13px; margin-bottom:9px; overflow-wrap:anywhere;}
   .foot-grid .foot-h{font-size:11px; letter-spacing:.12em;}
   .fg-person a{font-size:12.5px;}
+  /* the contact column is narrow at phone width: the call button wraps inside it instead of sticking out */
+  .foot-grid a.fg-call{max-width:100%; white-space:normal; text-align:center; justify-content:center; padding:9px 10px; line-height:1.25;}
 }
 
 /* ---------- one corner radius for every box (Nov 2026) ----------
