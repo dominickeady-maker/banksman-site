@@ -17,13 +17,13 @@ faq:
     answer: "Only once you're confident the tool fits how your site actually runs, a small monthly saving isn't worth being locked into something that doesn't get used."
 ---
 
-Construction management software in the UK typically costs anywhere from around £70 to £150 a month + VAT for a small or mid-size firm using a flat-rate tool, up to several hundred or even thousands of pounds a month for enterprise platforms with per-seat pricing and custom quotes. The right figure depends far more on firm size and pricing model than on which specific product you pick.
+Construction management software in the UK typically costs anywhere from around £70 to £150 a month for a small or mid-size firm using a flat-rate tool, up to several hundred or even thousands of pounds a month for enterprise platforms with per-seat pricing and custom quotes. The right figure depends far more on firm size and pricing model than on which specific product you pick.
 
 ## Why the range is so wide
 
 **Flat-rate tools** charge one price for a set number of users, regardless of who's logging in. This suits smaller firms because the cost doesn't creep up as you add people, within the plan's limit.
 
-**Per-seat pricing** charges per user per month. This can look cheap at a glance (£10 to £30 per user + VAT is common) but scales directly with headcount, a 20-person firm paying £25 per seat + VAT is spending £500/month + VAT before add-ons.
+**Per-seat pricing** charges per user per month. This can look cheap at a glance (£10 to £30 per user is common) but scales directly with headcount, a 20-person firm paying £25 per seat is spending £500/month before add-ons.
 
 **Quoted pricing** is used by some larger platforms. It's usually tailored to each client and can include onboarding, training and support, which suits firms with more complex needs.
 
@@ -36,7 +36,7 @@ Construction management software in the UK typically costs anywhere from around 
 
 ## What a small or mid-size firm should actually expect to pay
 
-For a firm of roughly 5 to 25 people running a handful of sites, a flat monthly rate of £70 to £150 + VAT is realistic for a tool covering the core day-to-day needs: tasks, timesheets, materials, drawings, and site photos. Broader platforms with more modules will usually cost more, which can be worth it if you need that extra capability.
+For a firm of roughly 5 to 25 people running a handful of sites, a flat monthly rate of £70 to £150 is realistic for a tool covering the core day-to-day needs: tasks, timesheets, materials, drawings, and site photos. Broader platforms with more modules will usually cost more, which can be worth it if you need that extra capability.
 
 ## A quick way to sanity-check a quote
 
@@ -44,4 +44,4 @@ Ask: does the price change if we add three more workers next month? Knowing how 
 
 ---
 
-*Banksman is £89/month inc. VAT flat for up to 10 users, £149/month inc. VAT for up to 20, no per-seat pricing, no sales calls. [Try the live demo](/#demo), no card required.*
+*Banksman is £89/month flat for up to 10 users, £149/month for up to 20, no per-seat pricing, no sales calls. [Try the live demo](/#demo), no card required.*

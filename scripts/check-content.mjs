@@ -16,9 +16,11 @@ const isReserved = (slug) => RESERVED.has(slug) || slug.startsWith('for-');
 // and posts must not claim it does. The keyword field may still target the search phrase.
 const DRAWING_CLAIM = /revision control|version control|(?:latest|current) (?:drawing )?revision (?:is )?on every phone|(?:latest|current) drawing on every phone|latest revision on every phone|because there is only one|only one anyone can find/i;
 
-// A price is £ + digits, optionally a range and a unit. Banksman's own prices (£89, £149, £299, £999) include VAT and must be
-// followed by "inc. VAT"; any other price (market figures, other vendors) must be followed by "+ VAT".
-const OWN_PRICE = /^£(?:89|149|299|999)\b/;
+// A price is £ + digits, optionally a range and a unit. Banksman isn't VAT registered, so no price on the site carries VAT
+// wording ("inc. VAT", "+ VAT", "ex VAT"): just the price. The only VAT line is "No VAT is charged" on the pricing section.
+// Pages that explain VAT for builders' own jobs (pricing a job, the CIS calculator) are allowed to talk about it.
+const VAT_AFTER_PRICE = /^\s?(?:inc\.?|incl\.?|including|\+|plus|ex\.?|excl\.?|excluding)\s?VAT\b/i;
+const VAT_ADVICE = new Set(['how-to-price-a-building-job']);
 const PRICE = /£\d[\d,.]*k?(?:(?:\s?[–-]\s?| to )£\d[\d,.]*k?)?(?:\/\w+|\s(?:a|per)\s(?:month|year|user|seat|week|day))?/g;
 
 const posts = walk(blogDir).filter((p) => p.endsWith('.md'));
@@ -63,12 +65,11 @@ for (const file of posts) {
   // House style: no em or en dashes. Use a comma, full stop or colon (the build also tidies post bodies).
   if (/[\u2013\u2014]/.test(text)) errors.push(`${rel}: contains a dash (— or –); use a comma, full stop or colon instead`);
 
-  for (const line of text.split('\n')) {
-    for (const match of line.matchAll(PRICE)) {
-      const after = line.slice(match.index + match[0].length);
-      if (OWN_PRICE.test(match[0])) {
-        if (!/^\s?inc\. VAT/.test(after)) errors.push(`${rel}: Banksman price "${match[0]}" needs "inc. VAT" straight after it`);
-      } else if (!/^\s?\+\s?VAT/.test(after)) errors.push(`${rel}: price "${match[0]}" needs "+ VAT" straight after it`);
+  if (!VAT_ADVICE.has(slug)) {
+    for (const line of text.split('\n')) {
+      for (const match of line.matchAll(PRICE)) {
+        if (VAT_AFTER_PRICE.test(line.slice(match.index + match[0].length))) errors.push(`${rel}: "${match[0]}" is followed by VAT wording; Banksman isn't VAT registered, so just give the price`);
+      }
     }
   }
 
@@ -86,6 +87,17 @@ for (const file of walk(root, skip).filter(isText)) {
   const text = readFileSync(file, 'utf8');
   for (const word of BANNED) {
     if (text.toLowerCase().includes(word.toLowerCase())) errors.push(`${relative(root, file)}: contains "${word}"`);
+  }
+}
+
+// No VAT wording after a price anywhere in the site's pages, data or llms.txt (the CIS calculator explains VAT rules, not prices).
+for (const file of [...walk(join(root, 'src/pages')), ...walk(join(root, 'src/data')), ...walk(join(root, 'src/components')), join(root, 'public/llms.txt')].filter(isText)) {
+  if (/cis-calculator|tools[\\/]index/.test(file)) continue;
+  for (const line of readFileSync(file, 'utf8').split('\n')) {
+    for (const match of line.matchAll(PRICE)) {
+      if (VAT_AFTER_PRICE.test(line.slice(match.index + match[0].length))) errors.push(`${relative(root, file)}: "${match[0]}" is followed by VAT wording; Banksman isn't VAT registered, so just give the price`);
+    }
+    if (/(?:all )?prices (?:include|exclude) VAT|VAT included|includes VAT/i.test(line)) errors.push(`${relative(root, file)}: says prices include or exclude VAT; Banksman isn't VAT registered ("No VAT is charged" on the pricing section is the only VAT line)`);
   }
 }
 

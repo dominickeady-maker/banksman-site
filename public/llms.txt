@@ -24,7 +24,7 @@ Most new features come at no extra cost on your plan; a few bigger tools, like t
 - Plan the job: a Gantt chart view of the programme for every site; Google and Outlook calendar sync; send quotes and invoices by email from the app.
 - Built for UK sites: a client portal under your own brand; CSCS and CPCS card expiry alerts; plant and hire tracker; works with no signal.
 
-## Pricing (all prices include VAT, no contract, cancel any time)
+## Pricing (no VAT is charged, no contract, cancel any time)
 
 - Starter: £89 a month, up to 10 users.
 - Growth: £149 a month, up to 20 users.
