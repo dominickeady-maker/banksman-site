@@ -6,6 +6,7 @@ import SpamGuard from '../components/SpamGuard.astro';
 import HeroDevices from '../components/HeroDevices.astro';
 import FaqPhones from '../components/FaqPhones.astro';
 import ComingSoon from '../components/ComingSoon.astro';
+import ComingSoonSection from '../components/ComingSoonSection.astro';
 import ExploreLinks from '../components/ExploreLinks.astro';
 import { SITE } from '../site';
 import { FEATURES, type FeatureId } from '../data/features';
@@ -52,7 +53,6 @@ const included: { icon: string; name: string }[] = [
   { icon: 'accidents', name: 'Accident & near-miss reports' },
   { icon: 'csv', name: 'CSV exports' },
 ];
-const comingSoon = (Object.keys(FEATURES) as FeatureId[]).filter((id) => FEATURES[id].status === 'coming-soon');
 
 
 const featureList = ['Tasks with photo proof', 'Daywork and price work timesheets', 'Material requests and delivery tracking', 'Drawings labelled by version', 'Site photo library', 'Site group chats and direct messages', 'Health and safety documents with sign-off', 'QR site sign-in and fire roll call', 'Accident and near-miss reports', 'Manager dashboard', 'Push notifications', 'Your logo and colours'];
@@ -174,18 +174,11 @@ const schema = [{
           <li class="feature-item"><h3>{FEATURES[id].name}</h3><p>{FEATURES[id].summary}</p></li>
         ))}
       </ul>
-      {comingSoon.length > 0 && (
-        <>
-          <h3 class="feat-sub">Coming soon</h3>
-          <ul class="feature-list soon-list">
-            {comingSoon.map((id) => (
-              <li class="feature-item soon"><h3>{FEATURES[id].name}</h3><p>{FEATURES[id].summary}</p></li>
-            ))}
-          </ul>
-        </>
-      )}
     </div>
   </section>
+
+  <!-- ================= COMING SOON ================= -->
+  <ComingSoonSection />
 
   <!-- ================= LIVE DEMO ================= -->
   <section id="demo" class="demo-band">

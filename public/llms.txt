@@ -17,6 +17,13 @@ Banksman keeps a building firm's tasks, timesheets, material requests, drawings,
 - Accident and near-miss reports, with RIDDOR flags, actions and a monthly safety summary.
 - Manager dashboard, push notifications, your logo and colours, bigger text option.
 
+## Coming soon (not in the app yet, no dates)
+Most new features come at no extra cost on your plan; a few bigger tools, like the AI materials and pricing calculator, may be a paid add-on. Full list: https://banksman.app/coming-soon/
+- Get paid faster: quotes to invoices in one tap, paid by card or bank transfer; Xero and QuickBooks sync; CIS deductions and subbie statements; extras and variations signed off by your client; valuations and retentions; live profit on every job.
+- AI tools: AI materials and pricing calculator (quantities, supplier prices and labour from a drawing or a description); order materials from trade suppliers; voice notes turned into tasks; an automatic site diary; AI drafts of your RAMS; photo snagging.
+- Plan the job: a Gantt chart view of the programme for every site; Google and Outlook calendar sync; send quotes and invoices by email from the app.
+- Built for UK sites: a client portal under your own brand; CSCS and CPCS card expiry alerts; plant and hire tracker; works with no signal.
+
 ## Pricing (all prices include VAT, no contract, cancel any time)
 
 - Starter: £89 a month, up to 6 users.
@@ -44,6 +51,7 @@ Builders, bricklayers, groundworkers, roofers, electricians, plumbers, subcontra
 - [Free CIS calculator](https://banksman.app/tools/cis-calculator/)
 - [Free day rate calculator](https://banksman.app/tools/day-rate-calculator/)
 - [For builders](https://banksman.app/for-builders/), [bricklayers](https://banksman.app/for-bricklayers/), [groundworkers](https://banksman.app/for-groundworkers/), [roofers](https://banksman.app/for-roofers/), [electricians](https://banksman.app/for-electricians/), [plumbers](https://banksman.app/for-plumbers/), [subcontractors](https://banksman.app/for-subcontractors/), [worktop fitters](https://banksman.app/for-worktop-fitters/), [interior fit-out teams](https://banksman.app/for-fit-out-contractors/), [scaffolders](https://banksman.app/for-scaffolders/), [joiners](https://banksman.app/for-joiners/), [steel erectors](https://banksman.app/for-steel-erectors/), [window fitters](https://banksman.app/for-window-fitters/)
+- [Coming soon](https://banksman.app/coming-soon/): what's on the way (no dates)
 
 ## Guides
 
