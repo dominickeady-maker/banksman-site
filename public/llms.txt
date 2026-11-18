@@ -19,8 +19,8 @@ Banksman keeps a building firm's tasks, timesheets, material requests, drawings,
 
 ## Pricing (all prices include VAT, no contract, cancel any time)
 
-- Starter: £89 a month, up to 6 users.
-- Growth: £149 a month, up to 15 users.
+- Starter: £89 a month, up to 10 users.
+- Growth: £149 a month, up to 20 users.
 - Enterprise: £299 a month, up to 75 users.
 - White label add-on: £999 one-off on top of any plan. Includes three 1-on-1 calls with Dom and Matt, exclusive features built for the customer, and a fully customised app.
 - Every plan includes every feature and an optional onboarding call.
